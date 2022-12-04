@@ -1,24 +1,17 @@
 import React from 'react';
-import Image from 'next/image';
 import SectionHeadline from '@/components/core/SectionHeadline';
+import CorporateProgramNav from '@/components/corporate/CorporateProgramNav';
 
 const CorporateProgramSection: React.FC<CorporateProgramSectionProps> = () => {
 	return (
-		<>
+		<div className='mb-28'>
 			<SectionHeadline
-				className='mb-5'
+				className='mb-10'
 				title='Campus to Corporate Program'
 				subtitle='Your journey towards your dream job'
 			/>
-			<div className="w-76 h-64 mx-auto mb-20 items-center bg-light rounded p-20">
-				<p className='text-primary text-4xl pb-5'>
-					Work in progress
-				</p>
-				<p className='text-primary text-lg'>
-					Need more details...
-				</p>
-			</div>
-		</>
+			<CorporateProgramNav />
+		</div>
 	)
 };
 

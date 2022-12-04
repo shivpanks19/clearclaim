@@ -14,7 +14,7 @@ const HomeHeroSection: React.FC<HomeHeroSectionProps> = () => {
 		<div
 			style={{
 				background:
-					'url(/img/home/homeHeroBg.png) no-repeat top left;',
+					'url(/img/home/homeHeroBg.png) no-repeat top left',
 				backgroundSize: '100% 100%',
 				backgroundPosition: 'top left'
 			}}

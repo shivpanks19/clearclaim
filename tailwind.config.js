@@ -49,6 +49,9 @@ module.exports = {
         "white": '#fff',
         "theme-white": "#fafafa",
         "white-56": "rgba(255, 255, 255, 0.56)",
+        'corporate-light': '#cae0fe',
+        corporate: '#387ef7',
+        red: '#e21032'
       }),
       textColor: () => ({
         primary: "#0D3D54",
@@ -58,6 +61,10 @@ module.exports = {
         tertiary: "#0D87D4",
         muted: "#919191",
         aphonic: "rgba(63, 63, 63, 0.63)",
+        corporate: '#387ef7'
+      }),
+      borderColor: () => ({
+        yellow: '#f5c844'
       }),
       boxShadow: {
         DEFAULT: "0px 0px 6px 1px rgba(13, 61, 84, 0.07);",
