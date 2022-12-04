@@ -35,13 +35,13 @@ const Navbar: React.FC<NavbarProps> = ({ invertColors }) => {
 
 		if (
 			scrollTop > 150 &&
-            !navbar.classList.contains(styles.navbarScrolled)
+			!navbar.classList.contains(styles.navbarScrolled)
 		) {
 			navbar.classList.add(styles.navbarScrolled);
 		}
 		if (
 			scrollTop < 150 &&
-            navbar.classList.contains(styles.navbarScrolled)
+			navbar.classList.contains(styles.navbarScrolled)
 		) {
 			navbar.classList.remove(styles.navbarScrolled);
 		}
@@ -142,24 +142,25 @@ const Navbar: React.FC<NavbarProps> = ({ invertColors }) => {
 									return (
 										<Link
 											key={index}
-											href={item.link}												
+											href={item.link}
 											target={item.target}
 										>
-												<Text
-													className={`text-secondary ${item.className && item.className}`}
-													fontWeight='font-medium'
-													cursor='cursor-pointer'
-												>
-													{item.title}
-												</Text>
+											<Text
+												className={`text-secondary ${item.className && item.className}`}
+												fontWeight='font-medium'
+												cursor='cursor-pointer'
+											>
+												{item.title}
+											</Text>
 										</Link>
 									);
 								})}
-								
+
 							</Popover.Group>
 							<div className='lg:flex items-center justify-end'>
-								<Button 
+								<Button
 									buttonStyleClass='outlineButton'
+									variant='bg-transparent'
 									rounded='rounded-sm'
 									className='px-5 py-3'
 								>
