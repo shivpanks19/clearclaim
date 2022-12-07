@@ -1,13 +1,13 @@
 import { NextPage } from 'next';
-import Navbar from '@/components/core/Navbar';
-import Footer from '@/components/core/Footer';
-import ValueForMoney from '@/components/core/ValueForMoney';
-import WhyFSDSection from '@/components/sections/course/WhyFSDSection';
-import CourseInfoSection from '@/components/sections/course/CourseInfoSection';
-import CourseCurriculumSection from '@/components/sections/course/CourseCurriculumSection';
-import CourseDetailHeroSection from '@/components/sections/course/CourseDetailHeroSection';
-import WhyUsSection from '@/components/sections/common/WhyUsSection';
-import AchievementSection from '@/components/sections/common/AchievementSection';
+import Navbar from '@/components/layout/Navbar';
+import Footer from '@/components/layout/Footer';
+import ValueForMoney from '@/components/common/banner/ValueForMoneyBanner';
+import WhyFSDSection from '@/components/courses/WhyFSD';
+import CourseInfoSection from '@/components/courses/CourseInfo';
+import CourseCurriculumSection from '@/components/courses/CourseCurriculum/CourseCurriculum';
+import CourseDetailHeroSection from '@/components/courses/CourseDetailHero';
+import WhyUsSection from '@/components/common/why-us/WhyUs';
+import AchievementSection from '@/components/common/placement-list/PlacementList';
 
 const CourseDetailPage: NextPage = () => {
 

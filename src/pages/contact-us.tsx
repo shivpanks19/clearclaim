@@ -1,9 +1,9 @@
 
-import Navbar from '@/components/core/Navbar';
-import Footer from '@/components/core/Footer';
-import ContactHeroSection from '@/components/sections/contact/ContactHeroSection';
-import ContactOptionSection from '@/components/sections/contact/ContactOptionSection';
-import ContactFindUsSection from '@/components/sections/contact/ContactFindUsSection';
+import Navbar from '@/components/layout/Navbar';
+import Footer from '@/components/layout/Footer';
+import ContactHeroSection from '@/components/contact-us/ContactHero';
+import ContactOptionSection from '@/components/contact-us/ContactOption';
+import ContactFindUsSection from '@/components/contact-us/ContactFindUs';
 
 export default function Home() {
 

@@ -1,16 +1,16 @@
 
-import Navbar from '@/components/core/Navbar';
-import Footer from '@/components/core/Footer';
-import HomeHeroSection from '@/components/sections/home/HomeHeroSection';
-import WhyUsSection from '@/components/sections/common/WhyUsSection';
-import ReviewSection from '@/components/sections/common/ReviewSection';
-import SpecialSection from '@/components/sections/home/SpecialSection';
-import OfferingSection from '@/components/sections/common/OfferingSection';
-import RecruiterSection from '@/components/sections/common/RecruiterSection';
-import RecognitionSection from '@/components/sections/home/RecognitionSection';
-import AchievementSection from '@/components/sections/common/AchievementSection';
-import CodingBootcampSection from '@/components/core/CodingBootcamp';
-import CorporateProgramSection from '@/components/sections/home/CorporateProgramSection';
+import Navbar from '@/components/layout/Navbar';
+import Footer from '@/components/layout/Footer';
+import HomeHeroSection from '@/components/index/HomeHero';
+import WhyUsSection from '@/components/common/why-us/WhyUs';
+import ReviewSection from '@/components/common/review-list/ReviewList';
+import SpecialSection from '@/components/index/Special';
+import OfferingSection from '@/components/common/course-list/CourseList';
+import RecruiterSection from '@/components/common/RecruiterList';
+import RecognitionSection from '@/components/index/Recognition';
+import AchievementSection from '@/components/common/placement-list/PlacementList';
+import CodingBootcampSection from '@/components/common/banner/CodingBootcampBanner';
+import CorporateProgramSection from '@/components/index/CorporateProgram/CorporateProgram';
 
 
 export default function Home() {

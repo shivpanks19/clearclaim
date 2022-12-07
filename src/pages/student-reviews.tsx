@@ -1,11 +1,11 @@
 
-import Navbar from '@/components/core/Navbar';
-import Footer from '@/components/core/Footer';
-import ReviewSection from '@/components/sections/common/ReviewSection';
-import RecruiterSection from '@/components/sections/common/RecruiterSection';
-import ReviewHeroSection from '@/components/sections/review/ReviewHeroSection';
-import CodingBootcampSection from '@/components/core/CodingBootcamp';
-import AchievementSection from '@/components/sections/common/AchievementSection';
+import Navbar from '@/components/layout/Navbar';
+import Footer from '@/components/layout/Footer';
+import ReviewSection from '@/components/common/review-list/ReviewList';
+import RecruiterSection from '@/components/common/RecruiterList';
+import ReviewHeroSection from '@/components/student-reviews/ReviewHero';
+import CodingBootcampSection from '@/components/common/banner/CodingBootcampBanner';
+import AchievementSection from '@/components/common/placement-list/PlacementList';
 
 export default function Home() {
 

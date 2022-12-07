@@ -1,11 +1,11 @@
 
-import Navbar from '@/components/core/Navbar';
-import Footer from '@/components/core/Footer';
-import WhyUsSection from '@/components/sections/common/WhyUsSection';
-import ReviewSection from '@/components/sections/common/ReviewSection';
-import OfferingSection from '@/components/sections/common/OfferingSection';
-import CourseHeroSection from '@/components/sections/course/CourseHeroSection';
-import CodingBootcampSection from '@/components/core/CodingBootcamp';
+import Navbar from '@/components/layout/Navbar';
+import Footer from '@/components/layout/Footer';
+import WhyUsSection from '@/components/common/why-us/WhyUs';
+import ReviewSection from '@/components/common/review-list/ReviewList';
+import OfferingSection from '@/components/common/course-list/CourseList';
+import CourseHeroSection from '@/components/courses/CourseHeroSection';
+import CodingBootcampSection from '@/components/common/banner/CodingBootcampBanner';
 
 export default function Home() {
 
