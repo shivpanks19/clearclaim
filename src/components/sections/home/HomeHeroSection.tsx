@@ -3,7 +3,8 @@ import Image from "next/image";
 
 import Text from '@/elements/Text';
 import Button from '@/elements/Button';
-import StatSection from '@/components/sections/home/StatSection';
+import StatSection from '@/components/sections/common/StatSection';
+import WorkshopButton from '@/components/core/WorkshopButton';
 
 import { useTranslation } from 'next-i18next';
 
@@ -32,20 +33,7 @@ const HomeHeroSection: React.FC<HomeHeroSectionProps> = () => {
 						One-Stop Destination to skill - reskill yourself.
 					</p>
 					<div className='flex mb-10'>
-						<Button
-							buttonStyleClass='outlineButton'
-							variant='bg-transparent'
-							rounded='rounded-sm'
-							className='px-5 py-3'
-						>
-							<Text
-								variant='text-secondary'
-								fontSize='text-lg'
-								fontWeight='font-medium'
-							>
-								{t('Attend a FREE Workshop')}
-							</Text>
-						</Button>
+						<WorkshopButton />
 						<Button
 							buttonStyleClass='textButton'
 							variant='bg-transparent'

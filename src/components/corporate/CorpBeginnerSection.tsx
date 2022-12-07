@@ -67,6 +67,7 @@ const CorpBeginnerSection: React.FC<CorpBeginnerSectionProps> = () => {
 
 			<TabPanels>
 				<TabPanel
+					className='flex'
 					paddingY={0}
 					paddingLeft={10}
 				>

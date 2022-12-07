@@ -3,7 +3,7 @@ import Image from 'next/image';
 import PlacementCard from '@/components/PlacementCard';
 import SectionHeadline from '@/components/core/SectionHeadline';
 
-const AchievementSection: React.FC<AchievementSectionProps> = () => {
+const AchievementSection: React.FC<AchievementSectionProps> = ({ largeFormat }) => {
 	return (
 		<>
 			<SectionHeadline
@@ -21,16 +21,28 @@ const AchievementSection: React.FC<AchievementSectionProps> = () => {
 						alt='Right arrow'
 					/>
 				</div>
-				<div className="cardContainer w-42 flex justify-between">
+				<div className="cardContainer w-42 grid grid-cols-3 gap-14">
 					<PlacementCard />
 					<PlacementCard />
 					<PlacementCard />
+					{largeFormat && (
+						<>
+							<PlacementCard />
+							<PlacementCard />
+							<PlacementCard />
+							<PlacementCard />
+							<PlacementCard />
+							<PlacementCard />
+						</>
+					)}
 				</div>
 			</div>
 		</>
 	)
 };
 
-type AchievementSectionProps = {};
+type AchievementSectionProps = {
+	largeFormat?: boolean;
+};
 
 export default AchievementSection;

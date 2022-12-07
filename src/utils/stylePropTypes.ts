@@ -11,6 +11,7 @@ export type Cursor =
 export type BackgroundVariant =
 	| 'bg-primary'
 	| 'bg-secondary'
+	| 'bg-tertiary'
 	| 'bg-muted'
 	| 'bg-black'
 	| 'bg-white'

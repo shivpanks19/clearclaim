@@ -5,19 +5,21 @@ import WhyUsSection from '@/components/sections/common/WhyUsSection';
 import ReviewSection from '@/components/sections/common/ReviewSection';
 import OfferingSection from '@/components/sections/common/OfferingSection';
 import CourseHeroSection from '@/components/sections/course/CourseHeroSection';
-import CodingBootcampSection from '@/components/sections/common/CodingBootcampSection';
+import CodingBootcampSection from '@/components/core/CodingBootcamp';
 
 export default function Home() {
 
 	return (
-		<div className='font-sans'>
+		<div>
 			<Navbar />
 
 			{/* Course Hero */}
 			<CourseHeroSection />
 
 			{/* Offerings */}
-			<OfferingSection />
+			<OfferingSection
+				showDetailSection={true}
+			/>
 
 			{/* Why us */}
 			<WhyUsSection />

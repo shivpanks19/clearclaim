@@ -114,7 +114,9 @@ const Navbar: React.FC<NavbarProps> = ({ invertColors }) => {
 						<div className='flex justify-between items-center'>
 							{/* Desktop Screen Logo */}
 							<div className='flex-shrink-0'>
-								<Logo />
+								<Link href={'/'}>
+									<Logo />
+								</Link>
 							</div>
 
 							{/* Hamburger Icon */}

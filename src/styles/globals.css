@@ -23,6 +23,10 @@ a {
   line-height: 160%;
 }
 
+*:focus{
+  outline: none !important;
+}
+
 .imgContainer{
   position:relative;
 }

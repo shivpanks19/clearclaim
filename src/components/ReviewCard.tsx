@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import Rating from "@/components/core/rating";
+import Rating from "@/components/core/Rating";
 
 const ReviewCard: React.FC<ReviewCardProps> = () => {
 	return (

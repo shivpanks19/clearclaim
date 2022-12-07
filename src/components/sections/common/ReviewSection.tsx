@@ -3,7 +3,7 @@ import Image from 'next/image';
 import ReviewCard from '@/components/ReviewCard';
 import SectionHeadline from '@/components/core/SectionHeadline';
 
-const ReviewSection: React.FC<ReviewSectionProps> = () => {
+const ReviewSection: React.FC<ReviewSectionProps> = ({ largeFormat }) => {
 	return (
 		<>
 			<SectionHeadline
@@ -26,12 +26,20 @@ const ReviewSection: React.FC<ReviewSectionProps> = () => {
 					<ReviewCard />
 					<ReviewCard />
 					<ReviewCard />
+					{largeFormat && (
+						<>
+							<ReviewCard />
+							<ReviewCard />
+						</>
+					)}
 				</div>
 			</div>
 		</>
 	)
 };
 
-type ReviewSectionProps = {};
+type ReviewSectionProps = {
+	largeFormat?: boolean;
+};
 
 export default ReviewSection;

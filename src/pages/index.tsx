@@ -6,17 +6,17 @@ import WhyUsSection from '@/components/sections/common/WhyUsSection';
 import ReviewSection from '@/components/sections/common/ReviewSection';
 import SpecialSection from '@/components/sections/home/SpecialSection';
 import OfferingSection from '@/components/sections/common/OfferingSection';
-import RecruiterSection from '@/components/sections/home/RecruiterSection';
+import RecruiterSection from '@/components/sections/common/RecruiterSection';
 import RecognitionSection from '@/components/sections/home/RecognitionSection';
-import AchievementSection from '@/components/sections/home/AchievementSection';
-import CodingBootcampSection from '@/components/sections/common/CodingBootcampSection';
+import AchievementSection from '@/components/sections/common/AchievementSection';
+import CodingBootcampSection from '@/components/core/CodingBootcamp';
 import CorporateProgramSection from '@/components/sections/home/CorporateProgramSection';
 
 
 export default function Home() {
 
 	return (
-		<div className='font-sans'>
+		<div>
 			<Navbar />
 
 			{/* Hero */}
