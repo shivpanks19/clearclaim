@@ -1,0 +1,49 @@
+.upInfinte{
+	&.speed-20{
+		animation: 20s linear infinite slidein;
+	}
+	&.speed-15{
+		animation: 15s linear infinite slidein;
+	}
+	&.speed-14{
+		animation: 14s linear infinite slidein;
+	}
+	&.speed-13{
+		animation: 13s linear infinite slidein;
+	}
+	&.speed-12{
+		animation: 12s linear infinite slidein;
+	}
+	&.speed-11{
+		animation: 11s linear infinite slidein;
+	}
+	&.speed-10{
+		animation: 10s linear infinite slidein;
+	}
+	&.speed-9{
+		animation: 9s linear infinite slidein;
+	}
+	&.speed-8{
+		animation: 8s linear infinite slidein;
+	}
+	&.speed-7{
+		animation: 7s linear infinite slidein;
+	}
+	&.speed-5{
+		animation: 5s linear infinite slidein;
+	}
+	&.speed-4{
+		animation: 4s linear infinite slidein;
+	}
+	animation: 7s linear infinite slidein;
+	animation-iteration-count: infinite;
+}
+
+@keyframes slidein {
+  0% {
+    // transform: translateY(200%);
+  }
+  100% {
+    top: -200px;
+  }
+}

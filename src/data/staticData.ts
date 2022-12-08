@@ -1,4 +1,5 @@
 // import { toast } from 'react-hot-toast';
+import { ImageSetAnimationDetail } from '@/data/types';
 
 export const contactUsFormLink = '/contact-us';
 
@@ -22,7 +23,80 @@ export const navItems: Array<NavItem> = [
 // 	}
 // };
 
+export const humanRiverData: Array<ImageSetAnimationDetail> = [
+	{
+		src: '/img/home/heroHuman.png',
+		level: 1,
+		speed: 9
+	},
+	{
+		src: '/img/home/heroHuman.png',
+		level: 1,
+		speed: 9
+	},
+	{
+		src: '/img/home/heroHuman.png',
+		level: 1,
+		speed: 9
+	},
+	{
+		src: '/img/home/heroHuman.png',
+		level: 1,
+		speed: 9
+	},
+	{
+		src: '/img/home/heroHuman.png',
+		level: 2,
+		speed: 15
+	},
+	{
+		src: '/img/home/heroHuman.png',
+		level: 2,
+		speed: 15
+	},
+	{
+		src: '/img/home/heroHuman.png',
+		level: 2,
+		speed: 15
+	},
+	{
+		src: '/img/home/heroHuman.png',
+		level: 2,
+		speed: 15
+	},
+	{
+		src: '/img/home/heroHuman.png',
+		level: 2,
+		speed: 15
+	},
+	{
+		src: '/img/home/heroHuman.png',
+		level: 3,
+		speed: 20
+	},
+	{
+		src: '/img/home/heroHuman.png',
+		level: 3,
+		speed: 20
+	},
+	{
+		src: '/img/home/heroHuman.png',
+		level: 3,
+		speed: 20
+	},
+	{
+		src: '/img/home/heroHuman.png',
+		level: 3,
+		speed: 20
+	},
+	{
+		src: '/img/home/heroHuman.png',
+		level: 3,
+		speed: 20
+	}
+];
+
 
 export const socialMediaLinks: Record<string, string> = {
-	
+
 };

@@ -4,6 +4,7 @@ import Image from "next/image";
 import Text from '@/elements/Text';
 import Button from '@/elements/Button';
 import StatSection from '@/components/common/Stat';
+import HumanRiver from '@/components/index/HumanRiver';
 import WorkshopButton from '@/components/common/button/WorkshopButton';
 
 import { useTranslation } from 'next-i18next';
@@ -76,12 +77,13 @@ const HomeHeroSection: React.FC<HomeHeroSectionProps> = () => {
 						className='imgContainer'
 						style={{ height: '30rem', width: '30rem', alignSelf: 'flex-end' }}
 					>
-						<Image
+						{/* <Image
 							src='/img/home/hero.png'
 							objectFit='cover'
 							layout='fill'
 							alt='Hero Image'
-						/>
+						/> */}
+						<HumanRiver />
 					</div>
 					<div className='trust flex flex-col place-items-center -mt-10 pt-7 z-10 bg-light'>
 						<div className='flex gap-2' style={{ alignItems: 'flex-end' }}>
