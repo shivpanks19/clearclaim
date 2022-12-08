@@ -11,9 +11,10 @@ const HumanRiver: React.FC<HumanRiverProps> = () => {
 	console.log('miscStyle', miscStyle);
 	return (
 		<div className='h-full relative overflow-hidden'>
-			{groupedByLevel && Object.entries(groupedByLevel).map(([level, imgList]) => (
+			{groupedByLevel && Object.entries(groupedByLevel).map(([level, imgList], groupIdx) => (
 				<ImageLayer
-					level={level}
+					key={groupIdx}
+					level={parseInt(level)}
 					imgList={imgList}
 				/>
 			))}
@@ -29,10 +30,11 @@ const ImageLayer: React.FC<ImageLayerProps> = ({ level, imgList }) => {
 					<div
 						className={
 							`absolute ${miscStyle[`level-${level}`]}
-										${getAbsolutePositioningClass(parseInt(level) + 1, imgIdx)}
+										${getAbsolutePositioningClass(level + 1, imgIdx)}
 										${animation.upInfinte} ${animation[`speed-${img.speed}`]}`
 						}
 						style={{ top: 550, animationDelay: `${imgIdx * 2.2}s` }}
+						key={imgIdx}
 					>
 						<Image
 							src={img.src}
@@ -75,7 +77,7 @@ type HumanRiverProps = {
 };
 
 type ImageLayerProps = {
-	layer: number;
+	level: number;
 	imgList: Array<ImageSetAnimationDetail>;
 };
 
