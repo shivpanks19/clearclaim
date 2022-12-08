@@ -33,4 +33,6 @@ type CurriculumTabProps = {
 	bottomTab?: boolean;
 };
 
+CurriculumTab.displayName = 'Curriculum Tab';
+
 export default CurriculumTab;

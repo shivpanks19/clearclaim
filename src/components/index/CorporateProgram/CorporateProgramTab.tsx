@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
 import { useTab } from '@chakra-ui/react'
 
-const CustomTab: React.FC<CustomTabProps> = React.forwardRef((props, ref) => {
+const CorporateProgramTab: React.FC<CorporateProgramTabProps> = React.forwardRef((props, ref) => {
 	/* @ts-ignore */
 	const tabProps = useTab({ ...props, ref })
 	const isSelected = !!tabProps['aria-selected']
@@ -13,8 +13,10 @@ const CustomTab: React.FC<CustomTabProps> = React.forwardRef((props, ref) => {
 	)
 })
 
-type CustomTabProps = {
+type CorporateProgramTabProps = {
 	children: ReactElement;
 };
 
-export default CustomTab;
+CorporateProgramTab.displayName = 'Corporate Program Tab';
+
+export default CorporateProgramTab;

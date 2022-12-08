@@ -1,11 +1,6 @@
 import React from "react";
 import Image from "next/image";
 import Col from '@/components/layout/Col';
-import Grid3 from '@/components/layout/Grid3';
-import Title from '@/components/common/Title';
-import Container from '@/components/common/Container';
-import ColSpan2 from '@/components/common/ColSpan2';
-import SectionHeadline from "@/components/common/SectionHeadline";
 import { useTranslation } from 'next-i18next';
 
 const CourseUsp: React.FC<CourseUspProps> = () => {

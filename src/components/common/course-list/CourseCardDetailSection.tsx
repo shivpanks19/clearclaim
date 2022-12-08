@@ -1,6 +1,5 @@
 import React from "react";
 import Image from "next/image";
-import Rating from "@/components/core/rating";
 
 const CourseCardDetailSection: React.FC<CourseCardDetailSectionProps> = () => {
 	return (

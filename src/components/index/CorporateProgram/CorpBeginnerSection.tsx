@@ -1,6 +1,6 @@
 import React from 'react';
 import { Tabs, TabList, TabPanels, TabPanel } from '@chakra-ui/react'
-import CustomTab from '@/components/index/CorporateProgram/CorporateProgramTab';
+import CorporateProgramTab from '@/components/index/CorporateProgram/CorporateProgramTab';
 
 const CorpBeginnerSection: React.FC<CorpBeginnerSectionProps> = () => {
 	return (
@@ -10,7 +10,7 @@ const CorpBeginnerSection: React.FC<CorpBeginnerSectionProps> = () => {
 			orientation='vertical'
 		>
 			<TabList className='w-full flex justify-between pl-3'>
-				<CustomTab>
+				<CorporateProgramTab>
 					<div className="flex flex-col">
 						<p className="text-xs">MODULE - 1</p>
 						<div className="flex justify-between">
@@ -18,8 +18,8 @@ const CorpBeginnerSection: React.FC<CorpBeginnerSectionProps> = () => {
 							<p>1 to 2 Months</p>
 						</div>
 					</div>
-				</CustomTab>
-				<CustomTab>
+				</CorporateProgramTab>
+				<CorporateProgramTab>
 					<div className="flex flex-col">
 						<p className="text-xs">MODULE - 2</p>
 						<div className="flex justify-between">
@@ -27,8 +27,8 @@ const CorpBeginnerSection: React.FC<CorpBeginnerSectionProps> = () => {
 							<p>2 Months</p>
 						</div>
 					</div>
-				</CustomTab>
-				<CustomTab>
+				</CorporateProgramTab>
+				<CorporateProgramTab>
 					<div className="flex flex-col">
 						<p className="text-xs">MODULE - 3</p>
 						<div className="flex justify-between">
@@ -36,8 +36,8 @@ const CorpBeginnerSection: React.FC<CorpBeginnerSectionProps> = () => {
 							<p>4 Months</p>
 						</div>
 					</div>
-				</CustomTab>
-				<CustomTab>
+				</CorporateProgramTab>
+				<CorporateProgramTab>
 					<div className="flex flex-col">
 						<p className="text-xs">MODULE - 4</p>
 						<div className="flex justify-between">
@@ -45,23 +45,23 @@ const CorpBeginnerSection: React.FC<CorpBeginnerSectionProps> = () => {
 							<p>3 Months</p>
 						</div>
 					</div>
-				</CustomTab>
-				<CustomTab>
+				</CorporateProgramTab>
+				<CorporateProgramTab>
 					<div className="flex flex-col">
 						<div className="flex justify-between">
 							<p className='font-medium'>Module Projects</p>
 							<p>2 Months</p>
 						</div>
 					</div>
-				</CustomTab>
-				<CustomTab>
+				</CorporateProgramTab>
+				<CorporateProgramTab>
 					<div className="flex flex-col">
 						<div className="flex justify-between">
 							<p className='font-medium'>Advanced Electives</p>
 							<p>1 Month</p>
 						</div>
 					</div>
-				</CustomTab>
+				</CorporateProgramTab>
 
 			</TabList>
 
@@ -76,7 +76,7 @@ const CorpBeginnerSection: React.FC<CorpBeginnerSectionProps> = () => {
 							<div className="text">
 								<p className='text-lg'>1 to 2 Months*</p>
 								<p className="text-sm">
-									There are 2 types of Beginner batches. "Introduction to Programming" module is
+									There are 2 types of Beginner batches. &quot;Introduction to Programming&quot; module is
 									1 month long for Beginner Refresher and 2 months long for Beginner Complete
 								</p>
 								<hr className="bg-white h-0.5 my-3" />

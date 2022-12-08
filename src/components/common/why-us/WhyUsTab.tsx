@@ -33,4 +33,6 @@ type WhyUsTabProps = {
 	bottomTab?: boolean;
 };
 
+WhyUsTab.displayName = 'Why Us Tab';
+
 export default WhyUsTab;
