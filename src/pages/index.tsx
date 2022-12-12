@@ -11,6 +11,7 @@ import RecognitionSection from '@/components/index/Recognition';
 import AchievementSection from '@/components/common/placement-list/PlacementList';
 import CodingBootcampSection from '@/components/common/banner/CodingBootcampBanner';
 import CorporateProgramSection from '@/components/index/CorporateProgram/CorporateProgram';
+import TestimonialCard from '@/components/common/TestimonialCard';
 
 
 export default function Home() {
@@ -50,6 +51,9 @@ export default function Home() {
 
 			{/* Recognition */}
 			<RecognitionSection />
+
+			{/* Testimonials */}
+			<TestimonialCard />
 
 			{/* Coding Bootcamp */}
 			<CodingBootcampSection
