@@ -87,10 +87,7 @@ const Navbar: React.FC<NavbarProps> = ({ invertColors }) => {
 	};
 
 	const hamburgerIconColor = (): string => {
-		if (invertColors) {
-			return Colors.primary;
-		}
-		return navbarAwake ? Colors.primary : 'white';
+		return Colors.primary;
 	};
 
 	const navItemVariant = (navItem: NavItem): TextVariant => {
@@ -110,7 +107,7 @@ const Navbar: React.FC<NavbarProps> = ({ invertColors }) => {
 		>
 			{({ open }) => (
 				<div className='w-screen grid place-items-center bg-light'>
-					<div className='py-5 w-76'>
+					<div className='px-5 mt-5 mb-12 w-full mdxl:w-76'>
 						<div className='flex justify-between items-center'>
 							{/* Desktop Screen Logo */}
 							<div className='flex-shrink-0'>
@@ -159,7 +156,7 @@ const Navbar: React.FC<NavbarProps> = ({ invertColors }) => {
 								})}
 
 							</Popover.Group>
-							<div className='lg:flex items-center justify-end'>
+							<div className='hidden lg:block lg:flex items-center justify-end'>
 								<Button
 									buttonStyleClass='outlineButton'
 									variant='bg-transparent'

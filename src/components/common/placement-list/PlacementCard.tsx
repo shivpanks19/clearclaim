@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 const PlacementCard: React.FC<PlacementCardProps> = () => {
 	return (
-		<div className="card rounded shadow w-96 flex flex-col items-center py-8">
+		<div className="card rounded shadow md:w-96 flex flex-col items-center py-8">
 			<Image
 				src='/img/home/priya.png'
 				className='mb-4'

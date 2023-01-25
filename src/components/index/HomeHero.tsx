@@ -9,9 +9,8 @@ import WorkshopButton from '@/components/common/button/WorkshopButton';
 
 import { useTranslation } from 'next-i18next';
 
-const HomeHeroSection: React.FC<HomeHeroSectionProps> = () => {
+const HomeHeroSection: React.FC<HomeHeroSectionProps> = ({ headline, subHeadline }) => {
 	const { t } = useTranslation();
-
 	return (
 		<div
 			style={{
@@ -21,25 +20,26 @@ const HomeHeroSection: React.FC<HomeHeroSectionProps> = () => {
 				backgroundPosition: 'top left'
 			}}
 		>
-			<div className='grid gap-2 md:w-76 mx-auto mb-32' style={{ gridTemplateColumns: '1.25fr 1fr' }}>
-				<div className='flex flex-col pt-20'>
-					<h1 className='text-3xl md:text-hero font-semibold text-primary mb-5'>
-						Gamify Learning,
+			<div className='grid gap-2 mdxl:w-76 grid-cols-1 lg:grid-cols-2 mx-auto mb-12 md:mb-32'>
+				<div className='flex flex-col md:pt-20 px-5 mb-7'>
+					<h1 className='text-3xl md:text-hero font-semibold text-primary mb-3 md:mb-5'>
+						{headline}
 						<br />
-						Simplify Employment!
+						{/* Simplify Employment! */}
 					</h1>
-					<p className='text-aphonic text-subhero mb-10'>
-						India’s first AR-based learning institue.
+					<p className='text-aphonic mb-4 md:mb-10'>
+						{subHeadline}
+						{/* India’s first AR-based learning institue. */}
 						<br />
-						One-Stop Destination to skill - reskill yourself.
+						{/* One-Stop Destination to skill - reskill yourself. */}
 					</p>
-					<div className='flex mb-10'>
+					<div className='flex mb-3 md:mb-10'>
 						<WorkshopButton />
 						<Button
 							buttonStyleClass='textButton'
 							variant='bg-transparent'
 							rounded='rounded-sm'
-							className='flex px-5 py-3 gap-3 place-items-center'
+							className='flex px-5 py-3 gap-3 place-items-center hidden lg-block'
 						>
 							<Image
 								src='/img/home/play.png'
@@ -57,19 +57,17 @@ const HomeHeroSection: React.FC<HomeHeroSectionProps> = () => {
 							</Text>
 						</Button>
 					</div>
-					<div className='flex place-items-center gap-3'>
-						<Text
-							className='text-primary'
-							fontWeight='font-medium'
+					<div className='flex place-items-center gap-3 text-xs md:text-base'>
+						<p
+							className='text-primary font-medium'
 						>
 							&gt; Next batch starts
-						</Text>
-						<Text
-							className='text-tertiary'
-							fontWeight='font-bold'
+						</p>
+						<p
+							className='text-tertiary font-bold'
 						>
 							28th October 2022
-						</Text>
+						</p>
 					</div>
 				</div>
 				<div className='flex flex-col'>
@@ -77,18 +75,12 @@ const HomeHeroSection: React.FC<HomeHeroSectionProps> = () => {
 						className='imgContainer'
 						style={{ height: '30rem', width: '30rem', alignSelf: 'flex-end' }}
 					>
-						{/* <Image
-							src='/img/home/hero.png'
-							objectFit='cover'
-							layout='fill'
-							alt='Hero Image'
-						/> */}
 						<HumanRiver />
 					</div>
 					<div className='trust flex flex-col place-items-center -mt-10 pt-7 z-10 bg-light'>
 						<div className='flex gap-2' style={{ alignItems: 'flex-end' }}>
 							<Text
-								className='text-primary text-subhero'
+								className='text-primary text-2xl md:text-3xl'
 							>
 								Trusted by
 							</Text>
@@ -99,7 +91,7 @@ const HomeHeroSection: React.FC<HomeHeroSectionProps> = () => {
 								10,000+
 							</Text>
 							<Text
-								className='text-primary text-subhero'
+								className='text-primary text-2xl md:text-3xl'
 							>
 								students
 							</Text>
@@ -114,6 +106,9 @@ const HomeHeroSection: React.FC<HomeHeroSectionProps> = () => {
 	)
 };
 
-type HomeHeroSectionProps = {};
+type HomeHeroSectionProps = {
+	headline: string;
+	subHeadline: string;
+};
 
 export default HomeHeroSection;

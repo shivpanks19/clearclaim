@@ -3,7 +3,7 @@ import classNames from "classnames";
 
 const Title: React.FC<TitleProps> = ({ text, className }) => {
 	return (
-		<p className={classNames('text-primary text-3xl font-semibold', className)}>
+		<p className={classNames('text-primary md:text-3xl font-semibold', className)}>
 			{text}
 		</p >
 	)

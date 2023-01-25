@@ -15,34 +15,38 @@ const CourseHeroSection: React.FC<CourseHeroSectionProps> = () => {
 
 	return (
 		<HeroBg>
-			<div className='grid gap-8 md:w-76 mx-auto mb-32 items-center' style={{ gridTemplateColumns: '1.25fr 1fr' }}>
-				<div className='flex flex-col pt-20'>
+			<div className='grid md:grid-cols-2 md:gap-8 xl:w-76 mx-5 md:mx-auto mb-10 md:mb-32 items-center'>
+				<div className='flex flex-col md:pt-20'>
 					<h1 className='text-3xl md:text-hero text-primary'>
 						Master Course
 					</h1>
 					<h1 className='text-3xl md:text-hero font-semibold text-primary mb-5'>
 						Full Stack Web Development:
 					</h1>
-					<p className='text-aphonic text-subhero mb-10'>
+					<p className='text-aphonic text-lg md:text-2xl mb-4 md:mb-10'>
 						Learn the concepts, languages, and frameworks required to develop a complete web application in simple and visualized videos using Augmented Reality technology.
 					</p>
-					<div className="course-rating flex content-bottom mb-14">
+					<div className="course-rating flex place-items-center mb-6 md:mb-14">
 						<Rating />
 						<p className="student-number text-desc font-normal"> 2486 students</p>
 					</div>
-					<div className="flex gap-14 mb-20">
+					<div className="hidden md:flex md:flex-row md:gap-14 md:mb-20 pr-8">
 						<WorkshopButton />
 						<RegisterButton />
 					</div>
 				</div>
 				<div className='flex flex-col'>
-					<Image
-						src='/img/course/courseDetail1.png'
-						width={545}
-						height={353}
-						alt='Course Detail Image'
-						className='mt-5 mb-14'
-					/>
+					<div className="relative w-80 h-52 md:w-auto md:h-96 max-w-full md:mt-5 mb-6 md:mb-14">
+						<Image
+							src='/img/course/courseDetail1.png'
+							alt='Course Detail Image'
+							fill
+						/>
+					</div>
+					<div className="flex-col md:hidden gap-10 mb-10">
+						<WorkshopButton />
+						<RegisterButton />
+					</div>
 					<CourseAttr />
 				</div>
 			</div>

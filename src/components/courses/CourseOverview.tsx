@@ -13,7 +13,7 @@ const CourseOverviewSection: React.FC<CourseOverviewSectionProps> = () => {
 			<SectionHeadline
 				title='Course Overview'
 				subtitle='Know the details of the course'
-				className='mb-8'
+				className='mb-3 md:mb-8'
 			/>
 			<AboutCourse />
 			<WhatLearn />

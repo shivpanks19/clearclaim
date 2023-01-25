@@ -1,3 +1,4 @@
+import { GetStaticProps, NextPage } from 'next';
 
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
@@ -11,17 +12,26 @@ import RecognitionSection from '@/components/index/Recognition';
 import AchievementSection from '@/components/common/placement-list/PlacementList';
 import CodingBootcampSection from '@/components/common/banner/CodingBootcampBanner';
 import CorporateProgramSection from '@/components/index/CorporateProgram/CorporateProgram';
+import DemoVideo from '@/components/index/DemoVideo';
 import TestimonialCard from '@/components/common/TestimonialCard';
 
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { HomePageInformation } from '@/services/home/types';
+import HomeService from '@/services/home';
 
-export default function Home() {
+const Home: NextPage<HomePageProps> = ({ homeInfo }) => {
 
 	return (
 		<div>
 			<Navbar />
 
 			{/* Hero */}
-			<HomeHeroSection />
+			<HomeHeroSection
+				headline={homeInfo.headline}
+				subHeadline={homeInfo.subHeadline}
+			/>
+			{/* How we teach */}
+			<DemoVideo />
 
 			{/* Offerings */}
 			<OfferingSection />
@@ -53,7 +63,7 @@ export default function Home() {
 			<RecognitionSection />
 
 			{/* Testimonials */}
-			<TestimonialCard />
+			{/* <TestimonialCard /> */}
 
 			{/* Coding Bootcamp */}
 			<CodingBootcampSection
@@ -65,3 +75,22 @@ export default function Home() {
 		</div>
 	);
 }
+
+type HomePageProps = {
+	homeInfo: HomePageInformation
+}
+
+export const getStaticProps: GetStaticProps = async ({
+	locale
+}: Record<string, any>) => {
+	const homeInfo = await HomeService.getHomePageInformation(locale);
+	return {
+		props: {
+			homeInfo: homeInfo?.data?.attributes,
+			...(await serverSideTranslations(locale, ['common', 'home']))
+		},
+		revalidate: 60
+	};
+};
+
+export default Home;

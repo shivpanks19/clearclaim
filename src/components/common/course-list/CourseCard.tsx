@@ -8,25 +8,29 @@ import CourseCardDetailSection from "@/components/common/course-list/CourseCardD
 
 const CourseCard: React.FC<CourseCardProps> = ({ isFree, showDetailSection }) => {
 	return (
-		<div className='w-76 shadow rounded h-30 m-10 mx-auto mb-10 bg-white flex flex-col justify-evenly'>
+		<div className='flex grow xl:w-76 shadow rounded h-30 mx-auto mb-10 bg-white flex-col justify-evenly'>
 			<div className={
 				classNames({
-					'border-b': showDetailSection,
-					'mb-5': true
+					'border-b': showDetailSection
 				})
 			}
 			>
-				<div className="flex items-center p-5">
-					<Image
-						src='/img/home/course.png'
-						className='mr-8 flex-none'
-						height={219}
-						width={256}
-						alt='Course thumbnail'
-					/>
-					<div className="flex flex-col text mr-5">
+				<div className="flex flex-col md:flex-row items-center p-5">
+					<div className="relative h-40 w-full md:w-96 md:mr-7 mb-3 md:mb-0">
+						<Image
+							src='/img/home/course.png'
+							className='mr-8 flex-none'
+							// height={219}
+							// width={256}
+							fill
+							sizes='(min-width: 768px) 300px,
+						256px'
+							alt='Course thumbnail'
+						/>
+					</div>
+					<div className="flex flex-col text md:mr-5">
 						<p className="course-heading text-2xl text-title">Full Stack Web Development Course</p>
-						<div className="course-rating flex content-bottom my-3">
+						<div className="course-rating place-items-center flex content-bottom my-3">
 							<Rating />
 							<p className="student-number text-desc font-normal"> 2486 students</p>
 						</div>
@@ -37,18 +41,21 @@ const CourseCard: React.FC<CourseCardProps> = ({ isFree, showDetailSection }) =>
 						</div>
 						<CourseAttr />
 					</div>
-					<div className="flex-none flex flex-col">
+					<div className="flex grow flex-row md:flex-col w-full md:w-auto">
 						{isFree && (
 							<Image
 								src='/img/course/free-tag.png'
 								width={144}
 								height={92}
 								alt='Free Tag'
-								className='mb-5'
+								className='mb-5 mr-5 md:mr-0'
 							/>
 						)}
-						<Link href='/courses/1'>
-							<button className=" join-btn bg-tertiary text-white px-10 py-5 rounded flex-none">Join Now</button>
+						<Link
+							href='/courses/1'
+							className='w-full md:w-auto'
+						>
+							<button className='join-btn bg-tertiary text-white px-5 md:px-10 py-3 md:py-5 rounded w-full md:w-40'>Join Now</button>
 						</Link>
 					</div>
 				</div>

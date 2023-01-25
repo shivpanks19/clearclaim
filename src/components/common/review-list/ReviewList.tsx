@@ -9,10 +9,10 @@ const ReviewSection: React.FC<ReviewSectionProps> = ({ largeFormat }) => {
 			<SectionHeadline
 				title='Student Reviews'
 				subtitle='Top placement records at Tap Academy'
-				className='mb-10'
+				className='mb-4 md:mb-10 mx-5'
 			/>
-			<div className="w-76 mx-auto relative mb-20 pt-10">
-				<div className='read_more absolute right-0 top-0 flex gap-3 align-middle'>
+			<div className="xl:w-76 mx-auto relative mb-5 md:mb-20 pt-10">
+				<div className='read_more absolute right-5 top-0 flex gap-3 align-middle'>
 					<p className="text-tertiary">Read more</p>
 					<Image
 						src='/img/arrow_right_blue.png'
@@ -21,7 +21,11 @@ const ReviewSection: React.FC<ReviewSectionProps> = ({ largeFormat }) => {
 						alt='Right arrow'
 					/>
 				</div>
-				<div className="cardContainer w-42 grid grid-cols-2 gap-9">
+				<div className="cardContainer md:w-42 md:grid-cols-2 gap-9 mx-5 md:hidden grid">
+					<ReviewCard />
+					<ReviewCard />
+				</div>
+				<div className="cardContainer md:w-42 md:grid-cols-2 gap-9 mx-5 hidden md:grid">
 					<ReviewCard />
 					<ReviewCard />
 					<ReviewCard />

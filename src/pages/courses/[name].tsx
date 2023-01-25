@@ -21,11 +21,11 @@ const CourseDetailPage: NextPage = () => {
 			{/* Course Info */}
 			<CourseInfoSection />
 
-			{/* Why Full Stack Development */}
-			<WhyFSDSection />
-
 			{/* Course Curriculum */}
 			<CourseCurriculumSection />
+
+			{/* Why Full Stack Development */}
+			<WhyFSDSection />
 
 			{/* Why us */}
 			<WhyUsSection />

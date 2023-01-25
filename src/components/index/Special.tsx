@@ -8,40 +8,40 @@ const SpecialSection: React.FC<SpecialSectionProps> = () => {
 			<SectionHeadline
 				title='What&apos;s special'
 				subtitle='Designed for your career growth'
-				className='mb-32'
+				className='mb-16 md:mb-32 mx-5'
 			/>
-			<div className="cards w-76 mb-20 mx-auto flex justify-between">
-				<div className="shadow rounded flex flex-col items-center gap-3 w-96 pb-10 px-10">
-					<Image
-						src='/img/home/personalized-content.png'
-						className='-mt-16 self-center'
-						width={132}
-						height={132}
-						alt='Personlized Course Content'
-					/>
-					<div className="title text-xl text-title font-semibold	">Personlized Course Content</div>
+			<div className="cards xl:w-76 md:mb-20 flex flex-col items-center lg:flex-row md:justify-between mx-5 md:mx-auto">
+				<div className="shadow rounded flex flex-col items-center gap-3 md:w-96 pb-10 px-10 mb-16">
+					<div className="relative w-20 h-20 md:w-32 -mt-10 md:-mt-12 self-center">
+						<Image
+							src='/img/home/personalized-content.png'
+							alt='Personlized Course Content'
+							fill
+						/>
+					</div>
+					<div className="title text-xl text-title font-semibold text-center">Personlized Course Content</div>
 					<div className="subtitle text-desc text-center ">We offer individual attention to choose right course for your career</div>
 				</div>
-				<div className="shadow rounded flex flex-col items-center gap-3 w-96 pb-10 px-10">
-					<Image
-						src='/img/home/placement-opportunity.png'
-						className='-mt-16 self-center'
-						width={132}
-						height={132}
-						alt='Placement Opportunity'
-					/>
-					<div className="title text-xl text-title font-semibold	">Placement Opportunity</div>
+				<div className="shadow rounded flex  flex-col items-center gap-3 md:w-96 pb-10 px-10 mb-16">
+					<div className="relative w-20 h-20 md:w-32 -mt-10 md:-mt-12 self-center">
+						<Image
+							src='/img/home/placement-opportunity.png'
+							alt='Placement Opportunity'
+							fill
+						/>
+					</div>
+					<div className="title text-xl text-title font-semibold text-center	">Placement Opportunity</div>
 					<div className="subtitle text-desc text-center">We offer individual attention to choose right course for your career</div>
 				</div>
-				<div className="shadow rounded flex flex-col items-center gap-3 w-96 pb-10 px-10">
-					<Image
-						src='/img/home/mentorship.png'
-						className='-mt-16 self-center'
-						width={132}
-						height={132}
-						alt='Mentorship'
-					/>
-					<div className="title text-xl text-title font-semibold	">1:1 Mentorship</div>
+				<div className="shadow rounded flex  flex-col items-center gap-3 md:w-96 pb-10 px-10 mb-16">
+					<div className="relative w-20 h-20 md:w-32 -mt-10 md:-mt-12 self-center">
+						<Image
+							src='/img/home/mentorship.png'
+							alt='Mentorship'
+							fill
+						/>
+					</div>
+					<div className="title text-xl text-title font-semibold text-center	">1:1 Mentorship</div>
 					<div className="subtitle text-desc text-center">We offer individual attention to choose right course for your career</div>
 				</div>
 			</div>

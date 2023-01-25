@@ -8,7 +8,7 @@ const CourseCurriculumSection: React.FC<CourseCurriculumSectionProps> = () => {
 	const { t } = useTranslation();
 
 	return (
-		<Container>
+		<Container className='hidden md:block'>
 			<SectionHeadline
 				title='Course Curriculum'
 				subtitle='Dowload the course curriculum'

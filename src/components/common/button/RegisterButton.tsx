@@ -11,16 +11,11 @@ const RegisterButton: React.FC<RegisterButtonProps> = () => {
 		<Button
 			variant='bg-tertiary'
 			rounded='rounded-sm'
-			className='px-20 py-3'
+			className='px-5 md:px-20 py-3 w-full text-sm md:text-lg text-white font-medium '
 		>
-			<Text
-				variant='text-secondary'
-				fontSize='text-lg'
-				fontWeight='font-medium'
-				className='text-white'
-			>
+			<p>
 				{t('Register Now')}
-			</Text>
+			</p>
 		</Button>
 	)
 };

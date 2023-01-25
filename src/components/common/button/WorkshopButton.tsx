@@ -12,11 +12,11 @@ const WorkshopButton: React.FC<WorkshopButtonProps> = () => {
 			buttonStyleClass='outlineButton'
 			variant='bg-transparent'
 			rounded='rounded-sm'
-			className='px-7 py-3'
+			className='px-3 md:px-7 py-3 w-full mb-3 md:mb-0'
 		>
 			<Text
 				variant='text-secondary'
-				fontSize='text-lg'
+				fontSize='text-xs'
 				fontWeight='font-medium'
 			>
 				{t('Attend a FREE Workshop')}

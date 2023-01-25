@@ -2,7 +2,7 @@ import React from "react";
 
 const GMap: React.FC<GMapProps> = () => {
 	return (
-		<div className="mapouter relative text-right h-80" style={{ width: '739px' }}>
+		<div className="mapouter absolute text-right h-80 w-full sm:w-auto">
 			<div className="gmap_canvas overflow-hidden">
 				<iframe
 					width="739"

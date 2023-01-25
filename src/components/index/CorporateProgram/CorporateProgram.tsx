@@ -4,7 +4,7 @@ import CorporateProgramNav from '@/components/index/CorporateProgram/CorporatePr
 
 const CorporateProgramSection: React.FC<CorporateProgramSectionProps> = () => {
 	return (
-		<div className='mb-28'>
+		<div className='hidden xl:block mb-28'>
 			<SectionHeadline
 				className='mb-10'
 				title='Campus to Corporate Program'

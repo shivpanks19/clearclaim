@@ -4,7 +4,7 @@ import React, { ReactElement } from "react";
 
 const Container: React.FC<ContainerProps> = ({ children, className }) => {
 	return (
-		<div className={classNames('md:w-76 mx-auto', className)}>
+		<div className={classNames('xl:w-76 mx-auto', className)}>
 			{children}
 		</div>
 
