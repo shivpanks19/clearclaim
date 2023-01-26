@@ -34,7 +34,9 @@ const HomeHeroSection: React.FC<HomeHeroSectionProps> = ({ headline, subHeadline
 						{/* One-Stop Destination to skill - reskill yourself. */}
 					</p>
 					<div className='flex mb-3 md:mb-10'>
-						<WorkshopButton />
+						<div className="w-50">
+							<WorkshopButton />
+						</div>
 						<Button
 							buttonStyleClass='textButton'
 							variant='bg-transparent'

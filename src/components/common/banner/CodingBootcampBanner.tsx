@@ -7,17 +7,17 @@ const CodingBootcampSection: React.FC<CodingBootcampSectionProps> = ({ imgSrc })
 			<Image
 				src={imgSrc}
 				className='coding_bootcamp absolute md:left-0 -top-32 md:-top-6'
-				width={384}
+				width={388}
 				height={314}
 				alt='Coding Bootcamp'
 			/>
-			<div className="textSection flex flex-col lg:flex-row items-center gap-12 w-full md:py-16 md:pl-40 md:pr-8 pt-48 xs:pt-56 px-5 md:px-0 bg-tertiary rounded">
+			<div className="textSection flex flex-col lg:flex-row items-center gap-5 md:gap-12 w-full md:py-16 md:pl-40 md:pr-8 pt-44 h-74 md:h-auto xs:pt-56 px-5 md:px-0 bg-tertiary rounded">
 				<div className="textSection">
 					<p className="text-lg md:text-3xl font-semibold text-white mb-4 text-center md:text-left">Attend Live Coding Bootcamp</p>
 					<p className="text-sm md:text-base text-white text-center md:text-left">Register Now to attend coding Bootcamp on Full Stack Development & get 2 Placement Drives</p>
 				</div>
-				<button className="bg-white h-14 flex-none rounded mb-5 md:mb-0 w-full md:w-64">
-					<p className="text-sm md:text-base text-primary font-medium"> Reserve my seat</p>
+				<button className="bg-white flex-none rounded mb-5 md:mb-0 w-full md:w-64">
+					<p className="text-sm md:text-base text-primary font-medium py-2 md:py-4"> Reserve my seat</p>
 				</button>
 			</div>
 		</div>

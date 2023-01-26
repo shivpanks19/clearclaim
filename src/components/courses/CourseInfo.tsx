@@ -10,7 +10,7 @@ const CourseInfoSection: React.FC<CourseInfoSectionProps> = () => {
 	const { t } = useTranslation();
 
 	return (
-		<div className='grid gap-8 mb-8 md:mb-28 items-center'>
+		<div className='grid gap-8 md:mb-28 items-center'>
 			<Tabs
 				isFitted
 				variant='unstyled'

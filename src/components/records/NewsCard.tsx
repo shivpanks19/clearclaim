@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 const NewsCard: React.FC<NewsCardProps> = () => {
 	return (
-		<div className='card shadow rounded w-full flex-col md:flex-row gap-3 md:gap-8 place-items-center text-center my-3 md:my-8 p-5'>
+		<div className='card shadow rounded w-full flex-col md:flex-row gap-3 md:gap-8 place-items-center text-center mb-5 md:mb-0 p-5'>
 			<Image
 				src='/img/times_now.png'
 				className='pfp mb-4 mx-auto'

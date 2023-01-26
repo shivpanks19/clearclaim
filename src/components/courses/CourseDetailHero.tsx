@@ -15,7 +15,7 @@ const CourseHeroSection: React.FC<CourseHeroSectionProps> = () => {
 
 	return (
 		<HeroBg>
-			<div className='grid md:grid-cols-2 md:gap-8 xl:w-76 mx-5 md:mx-auto mb-10 md:mb-32 items-center'>
+			<div className='grid md:grid-cols-2 md:gap-8 xl:w-76 mx-5 md:mx-auto mb-6 md:mb-32 items-center'>
 				<div className='flex flex-col md:pt-20'>
 					<h1 className='text-3xl md:text-hero text-primary'>
 						Master Course
@@ -43,7 +43,7 @@ const CourseHeroSection: React.FC<CourseHeroSectionProps> = () => {
 							fill
 						/>
 					</div>
-					<div className="flex-col md:hidden gap-10 mb-10">
+					<div className="flex-col md:hidden gap-10 mb-6 md:mb-10">
 						<WorkshopButton />
 						<RegisterButton />
 					</div>

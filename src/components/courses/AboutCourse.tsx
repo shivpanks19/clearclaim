@@ -14,7 +14,7 @@ const CourseOverviewSection: React.FC<CourseOverviewSectionProps> = () => {
 	return (
 		<div className="mb-12 md:mb-24">
 			<div className='grid md:grid-cols-3 mb-10 md:mb-24'>
-				<div className="md:col-span-2">
+				<div className="md:col-span-2 mb-5 md:mb-0">
 					<Title
 						text='About Course'
 						className='mb-1 md:mb-3 md:mb-8 text-sm md:text-base'

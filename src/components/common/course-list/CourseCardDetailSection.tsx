@@ -4,7 +4,7 @@ import Image from "next/image";
 const CourseCardDetailSection: React.FC<CourseCardDetailSectionProps> = () => {
 	return (
 		<div className="course-details mb-5">
-			<div className="grid grid-cols-2 md:grid-cols-4 place-items-center gap-2 md:gap-5 m-3">
+			<div className="grid grid-cols-2 md:grid-cols-4 place-items-center gap-2 md:gap-5 ml-5">
 				<div className="flex flex-row md:flex-col items-center">
 					<div className="relative w-7 h-7 md:w-10 md:h-10 mb-0 md:mb-2 mr-2 md:mr-0">
 						<Image

@@ -13,7 +13,6 @@ import AchievementSection from '@/components/common/placement-list/PlacementList
 import CodingBootcampSection from '@/components/common/banner/CodingBootcampBanner';
 import CorporateProgramSection from '@/components/index/CorporateProgram/CorporateProgram';
 import DemoVideo from '@/components/index/DemoVideo';
-import TestimonialCard from '@/components/common/TestimonialCard';
 
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { HomePageInformation } from '@/services/home/types';
@@ -50,7 +49,7 @@ const Home: NextPage<HomePageProps> = ({ homeInfo }) => {
 
 			{/* Coding Bootcamp */}
 			<CodingBootcampSection
-				imgSrc='/img/home/coding_bootcamp_1.png'
+				imgSrc='/img/coding_bootcamp_1.png'
 			/>
 
 			{/* Why us */}
@@ -67,7 +66,7 @@ const Home: NextPage<HomePageProps> = ({ homeInfo }) => {
 
 			{/* Coding Bootcamp */}
 			<CodingBootcampSection
-				imgSrc='/img/home/coding_bootcamp_2.png'
+				imgSrc='/img/coding_bootcamp_2.png'
 			/>
 
 			{/* Footer */}

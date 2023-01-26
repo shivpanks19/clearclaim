@@ -11,9 +11,9 @@ const ReviewSection: React.FC<ReviewSectionProps> = ({ largeFormat }) => {
 				subtitle='Top placement records at Tap Academy'
 				className='mb-4 md:mb-10 mx-5'
 			/>
-			<div className="xl:w-76 mx-auto relative mb-5 md:mb-20 pt-10">
+			<div className="xl:w-76 mx-auto relative mb-5 md:mb-20 pt-5 md:pt-10">
 				<div className='read_more absolute right-5 top-0 flex gap-3 align-middle'>
-					<p className="text-tertiary">Read more</p>
+					<p className="text-xs md:text-base text-tertiary">Read more</p>
 					<Image
 						src='/img/arrow_right_blue.png'
 						width={20}

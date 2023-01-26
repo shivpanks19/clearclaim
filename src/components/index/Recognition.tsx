@@ -4,10 +4,10 @@ import SectionHeadline from '@/components/common/SectionHeadline';
 
 const RecognitionSection: React.FC<RecognitionSectionProps> = () => {
 	return (
-		<div className='xl:w-76 mb-20 mx-auto'>
+		<div className='xl:w-76 mb-5 md:mb-20 mx-auto'>
 			<SectionHeadline
-				title='Our Top Recruiters'
-				subtitle='Our aluminis are placed at'
+				title='Our Recognition'
+				subtitle='We are recognized by'
 				className='mb-12 mx-5'
 			/>
 			<div className="grid grid-cols-2 md:grid-cols-4 place-items-center">

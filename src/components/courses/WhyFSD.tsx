@@ -6,8 +6,8 @@ const WhyFSDSection: React.FC<WhyFSDSectionProps> = () => {
 	const { t } = useTranslation();
 
 	return (
-		<div className="mx-5 md:mx-auto xl:w-76 ">
-			<h2 className="text-primary text-center text-3xl font-semibold mb-12">
+		<div className="mx-5 md:mx-auto xl:w-76">
+			<h2 className="text-primary text-center text-lg md:text-3xl font-semibold mb-5 md:mb-12">
 				Why
 				<span className="text-tertiary">
 					&nbsp;Full Stack Web Development&nbsp;
@@ -16,7 +16,7 @@ const WhyFSDSection: React.FC<WhyFSDSectionProps> = () => {
 			</h2>
 			<div className='grid md:grid-cols-3 mb-12 md:mb-24 gap-5'>
 				<div className='mb-3'>
-					<p className="text-2xl text-primary3 font-semibold border-l-4 border-tertiary pl-4 mb-2.5 h-20">
+					<p className="text-lg md:text-2xl text-primary3 font-semibold border-l-4 border-tertiary pl-4 mb-2.5 ">
 						Who is this Full Stack Developer Course for?
 					</p>
 					<p className='text-aphonic'>
@@ -25,7 +25,7 @@ const WhyFSDSection: React.FC<WhyFSDSectionProps> = () => {
 					</p>
 				</div>
 				<div className='mb-3'>
-					<p className="text-2xl text-primary3 font-semibold border-l-4 border-tertiary pl-4 mb-2.5 h-20">
+					<p className="text-lg md:text-2xl text-primary3 font-semibold border-l-4 border-tertiary pl-4 mb-2.5 ">
 						The massive demand for Full Stack Developer
 					</p>
 					<p className='text-aphonic'>
@@ -36,7 +36,7 @@ const WhyFSDSection: React.FC<WhyFSDSectionProps> = () => {
 					</p>
 				</div>
 				<div className='mb-3'>
-					<p className="text-2xl text-primary3 font-semibold border-l-4 border-tertiary pl-4 mb-2.5 h-20">
+					<p className="text-lg md:text-2xl text-primary3 font-semibold border-l-4 border-tertiary pl-4 mb-2.5 ">
 						Full Stack Web Development - Learning made fun with AR
 					</p>
 					<p className='text-aphonic'>
