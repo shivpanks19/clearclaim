@@ -1,26 +1,25 @@
-import { Id, ImageType } from '@/utils/types';
-
-export type FooterTop = {
-	question: string,
-	buttonLabel: string
-}
-
 export type HomePageInformation = {
 	headline: string,
 	subHeadline: string,
-	footerTop: FooterTop
-};
-
-export type ClientOrganisation = {
-	id: Id,
-	name: string,
-	logo: ImageType
-};
-
-export type Testimonial = {
-	id: Id,
-	author: string,
-	designation: string,
-	content: string,
-	organisation: ClientOrganisation
+	studentsTrained: number,
+	workshopsConducted: number,
+	placementDrives: number,
+	nextBatchDate: Date,
+	videoURL: string,
+	demoVideoHeadline: string,
+	demoVideoSubHeadline: string,
+	courseHeadline: string,
+	courseSubHeadline: string,
+	specialSectionHeadline: string,
+	specialSectionSubHeadline: string,
+	achievementHeadline: string,
+	achievementSubHeadline: string,
+	reviewHeadline: string,
+	reviewSubHeadline: string,
+	whyUsHeadline: string,
+	whyUsSubHeadline: string,
+	recruiterHeadline: string,
+	recruiterSubHeadline: string,
+	recognitionHeadline: string,
+	recognitionSubHeadline: string
 };

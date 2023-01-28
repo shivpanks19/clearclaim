@@ -1,5 +1,14 @@
 const Services = {
 	getHomePageInformation: 'home',
+	getCourseListPageInformation: 'course-list-page',
+	getCourseDetailPageInformation: 'course-detail-page',
+	getContactUsInformation: 'contact-us-page',
+	getStudentReviewPageInformation: 'student-review-page',
+	getRecordPageInformation: 'record-page',
+	getCourseList: 'courses',
+	getPlacementList: 'placements',
+	getReviewList: 'reviews',
+	getRecruiterList: 'recruiters',
 	getClientTestimonials: 'testimonials',
 	getTeamMembers: 'team-members',
 	getInTouch: 'home/get-in-touch',
@@ -16,7 +25,7 @@ const Services = {
 	getBlogsCount: 'blogs/count',
 	getBlogsPageStaticData: 'blog-list-page-data',
 
-	
+
 	getBlogCategories: 'content-categories',
 	sendContactQuery: 'contact-us',
 	reqQoute: 'quotes',

@@ -1,4 +1,4 @@
-import axios, { AxiosError, AxiosResponse, AxiosTransformer } from 'axios';
+import axios, { AxiosError, AxiosResponse } from 'axios';
 import toCamelCase from '@/utils/toCamelCase';
 
 const instance = axios.create({
@@ -42,12 +42,11 @@ const camelizeKeys = (obj: Record<string, any>): any => {
 	return obj;
 };
 
-const get = (url: string, params?: Record<string, any>, transformer?: AxiosTransformer): Promise<any> => {
+const get = (url: string, params?: Record<string, any>): Promise<any> => {
 	console.log('URL', url);
 	console.log('process.env.NEXT_PUBLIC_REST_SERVER_BASE_URL', process.env.NEXT_PUBLIC_REST_SERVER_BASE_URL);
 	return instance.get(url, {
-		params,
-		transformResponse: transformer
+		params
 	}).then(
 		(response: AxiosResponse) => camelizeKeys(response.data)
 	).catch(

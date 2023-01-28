@@ -1,14 +1,12 @@
 import React from "react";
 import Container from '@/components/layout/Container';
 import SectionHeadline from "@/components/common/SectionHeadline";
-import { useTranslation } from 'next-i18next';
 import CurriculumNav from "@/components/courses/CourseCurriculum/CurriculumNav";
 
 const CourseCurriculumSection: React.FC<CourseCurriculumSectionProps> = () => {
-	const { t } = useTranslation();
-
 	return (
 		<Container className='hidden md:block'>
+			<a id='course-curriculum' />
 			<SectionHeadline
 				title='Course Curriculum'
 				subtitle='Dowload the course curriculum'

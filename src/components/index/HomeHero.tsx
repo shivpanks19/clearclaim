@@ -9,7 +9,7 @@ import WorkshopButton from '@/components/common/button/WorkshopButton';
 
 import { useTranslation } from 'next-i18next';
 
-const HomeHeroSection: React.FC<HomeHeroSectionProps> = ({ headline, subHeadline }) => {
+const HomeHeroSection: React.FC<HomeHeroSectionProps> = ({ headline, subHeadline, studentsTrained, workshopsConducted, placementDrives, nextBatchDate }) => {
 	const { t } = useTranslation();
 	return (
 		<div
@@ -68,7 +68,7 @@ const HomeHeroSection: React.FC<HomeHeroSectionProps> = ({ headline, subHeadline
 						<p
 							className='text-tertiary font-bold'
 						>
-							28th October 2022
+							{nextBatchDate && new Date(nextBatchDate).toDateString()}
 						</p>
 					</div>
 				</div>
@@ -90,7 +90,7 @@ const HomeHeroSection: React.FC<HomeHeroSectionProps> = ({ headline, subHeadline
 								className='text-tertiary text-2xl'
 								fontWeight='font-bold'
 							>
-								10,000+
+								{studentsTrained}+
 							</Text>
 							<Text
 								className='text-primary text-2xl md:text-3xl'
@@ -103,7 +103,11 @@ const HomeHeroSection: React.FC<HomeHeroSectionProps> = ({ headline, subHeadline
 				</div>
 			</div>
 			{/* Stats */}
-			<StatSection />
+			<StatSection
+				studentsTrained={studentsTrained}
+				workshopsConducted={workshopsConducted}
+				placementDrives={placementDrives}
+			/>
 		</div>
 	)
 };
@@ -111,6 +115,10 @@ const HomeHeroSection: React.FC<HomeHeroSectionProps> = ({ headline, subHeadline
 type HomeHeroSectionProps = {
 	headline: string;
 	subHeadline: string;
+	studentsTrained: number;
+	workshopsConducted: number;
+	nextBatchDate: Date;
+	placementDrives: number;
 };
 
 export default HomeHeroSection;

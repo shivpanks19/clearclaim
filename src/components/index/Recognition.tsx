@@ -2,12 +2,12 @@ import React from 'react';
 import Image from 'next/image';
 import SectionHeadline from '@/components/common/SectionHeadline';
 
-const RecognitionSection: React.FC<RecognitionSectionProps> = () => {
+const RecognitionSection: React.FC<RecognitionSectionProps> = ({ headline, subHeadline }) => {
 	return (
 		<div className='xl:w-76 mb-5 md:mb-20 mx-auto'>
 			<SectionHeadline
-				title='Our Recognition'
-				subtitle='We are recognized by'
+				title={headline}
+				subtitle={subHeadline}
 				className='mb-12 mx-5'
 			/>
 			<div className="grid grid-cols-2 md:grid-cols-4 place-items-center">
@@ -47,6 +47,9 @@ const RecognitionSection: React.FC<RecognitionSectionProps> = () => {
 	)
 };
 
-type RecognitionSectionProps = {};
+type RecognitionSectionProps = {
+	headline: string;
+	subHeadline: string;
+};
 
 export default RecognitionSection;

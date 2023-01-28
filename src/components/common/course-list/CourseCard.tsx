@@ -6,9 +6,9 @@ import Rating from "@/components/common/Rating";
 import CourseAttr from "@/components/common/course-list/CourseAttr";
 import CourseCardDetailSection from "@/components/common/course-list/CourseCardDetailSection";
 
-const CourseCard: React.FC<CourseCardProps> = ({ isFree, showDetailSection }) => {
+const CourseCard: React.FC<CourseCardProps> = ({ courseName, description, numberOfStudents, slug, heroImage, isFree, showDetailSection }) => {
 	return (
-		<div className='flex grow xl:w-76 shadow rounded h-30 mx-auto mb-4 bg-white flex-col justify-evenly'>
+		<div className='flex grow xl:w-76 shadow rounded h-30 mx-auto mb-4 md:mb-10 bg-white flex-col justify-evenly'>
 			<div className={
 				classNames({
 					'border-b': showDetailSection,
@@ -19,7 +19,7 @@ const CourseCard: React.FC<CourseCardProps> = ({ isFree, showDetailSection }) =>
 				<div className="flex flex-col md:flex-row items-center px-5 pt-5">
 					<div className="relative h-40 w-full md:w-96 md:mr-7 mb-3 md:mb-0">
 						<Image
-							src='/img/home/course.png'
+							src={heroImage}
 							className='mr-8 flex-none'
 							// height={219}
 							// width={256}
@@ -30,14 +30,14 @@ const CourseCard: React.FC<CourseCardProps> = ({ isFree, showDetailSection }) =>
 						/>
 					</div>
 					<div className="flex flex-col text md:mr-5">
-						<p className="course-heading text-sm md:text-2xl font-semibold text-title">Full Stack Web Development Course</p>
+						<p className="course-heading text-sm md:text-2xl font-semibold text-title">{courseName}</p>
 						<div className="course-rating place-items-center flex content-bottom my-3">
 							<Rating />
-							<p className="student-number text-desc text-xs md:text-base font-normal"> 2486 students</p>
+							<p className="student-number text-desc text-xs md:text-base font-normal"> {numberOfStudents} students</p>
 						</div>
 						<div className="course-description text-desc mb-5">
 							<p className="course-desc text-sm md:text-base">
-								Tap Academy offers 90 days Intensive certification training program exclusively for Final year Students & Tech Graduates. In this course, you will learn the concepts, languages, and frameworks required to develop a complete web application in simple and visualized videos using Augmented Reality technology.
+								{description}
 							</p>
 						</div>
 						<CourseAttr />
@@ -53,7 +53,7 @@ const CourseCard: React.FC<CourseCardProps> = ({ isFree, showDetailSection }) =>
 							/>
 						)}
 						<Link
-							href='/courses/1'
+							href={`/courses/${slug}`}
 							className='hidden md:block w-full md:w-auto'
 						>
 							<button className='join-btn bg-tertiary text-white px-5 md:px-10 py-3 md:py-5 rounded w-full md:w-40'>Join Now</button>
@@ -77,6 +77,11 @@ const CourseCard: React.FC<CourseCardProps> = ({ isFree, showDetailSection }) =>
 };
 
 type CourseCardProps = {
+	courseName: string;
+	description: string;
+	numberOfStudents: number;
+	slug: string;
+	heroImage: string;
 	isFree?: boolean;
 	showDetailSection?: boolean;
 };

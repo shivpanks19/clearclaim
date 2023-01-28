@@ -2,13 +2,15 @@ import React from 'react';
 import Image from 'next/image';
 import PlacementCard from '@/components/common/placement-list/PlacementCard';
 import SectionHeadline from '@/components/common/SectionHeadline';
+import { Placement } from '@/services/placement/types';
 
-const AchievementSection: React.FC<AchievementSectionProps> = () => {
+const PlacementList: React.FC<PlacementListProps> = ({ headline, subHeadline, placementList }) => {
 	return (
 		<>
+			<a id='success-stories' />
 			<SectionHeadline
-				title='Our achievements'
-				subtitle='Top placement records at Tap Academy'
+				title={headline}
+				subtitle={subHeadline}
 				className='mb-4 md:mb-10 mx-5'
 			/>
 			<div className="xl:w-76 mx-auto relative mb-14 md:mb-20 pt-10">
@@ -21,20 +23,29 @@ const AchievementSection: React.FC<AchievementSectionProps> = () => {
 						alt='Right arrow'
 					/>
 				</div>
-				<div className="cardContainer md:w-42 md:hidden mx-5">
-					<PlacementCard />
-				</div>
 				<div className="cardContainer w-42 md:grid-cols-2 xl:grid-cols-3 gap-14 hidden md:grid mx-5 md:mx-0 place-items-center">
-					<PlacementCard />
-					<PlacementCard />
-					<PlacementCard />
+					{placementList?.length > 0 && placementList.map((placement) => (
+						<PlacementCard
+							key={placement.id}
+							studentName={placement.studentName}
+							collegeCourseName={placement.collegeCourseName}
+							collegeName={placement.collegeName}
+							designation={placement.designation}
+							ctc={placement.ctc}
+							companyImage={placement.companyImage}
+							studentImage={placement.studentImage}
+						/>
+					))}
 				</div>
 			</div>
 		</>
 	)
 };
 
-type AchievementSectionProps = {
+type PlacementListProps = {
+	headline: string;
+	subHeadline: string;
+	placementList: Placement[];
 };
 
-export default AchievementSection;
+export default PlacementList;

@@ -2,7 +2,11 @@ import React from "react";
 import Image from "next/image";
 import GMap from '@/components/contact/GMap';
 
-const ContactOptionSection: React.FC<ContactOptionSectionProps> = () => {
+const ContactOptionSection: React.FC<ContactOptionSectionProps> = ({
+	address,
+	email,
+	phone
+}) => {
 	return (
 		<div className='flex flex-col xl:w-76 px-5 mx-auto md:mb-24'>
 			<h1 className="font-semibold md:text-3xl mb-4 md:mb-14 text-primary">
@@ -20,8 +24,7 @@ const ContactOptionSection: React.FC<ContactOptionSectionProps> = () => {
 						</div>
 
 						<p className="addressText text-sm md:text-base">
-							Bldg 3, Outer Ring Rd, BTM 2nd Stage, Kuvempu Nagar, Stage 2, Bengaluru,
-							Karnataka 560076
+							{address}
 						</p>
 					</div>
 					<div className="addressDetail flex gap-7 items-center mb-6">
@@ -34,7 +37,7 @@ const ContactOptionSection: React.FC<ContactOptionSectionProps> = () => {
 						</div>
 
 						<p className="addressText text-sm md:text-base">
-							info@thetapacademy.com
+							{email}
 						</p>
 					</div>
 					<div className="addressDetail flex gap-7 items-center mb-12">
@@ -46,7 +49,7 @@ const ContactOptionSection: React.FC<ContactOptionSectionProps> = () => {
 							/>
 						</div>
 						<p className="addressText text-sm md:text-base">
-							+91 8884881203
+							{phone}
 						</p>
 					</div>
 				</div>
@@ -58,6 +61,10 @@ const ContactOptionSection: React.FC<ContactOptionSectionProps> = () => {
 	)
 };
 
-type ContactOptionSectionProps = {};
+type ContactOptionSectionProps = {
+	address: string;
+	email: string;
+	phone: string;
+};
 
 export default ContactOptionSection;

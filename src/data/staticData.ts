@@ -11,7 +11,7 @@ export type NavItem = {
 }
 export const navItems: Array<NavItem> = [
 	{ title: 'Courses', link: '/courses', target: '_self' },
-	{ title: 'Placement', link: '/placements', target: '_self' },
+	{ title: 'Records', link: '/records', target: '_self' },
 	{ title: 'Student Reviews', link: '/student-reviews', target: '_self' },
 	{ title: 'Contact Us', link: '/contact-us', target: '_self' },
 	{ title: 'Blogs', link: '/blogs', target: '_self' }

@@ -2,19 +2,23 @@ import React from 'react';
 import SectionHeadline from '@/components/common/SectionHeadline';
 import WhyUsNav from '@/components/common/why-us/WhyUsNav';
 
-const CorporateProgramSection: React.FC<CorporateProgramSectionProps> = () => {
+const WhyUsSection: React.FC<WhyUsSectionProps> = ({ headline, subHeadline }) => {
 	return (
 		<div className='hidden xl:block'>
+			<a id='why-tap-academy' />
 			<SectionHeadline
 				className='mb-12'
-				title='Why choose us'
-				subtitle='What makes us special?'
+				title={headline}
+				subtitle={subHeadline}
 			/>
 			<WhyUsNav />
 		</div>
 	)
 };
 
-type CorporateProgramSectionProps = {};
+type WhyUsSectionProps = {
+	headline: string;
+	subHeadline: string;
+};
 
-export default CorporateProgramSection;
+export default WhyUsSection;

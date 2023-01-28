@@ -1,10 +1,9 @@
 import React from "react";
 import Image from "next/image";
-import Text from '@/elements/Text';
 
 import { useTranslation } from 'next-i18next';
 
-const CourseHeroSection: React.FC<CourseHeroSectionProps> = () => {
+const CourseHeroSection: React.FC<CourseHeroSectionProps> = ({ headline1, headline2, subHeadline }) => {
 	const { t } = useTranslation();
 
 	return (
@@ -19,13 +18,13 @@ const CourseHeroSection: React.FC<CourseHeroSectionProps> = () => {
 			<div className='grid md:gap-8 xl:w-76 px-5 md:mx-auto mb-9 md:mb-32 items-center md:grid-cols-2'>
 				<div className='flex flex-col md:pt-20 mb-7 md:mb-10'>
 					<h1 className='text-3xl md:text-hero text-primary'>
-						Tap Academy&apos;s
+						{headline1 ?? ''}
 					</h1>
 					<h1 className='text-3xl md:text-hero font-semibold text-primary mb-5'>
-						Campus to Corporate Program
+						{headline2 ?? ''}
 					</h1>
 					<p className='text-aphonic text-lg'>
-						Tap Academy is a skilling organization trains students to sync with current IT needs. Our Specialized Job Guarantee Coding Courses transform from campus students to corporate employee.
+						{subHeadline}
 					</p>
 				</div>
 				<div className='flex flex-col mb-8'>
@@ -41,6 +40,10 @@ const CourseHeroSection: React.FC<CourseHeroSectionProps> = () => {
 	)
 };
 
-type CourseHeroSectionProps = {};
+type CourseHeroSectionProps = {
+	headline1: string;
+	headline2: string;
+	subHeadline: string;
+};
 
 export default CourseHeroSection;

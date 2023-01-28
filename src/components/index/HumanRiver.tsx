@@ -8,7 +8,6 @@ import groupBy from "@/utils/groupBy";
 
 const HumanRiver: React.FC<HumanRiverProps> = () => {
 	const groupedByLevel: Record<number, Array<ImageSetAnimationDetail>> = groupBy('level')(humanRiverData);
-	console.log('miscStyle', miscStyle);
 	return (
 		<div className='h-full relative overflow-hidden'>
 			{groupedByLevel && Object.entries(groupedByLevel).map(([level, imgList], groupIdx) => (
