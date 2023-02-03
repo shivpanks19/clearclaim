@@ -52,6 +52,7 @@ module.exports = {
         whyus: '#57aeff',
         'why-us-selected': '#0F8CFF',
         'loader-gray': '#ECEBEB',
+        'footer-bg': '#0C3447'
       }),
       textColor: () => ({
         primary: "#0D3D54",
@@ -64,6 +65,8 @@ module.exports = {
         tertiary: "#0D87D4",
         muted: "#919191",
         aphonic: "rgba(63, 63, 63, 0.63)",
+        gray: '#d1d1d1',
+        gray2: '#c4c5c5',
         corporate: '#387ef7',
         'price-yellow': '#FAD200'
       }),
@@ -78,6 +81,9 @@ module.exports = {
       },
       spacing: {
         '13': '52px',
+      },
+      gridTemplateColumns: {
+        '26': 'repeat(26, minmax(0, 1fr))',
       }
     }
   },
