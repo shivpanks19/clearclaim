@@ -11,6 +11,7 @@ import WhyUsSection from '@/components/common/why-us/WhyUs';
 import AchievementSection from '@/components/common/placement-list/PlacementList';
 import AboutCourse from "@/components/courses/AboutCourse";
 import CourseSummary from "@/components/courses/CourseSummary";
+import FooterFaqList from "@/components/courses/[slug]/FooterFaqList";
 
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { CourseDetailPageInformation } from '@/services/course/types';
@@ -20,7 +21,7 @@ import PlacementService from '@/services/placement';
 import { Course } from '@/services/course/types';
 import { Placement } from '@/services/placement/types';
 
-const CourseDetailPage: NextPage<CourseDetailPageProps> = ({ course, courseDetailPageInfo, placementList }) => {
+const CourseDetailPage: NextPage<CourseDetailPageProps> = ({ course, courseDetailPageInfo, placementList, faqList1, faqList2 }) => {
 	return (
 		<div>
 			<Navbar />
@@ -37,7 +38,7 @@ const CourseDetailPage: NextPage<CourseDetailPageProps> = ({ course, courseDetai
 
 			{/* Course Info Navigation */}
 			<CourseInfoNav />
-			{course.id}
+
 			{/* Course Overview */}
 			<AboutCourse aboutCourse={course.aboutCourse} />
 
@@ -74,6 +75,14 @@ const CourseDetailPage: NextPage<CourseDetailPageProps> = ({ course, courseDetai
 				price={course.price}
 			/>
 
+			{/* FAQs */}
+			<FooterFaqList
+				headline={courseDetailPageInfo.faqHeadline}
+				subHeadline={courseDetailPageInfo.faqSubHeadline}
+				faqList1={faqList1}
+				faqList2={faqList2}
+			/>
+
 			{/* Footer */}
 			<Footer />
 		</div>
@@ -84,7 +93,9 @@ type CourseDetailPageProps = {
 	course: Course;
 	courseDetailPageInfo: CourseDetailPageInformation;
 	placementList: Placement[];
-}
+	faqList1: Faq[];
+	faqList2: Faq[];
+};
 
 export const getStaticProps: GetStaticProps = async ({
 	locale,
@@ -93,8 +104,7 @@ export const getStaticProps: GetStaticProps = async ({
 	const courseDetailPageInfo = await CourseService.getCourseDetailPageInformation(locale);
 	const course = await CourseService.getCourseBySlug(params.slug, locale);
 	const placementList = await PlacementService.getPlacementList(locale, '*');
-	console.log('course', course.data.attributes.courseFAQ);
-
+	console.log('course', course);
 	return {
 		props: {
 			course: {
@@ -110,6 +120,8 @@ export const getStaticProps: GetStaticProps = async ({
 				studentImage: placement.attributes.studentImage?.data.attributes,
 			})),
 			courseDetailPageInfo: courseDetailPageInfo?.data?.attributes,
+			faqList1: course.data?.attributes.footerFaq?.length ? course.data?.attributes.footerFaq[0] : [],
+			faqList2: course.data?.attributes.footerFaq?.length ? course.data?.attributes.footerFaq[1] : [],
 			...(await serverSideTranslations(locale, ['common', 'course-detail-page']))
 		},
 		revalidate: 60

@@ -18,6 +18,8 @@ export type CourseDetailPageInformation = {
 	subHeadline: string,
 	achievementHeadline: string,
 	achievementSubHeadline: string,
+	faqHeadline: string,
+	faqSubHeadline: string,
 	whyUsHeadline: string,
 	whyUsSubHeadline: string,
 	studentsTrained: number,
@@ -35,6 +37,7 @@ export type Course = {
 	aboutCourse: string;
 	courseSummary: string[];
 	courseFAQ: FAQ[];
+	footerFaq: FAQ[];
 	isFree: boolean;
 	heroImage: Record<string, Array<Record<string, ImageType>>>;
 }

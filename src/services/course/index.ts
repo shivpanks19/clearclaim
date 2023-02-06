@@ -5,8 +5,8 @@ function getCourseListPageInformation(locale?: string): Promise<Record<string, a
 	return get(Services.getCourseListPageInformation, { _locale: locale });
 }
 
-function getCourseDetailPageInformation(locale?: string): Promise<Record<string, any>> {
-	return get(Services.getCourseDetailPageInformation, { _locale: locale });
+function getCourseDetailPageInformation(locale?: string, populate?: string): Promise<Record<string, any>> {
+	return get(Services.getCourseDetailPageInformation, { _locale: locale, populate });
 }
 
 function getCourseList(_locale?: string, populate?: string): Promise<Record<string, any>> {

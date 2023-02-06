@@ -9,6 +9,9 @@ const Services = {
 	getPlacementList: 'placements',
 	getReviewList: 'reviews',
 	getRecruiterList: 'recruiters',
+	getFaqList: 'faq',
+
+
 	getClientTestimonials: 'testimonials',
 	getTeamMembers: 'team-members',
 	getInTouch: 'home/get-in-touch',

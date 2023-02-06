@@ -1,12 +1,11 @@
 import React from "react";
 import Link from 'next/link';
-import { Tabs, TabList, Tab } from '@chakra-ui/react';
 import RegisterButton from "@/components/common/button/RegisterButton";
 
 const CourseInfoNav: React.FC<CourseInfoNavProps> = () => {
 	return (
-		<div className=' gap-8 items-center mb-5 xl:w-76 mx-auto'>
-			<div className="hidden lg:flex w-full justify-between place-items-center">
+		<div className=' gap-8 items-center mb-5 mx-auto sticky top-16 bg-white shadow-courseDetailNav py-4 pt-8 lg:pt-12 w-screen z-50'>
+			<div className="hidden lg:flex w-full justify-between place-items-center xl:w-76 mx-auto">
 				<Link href='#course-overview'>
 					<p className='font-bold text-tertiary'>Course Overview</p>
 				</Link>
@@ -31,7 +30,7 @@ const CourseInfoNav: React.FC<CourseInfoNavProps> = () => {
 					<RegisterButton />
 				</div>
 			</div>
-			<div className="w-full flex justify-end px-5 mb-8 lg:hidden">
+			<div className="w-full flex justify-end px-5 lg:hidden">
 				<div >
 					<RegisterButton />
 				</div>

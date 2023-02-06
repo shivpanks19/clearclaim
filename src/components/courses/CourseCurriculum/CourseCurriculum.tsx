@@ -5,7 +5,7 @@ import CurriculumNav from "@/components/courses/CourseCurriculum/CurriculumNav";
 
 const CourseCurriculumSection: React.FC<CourseCurriculumSectionProps> = () => {
 	return (
-		<Container className='hidden md:block'>
+		<Container className='hidden xl:block'>
 			<a id='course-curriculum' />
 			<SectionHeadline
 				title='Course Curriculum'

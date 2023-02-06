@@ -78,6 +78,7 @@ module.exports = {
       }),
       boxShadow: {
         DEFAULT: "0px 0px 6px 1px rgba(13, 61, 84, 0.07);",
+        'courseDetailNav': '0px 4px 4px 0px rgba(13, 135, 212, 0.18)'
       },
       spacing: {
         '13': '52px',

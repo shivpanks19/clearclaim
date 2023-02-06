@@ -1,9 +1,7 @@
 import Logo from '@/components/common/Logo';
-// import MobileViewNavbar from '@/components/layout/MobileViewNavbar';
+import MobileViewNavbar from '@/components/layout/MobileViewNavbar';
 import styles from '@/components/layout/Navbar.module.scss';
 import {
-	// comingSoonHandler,
-	// contactNumber,
 	NavItem,
 	navItems
 } from '@/data/staticData';
@@ -14,8 +12,8 @@ import { Popover } from '@headlessui/react';
 import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { ReactElement, useEffect, useState } from 'react';
-import { HiMenu, HiPhone } from 'react-icons/hi';
+import React, { useEffect, useState } from 'react';
+import { HiMenu } from 'react-icons/hi';
 import Button from '@/elements/Button';
 /*
  * TODO: Navbar toggle view breakpoint issue investigation
@@ -28,6 +26,7 @@ const Navbar: React.FC<NavbarProps> = ({ invertColors }) => {
 	const { t } = useTranslation();
 	const router = useRouter();
 	const [navbarAwake, setNavbarAwake] = useState(false);
+	const [isMobileNavbarVisible, setIsMobileNavbarVisible] = useState(false);
 
 	const scrollHandler = (): void => {
 		const scrollTop = document.documentElement.scrollTop;
@@ -100,14 +99,22 @@ const Navbar: React.FC<NavbarProps> = ({ invertColors }) => {
 		return navbarAwake ? 'text-primary' : 'text-white';
 	};
 
+	const toggleNavbar = () => {
+		if (isMobileNavbarVisible) {
+			setIsMobileNavbarVisible(true);
+		} else {
+			setIsMobileNavbarVisible(false);
+		}
+	};
+
 	return (
 		<Popover
 			id='navbar'
 			className={styles.navbar}
 		>
-			{({ open }) => (
+			{() => (
 				<div className='w-screen grid place-items-center bg-light'>
-					<div className='px-5 mt-5 mb-12 w-full mdxl:w-76'>
+					<div className='px-5 mt-5 mb-5 w-full mdxl:w-76'>
 						<div className='flex justify-between items-center'>
 							{/* Desktop Screen Logo */}
 							<div className='flex-shrink-0'>
@@ -121,6 +128,7 @@ const Navbar: React.FC<NavbarProps> = ({ invertColors }) => {
 								<Popover.Button
 									className='rounded-md p-2 inline-flex items-center justify-center
 									hover:text-gray-500 focus:outline-none'
+									onClick={toggleNavbar}
 								>
 									<span className='sr-only'>
 										{t('openMenu')}
@@ -176,7 +184,7 @@ const Navbar: React.FC<NavbarProps> = ({ invertColors }) => {
 					</div>
 
 					{/* <MobileViewNavbar
-						activate={open}
+						activate={isMobileNavbarVisible}
 						navbarItems={navItems}
 					/> */}
 				</div>
