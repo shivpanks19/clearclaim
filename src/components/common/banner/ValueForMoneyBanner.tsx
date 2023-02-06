@@ -15,7 +15,7 @@ const CodingBootcampSection: React.FC<CodingBootcampSectionProps> = ({ imgSrc, p
 			<div className="textSection flex flex-col items-center gap-4 w-full md:py-7 md:pl-40 md:pr-8 pt-44 px-5 md:px-0 bg-tertiary rounded">
 				<p className="text-lg md:text-3xl font-semibold text-white md:mb-4 text-center md:text-left">Get the best value for your money</p>
 				<p className="text-5xl md:text-7xl font-semibold text-price-yellow mb-5">₹ {price}</p>
-				<p className="text-white mb-5 md:mb-0 text-center">Pay in two installments in the first month of your course joiining</p>
+				<p className="text-white mb-5 md:mb-0 text-center">Pay in two installments in the first month of your course joining</p>
 			</div>
 		</div >
 	)
