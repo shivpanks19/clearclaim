@@ -26,6 +26,7 @@ const MobileViewNavbar: React.FC<MobileViewNavbarProps> = ({ navbarItems, activa
 					<div className="flex flex-col gap-9 ml-7 mt-32 relative ">
 						{navbarItems && navbarItems.map((navItem) => (
 							<Link
+								key={navItem.id}
 								href={navItem.link}
 							>
 								<p className={`relative inline-flex justify-center font-regular text-primary ${router.asPath === navItem.link && 'text-tertiary'}`}>

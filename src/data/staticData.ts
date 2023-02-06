@@ -1,20 +1,22 @@
 // import { toast } from 'react-hot-toast';
 import { ImageSetAnimationDetail } from '@/data/types';
+import { Id } from '@/utils/types';
 
 export const contactUsFormLink = '/contact-us';
 
 export type NavItem = {
+	id: Id
 	title: string
 	link: string
 	target: '_blank' | '_self' | '_parent' | '_top' | 'framename'
 	className?: string
 }
 export const navItems: Array<NavItem> = [
-	{ title: 'Courses', link: '/courses', target: '_self' },
-	{ title: 'Records', link: '/records', target: '_self' },
-	{ title: 'Student Reviews', link: '/student-reviews', target: '_self' },
-	{ title: 'Contact Us', link: '/contact-us', target: '_self' },
-	{ title: 'Blogs', link: '/blogs', target: '_self' }
+	{ id: 1, title: 'Courses', link: '/courses', target: '_self' },
+	{ id: 2, title: 'Records', link: '/records', target: '_self' },
+	{ id: 3, title: 'Student Reviews', link: '/student-reviews', target: '_self' },
+	{ id: 4, title: 'Contact Us', link: '/contact-us', target: '_self' },
+	{ id: 5, title: 'Blogs', link: '/blogs', target: '_self' }
 ];
 
 // export const comingSoonHandler = (navItem: NavItem): void => {
