@@ -18,7 +18,7 @@ const FaqList: React.FC<FaqListProps> = ({ headline, faqList }) => {
 					{headline}
 				</p>
 				{faqList.map((faq) => (
-					<AccordionItem>
+					<AccordionItem key={faq.id}>
 						{({ isExpanded }) => (
 							<>
 								<h2>

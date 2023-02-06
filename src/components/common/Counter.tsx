@@ -18,7 +18,7 @@ const Counter: React.FC<CounterProps> = ({ finalNum }) => {
 			setInProgress(false);
 		}
 		return () => clearInterval(interval.current);
-	}, [inProgress, num]);
+	}, [inProgress, num, finalNum]);
 
 	return (
 		<span>{num}</span>

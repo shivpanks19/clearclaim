@@ -20,6 +20,7 @@ import PlacementService from '@/services/placement';
 
 import { Course } from '@/services/course/types';
 import { Placement } from '@/services/placement/types';
+import { FAQ } from '@/services/course/types';
 
 const CourseDetailPage: NextPage<CourseDetailPageProps> = ({ course, courseDetailPageInfo, placementList, faqList1, faqList2 }) => {
 	return (
@@ -93,8 +94,8 @@ type CourseDetailPageProps = {
 	course: Course;
 	courseDetailPageInfo: CourseDetailPageInformation;
 	placementList: Placement[];
-	faqList1: Faq[];
-	faqList2: Faq[];
+	faqList1: FAQ[];
+	faqList2: FAQ[];
 };
 
 export const getStaticProps: GetStaticProps = async ({
