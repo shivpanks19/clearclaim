@@ -1,21 +1,16 @@
 import Logo from '@/components/common/Logo';
 import MobileViewNavbar from '@/components/layout/MobileViewNavbar';
-import styles from '@/components/layout/Navbar.module.scss';
 import JoinNowButton from '@/components/common/button/JoinNowButton';
 import {
-	NavItem,
 	navItems
 } from '@/data/staticData';
 import Text from '@/elements/Text';
 import Colors from '@/styles/colors';
-import { TextVariant } from '@/utils/stylePropTypes';
 import { Popover } from '@headlessui/react';
 import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { HiMenu } from 'react-icons/hi';
-import Button from '@/elements/Button';
 /*
  * TODO: Navbar toggle view breakpoint issue investigation
  * Ideally we need `md` as view toggle break-point
@@ -25,80 +20,7 @@ import Button from '@/elements/Button';
  */
 const Navbar: React.FC<NavbarProps> = ({ invertColors }) => {
 	const { t } = useTranslation();
-	const router = useRouter();
-	const [navbarAwake, setNavbarAwake] = useState(false);
 	const [isMobileNavbarVisible, setIsMobileNavbarVisible] = useState(false);
-
-	const scrollHandler = (): void => {
-		const scrollTop = document.documentElement.scrollTop;
-		const navbar = document.querySelector('#navbar');
-
-		if (
-			scrollTop > 150 &&
-			!navbar.classList.contains(styles.navbarScrolled)
-		) {
-			navbar.classList.add(styles.navbarScrolled);
-		}
-		if (
-			scrollTop < 150 &&
-			navbar.classList.contains(styles.navbarScrolled)
-		) {
-			navbar.classList.remove(styles.navbarScrolled);
-		}
-		if (scrollTop > 350 && !navbar.classList.contains(styles.navbarAwake)) {
-			setNavbarAwake(true);
-			navbar.classList.add(styles.navbarAwake);
-		}
-		if (scrollTop < 350 && navbar.classList.contains(styles.navbarAwake)) {
-			setNavbarAwake(false);
-			navbar.classList.remove(styles.navbarAwake);
-		}
-	};
-
-	// const contactNumberWithIcon = (): ReactElement => {
-	// 	return (
-	// 		<div className='hidden lg:flex justify-end gap-3 mb-3'>
-	// 			<HiPhone
-	// 				className='text-secondary'
-	// 				size={24}
-	// 				aria-hidden='true'
-	// 			/>
-	// 			<Text
-	// 				span={true}
-	// 				fontWeight='font-bold'
-	// 				variant={invertColors ? 'text-primary' : 'text-white'}
-	// 			>
-	// 				{contactNumber}
-	// 			</Text>
-	// 		</div>
-	// 	);
-	// };
-
-	useEffect(() => {
-		window.addEventListener('scroll', scrollHandler);
-		return () => window.removeEventListener('scroll', scrollHandler);
-	}, []);
-
-	const logoVariant = (): 'white' | 'blue' => {
-		if (invertColors) {
-			return 'blue';
-		}
-		return navbarAwake ? 'blue' : 'white';
-	};
-
-	const hamburgerIconColor = (): string => {
-		return Colors.primary;
-	};
-
-	const navItemVariant = (navItem: NavItem): TextVariant => {
-		if (router.pathname.includes(navItem.link)) {
-			return 'text-secondary';
-		}
-		else if (invertColors) {
-			return 'text-primary';
-		}
-		return navbarAwake ? 'text-primary' : 'text-white';
-	};
 
 	const toggleNavbar = () => {
 		if (isMobileNavbarVisible) {
@@ -109,12 +31,12 @@ const Navbar: React.FC<NavbarProps> = ({ invertColors }) => {
 	};
 
 	return (
-		<div className={styles.navbar}>
+		<div className='sticky top-0 left-0 z-30'>
 			<div className='w-screen grid place-items-center bg-light'>
 				{!isMobileNavbarVisible && (
 
 
-					<div className='px-5 mt-5 mb-5 w-full mdxl:w-76'>
+					<div className='mt-5 mb-5 w-full mdxl:w-76'>
 						<div className='flex justify-between items-center'>
 							{/* Desktop Screen Logo */}
 							<div className='flex-shrink-0'>
@@ -135,7 +57,7 @@ const Navbar: React.FC<NavbarProps> = ({ invertColors }) => {
 									</span>
 									<HiMenu
 										size={24}
-										color={hamburgerIconColor()}
+										color={Colors.primary}
 										aria-hidden='true'
 									/>
 								</div>
