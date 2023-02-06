@@ -1,6 +1,6 @@
 import React from "react";
 import Link from 'next/link';
-import RegisterButton from "@/components/common/button/RegisterButton";
+import RegisterButton from "@/components/common/button/JoinNowButton";
 
 const CourseInfoNav: React.FC<CourseInfoNavProps> = () => {
 	return (

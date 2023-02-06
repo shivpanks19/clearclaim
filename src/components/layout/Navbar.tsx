@@ -1,6 +1,7 @@
 import Logo from '@/components/common/Logo';
 import MobileViewNavbar from '@/components/layout/MobileViewNavbar';
 import styles from '@/components/layout/Navbar.module.scss';
+import JoinNowButton from '@/components/common/button/JoinNowButton';
 import {
 	NavItem,
 	navItems
@@ -101,19 +102,18 @@ const Navbar: React.FC<NavbarProps> = ({ invertColors }) => {
 
 	const toggleNavbar = () => {
 		if (isMobileNavbarVisible) {
-			setIsMobileNavbarVisible(true);
-		} else {
 			setIsMobileNavbarVisible(false);
+		} else {
+			setIsMobileNavbarVisible(true);
 		}
 	};
 
 	return (
-		<Popover
-			id='navbar'
-			className={styles.navbar}
-		>
-			{() => (
-				<div className='w-screen grid place-items-center bg-light'>
+		<div className={styles.navbar}>
+			<div className='w-screen grid place-items-center bg-light'>
+				{!isMobileNavbarVisible && (
+
+
 					<div className='px-5 mt-5 mb-5 w-full mdxl:w-76'>
 						<div className='flex justify-between items-center'>
 							{/* Desktop Screen Logo */}
@@ -125,7 +125,7 @@ const Navbar: React.FC<NavbarProps> = ({ invertColors }) => {
 
 							{/* Hamburger Icon */}
 							<div className='-my-2 lg:hidden'>
-								<Popover.Button
+								<div
 									className='rounded-md p-2 inline-flex items-center justify-center
 									hover:text-gray-500 focus:outline-none'
 									onClick={toggleNavbar}
@@ -138,7 +138,7 @@ const Navbar: React.FC<NavbarProps> = ({ invertColors }) => {
 										color={hamburgerIconColor()}
 										aria-hidden='true'
 									/>
-								</Popover.Button>
+								</div>
 							</div>
 
 							<Popover.Group
@@ -164,32 +164,19 @@ const Navbar: React.FC<NavbarProps> = ({ invertColors }) => {
 								})}
 
 							</Popover.Group>
-							<div className='hidden lg:block lg:flex items-center justify-end'>
-								<Button
-									buttonStyleClass='outlineButton'
-									variant='bg-transparent'
-									rounded='rounded-sm'
-									className='px-5 py-3'
-								>
-									<Text
-										variant='text-secondary'
-										fontSize='text-lg'
-										fontWeight='font-medium'
-									>
-										{t('Join Now for FREE')}
-									</Text>
-								</Button>
+							<div className='hidden lg:flex items-center justify-end'>
+								<JoinNowButton className='w-full' />
 							</div>
 						</div>
 					</div>
-
-					{/* <MobileViewNavbar
-						activate={isMobileNavbarVisible}
-						navbarItems={navItems}
-					/> */}
-				</div>
-			)}
-		</Popover>
+				)}
+				<MobileViewNavbar
+					activate={isMobileNavbarVisible}
+					navbarItems={navItems}
+					toggleNav={toggleNavbar}
+				/>
+			</div>
+		</div>
 	);
 };
 

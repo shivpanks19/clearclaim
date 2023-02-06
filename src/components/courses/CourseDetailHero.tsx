@@ -6,7 +6,7 @@ import { useTranslation } from 'next-i18next';
 import CourseAttr from "@/components/common/course-list/CourseAttr";
 import Rating from "@/components/common/Rating";
 import WorkshopButton from '@/components/common/button/WorkshopButton';
-import RegisterButton from '@/components/common/button/RegisterButton';
+import RegisterButton from '@/components/common/button/JoinNowButton';
 import StatSection from '@/components/common/Stat';
 import HeroBg from "@/components/common/HeroBg";
 

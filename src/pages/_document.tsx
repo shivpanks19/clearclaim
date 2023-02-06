@@ -14,8 +14,9 @@ export default class MyDocument extends Document {
 					<link rel="apple-touch-icon" href="/apple-touch-icon.png"></link>
 					<meta name="theme-color" content="#fff" />
 					<link rel="preconnect" href="https://fonts.googleapis.com" />
+					<link rel="preconnect" href="https://fonts.googleapis.com" />
 					<link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin='true' />
-					<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+					<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;&display=swap" rel="stylesheet" />
 				</Head>
 				<body>
 					<Main />
