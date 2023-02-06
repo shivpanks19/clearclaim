@@ -10,7 +10,7 @@ const Services = {
 	getReviewList: 'reviews',
 	getRecruiterList: 'recruiters',
 	getFaqList: 'faq',
-
+	postContactUsForm: 'enquiries',
 
 	getClientTestimonials: 'testimonials',
 	getTeamMembers: 'team-members',
