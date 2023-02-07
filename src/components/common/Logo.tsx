@@ -17,12 +17,13 @@ const Logo: React.FC<LogoProps> = ({ className, href, variant, logoSize }) => {
 	return (
 		<div className={classNames('cursor-pointer', ...className.split(' '))}>
 			<Link href={href}>
-				<Image
-					src={path()}
-					height={39}
-					width={109}
-					alt='logo'
-				/>
+				<div className={`relative ${logoSize === 'small' && 'w-24 h-8'} ${logoSize === 'large' && 'w-32 h-9'}`}>
+					<Image
+						src={path()}
+						fill
+						alt='logo'
+					/>
+				</div>
 			</Link>
 		</div>
 	);
@@ -32,14 +33,14 @@ type LogoProps = {
 	className?: string,
 	href?: string;
 	variant?: 'light' | 'dark';
-	logoSize?: string
+	logoSize?: 'small' | 'large';
 };
 
 Logo.defaultProps = {
 	className: '',
 	href: '/',
 	variant: 'light',
-	logoSize: 'h-16 lg:h-14'
+	logoSize: 'small'
 };
 
 export default Logo;

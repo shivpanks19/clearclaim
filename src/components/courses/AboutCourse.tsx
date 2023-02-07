@@ -6,13 +6,13 @@ import CourseUsp from "@/components/courses/[slug]/CourseUsp";
 
 const CourseOverviewSection: React.FC<CourseOverviewSectionProps> = ({ aboutCourse }) => {
 	return (
-		<div className="mb-12 md:mb-24">
+		<div className="mt-12 mb-12 md:mb-24">
+			<a id='course-overview' />
 			<SectionHeadline
 				title='Course Overview'
 				subtitle='Know the details of the course'
 				className='mb-3 md:mb-8'
 			/>
-			<a id='course-overview' />
 			<div className='grid md:grid-cols-3 mb-10 mx-auto md:mb-24 px-5 xl:w-76'>
 				<div className="md:col-span-2 mb-5 md:mb-0">
 					<Title

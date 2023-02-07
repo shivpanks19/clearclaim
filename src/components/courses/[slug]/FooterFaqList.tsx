@@ -6,6 +6,7 @@ import { FAQ } from '@/services/course/types';
 const FooterFaqList: React.FC<FooterFaqListProps> = ({ headline, subHeadline, faqList1, faqList2 }) => {
 	return (
 		<>
+			<a id='faqs' />
 			{(faqList1?.length > 0 || faqList2?.length > 0) && (
 				<div className='mb-12'>
 					<SectionHeadline

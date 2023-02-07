@@ -9,8 +9,10 @@ import Colors from '@/styles/colors';
 import { Popover } from '@headlessui/react';
 import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { HiMenu } from 'react-icons/hi';
+import Image from 'next/image';
+import debounce from 'lodash.debounce';
 /*
  * TODO: Navbar toggle view breakpoint issue investigation
  * Ideally we need `md` as view toggle break-point
@@ -21,6 +23,7 @@ import { HiMenu } from 'react-icons/hi';
 const Navbar: React.FC<NavbarProps> = ({ invertColors }) => {
 	const { t } = useTranslation();
 	const [isMobileNavbarVisible, setIsMobileNavbarVisible] = useState(false);
+	const [navBg, setNavBg] = useState('bg-lightblue');
 
 	const toggleNavbar = () => {
 		if (isMobileNavbarVisible) {
@@ -30,18 +33,29 @@ const Navbar: React.FC<NavbarProps> = ({ invertColors }) => {
 		}
 	};
 
+	useEffect(() => {
+		const scrollHandler = () => {
+			if (scrollY > 0) {
+				setNavBg('bg-white shadow-navbar')
+			} else {
+				setNavBg('bg-lightblue')
+			}
+			console.log(scrollY);
+		};
+		window.addEventListener('scroll', scrollHandler);
+		return (window.removeEventListener('scroll', scrollHandler));
+	}, [])
+
 	return (
 		<div className='sticky top-0 left-0 z-30'>
-			<div className='w-screen grid place-items-center bg-light'>
+			<div className='w-screen grid place-items-center bg-lightblue'>
 				{!isMobileNavbarVisible && (
-
-
-					<div className='mt-5 mb-5 w-full mdxl:w-76'>
-						<div className='flex justify-between items-center'>
+					<div className={`py-4 w-full mdxl:w-76 ${navBg} transition-all`}>
+						<div className='flex justify-between items-center pl-4 pr-6'>
 							{/* Desktop Screen Logo */}
 							<div className='flex-shrink-0'>
 								<Link href={'/'}>
-									<Logo />
+									<Logo logoSize='small' />
 								</Link>
 							</div>
 
@@ -55,9 +69,11 @@ const Navbar: React.FC<NavbarProps> = ({ invertColors }) => {
 									<span className='sr-only'>
 										{t('openMenu')}
 									</span>
-									<HiMenu
-										size={24}
-										color={Colors.primary}
+									<Image
+										src='/img/ham.png'
+										width={16}
+										height={12}
+										alt='menu icon'
 										aria-hidden='true'
 									/>
 								</div>

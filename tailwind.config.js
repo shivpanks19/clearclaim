@@ -32,11 +32,25 @@ module.exports = {
             letterSpacing: "0.04em",
             lineHeight: "160%",
           },
+        ],
+        "lg": [
+          "18px",
+          {
+            letterSpacing: "0.035em",
+            lineHeight: "160%",
+          },
+        ],
+        "3xl": [
+          "30px",
+          {
+            letterSpacing: "0.035em",
+            lineHeight: "140%",
+          },
         ]
       },
       backgroundColor: (theme) => ({
         primary: "#0D3D54",
-        light: "#eff8fd",
+        lightblue: "rgb(239, 248, 253)",
         secondary: "#ffa600",
         tertiary: "#0D87D4",
         tertiaryFade1: "rgba(13, 135, 212, 0.41);",
@@ -78,6 +92,7 @@ module.exports = {
       }),
       boxShadow: {
         DEFAULT: "0px 0px 6px 1px rgba(13, 61, 84, 0.07);",
+        'navbar': '0px 4px 4px 0px rgba(13, 135, 212, 0.18)',
         'courseDetailNav': '0px 4px 4px 0px rgba(13, 135, 212, 0.18)'
       },
       spacing: {
