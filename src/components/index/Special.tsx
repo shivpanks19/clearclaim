@@ -10,7 +10,7 @@ const SpecialSection: React.FC<SpecialSectionProps> = ({ headline, subHeadline }
 				subtitle={subHeadline}
 				className='mb-16 md:mb-32 mx-5'
 			/>
-			<div className="cards xl:w-76 md:mb-20 flex flex-col items-center lg:flex-row md:justify-between mx-5 md:mx-auto">
+			<div className="cards xl:w-76 md:mb-20 flex flex-col items-center xl:flex-row md:justify-between mx-5 md:mx-auto">
 				<div className="shadow rounded flex flex-col items-center gap-3 md:w-96 pb-3.5 md:pb-10 px-5 md:px-10 mb-16">
 					<div className="relative w-20 h-20 md:w-32 md:h-32 -mt-10 md:-mt-12 self-center">
 						<Image

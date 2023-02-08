@@ -23,7 +23,7 @@ const PlacementList: React.FC<PlacementListProps> = ({ headline, subHeadline, pl
 						alt='Right arrow'
 					/>
 				</div>
-				<div className="cardContainer w-42 md:grid-cols-2 xl:grid-cols-3 gap-14 hidden md:grid mx-5 md:mx-0 place-items-center">
+				<div className="cardContainer w-42 lg:grid-cols-2 xl:grid-cols-3 gap-14 hidden md:grid mx-5 md:mx-0 place-items-center">
 					{placementList?.length > 0 && placementList.map((placement) => (
 						<PlacementCard
 							key={placement.id}
