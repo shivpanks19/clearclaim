@@ -1,7 +1,7 @@
 import React from "react";
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import RegisterButton from "@/components/common/button/JoinNowButton";
+import RegisterButton from "@/components/common/button/RegisterButton";
 
 const CourseInfoNav: React.FC<CourseInfoNavProps> = () => {
 	const router = useRouter();
