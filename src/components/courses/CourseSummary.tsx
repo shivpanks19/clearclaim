@@ -8,8 +8,8 @@ const CourseSummary: React.FC<CourseSummaryProps> = ({ summaryList }) => {
 	return (
 		<Container>
 			<a id='course-summary' />
-			<div className='flex px-5 mb-8 mx-auto'>
-				<div className='mr-24 flex-none'>
+			<div className='flex flex-col-reverse lg:flex-row place-items-center px-5 mb-8 mx-auto'>
+				<div className='lg:mr-24 mx-auto'>
 					<Image
 						src='/img/placement_assistance.png'
 						width={300}

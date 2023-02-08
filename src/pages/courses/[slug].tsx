@@ -12,6 +12,7 @@ import AchievementSection from '@/components/common/placement-list/PlacementList
 import AboutCourse from "@/components/courses/AboutCourse";
 import CourseSummary from "@/components/courses/CourseSummary";
 import FooterFaqList from "@/components/courses/[slug]/FooterFaqList";
+import BasePaySection from "@/components/courses/[slug]/BasePaySection";
 
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { CourseDetailPageInformation } from '@/services/course/types';
@@ -46,6 +47,9 @@ const CourseDetailPage: NextPage<CourseDetailPageProps> = ({ course, courseDetai
 
 			{/* What will you learn? */}
 			{course.courseSummary && <CourseSummary summaryList={course.courseSummary} />}
+
+			{/* Base pay */}
+			<BasePaySection />
 
 			{/* Course Curriculum */}
 			<CourseCurriculumSection />

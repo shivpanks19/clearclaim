@@ -36,7 +36,7 @@ const CourseHeroSection: React.FC<CourseHeroSectionProps> = ({
 						{subHeadline}
 					</p>
 					<div className="course-rating flex place-items-center mb-6 md:mb-14">
-						<Rating />
+						<Rating rating={4} />
 						<p className="student-number text-desc font-normal"> {numberOfStudents} students</p>
 					</div>
 					<div className="hidden md:flex md:flex-row md:gap-14 md:mb-20 pr-8">

@@ -66,6 +66,8 @@ module.exports = {
         whyus: '#57aeff',
         'why-us-selected': '#0F8CFF',
         'loader-gray': '#ECEBEB',
+        'gd-salary-bar-gray': 'rgb(196, 199, 204)',
+        'gd-salary-bar-blue': 'rgb(12, 64, 133)',
         'footer-bg': '#0C3447'
       }),
       textColor: () => ({
@@ -93,10 +95,14 @@ module.exports = {
       boxShadow: {
         DEFAULT: "0px 0px 6px 1px rgba(13, 61, 84, 0.07);",
         'navbar': '0px 4px 4px 0px rgba(13, 135, 212, 0.18)',
-        'courseDetailNav': '0px 4px 4px 0px rgba(13, 135, 212, 0.18)'
+        'courseDetailNav': '0px 4px 4px 0px rgba(13, 135, 212, 0.18)',
+        'gdSalaryBox': '0px 0px 4px rgba(0, 0, 0, 0.25)'
       },
       spacing: {
         '13': '52px',
+      },
+      padding: {
+        '115': '460px'
       },
       gridTemplateColumns: {
         '26': 'repeat(26, minmax(0, 1fr))',
