@@ -40,6 +40,7 @@ export type Course = {
 	footerFaq: FAQ[];
 	isFree: boolean;
 	heroImage: Record<string, Array<Record<string, ImageType>>>;
+	heroVideo: string;
 }
 
 export type FAQ = {

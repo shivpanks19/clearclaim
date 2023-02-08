@@ -14,6 +14,7 @@ const CourseHeroSection: React.FC<CourseHeroSectionProps> = ({
 	headline,
 	subHeadline,
 	heroImage,
+	heroVideo,
 	numberOfStudents,
 	studentsTrained,
 	workshopsConducted,
@@ -44,12 +45,31 @@ const CourseHeroSection: React.FC<CourseHeroSectionProps> = ({
 					</div>
 				</div>
 				<div className='flex flex-col'>
-					<div className="relative w-80 h-52 md:w-auto md:h-96 max-w-full md:mt-5 mb-6 md:mb-14">
-						<Image
-							src={heroImage}
-							alt='Course Detail Image'
-							fill
-						/>
+					<div className="relative w-full  h-52 md:h-96 max-w-full md:mt-5 mb-6 md:mb-14">
+						{heroVideo ? (
+							<>
+								<div className="hidden lg:block">
+									<Image
+										src='/img/course_detail.png'
+										alt='Course Detail Image'
+										fill
+									/>
+								</div>
+								<iframe
+									className='absolute w-full lg:left-12 lg:top-8 lg:w-10/12 h-full lg:h-72 rounded'
+									src={heroVideo ?? 'https://www.youtube.com/embed/2E73SftV0co'}
+									title="YouTube video player"
+									allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+									allowFullScreen>
+								</iframe>
+							</>
+						) : (
+							<Image
+								src={heroImage}
+								alt='Course Detail Image'
+								fill
+							/>
+						)}
 					</div>
 					<div className="flex-col md:hidden gap-10 mb-6 md:mb-10">
 						<WorkshopButton />
@@ -72,6 +92,7 @@ type CourseHeroSectionProps = {
 	headline: string;
 	subHeadline: string;
 	heroImage: string;
+	heroVideo: string;
 	numberOfStudents: number;
 	studentsTrained: number,
 	workshopsConducted: number,

@@ -1,6 +1,4 @@
 import React from "react";
-
-import Text from '@/elements/Text';
 import Button from '@/elements/Button';
 import { useTranslation } from 'next-i18next';
 
@@ -14,13 +12,9 @@ const WorkshopButton: React.FC<WorkshopButtonProps> = () => {
 			rounded='rounded-sm'
 			className='px-3 md:px-7 py-3 w-full mb-3 md:mb-0'
 		>
-			<Text
-				variant='text-secondary'
-				fontSize='text-xs'
-				fontWeight='font-medium'
-			>
+			<p className="text-secondary text-xs md:text-base font-medium">
 				{t('Attend a FREE Workshop')}
-			</Text>
+			</p>
 		</Button>
 	)
 };
