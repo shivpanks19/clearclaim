@@ -30,8 +30,8 @@ const CourseDetailPage: NextPage<CourseDetailPageProps> = ({ course, courseDetai
 			<CourseDetailHeroSection
 				headline={course.courseName}
 				subHeadline={course.description}
-				heroImage={course.heroVideo}
-				heroVideo={course.heroImage?.data[0].attributes.url}
+				heroVideo={course.heroVideo}
+				heroImage={course.heroImage?.data[0].attributes.url}
 				numberOfStudents={course.numberOfStudents}
 				studentsTrained={courseDetailPageInfo.studentsTrained}
 				workshopsConducted={courseDetailPageInfo.workshopsConducted}

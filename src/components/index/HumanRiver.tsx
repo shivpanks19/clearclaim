@@ -23,28 +23,22 @@ const HumanRiver: React.FC<HumanRiverProps> = () => {
 
 const ImageLayer: React.FC<ImageLayerProps> = ({ level, imgList }) => {
 	return (
-		<div className="absolute h-full w-full grid grid-cols-3">
-			<div className='relative flex gap-5 w-96'>
-				{imgList && imgList.map((img, imgIdx) => (
-					<div
-						className={
-							`absolute ${miscStyle[`level-${level}`]}
-										${getAbsolutePositioningClass(level + 1, imgIdx)}
-										${animation.upInfinte} ${animation[`speed-${img.speed}`]}`
-						}
-						style={{ top: 550, animationDelay: `${imgIdx * 2.2}s` }}
-						key={imgIdx}
-					>
+		<div className={`h-full absolute -left-full grid grid-cols-${imgList.length} gap-12 px-5 ${animation.rightInfinte} md:${animation.upInfinte} ${animation[`speed-8`]}`}>
+			{imgList && imgList.map((img, imgIdx) => (
+				<div
+					key={imgIdx}
+					className={`relative h-full w-36 flex ${imgIdx % 2 === 0 ? 'flex-col-reverse' : 'flex-col'}`}
+				>
+					<div className="relative h-44 w-36">
 						<Image
 							src={img.src}
-							width={143}
-							height={194}
+							fill
 							alt='Hero Image'
 						/>
 					</div>
-				))
-				}
-			</div >
+				</div>
+			))
+			}
 		</div>
 	)
 };
@@ -81,4 +75,3 @@ type ImageLayerProps = {
 };
 
 export default HumanRiver;
-// ${getAbsolutePositioningClass(parseInt(level) + 1, imgIdx)}
