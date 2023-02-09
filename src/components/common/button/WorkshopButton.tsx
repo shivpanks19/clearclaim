@@ -1,9 +1,12 @@
 import React from "react";
 import Button from '@/elements/Button';
 import { useTranslation } from 'next-i18next';
+import { useDisclosure } from '@chakra-ui/react';
+import RegistrationForm from '@/components/common/RegistrationForm';
 
 const WorkshopButton: React.FC<WorkshopButtonProps> = () => {
 	const { t } = useTranslation();
+	const { isOpen, onOpen, onClose } = useDisclosure()
 
 	return (
 		<Button
@@ -15,6 +18,10 @@ const WorkshopButton: React.FC<WorkshopButtonProps> = () => {
 			<p className="text-secondary text-xs md:text-base font-medium">
 				{t('Attend a FREE Workshop')}
 			</p>
+			<RegistrationForm
+				isOpen={isOpen}
+				onClose={onClose}
+			/>
 		</Button>
 	)
 };
