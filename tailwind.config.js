@@ -86,6 +86,7 @@ module.exports = {
         gray: '#d1d1d1',
         gray2: '#c4c5c5',
         corporate: '#387ef7',
+        white: '#fff',
         'price-yellow': '#FAD200'
       }),
       borderColor: () => ({
