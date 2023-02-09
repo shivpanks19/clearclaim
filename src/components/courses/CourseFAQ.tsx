@@ -3,6 +3,7 @@ import { FAQ } from '@/services/course/types';
 import { uuid } from 'uuidv4';
 import debounce from 'lodash.debounce';
 import classNames from "classnames";
+import styl from '@/styles/courseFAQ.module.scss';
 
 const CourseFAQ: React.FC<CourseFAQProps> = ({ courseName, faqList }) => {
 	const bgList = ['bg-tertiary', 'bg-tertiary', 'bg-tertiary', 'bg-primary', 'bg-secondary'];
@@ -43,30 +44,27 @@ const CourseFAQ: React.FC<CourseFAQProps> = ({ courseName, faqList }) => {
 				{faqList?.length > 0 && faqList.map((faq, idx) => (
 					<div
 						key={uuid()}
-						// className={classNames(bgList[idx], {
-						// 	'faqcard mb-3 pt-6 px-12 rounded': true,
-						// 	'grow w-76': activeIdx === idx,
-						// 	'flex-none w-52': activeIdx !== idx
-						// })}
-						className={`
-							faqcard mb-3 pt-6 px-12 rounded hover:grow hover:w-6/12
-							${bgList[idx]} 
-							${activeIdx === idx ? ' grow w-6/12' : ''}
-							${activeIdx !== idx ? ' flex-none w-32' : ''}
-						`}
+
+						// className={`
+						// 	faqcard mb-3 pt-6 px-12 rounded hover:grow hover:w-6/12
+						// 	${bgList[idx]} 
+						// 	${activeIdx === idx ? ' grow w-6/12' : ''}
+						// 	${activeIdx !== idx ? ' flex-none w-32' : ''}
+						// `}
+						className={styl.faqcard}
 						onMouseEnter={() => handleHover(idx)}
 						style={{
-							transition: 'width 2s'
+							transition: 'width 0.5s'
 						}}
 
 					>
-						<div className="flex place-items-center mb-3">
+						<div className={styl.question}>
 							<p className="text-price-yellow font-extrabold text-4xl lg:text-7xl">Q{idx + 1}</p>
 							<p className="text-lg md:text-2xl font-semibold pl-4 mb-2.5 text-white ">
 								{faq.question}
 							</p>
 						</div>
-						<p className='text-white hover:block'>
+						<p className={styl.answer}>
 							{faq.answer}
 						</p>
 					</div>

@@ -11,6 +11,7 @@ const Services = {
 	getRecruiterList: 'recruiters',
 	getFaqList: 'faq',
 	postContactUsForm: 'enquiries',
+	postRegistrationForm: 'students',
 
 	getClientTestimonials: 'testimonials',
 	getTeamMembers: 'team-members',
