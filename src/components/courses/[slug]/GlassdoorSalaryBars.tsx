@@ -4,16 +4,16 @@ const GlassdoorSalaryBars: React.FC<GlassdoorSalaryBarsProps> = () => {
 	return (
 		<div className="w-full">
 			<div className='w-full flex my-3 md:my-8 justify-between items-baseline gap-1'>
-				<div className="w-16 h-20 bg-gd-salary-bar-gray"></div>
-				<div className="w-16 h-36 bg-gd-salary-bar-blue"></div>
-				<div className="w-16 h-28 bg-gd-salary-bar-gray"></div>
-				<div className="w-16 h-16 bg-gd-salary-bar-gray"></div>
-				<div className="w-16 h-8 bg-gd-salary-bar-gray"></div>
-				<div className="w-16 h-6 bg-gd-salary-bar-gray"></div>
-				<div className="w-16 h-5 bg-gd-salary-bar-gray"></div>
-				<div className="w-16 h-4 bg-gd-salary-bar-gray"></div>
-				<div className="w-16 h-3 bg-gd-salary-bar-gray"></div>
-				<div className="w-16 h-2 bg-gd-salary-bar-gray"></div>
+				<div className="w-16 rounded h-20 bg-gd-salary-bar-gray"></div>
+				<div className="w-16 rounded h-36 bg-gd-salary-bar-blue"></div>
+				<div className="w-16 rounded h-28 bg-gd-salary-bar-gray"></div>
+				<div className="w-16 rounded h-16 bg-gd-salary-bar-gray"></div>
+				<div className="w-16 rounded h-8 bg-gd-salary-bar-gray"></div>
+				<div className="w-16 rounded h-6 bg-gd-salary-bar-gray"></div>
+				<div className="w-16 rounded h-5 bg-gd-salary-bar-gray"></div>
+				<div className="w-16 rounded h-4 bg-gd-salary-bar-gray"></div>
+				<div className="w-16 rounded h-3 bg-gd-salary-bar-gray"></div>
+				<div className="w-16 rounded h-2 bg-gd-salary-bar-gray"></div>
 			</div>
 			<div className="limits flex justify-between">
 				<div className="flex flex-col items-center">

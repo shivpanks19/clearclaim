@@ -51,9 +51,6 @@ const CourseDetailPage: NextPage<CourseDetailPageProps> = ({ course, courseDetai
 			{/* Base pay */}
 			<BasePaySection />
 
-			{/* Course Curriculum */}
-			<CourseCurriculumSection />
-
 			{/* Why Full Stack Development */}
 			{course.courseFAQ &&
 				<CourseFAQ
@@ -61,6 +58,9 @@ const CourseDetailPage: NextPage<CourseDetailPageProps> = ({ course, courseDetai
 					faqList={course.courseFAQ}
 				/>
 			}
+
+			{/* Course Curriculum */}
+			<CourseCurriculumSection />
 
 			{/* Why us */}
 			<WhyUsSection

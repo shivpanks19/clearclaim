@@ -53,6 +53,8 @@ module.exports = {
         lightblue: "rgb(239, 248, 253)",
         secondary: "#ffa600",
         tertiary: "#0D87D4",
+        tertiary2: "#70C4F9",
+        tertiary3: "#BDE6FF",
         tertiaryFade1: "rgba(13, 135, 212, 0.41);",
         tertiaryFade2: "rgba(13, 135, 212, 0.15);",
         danger: "#e3342f",
