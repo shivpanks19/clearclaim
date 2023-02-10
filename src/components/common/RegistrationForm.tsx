@@ -10,11 +10,13 @@ import {
 	ModalContent,
 	Radio,
 	RadioGroup,
+	ModalHeader,
 	ModalBody,
 	ModalCloseButton,
 	FormControl,
 	FormLabel,
-	Input
+	Input,
+	Select
 } from '@chakra-ui/react';
 import { useForm, SubmitHandler } from "react-hook-form";
 
@@ -23,12 +25,22 @@ type Inputs = {
 	email: string,
 	phone: string,
 	graduationYear: string,
+	modeOfStudy: ModeOfStudy
+};
+
+enum ModeOfStudy {
+	ONLINE = 'Online',
+	OFFLINE = 'Offline'
 };
 
 const RegistrationForm: React.FC<RegistrationFormProps> = ({ isOpen, onClose }) => {
-	const [modeOfStudy, setModeOfStudy] = React.useState('Online');
-	const { register, handleSubmit } = useForm<Inputs>();
+	const [modeOfStudy, setModeOfStudy] = React.useState<ModeOfStudy>(ModeOfStudy.ONLINE);
+	const { register, handleSubmit, setValue } = useForm<Inputs>({
+		defaultValues: { modeOfStudy: ModeOfStudy.ONLINE }
+	});
 	const onSubmit: SubmitHandler<Inputs> = async (data) => {
+		console.log('data', data);
+		// @ts-ignore
 		(async () => {
 			await toast.promise(RegistrationService.postRegistrationForm(data), {
 				success: 'Thank you for registration!',
@@ -43,6 +55,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ isOpen, onClose }) 
 			<Modal isOpen={isOpen} onClose={onClose} size='xl'>
 				<ModalOverlay />
 				<ModalContent rounded={'3xl'}>
+					<ModalHeader></ModalHeader>
 					<ModalCloseButton />
 					<ModalBody paddingY={8} paddingX={10} paddingRight={52} className=" relative overflow-hidden">
 						<SectionHeadline
@@ -64,10 +77,31 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ isOpen, onClose }) 
 								<FormLabel>Phone</FormLabel>
 							</FormControl>
 							<FormControl className='mb-6' variant="floating" id="graduationYear" isRequired >
-								<Input className='h-24' placeholder=" " type='number' {...register("graduationYear")} />
+								<Select placeholder='Select Graduation Year' {...register("graduationYear")}>
+									<option value='2016'>2016</option>
+									<option value='2017'>2017</option>
+									<option value='2018'>2018</option>
+									<option value='2019'>2019</option>
+									<option value='2020'>2020</option>
+									<option value='2021'>2021</option>
+									<option value='2022'>2022</option>
+									<option value='2023'>2023</option>
+									<option value='2024'>2024</option>
+									<option value='2025'>2025</option>
+									<option value='2026'>2026</option>
+								</Select>
 								<FormLabel>Graduation</FormLabel>
 							</FormControl>
-							<RadioGroup className='mb-6' onChange={setModeOfStudy} value={modeOfStudy}>
+
+							<RadioGroup
+								className='mb-6'
+								onChange={(val) => {
+									setModeOfStudy(val as ModeOfStudy);
+									setValue('modeOfStudy', val as ModeOfStudy);
+
+								}}
+								value={modeOfStudy}
+							>
 								<p className="text-aphonic">Preferred mode of learning?</p>
 								<Stack direction='row'>
 									<Radio value='Online'>Online</Radio>
