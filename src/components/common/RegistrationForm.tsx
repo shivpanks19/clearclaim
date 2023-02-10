@@ -28,8 +28,13 @@ type Inputs = {
 const RegistrationForm: React.FC<RegistrationFormProps> = ({ isOpen, onClose }) => {
 	const [modeOfStudy, setModeOfStudy] = React.useState('Online');
 	const { register, handleSubmit } = useForm<Inputs>();
-	const onSubmit: SubmitHandler<Inputs> = data => {
-		RegistrationService.postRegistrationForm(data);
+	const onSubmit: SubmitHandler<Inputs> = async (data) => {
+		(async () => {
+			await toast.promise(RegistrationService.postRegistrationForm(data), {
+				success: 'Thank you for registration!',
+				error: 'Something went wrong! Please try again!'
+			});
+		})();
 	};
 
 
