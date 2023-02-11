@@ -40,17 +40,10 @@ const CourseFAQ: React.FC<CourseFAQProps> = ({ courseName, faqList }) => {
 				</span>
 				?
 			</h2>
-			<div className='flex justify-between px-5 mb-12 md:mb-24 gap-5 h-96 w-full xl:w-76 transition-all max-w-76'>
+			<div className={styl.faqContainer}>
 				{faqList?.length > 0 && faqList.map((faq, idx) => (
 					<div
 						key={uuid()}
-
-						// className={`
-						// 	faqcard mb-3 pt-6 px-12 rounded hover:grow hover:w-6/12
-						// 	${bgList[idx]} 
-						// 	${activeIdx === idx ? ' grow w-6/12' : ''}
-						// 	${activeIdx !== idx ? ' flex-none w-32' : ''}
-						// `}
 						className={styl.faqcard}
 						onMouseEnter={() => handleHover(idx)}
 						style={{
@@ -59,8 +52,11 @@ const CourseFAQ: React.FC<CourseFAQProps> = ({ courseName, faqList }) => {
 
 					>
 						<div className={styl.question}>
-							<p className="text-price-yellow font-extrabold text-4xl lg:text-7xl">Q{idx + 1}</p>
-							<p className="text-lg md:text-2xl font-semibold pl-4 mb-2.5 text-white ">
+							<p className={styl.questionNumber}>Q{idx + 1}</p>
+							<p className={styl.questionText}>
+								{faq.question}
+							</p>
+							<p className={styl.questionText2}>
 								{faq.question}
 							</p>
 						</div>
