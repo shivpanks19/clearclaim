@@ -13,7 +13,7 @@ import { FAQ } from '@/services/course/types';
 const FaqList: React.FC<FaqListProps> = ({ headline, faqList }) => {
 	return (
 		<div className="shadow rounded-sm mx-5 md:mx-0">
-			<Accordion className='pt-8 md:pt-11 mb-8 md:mb-0'>
+			<Accordion allowToggle className='pt-8 md:pt-11 mb-8 md:mb-0'>
 				<p className="p text-xl md:text-2xl text-tertiary font-semibold text-center mb-8">
 					{headline}
 				</p>
