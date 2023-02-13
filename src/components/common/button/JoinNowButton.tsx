@@ -17,6 +17,7 @@ const JoinNowButton: React.FC<JoinNowButtonProps> = ({ className }) => {
 			variant='bg-transparent'
 			rounded='rounded-sm'
 			className={classNames('px-5 py-3 grow', ...classNameList)}
+			onClick={onOpen}
 		>
 			<Text
 				variant='text-secondary'
