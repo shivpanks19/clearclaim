@@ -13,6 +13,7 @@ import AboutCourse from "@/components/courses/AboutCourse";
 import CourseSummary from "@/components/courses/CourseSummary";
 import FooterFaqList from "@/components/courses/[slug]/FooterFaqList";
 import BasePaySection from "@/components/courses/[slug]/BasePaySection";
+import CourseDetailFooterTop from "@/components/courses/[slug]/CourseDetailFooterTop";
 
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { CourseDetailPageInformation } from '@/services/course/types';
@@ -90,7 +91,7 @@ const CourseDetailPage: NextPage<CourseDetailPageProps> = ({ course, courseDetai
 			/>
 
 			{/* Footer */}
-			<Footer />
+			<Footer showFooterTop={true} />
 		</div>
 	);
 };

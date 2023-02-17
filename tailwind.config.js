@@ -103,6 +103,7 @@ module.exports = {
       },
       spacing: {
         '13': '52px',
+        '100': '400px',
       },
       padding: {
         '115': '460px'

@@ -66,7 +66,7 @@ const CourseCard: React.FC<CourseCardProps> = ({ courseName, description, number
 			)}
 			<div className="px-5 pb-5">
 				<Link
-					href='/courses/1'
+					href={`/courses/${slug}`}
 					className='md:hidden w-full md:w-auto'
 				>
 					<button className='join-btn bg-tertiary text-white px-5 md:px-10 py-3 md:py-5 rounded w-full md:w-40'>Join Now</button>

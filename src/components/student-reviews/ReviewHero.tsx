@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { ImageType } from "@/utils/types";
+import SocialButtonList from '@/components/common/SocialButtonList';
 
 const ReviewHeroSection: React.FC<ReviewHeroSectionProps> = ({
 	headline,
@@ -29,13 +30,14 @@ const ReviewHeroSection: React.FC<ReviewHeroSectionProps> = ({
 					{heroImage?.url && (
 						<Image
 							src={heroImage.url}
-							width={577}
-							height={466}
+							width={496}
+							height={500}
 							alt='Hero Image'
 						/>
 					)}
 				</div>
 			</div>
+			<SocialButtonList />
 		</div>
 	)
 };

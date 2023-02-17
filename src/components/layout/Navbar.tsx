@@ -5,14 +5,12 @@ import {
 	navItems
 } from '@/data/staticData';
 import Text from '@/elements/Text';
-import Colors from '@/styles/colors';
+import { useRouter } from 'next/router';
 import { Popover } from '@headlessui/react';
 import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
-import { HiMenu } from 'react-icons/hi';
 import Image from 'next/image';
-import debounce from 'lodash.debounce';
 /*
  * TODO: Navbar toggle view breakpoint issue investigation
  * Ideally we need `md` as view toggle break-point
@@ -20,10 +18,11 @@ import debounce from 'lodash.debounce';
  * To tackle that issue view toggle break-point is set to `lg`
  * To change break-point - change all `lg:` prefixed classes to `md:` prefixed here and in MobileViewNavbar component
  */
-const Navbar: React.FC<NavbarProps> = ({ invertColors }) => {
+const Navbar: React.FC<NavbarProps> = () => {
 	const { t } = useTranslation();
 	const [isMobileNavbarVisible, setIsMobileNavbarVisible] = useState(false);
 	const [navBg, setNavBg] = useState('bg-lightblue');
+	const { asPath } = useRouter();
 
 	const toggleNavbar = () => {
 		if (isMobileNavbarVisible) {
@@ -91,11 +90,11 @@ const Navbar: React.FC<NavbarProps> = ({ invertColors }) => {
 											target={item.target}
 										>
 											<Text
-												className={`text-secondary ${item.className && item.className}`}
-												fontWeight='font-medium'
+												className={`font-medium relative text-secondary grid place-items-center ${item.className && item.className} ${item.link === asPath && 'text-tertiary'}`}
 												cursor='cursor-pointer'
 											>
 												{item.title}
+												<span className={`${item.link === asPath && 'w-10 h-1 mx-auto rounded bg-tertiary'}`}></span>
 											</Text>
 										</Link>
 									);

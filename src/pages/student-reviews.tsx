@@ -49,6 +49,7 @@ const StudentReviewPage: NextPage<StudentReviewPageProps> = ({
 				headline={achievementHeadline}
 				subHeadline={achievementSubHeadline}
 				placementList={placementList}
+				showReadMore={false}
 			/>
 
 			{/* Student Reviews */}
@@ -56,6 +57,7 @@ const StudentReviewPage: NextPage<StudentReviewPageProps> = ({
 				headline={reviewHeadline}
 				subHeadline={reviewSubHeadline}
 				reviewList={reviewList}
+				showReadMore={false}
 			/>
 
 			{/* Coding Bootcamp */}

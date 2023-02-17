@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
-
 import { useTranslation } from 'next-i18next';
+import SocialButtonList from '@/components/common/SocialButtonList';
 
 const CourseHeroSection: React.FC<CourseHeroSectionProps> = ({ headline1, headline2, subHeadline }) => {
 	const { t } = useTranslation();
@@ -36,6 +36,7 @@ const CourseHeroSection: React.FC<CourseHeroSectionProps> = ({ headline1, headli
 					/>
 				</div>
 			</div>
+			<SocialButtonList />
 		</div>
 	)
 };

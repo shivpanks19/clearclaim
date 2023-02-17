@@ -1,8 +1,7 @@
 import React from "react";
 import Image from "next/image";
-import Text from '@/elements/Text';
-
 import { useTranslation } from 'next-i18next';
+import SocialButtonList from '@/components/common/SocialButtonList';
 
 const ContactHeroSection: React.FC<ContactHeroSectionProps> = () => {
 	const { t } = useTranslation();
@@ -30,13 +29,14 @@ const ContactHeroSection: React.FC<ContactHeroSectionProps> = () => {
 				</div>
 				<div className='flex flex-col mb-8'>
 					<Image
-						src='/img/chat.png'
-						width={159}
-						height={268}
+						src='/img/contact_us.png'
+						width={466}
+						height={405}
 						alt='Hero Image'
 					/>
 				</div>
 			</div>
+			<SocialButtonList />
 		</div>
 	)
 };

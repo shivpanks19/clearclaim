@@ -6,6 +6,7 @@ import Button from '@/elements/Button';
 import StatSection from '@/components/common/Stat';
 import HumanRiver from '@/components/index/HumanRiver';
 import WorkshopButton from '@/components/common/button/WorkshopButton';
+import SocialButtonList from '@/components/common/SocialButtonList';
 
 import { useTranslation } from 'next-i18next';
 
@@ -109,6 +110,7 @@ const HomeHeroSection: React.FC<HomeHeroSectionProps> = ({ headline, subHeadline
 				workshopsConducted={workshopsConducted}
 				placementDrives={placementDrives}
 			/>
+			<SocialButtonList />
 		</div>
 	)
 };
