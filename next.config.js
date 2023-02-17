@@ -4,10 +4,6 @@ const {i18n} = require('./next-i18next.config');
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  paths: {
-    "@/comp/": ["components/"],
-    "@/styl/": ["styles/"]
-  },
   poweredByHeader: false,
 
   // Ref for i18n config https://nextjs.org/docs/advanced-features/i18n-routing
