@@ -6,7 +6,7 @@ module.exports = {
 			watch: false,
 			force: true,
 			env: {
-				PORT: 443,
+				PORT: 3000,
 				NEXT_PUBLIC_REST_SERVER_BASE_URL: 'https://goldfish-app-ieflq.ondigitalocean.app/api'
 			},
 		},
