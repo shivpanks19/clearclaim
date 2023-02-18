@@ -34,13 +34,12 @@ const Navbar: React.FC<NavbarProps> = () => {
 
 	useEffect(() => {
 		const scrollHandler = () => {
-			if (scrollY > 0) {
+			if (window.scrollY > 0) {
 				setNavBg('bg-white shadow-navbar')
 			} else {
 				setNavBg('bg-lightblue')
 			}
-			console.log(scrollY);
-		};
+		}
 		window.addEventListener('scroll', scrollHandler);
 		return (window.removeEventListener('scroll', scrollHandler));
 	}, [])

@@ -7,7 +7,7 @@ const CourseInfoNav: React.FC<CourseInfoNavProps> = () => {
 	const router = useRouter();
 	const localLink = router.asPath.split('#')[1];
 	return (
-		<div className=' gap-8 items-center mb-5 mx-auto sticky top-16 bg-white shadow-courseDetailNav py-4 pt-8 lg:pt-12 w-screen z-20'>
+		<div className=' gap-8 items-center mb-5 mx-auto sticky top-0 bg-white shadow-courseDetailNav py-4  w-screen z-30'>
 			<div className="hidden lg:flex w-full justify-between place-items-center xl:w-76 mx-auto">
 				<Link href='#course-overview'>
 					<p className={`font-bold ${localLink === 'course-overview' ? 'text-tertiary' : 'text-primary'}`}>Course Overview</p>

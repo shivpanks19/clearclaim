@@ -1,5 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
+import Routes from '@/utils/routes';
 import CourseDetailFooterTop from "@/components/courses/[slug]/CourseDetailFooterTop";
 
 const Footer: React.FC<FooterProps> = ({ showFooterTop }) => {
@@ -65,29 +67,44 @@ const Footer: React.FC<FooterProps> = ({ showFooterTop }) => {
 							<p className="text-sm md:text-xl font-semibold text-white">
 								Tap Academy
 							</p>
-							<p className="text-xs md:text-base text-gray2">
-								Blogs
-							</p>
-							<p className="text-xs md:text-base text-gray2">
-								About us
-							</p>
-							<p className="text-xs md:text-base text-gray2">
-								Contact us
-							</p>
+							<Link href={Routes.blogs().pathname}>
+								<p className="text-xs md:text-base text-gray2">
+									Blogs
+								</p>
+							</Link>
+							<Link href={Routes.aboutUs().pathname}>
+								<p className="text-xs md:text-base text-gray2">
+									About us
+								</p>
+							</Link>
+							<Link href={Routes.contactUs().pathname}>
+								<p className="text-xs md:text-base text-gray2">
+									Contact us
+								</p>
+							</Link>
 						</div>
 						<div className="navGrp flex flex-col gap-3">
 							<p className="text-sm md:text-xl font-semibold text-white">
-								Policies
+								Links
 							</p>
-							<p className="text-xs md:text-base text-gray2">
-								Privacy Policies
-							</p>
-							<p className="text-xs md:text-base text-gray2">
-								Terms & Conditions
-							</p>
-							<p className="text-xs md:text-base text-gray2">
-								Refund / Cancellations
-							</p>
+							<Link href={Routes.courses().pathname}>
+								<p className="text-xs md:text-base text-gray2">
+									Courses
+								</p>
+							</Link>
+
+							<Link href={Routes.records().pathname}>
+								<p className="text-xs md:text-base text-gray2">
+									Records
+								</p>
+							</Link>
+
+							<Link href={Routes.studentReviews().pathname}>
+								<p className="text-xs md:text-base text-gray2">
+									Student Reviews
+								</p>
+							</Link>
+
 						</div>
 					</div>
 					<div className="col col-span-8">

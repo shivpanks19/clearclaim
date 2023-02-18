@@ -14,6 +14,30 @@ const blogs = (page?: number): UrlObject => {
 	};
 };
 
+const aboutUs = (): UrlObject => {
+	return {
+		pathname: '/about-us'
+	};
+};
+
+const courses = (): UrlObject => {
+	return {
+		pathname: '/courses'
+	};
+};
+
+const records = (): UrlObject => {
+	return {
+		pathname: '/records'
+	};
+};
+
+const studentReviews = (): UrlObject => {
+	return {
+		pathname: '/student-reviews'
+	};
+};
+
 const blogsByCategory = (category: ContentCategory, page?: number): UrlObject => {
 	return {
 		pathname: `/blogs/${category.slug}`,
@@ -36,7 +60,11 @@ const portfolios = (page?: number): UrlObject => {
 
 const Routes = {
 	contactUs,
+	aboutUs,
 	blogs,
+	courses,
+	records,
+	studentReviews,
 	blogsByCategory,
 	blog,
 	portfolios
