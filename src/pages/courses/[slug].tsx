@@ -1,4 +1,4 @@
-import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
+import { GetServerSideProps, NextPage } from 'next';
 
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
@@ -8,12 +8,11 @@ import CourseInfoNav from '@/components/courses/CourseInfoNav';
 import CourseCurriculumSection from '@/components/courses/CourseCurriculum/CourseCurriculum';
 import CourseDetailHeroSection from '@/components/courses/CourseDetailHero';
 import WhyUsSection from '@/components/common/why-us/WhyUs';
-import AchievementSection from '@/components/common/placement-list/PlacementList';
+import PlacementList from '@/components/common/placement-list/PlacementList';
 import AboutCourse from "@/components/courses/AboutCourse";
 import CourseSummary from "@/components/courses/CourseSummary";
 import FooterFaqList from "@/components/courses/[slug]/FooterFaqList";
 import BasePaySection from "@/components/courses/[slug]/BasePaySection";
-import CourseDetailFooterTop from "@/components/courses/[slug]/CourseDetailFooterTop";
 
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { CourseDetailPageInformation } from '@/services/course/types';
@@ -24,7 +23,7 @@ import { Course } from '@/services/course/types';
 import { Placement } from '@/services/placement/types';
 import { FAQ } from '@/services/course/types';
 
-const CourseDetailPage: NextPage<CourseDetailPageProps> = ({ course, courseDetailPageInfo, placementList, faqList1, faqList2 }) => {
+const CourseDetailPage: NextPage<CourseDetailPageProps> = ({ course, courseDetailPageInfo, placementList, faqList1, faqList2, placementPagination }) => {
 	return (
 		<div>
 			<Navbar />
@@ -70,10 +69,11 @@ const CourseDetailPage: NextPage<CourseDetailPageProps> = ({ course, courseDetai
 			/>
 
 			{/* Achievements */}
-			<AchievementSection
+			<PlacementList
 				headline={courseDetailPageInfo.achievementHeadline}
 				subHeadline={courseDetailPageInfo.achievementSubHeadline}
 				placementList={placementList}
+				placementPagination={placementPagination}
 			/>
 
 			{/* Value for money */}
@@ -100,18 +100,19 @@ type CourseDetailPageProps = {
 	course: Course;
 	courseDetailPageInfo: CourseDetailPageInformation;
 	placementList: Placement[];
+	placementPagination: Record<string, number>;
 	faqList1: FAQ[];
 	faqList2: FAQ[];
 };
 
-export const getStaticProps: GetStaticProps = async ({
+export const getServerSideProps: GetServerSideProps = async ({
 	locale,
-	params
+	params,
+	query
 }: Record<string, any>) => {
 	const courseDetailPageInfo = await CourseService.getCourseDetailPageInformation(locale);
 	const course = await CourseService.getCourseBySlug(params.slug, locale);
-	const placementList = await PlacementService.getPlacementList(locale, '*');
-	console.log('course', course);
+	const placementList = await PlacementService.getPlacementList(locale, '*', query?.placementPage);
 	return {
 		props: {
 			course: {
@@ -126,27 +127,14 @@ export const getStaticProps: GetStaticProps = async ({
 				companyImage: placement.attributes.companyImage?.data.attributes,
 				studentImage: placement.attributes.studentImage?.data.attributes,
 			})),
+			placementPagination: placementList.meta.pagination,
 			courseDetailPageInfo: courseDetailPageInfo?.data?.attributes,
 			faqList1: course.data?.attributes.footerFaq?.length ? course.data?.attributes.footerFaq[0] : [],
 			faqList2: course.data?.attributes.footerFaq?.length ? course.data?.attributes.footerFaq[1] : [],
 			...(await serverSideTranslations(locale, ['common', 'course-detail-page']))
-		},
-		revalidate: 60
+		}
 	};
 };
 
-export const getStaticPaths: GetStaticPaths = async () => {
-	let paths = [];
-	try {
-		const courseList = await CourseService.getCourseList();
-		paths = courseList.data.map((course) => ({ params: { slug: course.attributes.slug } }))
-	} catch (error) {
-		console.log(error);
-	}
-	return {
-		paths,
-		fallback: false
-	}
-};
 
 export default CourseDetailPage;

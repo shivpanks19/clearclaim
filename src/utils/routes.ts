@@ -26,6 +26,12 @@ const courses = (): UrlObject => {
 	};
 };
 
+const courseDetail = (slug: string): UrlObject => {
+	return {
+		pathname: `/courses/${slug}`
+	};
+};
+
 const records = (): UrlObject => {
 	return {
 		pathname: '/records'
@@ -63,6 +69,7 @@ const Routes = {
 	aboutUs,
 	blogs,
 	courses,
+	courseDetail,
 	records,
 	studentReviews,
 	blogsByCategory,

@@ -1,10 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 import PlacementCard from '@/components/common/placement-list/PlacementCard';
 import SectionHeadline from '@/components/common/SectionHeadline';
 import { Placement } from '@/services/placement/types';
+import Pagination from '@/components/common/Pagination';
+import Routes from '@/utils/routes';
 
-const PlacementList: React.FC<PlacementListProps> = ({ headline, subHeadline, placementList, showReadMore = true }) => {
+const PlacementList: React.FC<PlacementListProps> = ({ headline, subHeadline, placementList, showReadMore = true, placementPagination }) => {
+	const [page, setPage] = useState(placementPagination.page);
+	const router = useRouter();
+
+	const handlePageChange = (pageNumber) => {
+		router.push({ query: { ...router.query, placementPage: pageNumber } }, undefined, { scroll: false });
+		setPage(pageNumber)
+	};
 	return (
 		<>
 			<a id='success-stories' />
@@ -13,10 +24,12 @@ const PlacementList: React.FC<PlacementListProps> = ({ headline, subHeadline, pl
 				subtitle={subHeadline}
 				className='mb-4 md:mb-10 mx-5'
 			/>
-			<div className="xl:w-76 mx-auto relative mb-14 md:mb-20 pt-10">
+			<div className="xl:w-76 mx-auto relative pt-10 mb-4">
 				{showReadMore && (
 					<div className='read_more absolute right-5 top-0 flex gap-3 align-middle'>
-						<p className="text-tertiary">Read more</p>
+						<Link href={Routes.studentReviews()}>
+							<p className="text-tertiary">Read more</p>
+						</Link>
 						<Image
 							src='/img/arrow_right_blue.png'
 							width={20}
@@ -41,6 +54,12 @@ const PlacementList: React.FC<PlacementListProps> = ({ headline, subHeadline, pl
 					))}
 				</div>
 			</div>
+			<Pagination
+				className='mb-14 md:mb-20'
+				totalPageCount={placementPagination.pageCount}
+				currentPage={page}
+				onPageChange={handlePageChange}
+			/>
 		</>
 	)
 };
@@ -50,6 +69,7 @@ type PlacementListProps = {
 	subHeadline: string;
 	placementList: Placement[];
 	showReadMore?: boolean;
+	placementPagination: Record<string, number>;
 };
 
 export default PlacementList;

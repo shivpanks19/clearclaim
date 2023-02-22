@@ -1,4 +1,4 @@
-import { GetStaticProps, NextPage } from 'next';
+import { GetServerSideProps, NextPage } from 'next';
 
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
@@ -28,7 +28,7 @@ import { HomePageInformation } from '@/services/home/types';
 import { Review } from '@/services/review/types';
 import { Recruiter } from '@/services/recruiter/types';
 
-const Home: NextPage<HomePageProps> = ({ homeInfo, courseList, placementList, reviewList, recruiterList }) => {
+const Home: NextPage<HomePageProps> = ({ homeInfo, courseList, placementList, reviewList, recruiterList, reviewPagination, placementPagination }) => {
 
 	return (
 		<div>
@@ -67,17 +67,21 @@ const Home: NextPage<HomePageProps> = ({ homeInfo, courseList, placementList, re
 			<CorporateProgramSection />
 
 			{/* Achievements */}
-			{placementList?.length > 0 && (<PlacementList
-				headline={homeInfo.achievementHeadline}
-				subHeadline={homeInfo.achievementSubHeadline}
-				placementList={placementList}
-			/>)}
+			{placementList?.length > 0 && (
+				<PlacementList
+					headline={homeInfo.achievementHeadline}
+					subHeadline={homeInfo.achievementSubHeadline}
+					placementList={placementList}
+					placementPagination={placementPagination}
+				/>
+			)}
 
 			{/* Student Reviews */}
 			<ReviewSection
 				headline={homeInfo.reviewHeadline}
 				subHeadline={homeInfo.reviewSubHeadline}
 				reviewList={reviewList}
+				reviewPagination={reviewPagination}
 			/>
 
 			{/* Coding Bootcamp */}
@@ -122,17 +126,19 @@ type HomePageProps = {
 	homeInfo: HomePageInformation;
 	courseList: Course[];
 	placementList: Placement[];
+	placementPagination: Record<string, number>;
 	reviewList: Review[];
+	reviewPagination: Record<string, number>;
 	recruiterList: Recruiter[];
 }
 
-export const getStaticProps: GetStaticProps = async ({
-	locale
+export const getServerSideProps: GetServerSideProps = async ({
+	locale, query
 }: Record<string, any>) => {
 	const homeInfo = await HomeService.getHomePageInformation(locale);
 	const courseList = await CourseService.getCourseList(locale, '*');
-	const placementList = await PlacementService.getPlacementList(locale, '*');
-	const reviewList = await ReviewService.getReviewList(locale, '*');
+	const placementList = await PlacementService.getPlacementList(locale, '*', query?.placementPage);
+	const reviewList = await ReviewService.getReviewList(locale, '*', query?.reviewPage);
 	const recruiterList = await RecruiterService.getRecruiterList(locale, '*');
 
 	return {
@@ -148,19 +154,20 @@ export const getStaticProps: GetStaticProps = async ({
 				companyImage: placement.attributes.companyImage?.data.attributes,
 				studentImage: placement.attributes.studentImage?.data.attributes,
 			})),
+			placementPagination: placementList.meta.pagination,
 			reviewList: reviewList.data.map((review) => ({
 				...review.attributes,
 				id: review.id,
 				studentImage: review.attributes.studentImage?.data.attributes,
 			})),
+			reviewPagination: reviewList.meta.pagination,
 			recruiterList: recruiterList.data.map((recruiter) => ({
 				...recruiter.attributes,
 				id: recruiter.id,
 				recruiterImage: recruiter.attributes.recruiterImage?.data[0].attributes,
 			})),
 			...(await serverSideTranslations(locale, ['common', 'home']))
-		},
-		revalidate: 60
+		}
 	};
 };
 

@@ -1,4 +1,4 @@
-import { GetStaticProps, NextPage } from 'next';
+import { GetServerSideProps, NextPage } from 'next';
 
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
@@ -16,7 +16,7 @@ import ReviewService from '@/services/review';
 import { Course } from '@/services/course/types';
 import { Review } from '@/services/review/types';
 
-const courseListPage: NextPage<courseListPageProps> = ({ courseListPageInfo, courseList, reviewList }) => {
+const courseListPage: NextPage<courseListPageProps> = ({ courseListPageInfo, courseList, reviewList, reviewPagination }) => {
 	return (
 		<div>
 			<Navbar />
@@ -52,6 +52,7 @@ const courseListPage: NextPage<courseListPageProps> = ({ courseListPageInfo, cou
 				headline={courseListPageInfo.reviewHeadline}
 				subHeadline={courseListPageInfo.reviewSubHeadline}
 				reviewList={reviewList}
+				reviewPagination={reviewPagination}
 			/>
 
 			{/* Footer */}
@@ -64,14 +65,16 @@ type courseListPageProps = {
 	courseList: Course[];
 	courseListPageInfo: CourseListPageInformation;
 	reviewList: Review[];
+	reviewPagination: Record<string, number>;
 }
 
-export const getStaticProps: GetStaticProps = async ({
-	locale
+export const getServerSideProps: GetServerSideProps = async ({
+	locale,
+	query
 }: Record<string, any>) => {
 	const courseListPageInfo = await CourseService.getCourseListPageInformation(locale);
 	const courseList = await CourseService.getCourseList(locale, '*');
-	const reviewList = await ReviewService.getReviewList(locale, '*');
+	const reviewList = await ReviewService.getReviewList(locale, '*', query?.reviewPage);
 
 	return {
 		props: {
@@ -84,10 +87,10 @@ export const getStaticProps: GetStaticProps = async ({
 				id: review.id,
 				studentImage: review.attributes.studentImage?.data.attributes,
 			})),
+			reviewPagination: reviewList.meta.pagination,
 			courseListPageInfo: courseListPageInfo?.data?.attributes,
 			...(await serverSideTranslations(locale, ['common', 'course-list-page']))
-		},
-		revalidate: 60
+		}
 	};
 };
 
