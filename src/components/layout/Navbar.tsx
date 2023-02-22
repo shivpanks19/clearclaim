@@ -103,7 +103,7 @@ const Navbar: React.FC<NavbarProps> = () => {
 												<PopoverContent>
 													<PopoverBody padding={0}>
 														{item.subLinks.map((item, index) => (
-															<p className='py-3 hover:bg-lightblue font-semibold text-lg'>
+															<p className='py-3 hover:bg-lightblue font-semibold text-lg' key={item.id}>
 																<Link
 																	key={index}
 																	href={item.link}
