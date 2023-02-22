@@ -10,13 +10,14 @@ type GetBlogsParams = {
 	contentCategory: Id;
 };
 
-function getBlogsStaticData(): Promise<TBlogListPageData> {
-	return get(Services.getBlogsPageStaticData);
+function getBlogsStaticData(locale?: string, populate?: string): Promise<Record<string, any>> {
+	return get(Services.getBlogsPageStaticData, { _locale: locale, populate });
 }
 
-function getBlogs(_locale?: string, params?: Partial<GetBlogsParams>): Promise<Array<Blog>> {
+function getBlogs(_locale?: string, populate?: string, params?: Partial<GetBlogsParams>): Promise<Record<string, any>> {
 	return get(Services.getBlogs, {
 		_locale,
+		populate,
 		_start: params?.start,
 		_limit: params?.limit,
 		_sort: params?.latest ? 'updated_at:desc' : undefined,
@@ -42,7 +43,7 @@ function getBlogCategories(_locale?: string): Promise<Array<ContentCategory>> {
 	return get(Services.getBlogCategories, { _locale });
 }
 
-const BlogsService = {
+const BlogService = {
 	getBlogs,
 	getBlogById,
 	getBlogBySlug,
@@ -51,4 +52,4 @@ const BlogsService = {
 	getBlogsStaticData
 };
 
-export default BlogsService;
+export default BlogService;

@@ -17,7 +17,9 @@ module.exports = {
       },
       width: {
         35: '35rem',
-        76: '76rem'
+        76: '76rem',
+        108: '27rem',
+        256: '64rem'
       },
       height: {
         45: '45rem',
@@ -28,6 +30,13 @@ module.exports = {
       fontSize: {
         "xxs": [
           "8px",
+          {
+            letterSpacing: "0.04em",
+            lineHeight: "160%",
+          },
+        ],
+        "base": [
+          "16px",
           {
             letterSpacing: "0.04em",
             lineHeight: "160%",
@@ -44,6 +53,13 @@ module.exports = {
           "30px",
           {
             letterSpacing: "0.035em",
+            lineHeight: "140%",
+          },
+        ],
+        "4xl": [
+          "36px",
+          {
+            letterSpacing: "0.04em",
             lineHeight: "140%",
           },
         ]
@@ -79,6 +95,7 @@ module.exports = {
         primary4: "#3f3f3fa1",
         title: "rgba(13, 61, 84, 0.79)",
         desc: "rgba(63, 63, 63, 0.63)",
+        desc2: "rgba(63, 63, 63, 0.83)",
         secondary: "rgba(13, 61, 84, 0.89)",
         tertiary: "#0D87D4",
         muted: "#919191",

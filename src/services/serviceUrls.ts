@@ -27,7 +27,7 @@ const Services = {
 	getBlogs: 'blogs',
 	getBlog: 'blogs',
 	getBlogsCount: 'blogs/count',
-	getBlogsPageStaticData: 'blog-list-page-data',
+	getBlogsPageStaticData: 'blog-list-page',
 
 
 	getBlogCategories: 'content-categories',

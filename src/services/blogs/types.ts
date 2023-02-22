@@ -17,7 +17,7 @@ export type Blog = {
 	content: string;
 	readingTime: number;
 	recommendedBlogs: Array<Blog>;
-	createdAt: Date;
+	publishedAt: Date;
 	updatedAt: Date;
 };
 export type TBlogListPageData = {
