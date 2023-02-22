@@ -1,12 +1,15 @@
 import Logo from '@/components/common/Logo';
 import MobileViewNavbar from '@/components/layout/MobileViewNavbar';
 import JoinNowButton from '@/components/common/button/JoinNowButton';
-import {
-	navItems
-} from '@/data/staticData';
+import { navItems } from '@/data/staticData'
 import Text from '@/elements/Text';
 import { useRouter } from 'next/router';
-import { Popover } from '@headlessui/react';
+import {
+	Popover,
+	PopoverTrigger,
+	PopoverContent,
+	PopoverBody
+} from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
@@ -77,29 +80,67 @@ const Navbar: React.FC<NavbarProps> = () => {
 								</div>
 							</div>
 
-							<Popover.Group
-								as='nav'
-								className='hidden lg:flex space-x-16 text-secondary'
-							>
+							<nav className='hidden lg:flex space-x-16 text-secondary'>
 								{navItems.map((item, index) => {
-									return (
-										<Link
-											key={index}
-											href={item.link}
-											target={item.target}
-										>
-											<Text
-												className={`font-medium relative text-secondary grid place-items-center ${item.className && item.className} ${item.link === asPath && 'text-tertiary'}`}
-												cursor='cursor-pointer'
+									return (<>
+										{item.subLinks?.length > 0 ? (
+											<Popover trigger='hover'>
+												<PopoverTrigger>
+													<Link
+														key={index}
+														href={item.link}
+														target={item.target}
+													>
+														<Text
+															className={`font-medium relative text-secondary grid place-items-center ${item.className && item.className} ${item.link === asPath && 'text-tertiary'}`}
+															cursor='cursor-pointer'
+														>
+															{item.title}
+															<span className={`${item.link === asPath && 'w-10 h-1 mx-auto rounded bg-tertiary'}`}></span>
+														</Text>
+													</Link>
+												</PopoverTrigger>
+												<PopoverContent>
+													<PopoverBody padding={0}>
+														{item.subLinks.map((item, index) => (
+															<p className='py-3 hover:bg-lightblue font-semibold text-lg'>
+																<Link
+																	key={index}
+																	href={item.link}
+																	target={item.target}
+																>
+																	<Text
+																		className={`font-semibold relative text-secondary grid place-items-center ${item.className && item.className} ${item.link === asPath && 'text-tertiary'}`}
+																		cursor='cursor-pointer'
+																	>
+																		{item.title}
+																		<span className={`${item.link === asPath && 'w-10 h-1 mx-auto rounded bg-tertiary'}`}></span>
+																	</Text>
+																</Link>
+															</p>
+														))}
+													</PopoverBody>
+												</PopoverContent>
+											</Popover>
+										) : (
+											<Link
+												key={index}
+												href={item.link}
+												target={item.target}
 											>
-												{item.title}
-												<span className={`${item.link === asPath && 'w-10 h-1 mx-auto rounded bg-tertiary'}`}></span>
-											</Text>
-										</Link>
+												<Text
+													className={`font-medium relative text-secondary grid place-items-center ${item.className && item.className} ${item.link === asPath && 'text-tertiary'}`}
+													cursor='cursor-pointer'
+												>
+													{item.title}
+													<span className={`${item.link === asPath && 'w-10 h-1 mx-auto rounded bg-tertiary'}`}></span>
+												</Text>
+											</Link>
+										)}
+									</>
 									);
 								})}
-
-							</Popover.Group>
+							</nav>
 							<div className='hidden lg:flex items-center justify-end'>
 								<JoinNowButton className='w-full' />
 							</div>
