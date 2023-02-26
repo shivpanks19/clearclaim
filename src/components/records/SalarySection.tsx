@@ -1,11 +1,14 @@
 import React from 'react';
 import Image from 'next/image';
+import { SalaryCardType } from '@/services/record-page/types';
 import SalaryCard from '@/components/records/SalaryCard';
 import SectionHeadline from '@/components/common/SectionHeadline';
+import { uuid } from 'uuidv4';
 
 const SalarySection: React.FC<SalarySectionProps> = ({
 	headline,
-	subHeadline
+	subHeadline,
+	salaryCardList
 }) => {
 	return (
 		<>
@@ -15,9 +18,18 @@ const SalarySection: React.FC<SalarySectionProps> = ({
 				className=' mx-5'
 			/>
 			<div className="xl:w-76 mx-auto relative mb-12 md:mb-20 md:pt-10 cardContainer md:w-42 md:grid-cols-2 lg:grid-cols-3 md:gap-9 px-5 grid place-items-center">
-				<SalaryCard />
-				<SalaryCard />
-				<SalaryCard />
+				{
+					salaryCardList?.length && salaryCardList.map((salaryCard) => (
+						<SalaryCard
+							key={uuid()}
+							position={salaryCard.position}
+							numberOfSalaries={salaryCard.numberOfSalaries}
+							low={salaryCard.low}
+							high={salaryCard.high}
+							avg={salaryCard.avg}
+						/>
+					))
+				}
 			</div>
 		</>
 	)
@@ -26,6 +38,9 @@ const SalarySection: React.FC<SalarySectionProps> = ({
 type SalarySectionProps = {
 	headline: string;
 	subHeadline: string;
+	salaryCardList: SalaryCardType[];
 };
+
+
 
 export default SalarySection;

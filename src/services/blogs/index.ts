@@ -1,4 +1,4 @@
-import { Blog, ContentCategory, TBlogListPageData } from '@/services/blogs/types';
+import { Blog } from '@/services/blogs/types';
 import { get } from '@/services/serverConfig';
 import Services from '@/services/serviceUrls';
 import { Id } from '@/utils/types';
@@ -39,7 +39,7 @@ function getBlogsCount(contentCategory?: Id): Promise<number> {
 	return get(Services.getBlogsCount, { contentCategory });
 }
 
-function getBlogCategories(_locale?: string): Promise<Array<ContentCategory>> {
+function getBlogCategories(_locale?: string): Promise<Record<string, any>> {
 	return get(Services.getBlogCategories, { _locale });
 }
 

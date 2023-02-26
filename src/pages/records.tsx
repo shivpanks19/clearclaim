@@ -14,6 +14,7 @@ import RecruiterService from '@/services/recruiter';
 import { Recruiter } from '@/services/recruiter/types';
 import { Placement } from '@/services/placement/types';
 import { ImageType } from '@/utils/types';
+import { SalaryCardType } from '@/services/record-page/types';
 
 const RecordPage: NextPage<RecordPageProps> = ({
 	headline,
@@ -25,7 +26,8 @@ const RecordPage: NextPage<RecordPageProps> = ({
 	salarySubHeadline,
 	newsHeadline,
 	newsSubHeadline,
-	recruiterList
+	recruiterList,
+	salaryCardList
 }) => {
 	return (
 		<div>
@@ -49,6 +51,7 @@ const RecordPage: NextPage<RecordPageProps> = ({
 			<SalarySection
 				headline={salaryHeadline}
 				subHeadline={salarySubHeadline}
+				salaryCardList={salaryCardList}
 			/>
 
 			{/* News */}
@@ -75,6 +78,7 @@ type RecordPageProps = {
 	newsSubHeadline: string;
 	placementList: Placement[];
 	recruiterList: Recruiter[];
+	salaryCardList: SalaryCardType[];
 };
 
 export const getStaticProps: GetStaticProps = async ({
@@ -82,7 +86,7 @@ export const getStaticProps: GetStaticProps = async ({
 }: Record<string, any>) => {
 	const recordPageInfo = await RecordPageService.getRecordPageInformation(locale, '*');
 	const recruiterList = await RecruiterService.getRecruiterList(locale, '*');
-
+	console.log('rec', recordPageInfo.data.attributes.salaryCardList);
 	return {
 		props: {
 			...recordPageInfo.data.attributes,

@@ -7,7 +7,7 @@ module.exports = {
 			force: true,
 			env: {
 				PORT: 3000,
-				NEXT_PUBLIC_REST_SERVER_BASE_URL: 'https://goldfish-app-ieflq.ondigitalocean.app/api'
+				NEXT_PUBLIC_REST_SERVER_BASE_URL: 'https://admin.thetapacademy.com/api'
 			},
 		},
 	],

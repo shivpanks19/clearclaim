@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SalaryBars: React.FC<SalaryBarsProps> = () => {
+const SalaryBars: React.FC<SalaryBarsProps> = ({ low, high }) => {
 	return (
 		<div className="">
 			<div className='w-full flex my-3 md:my-8 justify-between items-baseline'>
@@ -13,11 +13,11 @@ const SalaryBars: React.FC<SalaryBarsProps> = () => {
 			</div>
 			<div className="limits flex justify-between">
 				<div className="flex flex-col items-center">
-					<p className="lowerlimit text-xs text-primary">₹ 5 LPA</p>
+					<p className="lowerlimit text-xs text-primary">₹ {low} LPA</p>
 					<p className="lowerlimit text-xs text-primary">LOW</p>
 				</div>
 				<div className="flex flex-col items-center">
-					<p className="upperlimit text-xs text-primary">₹ 22 LPA</p>
+					<p className="upperlimit text-xs text-primary">₹ {high} LPA</p>
 					<p className="upperlimit text-xs text-primary">HIGH</p>
 				</div>
 			</div>
@@ -26,6 +26,9 @@ const SalaryBars: React.FC<SalaryBarsProps> = () => {
 	)
 };
 
-type SalaryBarsProps = {};
+type SalaryBarsProps = {
+	low: number;
+	high: number;
+};
 
 export default SalaryBars;

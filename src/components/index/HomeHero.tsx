@@ -84,18 +84,18 @@ const HomeHeroSection: React.FC<HomeHeroSectionProps> = ({ headline, subHeadline
 					<div className='trust flex flex-col place-items-center pt-7 z-10 bg-lightblue'>
 						<div className='flex gap-2' style={{ alignItems: 'flex-end' }}>
 							<Text
-								className='text-primary text-2xl md:text-3xl'
+								className='text-primary '
 							>
 								Trusted by
 							</Text>
 							<Text
-								className='text-tertiary text-2xl'
+								className='text-tertiary md:text-4xl'
 								fontWeight='font-bold'
 							>
 								{studentsTrained}+
 							</Text>
 							<Text
-								className='text-primary text-2xl md:text-3xl'
+								className='text-primary'
 							>
 								students
 							</Text>

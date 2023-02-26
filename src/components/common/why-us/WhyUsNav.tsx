@@ -29,9 +29,9 @@ const WhyUsNav: React.FC<WhyUsNavProps> = () => {
 							src='/img/project-collaboration.png'
 							width={79}
 							height={79}
-							alt='Project Collaboration'
+							alt='Mock interviews'
 						/>
-						<p className='text-xl font-semibold'>Project Collaboration</p>
+						<p className='text-xl font-semibold'>Mock interviews</p>
 					</div>
 				</WhyUsTab>
 				<WhyUsTab>
@@ -40,9 +40,9 @@ const WhyUsNav: React.FC<WhyUsNavProps> = () => {
 							src='/img/interview-experiences.png'
 							width={75}
 							height={66}
-							alt='Interview Experiences'
+							alt='Competitive coding'
 						/>
-						<p className='text-xl font-semibold'>Authentic Interview Experiences</p>
+						<p className='text-xl font-semibold'>Competitive coding</p>
 					</div>
 				</WhyUsTab>
 				<WhyUsTab>
@@ -53,7 +53,7 @@ const WhyUsNav: React.FC<WhyUsNavProps> = () => {
 							height={75}
 							alt='Competitive Coding'
 						/>
-						<p className='text-xl font-semibold'>Competitive Coding</p>
+						<p className='text-xl font-semibold'>Major Announcements</p>
 					</div>
 				</WhyUsTab>
 				<WhyUsTab bottomTab>
@@ -64,7 +64,7 @@ const WhyUsNav: React.FC<WhyUsNavProps> = () => {
 							height={60}
 							alt='Major Accouncements'
 						/>
-						<p className='text-xl font-semibold'>Major Accouncements</p>
+						<p className='text-xl font-semibold'>24/7 LMS Access</p>
 					</div>
 				</WhyUsTab>
 			</TabList>
