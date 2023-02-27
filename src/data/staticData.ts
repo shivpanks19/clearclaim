@@ -19,10 +19,11 @@ export const navItems: Array<NavItem> = [
 			{ id: 2, title: 'Data structures and Algorithms', link: '/courses/data-structure-and-algorithms', target: '_blank' }
 		]
 	},
-	{ id: 2, title: 'Records', link: '/records', target: '_self' },
-	{ id: 3, title: 'Student Reviews', link: '/student-reviews', target: '_self' },
-	{ id: 4, title: 'Contact Us', link: '/contact-us', target: '_self' },
-	{ id: 5, title: 'Blogs', link: '/blogs', target: '_self' }
+	{ id: 2, title: 'About Us', link: '/about-us', target: '_self' },
+	{ id: 3, title: 'Records', link: '/records', target: '_self' },
+	{ id: 4, title: 'Student Reviews', link: '/student-reviews', target: '_self' },
+	{ id: 5, title: 'Contact Us', link: '/contact-us', target: '_self' },
+	{ id: 6, title: 'Blogs', link: '/blogs', target: '_self' }
 ];
 
 // export const comingSoonHandler = (navItem: NavItem): void => {

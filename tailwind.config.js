@@ -18,6 +18,7 @@ module.exports = {
       width: {
         35: '35rem',
         76: '76rem',
+        90: '22.5rem',
         108: '27rem',
         120: '30rem',
         256: '64rem'
@@ -25,6 +26,7 @@ module.exports = {
       height: {
         45: '45rem',
         51: '51rem',
+        90: '22.5rem',
         120: '30rem',
         160: '40rem',
       },
@@ -111,8 +113,12 @@ module.exports = {
         DEFAULT: '#OD3D5426',
         primary2: "#0D3D54E3",
         yellow: '#f5c844',
-        tertiary: "#0D87D4"
+        tertiary: "#0D87D4",
+        white: "#fff"
       }),
+      borderWidth: {
+        '11': '44px'
+      },
       boxShadow: {
         DEFAULT: "0px 0px 6px 1px rgba(13, 61, 84, 0.07);",
         'navbar': '0px 4px 4px 0px rgba(13, 135, 212, 0.18)',

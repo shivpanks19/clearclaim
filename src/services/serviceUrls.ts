@@ -22,7 +22,7 @@ const Services = {
 	getClientServicesCategories: 'service-categories',
 	getServicePageStaticData: 'service-page-list-data',
 
-	getAboutUsSections: 'about-us',
+	getAboutUsInformation: 'about-us',
 
 	getBlogs: 'blogs',
 	getBlog: 'blogs',

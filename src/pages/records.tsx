@@ -5,7 +5,7 @@ import Footer from '@/components/layout/Footer';
 import RecruiterSection from '@/components/common/RecruiterList';
 import RecordHeroSection from '@/components/records/RecordHero';
 import SalarySection from '@/components/records/SalarySection';
-import NewsSection from '@/components/records/NewsSection';
+import NewsSection from '@/components/common/NewsSection';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 import RecordPageService from '@/services/record-page';
@@ -86,7 +86,6 @@ export const getStaticProps: GetStaticProps = async ({
 }: Record<string, any>) => {
 	const recordPageInfo = await RecordPageService.getRecordPageInformation(locale, '*');
 	const recruiterList = await RecruiterService.getRecruiterList(locale, '*');
-	console.log('rec', recordPageInfo.data.attributes.salaryCardList);
 	return {
 		props: {
 			...recordPageInfo.data.attributes,
