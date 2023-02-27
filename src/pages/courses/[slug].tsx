@@ -23,10 +23,12 @@ import { Course } from '@/services/course/types';
 import { Placement } from '@/services/placement/types';
 import { FAQ } from '@/services/course/types';
 
-const CourseDetailPage: NextPage<CourseDetailPageProps> = ({ course, courseDetailPageInfo, placementList, faqList1, faqList2, placementPagination }) => {
+const CourseDetailPage: NextPage<CourseDetailPageProps> = ({ course, courseDetailPageInfo, placementList, faqList1, faqList2, placementPagination, courseList }) => {
 	return (
 		<div>
-			<Navbar />
+			<Navbar
+				courseList={courseList}
+			/>
 			{/* Hero */}
 			<CourseDetailHeroSection
 				headline={course.courseName}
@@ -103,6 +105,7 @@ type CourseDetailPageProps = {
 	placementPagination: Record<string, number>;
 	faqList1: FAQ[];
 	faqList2: FAQ[];
+	courseList: Course[];
 };
 
 export const getServerSideProps: GetServerSideProps = async ({
@@ -113,6 +116,8 @@ export const getServerSideProps: GetServerSideProps = async ({
 	const courseDetailPageInfo = await CourseService.getCourseDetailPageInformation(locale);
 	const course = await CourseService.getCourseBySlug(params.slug, locale);
 	const placementList = await PlacementService.getPlacementList(locale, '*', query?.placementPage);
+	const courseList = await CourseService.getCourseList(locale, '*');
+
 	return {
 		props: {
 			course: {
@@ -131,6 +136,10 @@ export const getServerSideProps: GetServerSideProps = async ({
 			courseDetailPageInfo: courseDetailPageInfo?.data?.attributes,
 			faqList1: course.data?.attributes.footerFaq?.length ? course.data?.attributes.footerFaq[0] : [],
 			faqList2: course.data?.attributes.footerFaq?.length ? course.data?.attributes.footerFaq[1] : [],
+			courseList: courseList.data.map((course) => ({
+				...course.attributes,
+				id: course.id,
+			})),
 			...(await serverSideTranslations(locale, ['common', 'course-detail-page']))
 		}
 	};

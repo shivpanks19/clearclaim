@@ -13,7 +13,9 @@ import StudentReviewPageService from '@/services/student-reviews-page';
 import PlacementService from '@/services/placement';
 import ReviewService from '@/services/review';
 import RecruiterService from '@/services/recruiter';
+import CourseService from '@/services/course';
 
+import { Course } from '@/services/course/types';
 import { Placement } from '@/services/placement/types';
 import { Review } from '@/services/review/types';
 import { Recruiter } from '@/services/recruiter/types';
@@ -34,12 +36,15 @@ const StudentReviewPage: NextPage<StudentReviewPageProps> = ({
 	reviewSubHeadline,
 	placementPagination,
 	reviewPagination,
-	recruiterPagination
+	recruiterPagination,
+	courseList
 }) => {
 
 	return (
 		<div>
-			<Navbar />
+			<Navbar
+				courseList={courseList}
+			/>
 
 			{/* Review Hero */}
 			<ReviewHeroSection
@@ -100,6 +105,7 @@ type StudentReviewPageProps = {
 	placementPagination: Record<string, number>;
 	reviewPagination: Record<string, number>;
 	recruiterPagination: Record<string, number>;
+	courseList: Course[];
 };
 
 export const getServerSideProps: GetServerSideProps = async ({
@@ -110,6 +116,8 @@ export const getServerSideProps: GetServerSideProps = async ({
 	const placementList = await PlacementService.getPlacementList(locale, '*', query?.placementPage);
 	const reviewList = await ReviewService.getReviewList(locale, '*', query?.reviewPage);
 	const recruiterList = await RecruiterService.getRecruiterList(locale, '*');
+	const courseList = await CourseService.getCourseList(locale, '*');
+
 	return {
 		props: {
 			...studentReviewPageInfo.data.attributes,
@@ -133,6 +141,10 @@ export const getServerSideProps: GetServerSideProps = async ({
 				recruiterImage: recruiter.attributes.recruiterImage?.data[0].attributes,
 			})),
 			recruiterPagination: recruiterList.meta.pagination,
+			courseList: courseList.data.map((course) => ({
+				...course.attributes,
+				id: course.id,
+			})),
 			...(await serverSideTranslations(locale, ['common', 'home']))
 		}
 	};

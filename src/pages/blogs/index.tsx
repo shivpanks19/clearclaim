@@ -7,18 +7,23 @@ import BlogList from '@/components/blogs/BlogList';
 import SearchBar from '@/components/common/SearchBar';
 import CategoryFilter from '@/components/blogs/CategoryFilter';
 import BlogService from '@/services/blogs';
+import CourseService from '@/services/course';
+import { Course } from '@/services/course/types';
 import { Blog, ContentCategory } from '@/services/blogs/types';
 
 
 const BlogListPage: NextPage<BlogListPageProps> = ({
 	headline,
 	blogList,
-	categoryList
+	categoryList,
+	courseList
 }) => {
 
 	return (
 		<div>
-			<Navbar />
+			<Navbar
+				courseList={courseList}
+			/>
 
 			{/* Hero */}
 			<BlogListHero
@@ -49,6 +54,7 @@ type BlogListPageProps = {
 	headline: string;
 	blogList: Blog[];
 	categoryList: ContentCategory[];
+	courseList: Course[];
 };
 
 export const getServerSideProps: GetServerSideProps = async ({
@@ -58,6 +64,8 @@ export const getServerSideProps: GetServerSideProps = async ({
 	const blogPageInfo = await BlogService.getBlogsStaticData(locale, '*');
 	const blogList = await BlogService.getBlogs(locale, '*', { start: query?.start, limit: 4, contentCategory: query?.contentCategory });
 	const categoryList = await BlogService.getBlogCategories(locale);
+	const courseList = await CourseService.getCourseList(locale, '*');
+
 	return {
 		props: {
 			...blogPageInfo.data.attributes,
@@ -69,6 +77,10 @@ export const getServerSideProps: GetServerSideProps = async ({
 			categoryList: categoryList.data.map((category) => ({
 				...category.attributes,
 				id: category.id,
+			})),
+			courseList: courseList.data.map((course) => ({
+				...course.attributes,
+				id: course.id,
 			})),
 			...(await serverSideTranslations(locale, ['common', 'home']))
 		}

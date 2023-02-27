@@ -32,7 +32,9 @@ const Home: NextPage<HomePageProps> = ({ homeInfo, courseList, placementList, re
 
 	return (
 		<div>
-			<Navbar />
+			<Navbar
+				courseList={courseList}
+			/>
 
 			{/* Hero */}
 			<HomeHeroSection

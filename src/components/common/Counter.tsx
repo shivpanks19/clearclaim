@@ -12,9 +12,9 @@ const Counter: React.FC<CounterProps> = ({ finalNum }) => {
 		else {
 			interval.current = setInterval(() => {
 				setNum(num => num + 1)
-			}, 2);
+			}, 5);
 		}
-		if (num === finalNum) {
+		if (num === finalNum || num > finalNum) {
 			setInProgress(false);
 		}
 		return () => clearInterval(interval.current);

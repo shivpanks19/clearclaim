@@ -23,6 +23,8 @@ const Services = {
 	getServicePageStaticData: 'service-page-list-data',
 
 	getAboutUsInformation: 'about-us',
+	getDrivePageInformation: 'drives-page',
+	getDriveList: 'drives',
 
 	getBlogs: 'blogs',
 	getBlog: 'blogs',

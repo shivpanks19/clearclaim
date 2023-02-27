@@ -1,7 +1,7 @@
 import Logo from '@/components/common/Logo';
 import MobileViewNavbar from '@/components/layout/MobileViewNavbar';
 import JoinNowButton from '@/components/common/button/JoinNowButton';
-import { navItems } from '@/data/staticData'
+import { NavItem, navItems as _navItems } from '@/data/staticData'
 import Text from '@/elements/Text';
 import { useRouter } from 'next/router';
 import {
@@ -14,6 +14,7 @@ import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
+import { Course } from '@/services/course/types';
 /*
  * TODO: Navbar toggle view breakpoint issue investigation
  * Ideally we need `md` as view toggle break-point
@@ -21,10 +22,11 @@ import Image from 'next/image';
  * To tackle that issue view toggle break-point is set to `lg`
  * To change break-point - change all `lg:` prefixed classes to `md:` prefixed here and in MobileViewNavbar component
  */
-const Navbar: React.FC<NavbarProps> = () => {
+const Navbar: React.FC<NavbarProps> = ({ courseList }) => {
 	const { t } = useTranslation();
 	const [isMobileNavbarVisible, setIsMobileNavbarVisible] = useState(false);
 	const [navBg, setNavBg] = useState('bg-lightblue');
+	const [navItems, setNavItems] = useState(_navItems);
 	const { asPath } = useRouter();
 
 	const toggleNavbar = () => {
@@ -36,6 +38,19 @@ const Navbar: React.FC<NavbarProps> = () => {
 	};
 
 	useEffect(() => {
+		if (courseList?.length) {
+			const newNavItems = navItems;
+			const courseLink = newNavItems.find((item) => item.link === '/courses');
+			const subLinks = courseList.map((course) => ({
+				id: course.id,
+				title: course.courseName,
+				link: `/courses/${course.slug}`,
+				target: '_blank' as '_blank' | '_self' | '_parent' | '_top' | 'framename'
+			}));
+			newNavItems[newNavItems.indexOf(courseLink)] = { ...courseLink, subLinks };
+			setNavItems(newNavItems);
+		};
+
 		const scrollHandler = () => {
 			if (window.scrollY > 0) {
 				setNavBg('bg-white shadow-navbar')
@@ -158,7 +173,8 @@ const Navbar: React.FC<NavbarProps> = () => {
 };
 
 type NavbarProps = {
-	invertColors?: boolean
+	invertColors?: boolean;
+	courseList: Course[];
 }
 
 Navbar.defaultProps = {

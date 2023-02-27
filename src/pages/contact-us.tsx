@@ -6,6 +6,8 @@ import ContactHeroSection from '@/components/contact-us/ContactHero';
 import ContactOptionSection from '@/components/contact-us/ContactOption';
 import ContactFindUsSection from '@/components/contact-us/ContactFindUs';
 import ContactUsService from '@/services/contact-us';
+import CourseService from '@/services/course';
+import { Course } from '@/services/course/types';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 const ContactUsPage: NextPage<ContactUsPageProps> = ({
@@ -14,11 +16,14 @@ const ContactUsPage: NextPage<ContactUsPageProps> = ({
 	phone,
 	ytLink,
 	fbLink,
-	igLink
+	igLink,
+	courseList
 }) => {
 	return (
 		<div>
-			<Navbar />
+			<Navbar
+				courseList={courseList}
+			/>
 
 			{/* Course Hero */}
 			<ContactHeroSection />
@@ -50,16 +55,22 @@ type ContactUsPageProps = {
 	ytLink: Record<string, string>;
 	fbLink: Record<string, string>;
 	igLink: Record<string, string>;
+	courseList: Course[];
 };
 
 export const getStaticProps: GetStaticProps = async ({
 	locale
 }: Record<string, any>) => {
 	const contactUsInfo = await ContactUsService.getContactUsInformation(locale);
+	const courseList = await CourseService.getCourseList(locale, '*');
 
 	return {
 		props: {
 			...contactUsInfo?.data?.attributes,
+			courseList: courseList.data.map((course) => ({
+				...course.attributes,
+				id: course.id,
+			})),
 			...(await serverSideTranslations(locale, ['common', 'home']))
 		},
 		revalidate: 60

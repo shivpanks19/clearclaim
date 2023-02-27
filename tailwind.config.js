@@ -65,6 +65,13 @@ module.exports = {
             letterSpacing: "0.04em",
             lineHeight: "140%",
           },
+        ],
+        "5xl": [
+          "48px",
+          {
+            letterSpacing: "0.04em",
+            lineHeight: "140%",
+          },
         ]
       },
       backgroundColor: (theme) => ({
@@ -76,6 +83,7 @@ module.exports = {
         tertiary3: "#BDE6FF",
         tertiaryFade1: "rgba(13, 135, 212, 0.41);",
         tertiaryFade2: "rgba(13, 135, 212, 0.15);",
+        tertiaryLight: "#D0EDFF",
         danger: "#e3342f",
         diminished: "rgba(30, 70, 132, 0.08)",
         "white": '#fff',

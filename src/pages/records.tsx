@@ -10,7 +10,9 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 import RecordPageService from '@/services/record-page';
 import RecruiterService from '@/services/recruiter';
+import CourseService from '@/services/course';
 
+import { Course } from '@/services/course/types';
 import { Recruiter } from '@/services/recruiter/types';
 import { Placement } from '@/services/placement/types';
 import { ImageType } from '@/utils/types';
@@ -27,11 +29,15 @@ const RecordPage: NextPage<RecordPageProps> = ({
 	newsHeadline,
 	newsSubHeadline,
 	recruiterList,
-	salaryCardList
+	salaryCardList,
+	courseList
 }) => {
 	return (
 		<div>
-			<Navbar />
+			<Navbar
+				courseList={courseList}
+
+			/>
 
 			{/* Record Hero */}
 			<RecordHeroSection
@@ -79,6 +85,7 @@ type RecordPageProps = {
 	placementList: Placement[];
 	recruiterList: Recruiter[];
 	salaryCardList: SalaryCardType[];
+	courseList: Course[];
 };
 
 export const getStaticProps: GetStaticProps = async ({
@@ -86,6 +93,8 @@ export const getStaticProps: GetStaticProps = async ({
 }: Record<string, any>) => {
 	const recordPageInfo = await RecordPageService.getRecordPageInformation(locale, '*');
 	const recruiterList = await RecruiterService.getRecruiterList(locale, '*');
+	const courseList = await CourseService.getCourseList(locale, '*');
+
 	return {
 		props: {
 			...recordPageInfo.data.attributes,
@@ -94,6 +103,10 @@ export const getStaticProps: GetStaticProps = async ({
 				...recruiter.attributes,
 				id: recruiter.id,
 				recruiterImage: recruiter.attributes.recruiterImage?.data[0].attributes,
+			})),
+			courseList: courseList.data.map((course) => ({
+				...course.attributes,
+				id: course.id,
 			})),
 			...(await serverSideTranslations(locale, ['common', 'home']))
 		},

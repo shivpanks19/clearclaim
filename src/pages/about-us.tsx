@@ -13,19 +13,19 @@ import NewsSection from '@/components/common/NewsSection';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 import AboutUsService from '@/services/about-us';
+import CourseService from '@/services/course';
 
 import { Course } from '@/services/course/types';
-import { Placement } from '@/services/placement/types';
 import { AboutPageInformation } from '@/services/about-us/types';
-import { Review } from '@/services/review/types';
-import { Recruiter } from '@/services/recruiter/types';
 import { ImageType } from '@/utils/types';
 
-const Home: NextPage<AboutPageProps> = ({ aboutInfo }) => {
+const Home: NextPage<AboutPageProps> = ({ aboutInfo, courseList }) => {
 
 	return (
 		<div>
-			<Navbar />
+			<Navbar
+				courseList={courseList}
+			/>
 
 			{/* Hero */}
 			<AboutUsHero
@@ -79,12 +79,15 @@ type AboutPageProps = {
 	heroImage: ImageType;
 	lifeAtTapImage: ImageType;
 	founderImage: ImageType;
+	courseList: Course[];
 }
 
 export const getStaticProps: GetStaticProps = async ({
 	locale
 }: Record<string, any>) => {
 	const aboutInfo = await AboutUsService.getAboutUsInformation(locale, '*');
+	const courseList = await CourseService.getCourseList(locale, '*');
+
 	return {
 		props: {
 			aboutInfo: {
@@ -93,6 +96,10 @@ export const getStaticProps: GetStaticProps = async ({
 				lifeAtTapImage: aboutInfo.data.attributes.lifeAtTapImage?.data.attributes,
 				founderImage: aboutInfo.data.attributes.founderImage?.data.attributes
 			},
+			courseList: courseList.data.map((course) => ({
+				...course.attributes,
+				id: course.id,
+			})),
 			...(await serverSideTranslations(locale, ['common', 'home']))
 		},
 		revalidate: 60

@@ -19,7 +19,9 @@ import { Review } from '@/services/review/types';
 const courseListPage: NextPage<courseListPageProps> = ({ courseListPageInfo, courseList, reviewList, reviewPagination }) => {
 	return (
 		<div>
-			<Navbar />
+			<Navbar
+				courseList={courseList}
+			/>
 
 			{/* Course Hero */}
 			<CourseHeroSection
