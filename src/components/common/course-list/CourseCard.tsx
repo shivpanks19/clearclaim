@@ -17,10 +17,9 @@ const CourseCard: React.FC<CourseCardProps> = ({ courseName, description, number
 			}
 			>
 				<div className="flex flex-col md:flex-row items-center px-5 pt-5">
-					<div className="relative h-40 w-full md:w-96 md:mr-7 mb-3 md:mb-0">
+					<div className="relative h-40 w-full md:w-64 md:mr-7 mb-3 md:mb-0 flex-none ">
 						<Image
 							src={heroImage}
-							className='mr-8 flex-none'
 							// height={219}
 							// width={256}
 							fill
