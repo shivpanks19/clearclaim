@@ -1,5 +1,6 @@
 import '../styles/globals.css'
-import type { AppProps } from 'next/app'
+import type { AppProps } from 'next/app';
+import React, { useEffect } from 'react';
 import { ChakraProvider } from '@chakra-ui/react'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -44,6 +45,31 @@ export const theme = extendTheme({
 });
 
 export default function App({ Component, pageProps }: AppProps) {
+  useEffect(() => {
+    const gaScript = document.getElementById('ga');
+    const fbScript = document.getElementById('fb');
+
+    gaScript.innerHTML = `window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-BVKQYJ6KFL');
+  `;
+
+    fbScript.innerHTML = `!function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '889335038854708');
+    fbq('track', 'PageView');  
+  `;
+
+    document.head.appendChild(gaScript);
+    document.head.appendChild(fbScript);
+  }, [])
   return (
     <ChakraProvider theme={theme}>
       <Component {...pageProps} />
