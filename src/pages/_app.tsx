@@ -46,8 +46,16 @@ export const theme = extendTheme({
 
 export default function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
+    const gtmScript = document.getElementById('gtm');
     const gaScript = document.getElementById('ga');
     const fbScript = document.getElementById('fb');
+
+    gtmScript.innerHTML = `<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-N7SB2Z3');</script>    
+  `;
 
     gaScript.innerHTML = `window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -67,6 +75,7 @@ export default function App({ Component, pageProps }: AppProps) {
     fbq('track', 'PageView');  
   `;
 
+    document.head.appendChild(gtmScript);
     document.head.appendChild(gaScript);
     document.head.appendChild(fbScript);
   }, [])
