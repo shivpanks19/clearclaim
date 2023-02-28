@@ -35,7 +35,7 @@ enum ModeOfStudy {
 
 const RegistrationForm: React.FC<RegistrationFormProps> = ({ isOpen, onClose }) => {
 	const [modeOfStudy, setModeOfStudy] = React.useState<ModeOfStudy>(ModeOfStudy.ONLINE);
-	const { register, handleSubmit, setValue } = useForm<Inputs>({
+	const { register, handleSubmit, setValue, reset } = useForm<Inputs>({
 		defaultValues: { modeOfStudy: ModeOfStudy.ONLINE }
 	});
 	const onSubmit: SubmitHandler<Inputs> = async (data) => {
@@ -46,6 +46,8 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ isOpen, onClose }) 
 				success: 'Thank you for registration!',
 				error: 'Something went wrong! Please try again!'
 			});
+			reset();
+			onClose();
 		})();
 	};
 
