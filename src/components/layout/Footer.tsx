@@ -23,32 +23,40 @@ const Footer: React.FC<FooterProps> = ({ showFooterTop }) => {
 						<p className="text-sm md:text-base text-gray mb-6 md:mb-7">An online skilling platform</p>
 						<div className="flex gap-4 md:gap-6 mb-5 md:mb-11 place-items-center">
 							<div className='flex-none w-7 h-7 md:w-9 md:h-9 relative'>
-								<Image
-									src='/img/fb_white.png'
-									fill
-									alt='Facebook link'
-								/>
+								<Link href='https://www.facebook.com/thetapacademy' target='_blank'>
+									<Image
+										src='/img/fb_white.png'
+										fill
+										alt='Facebook link'
+									/>
+								</Link>
 							</div>
 							<div className="flex-none w-7 h-7 md:w-9 md:h-9 relative">
-								<Image
-									src='/img/ig_white.png'
-									fill
-									alt='Instagram link'
-								/>
+								<Link href='https://instagram.com/tapacademy.online?igshid=NTdlMDg3MTY=' target='_blank'>
+									<Image
+										src='/img/ig_white.png'
+										fill
+										alt='Instagram link'
+									/>
+								</Link>
 							</div>
-							<div className="flex-none w-7 h-7 md:w-9 md:h-9 relative">
-								<Image
-									src='/img/linkedin_white.png'
-									fill
-									alt='Linkedin link'
-								/>
-							</div>
+							<Link href='https://in.linkedin.com/company/thetapacademy' target='_blank'>
+								<div className="flex-none w-7 h-7 md:w-9 md:h-9 relative">
+									<Image
+										src='/img/linkedin_white.png'
+										fill
+										alt='Linkedin link'
+									/>
+								</div>
+							</Link>
 							<div className="flex-none w-6 h-4 md:w-9 md:h-6 relative">
-								<Image
-									src='/img/yt_white.png'
-									fill
-									alt='Youtube link'
-								/>
+								<Link href='https://www.youtube.com/channel/UCvT21bzLRHrnAc-F1SRqRSw' target='_blank'>
+									<Image
+										src='/img/yt_white.png'
+										fill
+										alt='Youtube link'
+									/>
+								</Link>
 							</div>
 						</div>
 						<p className="text-sm md:text-xl font-semibold text-white mb-3 md:mb-5">
