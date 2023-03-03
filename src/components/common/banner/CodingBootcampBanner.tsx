@@ -1,7 +1,12 @@
 import React from 'react';
 import Image from 'next/image';
+import { useDisclosure } from '@chakra-ui/react';
+import RegistrationForm from '@/components/common/RegistrationForm';
+
 
 const CodingBootcampSection: React.FC<CodingBootcampSectionProps> = ({ imgSrc }) => {
+	const { isOpen, onOpen, onClose } = useDisclosure();
+
 	return (
 		<div className="relative flex flex-col lg:flex-row xl:w-76 mb-12 md:mb-28 mx-5 md:mx-auto mt-48 md:mt-0 md:pl-64 items-center">
 			<Image
@@ -17,9 +22,16 @@ const CodingBootcampSection: React.FC<CodingBootcampSectionProps> = ({ imgSrc })
 					<p className="text-sm md:text-base text-white text-center md:text-left">Register Now to attend coding Bootcamp on Full Stack Development & get 2 Placement Drives</p>
 				</div>
 				<button className="bg-white flex-none rounded mb-5 md:mb-0 w-full md:w-64">
-					<p className="text-sm md:text-base text-primary font-medium py-2 md:py-4"> Reserve my seat</p>
+					<p
+						className="text-sm md:text-base text-primary font-medium py-2 md:py-4"
+						onClick={onOpen}
+					> Reserve my seat</p>
 				</button>
 			</div>
+			<RegistrationForm
+				isOpen={isOpen}
+				onClose={onClose}
+			/>
 		</div>
 	)
 };
