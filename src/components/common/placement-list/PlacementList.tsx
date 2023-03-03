@@ -24,7 +24,7 @@ const PlacementList: React.FC<PlacementListProps> = ({ headline, subHeadline, pl
 				subtitle={subHeadline}
 				className='mb-4 md:mb-10 mx-5'
 			/>
-			<div className="xl:w-76 mx-auto relative pt-10 mb-4">
+			<div className="xl:w-76 mx-auto relative pt-10 mb-14 md:mb-20">
 				{showReadMore && (
 					<div className='read_more absolute right-5 top-0 flex gap-3 align-middle'>
 						<Link href={Routes.studentReviews()}>
@@ -39,7 +39,7 @@ const PlacementList: React.FC<PlacementListProps> = ({ headline, subHeadline, pl
 					</div>
 				)}
 
-				<div className="cardContainer w-42 lg:grid-cols-2 xl:grid-cols-3 gap-14 grid mx-5 md:mx-0 place-items-center">
+				<div className="cardContainer w-42 lg:grid-cols-2 xl:grid-cols-3 gap-14 grid mx-5 md:mx-0 place-items-center mb-4">
 					{placementList?.length > 0 && placementList.map((placement) => (
 						<PlacementCard
 							key={placement.id}
@@ -53,13 +53,13 @@ const PlacementList: React.FC<PlacementListProps> = ({ headline, subHeadline, pl
 						/>
 					))}
 				</div>
+				<Pagination
+					className=''
+					totalPageCount={placementPagination.pageCount}
+					currentPage={page}
+					onPageChange={handlePageChange}
+				/>
 			</div>
-			<Pagination
-				className='mb-14 md:mb-20'
-				totalPageCount={placementPagination.pageCount}
-				currentPage={page}
-				onPageChange={handlePageChange}
-			/>
 		</>
 	)
 };
