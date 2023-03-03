@@ -51,15 +51,22 @@ const blogsByCategory = (category: ContentCategory, page?: number): UrlObject =>
 	};
 };
 
-const blog = (category: ContentCategory, blog: Blog): UrlObject => {
+const blog = (category: ContentCategory, slug: string): UrlObject => {
 	return {
-		pathname: `/blogs/${category.slug}/${blog.slug}`
+		pathname: `/blogs/${category.slug}/${slug}`
 	};
 };
 
 const portfolios = (page?: number): UrlObject => {
 	return {
 		pathname: '/portfolio',
+		query: { page }
+	};
+};
+
+const privacyPolicy = (page?: number): UrlObject => {
+	return {
+		pathname: '/privacy-policy',
 		query: { page }
 	};
 };
@@ -74,7 +81,8 @@ const Routes = {
 	studentReviews,
 	blogsByCategory,
 	blog,
-	portfolios
+	portfolios,
+	privacyPolicy
 };
 
 export default Routes;
