@@ -12,6 +12,7 @@ const BlogList: React.FC<BlogListProps> = ({ blogList }) => {
 						blogName={blog.title}
 						description={blog.description}
 						slug={blog.slug}
+						contentCategory={blog.contentCategory}
 						heroImage={blog.thumbnail.url}
 						publishedAt={blog.publishedAt}
 					/>
@@ -20,6 +21,7 @@ const BlogList: React.FC<BlogListProps> = ({ blogList }) => {
 						blogName={blog.title}
 						description={blog.description}
 						slug={blog.slug}
+						contentCategory={blog.contentCategory}
 						heroImage={blog.thumbnail.url}
 						publishedAt={blog.publishedAt}
 					/>
@@ -28,6 +30,7 @@ const BlogList: React.FC<BlogListProps> = ({ blogList }) => {
 						blogName={blog.title}
 						description={blog.description}
 						slug={blog.slug}
+						contentCategory={blog.contentCategory}
 						heroImage={blog.thumbnail.url}
 						publishedAt={blog.publishedAt}
 					/>

@@ -20,6 +20,7 @@ module.exports = {
         76: '76rem',
         90: '22.5rem',
         108: '27rem',
+        112: '28rem',
         120: '30rem',
         256: '64rem'
       },
@@ -145,5 +146,7 @@ module.exports = {
       }
     }
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
 }

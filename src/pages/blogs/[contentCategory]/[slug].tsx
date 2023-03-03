@@ -1,11 +1,11 @@
 import { GetServerSideProps, NextPage } from 'next';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
-import BlogListHero from '@/components/blogs/BlogListHero';
+import BlogDetailHero from '@/components/blogs/BlogDetailHero';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import BlogList from '@/components/blogs/BlogList';
-import SearchBar from '@/components/common/SearchBar';
 import CategoryFilter from '@/components/blogs/CategoryFilter';
+import PrevNextPost from '@/components/blogs/PrevNextPost';
+import BlogBody from '@/components/blogs/BlogBody';
 import BlogService from '@/services/blogs';
 import CourseService from '@/services/course';
 import { Course } from '@/services/course/types';
@@ -14,6 +14,7 @@ import { Blog, ContentCategory } from '@/services/blogs/types';
 
 const BlogListPage: NextPage<BlogListPageProps> = ({
 	headline,
+	// blog,
 	blogList,
 	categoryList,
 	courseList
@@ -26,23 +27,22 @@ const BlogListPage: NextPage<BlogListPageProps> = ({
 			/>
 
 			{/* Hero */}
-			<BlogListHero
-				headline={headline}
-				featuredBlog={blogList[0]}
+			<BlogDetailHero
+				headline={blogList[0].title}
 			/>
 
-			{/* SearchBar */}
-			<SearchBar
-				onChange={(e) => { console.log('search, e', e) }}
+			{/* BlogBody */}
+			<BlogBody
+				headline={'This is the title'}
+				content={blogList[0].content}
+				categoryList={categoryList}
 			/>
 
 			{/* Categories */}
 			<CategoryFilter categoryList={categoryList} />
 
-			{/* BlogList */}
-			<BlogList
-				blogList={blogList}
-			/>
+			{/* PrevNextPost */}
+			<PrevNextPost blogList={blogList} />
 
 			{/* Footer */}
 			<Footer />
@@ -52,6 +52,7 @@ const BlogListPage: NextPage<BlogListPageProps> = ({
 
 type BlogListPageProps = {
 	headline: string;
+	// blog: Blog;
 	blogList: Blog[];
 	categoryList: ContentCategory[];
 	courseList: Course[];
@@ -59,16 +60,21 @@ type BlogListPageProps = {
 
 export const getServerSideProps: GetServerSideProps = async ({
 	locale,
-	query
+	query,
+	params
 }: Record<string, any>) => {
+	console.log('query', query);
+	console.log('params', params);
 	const blogPageInfo = await BlogService.getBlogsStaticData(locale, '*');
 	const blogList = await BlogService.getBlogs(locale, '*', { start: query?.start, limit: 4, contentCategory: query?.contentCategory });
+	// const blog = await BlogService.getBlogBySlug(params.slug, locale);
 	const categoryList = await BlogService.getBlogCategories(locale);
 	const courseList = await CourseService.getCourseList(locale, '*');
 
 	return {
 		props: {
 			...blogPageInfo.data.attributes,
+			// blog,
 			blogList: blogList.data.map((blog) => ({
 				...blog.attributes,
 				id: blog.id,
