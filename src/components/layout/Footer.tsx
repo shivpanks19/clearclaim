@@ -55,11 +55,13 @@ const Footer: React.FC<FooterProps> = ({ showFooterTop }) => {
 							Learn at a tap!
 						</p>
 						<div className="relative w-40 h-12 md:w-52 md:h-14 mb-6">
-							<Image
-								src='/img/android_app.png'
-								fill
-								alt='Android app link'
-							/>
+							<Link href='https://bit.ly/TAwebsiteapp' target='_blank'>
+								<Image
+									src='/img/android_app.png'
+									fill
+									alt='Android app link'
+								/>
+							</Link>
 						</div>
 					</div>
 					<div className="grid grid-cols-2 mb-6 col-span-11">

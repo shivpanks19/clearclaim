@@ -73,13 +73,47 @@ const WhyUsNav: React.FC<WhyUsNavProps> = () => {
 				<TabPanel className='bg-whyus h-full flex rounded-r-2xl'>
 					<div className="flex-1 m-1 relative">
 						<Image
-							src='/img/whyus.png'
-							objectFit='cover'
-							layout='fill'
+							src='/img/job_description.png'
+							fill
 							alt='Hero Image'
 						/>
 					</div>
-
+				</TabPanel>
+				<TabPanel className='bg-whyus h-full flex rounded-r-2xl'>
+					<div className="flex-1 m-1 relative">
+						<Image
+							src='/img/mock_interviews.webp'
+							fill
+							alt='Mock Interviews'
+						/>
+					</div>
+				</TabPanel>
+				<TabPanel className='bg-whyus h-full flex rounded-r-2xl'>
+					<div className="flex-1 m-1 relative">
+						<Image
+							src='/img/competitive_coding.png'
+							fill
+							alt='Competitive Coding'
+						/>
+					</div>
+				</TabPanel>
+				<TabPanel className='bg-whyus h-full flex rounded-r-2xl'>
+					<div className="flex-1 m-1 relative">
+						<Image
+							src='/img/major_announcements.png'
+							fill
+							alt='MAajor Announcements'
+						/>
+					</div>
+				</TabPanel>
+				<TabPanel className='bg-whyus h-full flex rounded-r-2xl'>
+					<div className="flex-1 m-1 relative">
+						<Image
+							src='/img/lms.png'
+							fill
+							alt='LMS'
+						/>
+					</div>
 				</TabPanel>
 			</TabPanels>
 		</Tabs>
