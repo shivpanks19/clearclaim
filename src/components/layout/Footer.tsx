@@ -105,6 +105,12 @@ const Footer: React.FC<FooterProps> = ({ showFooterTop }) => {
 								</p>
 							</Link>
 
+							<Link href={Routes.privacyPolicy().pathname}>
+								<p className="text-xs md:text-base text-gray2">
+									Privacy Policy
+								</p>
+							</Link>
+
 						</div>
 					</div>
 					<div className="col col-span-8">

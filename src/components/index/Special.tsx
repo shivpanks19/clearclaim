@@ -22,7 +22,7 @@ const SpecialSection: React.FC<SpecialSectionProps> = ({ headline, subHeadline }
 					<div className="title text-sm md:text-xl text-title font-semibold text-center">Personalised Course Curriculum</div>
 					<div className="subtitle text-desc text-xs md:text-base text-center ">We offer individual attention to choose right course for your career</div>
 				</div>
-				<div className="shadow rounded flex  flex-col items-center gap-3 md:w-96 pb-10 px-10 mb-16">
+				<div className="shadow rounded flex  flex-col items-center gap-3 md:w-96 pb-3.5 md:pb-10 px-5 md:px-10 mb-16">
 					<div className="relative w-20 h-20 md:w-32 md:h-32 -mt-10 md:-mt-12 self-center">
 						<Image
 							src='/img/home/placement-opportunity.png'
@@ -33,7 +33,7 @@ const SpecialSection: React.FC<SpecialSectionProps> = ({ headline, subHeadline }
 					<div className="title text-sm md:text-xl text-title font-semibold text-center	">Placement Opportunity</div>
 					<div className="subtitle text-desc text-xs md:text-base text-center">Getting unlimited placement opportunities till you get placed</div>
 				</div>
-				<div className="shadow rounded flex flex-col items-center gap-3 md:w-96 pb-10 px-10 mb-11 md:mb-16">
+				<div className="shadow rounded flex flex-col items-center gap-3 md:w-96 pb-3.5 md:pb-10 px-5 md:px-10 mb-11 md:mb-16">
 					<div className="relative w-20 h-20 md:w-32 md:h-32 -mt-10 md:-mt-12 self-center">
 						<Image
 							src='/img/home/mentorship.png'
