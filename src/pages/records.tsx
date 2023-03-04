@@ -61,10 +61,10 @@ const RecordPage: NextPage<RecordPageProps> = ({
 			/>
 
 			{/* News */}
-			<NewsSection
+			{/* <NewsSection
 				headline={newsHeadline}
 				subHeadline={newsSubHeadline}
-			/>
+			/> */}
 
 			{/* Footer */}
 			<Footer />

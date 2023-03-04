@@ -15,6 +15,7 @@ import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { Course } from '@/services/course/types';
+import { GoTriangleDown } from 'react-icons/go';
 /*
  * TODO: Navbar toggle view breakpoint issue investigation
  * Ideally we need `md` as view toggle break-point
@@ -106,26 +107,29 @@ const Navbar: React.FC<NavbarProps> = ({ courseList }) => {
 														href={item.link}
 														target={item.target}
 													>
-														<Text
-															className={`font-medium relative text-secondary grid place-items-center ${item.className && item.className} ${item.link === asPath && 'text-tertiary'}`}
-															cursor='cursor-pointer'
-														>
-															{item.title}
-															<span className={`${item.link === asPath && 'w-10 h-1 mx-auto rounded bg-tertiary'}`}></span>
-														</Text>
+														<div className="flex gap-1 place-items-center text-left">
+															<Text
+																className={`font-medium relative text-secondary grid ${item.className && item.className} ${item.link === asPath && 'text-tertiary'}`}
+																cursor='cursor-pointer'
+															>
+																{item.title}
+																<span className={`${item.link === asPath && 'w-10 h-1 mx-auto rounded bg-tertiary'}`}></span>
+															</Text>
+															<span><GoTriangleDown /></span>
+														</div>
 													</Link>
 												</PopoverTrigger>
 												<PopoverContent>
 													<PopoverBody padding={0}>
 														{item.subLinks.map((item, index) => (
-															<p className='py-3 hover:bg-lightblue font-semibold text-lg text-center px-2' key={item.id}>
+															<p className='py-3 hover:bg-lightblue font-semibold text-lg px-2' key={item.id}>
 																<Link
 																	key={index}
 																	href={item.link}
 																	target={item.target}
 																>
 																	<Text
-																		className={`font-semibold relative text-secondary grid place-items-center ${item.className && item.className} ${item.link === asPath && 'text-tertiary'}`}
+																		className={`font-semibold relative px-3 text-secondary grid ${item.className && item.className} ${item.link === asPath && 'text-tertiary'}`}
 																		cursor='cursor-pointer'
 																	>
 																		{item.title}

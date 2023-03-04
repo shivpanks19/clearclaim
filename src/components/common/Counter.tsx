@@ -10,6 +10,9 @@ const Counter: React.FC<CounterProps> = ({ finalNum }) => {
 			clearInterval(interval.current)
 		}
 		else {
+			if (finalNum - num > 200) {
+				setNum(finalNum - 199)
+			}
 			interval.current = setInterval(() => {
 				setNum(num => num + 1)
 			}, 5);

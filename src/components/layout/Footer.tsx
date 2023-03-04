@@ -152,7 +152,7 @@ const Footer: React.FC<FooterProps> = ({ showFooterTop }) => {
 									alt='Phone link'
 								/>
 							</div>
-							<p className="text-sm md:text-base text-medium text-white">+91 9844441203</p>
+							<p className="text-sm md:text-base text-medium text-white">+91 8069878321</p>
 						</div>
 					</div>
 					<Image

@@ -63,10 +63,10 @@ const Home: NextPage<AboutPageProps> = ({ aboutInfo, courseList }) => {
 			/>
 
 			{/* News */}
-			<NewsSection
+			{/* <NewsSection
 				headline={aboutInfo.newsHeadline}
 				subHeadline={aboutInfo.newsSubHeadline}
-			/>
+			/> */}
 
 			{/* Footer */}
 			<Footer />
