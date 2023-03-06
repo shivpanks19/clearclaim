@@ -36,6 +36,11 @@ export type Course = {
 	slug: string;
 	aboutCourse: string;
 	courseSummary: string[];
+	curriculumList: ({
+		title: string;
+		text1: string;
+		text2: string;
+	})[];
 	courseFAQ: FAQ[];
 	footerFaq: FAQ[];
 	isFree: boolean;

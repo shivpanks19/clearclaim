@@ -62,7 +62,7 @@ const CourseDetailPage: NextPage<CourseDetailPageProps> = ({ course, courseDetai
 			}
 
 			{/* Course Curriculum */}
-			<CourseCurriculumSection />
+			<CourseCurriculumSection curriculumList={course.curriculumList}/>
 
 			{/* Why us */}
 			<WhyUsSection
