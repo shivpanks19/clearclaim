@@ -49,7 +49,7 @@ const Navbar: React.FC<NavbarProps> = ({ courseList }) => {
 				target: '_blank' as '_blank' | '_self' | '_parent' | '_top' | 'framename'
 			}));
 			newNavItems[newNavItems.indexOf(courseLink)] = { ...courseLink, subLinks };
-			setNavItems(newNavItems);
+			setNavItems(JSON.parse(JSON.stringify(newNavItems)));
 		};
 
 		const scrollHandler = () => {
@@ -61,7 +61,7 @@ const Navbar: React.FC<NavbarProps> = ({ courseList }) => {
 		}
 		window.addEventListener('scroll', scrollHandler);
 		return (window.removeEventListener('scroll', scrollHandler));
-	}, [])
+	}, [courseList])
 
 	return (
 		<div className='sticky top-0 left-0 z-30'>
@@ -100,7 +100,10 @@ const Navbar: React.FC<NavbarProps> = ({ courseList }) => {
 								{navItems.map((item, index) => {
 									return (<>
 										{item.subLinks?.length > 0 ? (
-											<Popover trigger='hover'>
+											<Popover
+												trigger='hover'
+												key={index}
+											>
 												<PopoverTrigger>
 													<Link
 														key={index}

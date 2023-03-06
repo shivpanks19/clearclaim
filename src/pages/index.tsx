@@ -29,7 +29,6 @@ import { Review } from '@/services/review/types';
 import { Recruiter } from '@/services/recruiter/types';
 
 const Home: NextPage<HomePageProps> = ({ homeInfo, courseList, placementList, reviewList, recruiterList, reviewPagination, placementPagination }) => {
-
 	return (
 		<div>
 			<Navbar
@@ -156,13 +155,11 @@ export const getStaticProps: GetStaticProps = async ({
 				companyImage: placement.attributes.companyImage?.data.attributes,
 				studentImage: placement.attributes.studentImage?.data.attributes,
 			})),
-			placementPagination: placementList.meta.pagination,
 			reviewList: reviewList.data.map((review) => ({
 				...review.attributes,
 				id: review.id,
 				studentImage: review.attributes.studentImage?.data.attributes,
 			})),
-			reviewPagination: reviewList.meta.pagination,
 			recruiterList: recruiterList.data.map((recruiter) => ({
 				...recruiter.attributes,
 				id: recruiter.id,
