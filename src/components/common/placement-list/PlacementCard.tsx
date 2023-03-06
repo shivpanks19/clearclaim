@@ -13,10 +13,9 @@ const PlacementCard: React.FC<PlacementCardProps> = ({
 }) => {
 	return (
 		<div className="card rounded shadow w-full md:w-96 flex flex-col items-center py-7 md:py-8">
-			<div className="rounded-full overflow-hidden h-16 w-16 grid place-items-center">
+			<div className="rounded-full overflow-hidden h-16 w-16 lg:w-28 lg:h-28 grid place-items-center mb-4 border">
 				<Image
 					src={studentImage?.url}
-					className='mb-4'
 					width={114}
 					height={114}
 					alt={studentName}
