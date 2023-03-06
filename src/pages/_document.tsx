@@ -20,7 +20,6 @@ export default class MyDocument extends Document {
 					<link rel="preconnect" href="https://fonts.googleapis.com" />
 					<link rel="preconnect" href="https://fonts.googleapis.com" />
 					<link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin='true' />
-					<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;&display=swap" rel="stylesheet" />
 				</Head>
 				<body>
 					<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N7SB2Z3"
@@ -28,6 +27,9 @@ export default class MyDocument extends Document {
 					<noscript><img height="1" width="1" style={{ display: 'none' }}
 						src="https://www.facebook.com/tr?id=889335038854708&ev=PageView&noscript=1"
 					/></noscript>
+					<noscript>
+						<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;&display=swap" rel="stylesheet" />
+					</noscript>
 					<Main />
 					<NextScript />
 				</body>
