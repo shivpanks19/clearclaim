@@ -1,21 +1,15 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import PlacementCard from '@/components/common/placement-list/PlacementCard';
 import SectionHeadline from '@/components/common/SectionHeadline';
 import { Placement } from '@/services/placement/types';
 import Pagination from '@/components/common/Pagination';
 import Routes from '@/utils/routes';
 
-const PlacementList: React.FC<PlacementListProps> = ({ headline, subHeadline, placementList, showReadMore = true, placementPagination }) => {
-	const [page, setPage] = useState(placementPagination.page);
-	const router = useRouter();
+const PlacementList: React.FC<PlacementListProps> = ({ headline, subHeadline, placementList, showReadMore = true }) => {
+	const [currentList, setCurrentList] = useState([]);
 
-	const handlePageChange = (pageNumber) => {
-		router.push({ query: { ...router.query, placementPage: pageNumber } }, undefined, { scroll: false });
-		setPage(pageNumber)
-	};
 	return (
 		<>
 			<a id='success-stories' />
@@ -40,7 +34,7 @@ const PlacementList: React.FC<PlacementListProps> = ({ headline, subHeadline, pl
 				)}
 
 				<div className="cardContainer w-42 lg:grid-cols-2 xl:grid-cols-3 gap-14 grid mx-5 md:mx-0 mb-4">
-					{placementList?.length > 0 && placementList.map((placement) => (
+					{currentList?.length > 0 && currentList.map((placement) => (
 						<PlacementCard
 							key={placement.id}
 							studentName={placement.studentName}
@@ -54,10 +48,9 @@ const PlacementList: React.FC<PlacementListProps> = ({ headline, subHeadline, pl
 					))}
 				</div>
 				<Pagination
-					className=''
-					totalPageCount={placementPagination.pageCount}
-					currentPage={page}
-					onPageChange={handlePageChange}
+					fullList={placementList}
+					pageSize={3}
+					setCurrentList={setCurrentList}
 				/>
 			</div>
 		</>

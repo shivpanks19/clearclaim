@@ -2,11 +2,7 @@ import { get } from '@/services/serverConfig';
 import Services from '@/services/serviceUrls';
 
 function getReviewList(_locale?: string, populate?: string, pageNumber?: string): Promise<Record<string, any>> {
-	const paginationOptions = {
-		'pagination[page]': pageNumber ?? 1,
-		'pagination[pageSize]': 3,
-	}
-	return get(Services.getReviewList, { _locale, populate, ...paginationOptions });
+	return get(Services.getReviewList, { _locale, populate });
 }
 
 const ReviewService = {

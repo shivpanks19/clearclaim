@@ -1,4 +1,4 @@
-import { GetServerSideProps, NextPage } from 'next';
+import { GetStaticProps, NextPage } from 'next';
 
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
@@ -134,13 +134,13 @@ type HomePageProps = {
 	recruiterList: Recruiter[];
 }
 
-export const getServerSideProps: GetServerSideProps = async ({
-	locale, query
+export const getStaticProps: GetStaticProps = async ({
+	locale
 }: Record<string, any>) => {
 	const homeInfo = await HomeService.getHomePageInformation(locale);
 	const courseList = await CourseService.getCourseList(locale, '*', 'courseIdx');
-	const placementList = await PlacementService.getPlacementList(locale, '*', query?.placementPage);
-	const reviewList = await ReviewService.getReviewList(locale, '*', query?.reviewPage);
+	const placementList = await PlacementService.getPlacementList(locale, '*');
+	const reviewList = await ReviewService.getReviewList(locale, '*');
 	const recruiterList = await RecruiterService.getRecruiterList(locale, '*');
 
 	return {
@@ -169,7 +169,8 @@ export const getServerSideProps: GetServerSideProps = async ({
 				recruiterImage: recruiter.attributes.recruiterImage?.data[0].attributes,
 			})),
 			...(await serverSideTranslations(locale, ['common', 'home']))
-		}
+		},
+		revalidate: 60
 	};
 };
 

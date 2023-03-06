@@ -115,7 +115,7 @@ export const getServerSideProps: GetServerSideProps = async ({
 }: Record<string, any>) => {
 	const courseDetailPageInfo = await CourseService.getCourseDetailPageInformation(locale);
 	const course = await CourseService.getCourseBySlug(params.slug, locale);
-	const placementList = await PlacementService.getPlacementList(locale, '*', query?.placementPage);
+	const placementList = await PlacementService.getPlacementList(locale, '*');
 	const courseList = await CourseService.getCourseList(locale, '*');
 
 	return {

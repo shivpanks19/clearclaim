@@ -1,21 +1,14 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import ReviewCard from '@/components/common/review-list/ReviewCard';
 import SectionHeadline from '@/components/common/SectionHeadline';
 import { Review } from '@/services/review/types';
 import Pagination from '@/components/common/Pagination';
 import Routes from '@/utils/routes';
 
-const ReviewSection: React.FC<ReviewSectionProps> = ({ headline, subHeadline, reviewList, showReadMore = true, reviewPagination }) => {
-	const [page, setPage] = useState(reviewPagination.page);
-	const router = useRouter();
-
-	const handlePageChange = (pageNumber) => {
-		router.push({ query: { ...router.query, reviewPage: pageNumber } }, undefined, { scroll: false });
-		setPage(pageNumber)
-	};
+const ReviewSection: React.FC<ReviewSectionProps> = ({ headline, subHeadline, reviewList, showReadMore = true }) => {
+	const [currentList, setCurrentList] = useState([]);
 
 	return (
 		<>
@@ -39,7 +32,7 @@ const ReviewSection: React.FC<ReviewSectionProps> = ({ headline, subHeadline, re
 					</div>
 				)}
 				<div className="cardContainer w-42 md:grid-cols-2 gap-9 mx-5 grid">
-					{reviewList?.length > 0 && reviewList.map((review) => (
+					{currentList?.length > 0 && currentList.map((review) => (
 						<ReviewCard
 							key={review.id}
 							studentName={review.studentName}
@@ -54,10 +47,9 @@ const ReviewSection: React.FC<ReviewSectionProps> = ({ headline, subHeadline, re
 				</div>
 			</div>
 			<Pagination
-				className='mb-5 md:mb-20'
-				totalPageCount={reviewPagination.pageCount}
-				currentPage={page}
-				onPageChange={handlePageChange}
+				fullList={reviewList}
+				pageSize={1}
+				setCurrentList={setCurrentList}
 			/>
 		</>
 	)

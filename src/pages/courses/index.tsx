@@ -76,7 +76,7 @@ export const getServerSideProps: GetServerSideProps = async ({
 }: Record<string, any>) => {
 	const courseListPageInfo = await CourseService.getCourseListPageInformation(locale);
 	const courseList = await CourseService.getCourseList(locale, '*', 'courseIdx');
-	const reviewList = await ReviewService.getReviewList(locale, '*', query?.reviewPage);
+	const reviewList = await ReviewService.getReviewList(locale, '*');
 
 	return {
 		props: {

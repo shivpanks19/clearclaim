@@ -1,31 +1,43 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { DOTS, usePagination } from '@/hooks/usePagination';
 import { Button } from '@chakra-ui/react';
 import { AiFillCaretLeft, AiFillCaretRight } from 'react-icons/ai';
 
 const Pagination: React.FC<PaginationProps> = ({
 	className,
-	totalPageCount,
-	currentPage,
+	pageSize,
+	fullList,
+	setCurrentList,
 	siblingCount,
-	onPageChange
+	onPageChange,
 }) => {
+	const [currentPage, setCurrentPage] = useState(1);
+
+	useEffect(() => {
+		setCurrentList(fullList.slice(0, pageSize))
+	}, [])
+
+	const totalPageCount = Math.floor(fullList.length / pageSize);
 	const paginationRange = usePagination({
 		totalPageCount,
 		currentPage,
 		siblingCount
 	});
-
+	console.log('paginationRange', paginationRange)
 	if (currentPage === 0 || totalPageCount === 1) {
 		return null;
 	}
 
 	const onNext = (): void => {
-		onPageChange(currentPage + 1);
+		setCurrentList(fullList.slice(pageSize * currentPage, pageSize * (currentPage + 1)))
+		setCurrentPage(currentPage + 1)
+		onPageChange && onPageChange(currentPage + 1);
 	};
 
 	const onPrevious = (): void => {
-		onPageChange(currentPage - 1);
+		setCurrentList(fullList.slice(pageSize * (currentPage - 2), pageSize * (currentPage - 1)))
+		setCurrentPage(currentPage - 1)
+		onPageChange && onPageChange(currentPage - 1);
 	};
 
 	return (
@@ -49,7 +61,11 @@ const Pagination: React.FC<PaginationProps> = ({
 						<button
 							key={index}
 							className='px-3 py-1 bg-transparent'
-							onClick={() => onPageChange(pageNumber)}
+							onClick={(pageNumber) => {
+								setCurrentList(fullList.slice(pageSize * index, pageSize * (currentPage + 1)))
+								setCurrentPage(currentPage + 1)
+								onPageChange(index)
+							}}
 						>
 							<p className={`${pageNumber === currentPage ? 'bg-tertiary text-white font-semibold' : ''} px-3 py-1 rounded-full`}>
 								{pageNumber}
@@ -71,10 +87,11 @@ const Pagination: React.FC<PaginationProps> = ({
 
 type PaginationProps = {
 	className?: string;
-	totalPageCount: number;
 	siblingCount?: number;
-	currentPage: number;
-	onPageChange: (pageNumber: number) => void;
+	pageSize: number;
+	fullList: any[];
+	setCurrentList: (a) => void;
+	onPageChange?: (pageNumber: number) => void;
 }
 
 Pagination.defaultProps = {

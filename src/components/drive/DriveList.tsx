@@ -1,21 +1,15 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import DriveCard from '@/components/drive/DriveCard';
 import SectionHeadline from '@/components/common/SectionHeadline';
 import { Drive } from '@/services/upcoming-drives/types';
 import Pagination from '@/components/common/Pagination';
 import Routes from '@/utils/routes';
 
-const DriveList: React.FC<DriveListProps> = ({ headline, subHeadline, driveList, showReadMore = true, drivePagination }) => {
-	const [page, setPage] = useState(drivePagination.page);
-	const router = useRouter();
+const DriveList: React.FC<DriveListProps> = ({ headline, subHeadline, driveList, showReadMore = true }) => {
+	const [currentList, setCurrentList] = useState([]);
 
-	const handlePageChange = (pageNumber) => {
-		router.push({ query: { ...router.query, placementPage: pageNumber } }, undefined, { scroll: false });
-		setPage(pageNumber)
-	};
 	return (
 		<div className='mb-16 lg:mb-32'>
 			<a id='success-stories' />
@@ -40,7 +34,7 @@ const DriveList: React.FC<DriveListProps> = ({ headline, subHeadline, driveList,
 				)}
 
 				<div className="cardContainer w-42 lg:grid-cols-2 xl:grid-cols-3 gap-14 grid mx-5 md:mx-0 place-items-center">
-					{driveList?.length > 0 && driveList.map((drive) => (
+					{currentList?.length > 0 && currentList.map((drive) => (
 						<DriveCard
 							key={drive.id}
 							position={drive.position}
@@ -56,10 +50,9 @@ const DriveList: React.FC<DriveListProps> = ({ headline, subHeadline, driveList,
 				</div>
 			</div>
 			<Pagination
-				className='mb-14 md:mb-20'
-				totalPageCount={drivePagination.pageCount}
-				currentPage={page}
-				onPageChange={handlePageChange}
+				fullList={driveList}
+				pageSize={3}
+				setCurrentList={setCurrentList}
 			/>
 		</div>
 	)
