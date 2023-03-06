@@ -1,9 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import SectionHeadline from '@/components/common/SectionHeadline';
-import { useTranslation } from 'next-i18next';
 
 const DemoVideo: React.FC<DemoVideoProps> = ({ url, headline, subHeadline }) => {
-	const { t } = useTranslation();
+	useEffect(() => {
+		const loadVideo = () => {
+			const vidDefer = document.getElementsByTagName('iframe');
+			for (let i = 0; i < vidDefer.length; i++) {
+				if (vidDefer[i].getAttribute('data-src')) {
+					vidDefer[i].setAttribute('src', vidDefer[i].getAttribute('data-src'));
+				}
+			}
+		}
+		setTimeout(loadVideo, 3000)
+	}, [])
 	return (
 		<>
 			<SectionHeadline
@@ -16,7 +25,7 @@ const DemoVideo: React.FC<DemoVideoProps> = ({ url, headline, subHeadline }) => 
 			<div className="video-container relative xl:w-76 mx-auto px-5 mb-12 flex justify-center">
 				<iframe
 					className='m-5 rounded-3xl sm:w-35 md:w-full h-48 md:h-160'
-					src={url ?? 'https://www.youtube.com/embed/2E73SftV0co'}
+					data-src={url ?? 'https://www.youtube.com/embed/2E73SftV0co'}
 					title="YouTube video player"
 					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 					allowFullScreen>
