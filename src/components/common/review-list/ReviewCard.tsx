@@ -13,7 +13,7 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
 	studentImage
 }) => {
 	return (
-		<div className='card w-full flex gap-3 md:gap-8 items-center my-3 md:my-8'>
+		<div className='card w-full flex gap-3 md:gap-8  my-3 md:my-8'>
 			<div className="flex-none relative w-9 h-9 md:w-16 md:h-16 rounded-full overflow-hidden">
 				<Image
 					src={studentImage?.url}

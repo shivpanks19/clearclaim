@@ -16,8 +16,12 @@ const Pagination: React.FC<PaginationProps> = ({
 	useEffect(() => {
 		setCurrentList(fullList.slice(0, pageSize))
 	}, [])
+	useEffect(() => {
+		console.log('currentPage', currentPage);
 
-	const totalPageCount = Math.floor(fullList.length / pageSize);
+	}, [currentPage])
+
+	const totalPageCount = Math.ceil(fullList.length / pageSize);
 	const paginationRange = usePagination({
 		totalPageCount,
 		currentPage,
@@ -61,10 +65,10 @@ const Pagination: React.FC<PaginationProps> = ({
 						<button
 							key={index}
 							className='px-3 py-1 bg-transparent'
-							onClick={(pageNumber) => {
-								setCurrentList(fullList.slice(pageSize * index, pageSize * (currentPage + 1)))
-								setCurrentPage(currentPage + 1)
-								onPageChange(index)
+							onClick={() => {
+								setCurrentList(fullList.slice(pageSize * (pageNumber - 1), pageSize * pageNumber))
+								setCurrentPage(pageNumber)
+								onPageChange && onPageChange(pageNumber)
 							}}
 						>
 							<p className={`${pageNumber === currentPage ? 'bg-tertiary text-white font-semibold' : ''} px-3 py-1 rounded-full`}>

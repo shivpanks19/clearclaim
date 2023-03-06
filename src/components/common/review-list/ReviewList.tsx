@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import ReviewCard from '@/components/common/review-list/ReviewCard';
@@ -9,7 +9,10 @@ import Routes from '@/utils/routes';
 
 const ReviewSection: React.FC<ReviewSectionProps> = ({ headline, subHeadline, reviewList, showReadMore = true }) => {
 	const [currentList, setCurrentList] = useState([]);
+	useEffect(() => {
+		console.log('currentList', currentList);
 
+	}, [currentList])
 	return (
 		<>
 			<SectionHeadline
@@ -17,7 +20,7 @@ const ReviewSection: React.FC<ReviewSectionProps> = ({ headline, subHeadline, re
 				subtitle={subHeadline}
 				className='mb-4 md:mb-10 mx-5'
 			/>
-			<div className="xl:w-76 mx-auto relative pt-5 md:pt-10 mb-4">
+			<div className="xl:w-76 mx-auto relative pt-5 md:pt-10 mb-14 md:mb-20">
 				{showReadMore && (
 					<div className='read_more absolute right-5 top-0 flex gap-3 align-middle'>
 						<Link href={Routes.studentReviews()}>
@@ -45,12 +48,13 @@ const ReviewSection: React.FC<ReviewSectionProps> = ({ headline, subHeadline, re
 						/>
 					))}
 				</div>
+				<Pagination
+					fullList={reviewList}
+					pageSize={4}
+					setCurrentList={setCurrentList}
+				/>
 			</div>
-			<Pagination
-				fullList={reviewList}
-				pageSize={4}
-				setCurrentList={setCurrentList}
-			/>
+
 		</>
 	)
 };

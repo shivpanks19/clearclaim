@@ -31,7 +31,7 @@ const CourseCard: React.FC<CourseCardProps> = ({ courseName, description, number
 					<div className="flex flex-col text md:mr-5">
 						<p className="course-heading text-sm md:text-2xl font-semibold text-title">{courseName}</p>
 						<div className="course-rating place-items-center flex content-bottom my-3">
-							<Rating />
+							<Rating rating={5} />
 							<p className="student-number text-desc text-xs md:text-base font-normal"> {numberOfStudents} students</p>
 						</div>
 						<div className="course-description text-desc mb-5">
