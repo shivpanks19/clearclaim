@@ -48,7 +48,7 @@ const ReviewSection: React.FC<ReviewSectionProps> = ({ headline, subHeadline, re
 			</div>
 			<Pagination
 				fullList={reviewList}
-				pageSize={1}
+				pageSize={4}
 				setCurrentList={setCurrentList}
 			/>
 		</>
