@@ -1,18 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import SectionHeadline from '@/components/common/SectionHeadline';
 
 const DemoVideo: React.FC<DemoVideoProps> = ({ url, headline, subHeadline }) => {
-	useEffect(() => {
-		const loadVideo = () => {
-			const vidDefer = document.getElementsByTagName('iframe');
-			for (let i = 0; i < vidDefer.length; i++) {
-				if (vidDefer[i].getAttribute('data-src')) {
-					vidDefer[i].setAttribute('src', vidDefer[i].getAttribute('data-src'));
-				}
-			}
-		}
-		setTimeout(loadVideo, 3000)
-	}, [])
 	return (
 		<>
 			<SectionHeadline

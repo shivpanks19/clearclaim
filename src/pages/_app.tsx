@@ -46,24 +46,26 @@ export const theme = extendTheme({
 
 export default function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
-    const gtmScript = document.getElementById('gtm');
-    const gaScript = document.getElementById('ga');
-    const fbScript = document.getElementById('fb');
+    const attachScripts = () => {
 
-    gtmScript.innerHTML = `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      const gtmScript = document.getElementById('gtm');
+      const gaScript = document.getElementById('ga');
+      const fbScript = document.getElementById('fb');
+
+      gtmScript.innerHTML = `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-N7SB2Z3');    
   `;
 
-    gaScript.innerHTML = `window.dataLayer = window.dataLayer || [];
+      gaScript.innerHTML = `window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-BVKQYJ6KFL');
   `;
 
-    fbScript.innerHTML = `!function(f,b,e,v,n,t,s)
+      fbScript.innerHTML = `!function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
     n.callMethod.apply(n,arguments):n.queue.push(arguments)};
     if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
@@ -75,9 +77,22 @@ export default function App({ Component, pageProps }: AppProps) {
     fbq('track', 'PageView');  
   `;
 
-    document.head.appendChild(gtmScript);
-    document.head.appendChild(gaScript);
-    document.head.appendChild(fbScript);
+      document.head.appendChild(gtmScript);
+      document.head.appendChild(gaScript);
+      document.head.appendChild(fbScript);
+    };
+
+    setTimeout((function () {
+      var vidDefer = document.getElementsByTagName('iframe');
+      for (var i = 0; i < vidDefer.length; i++) {
+        if (vidDefer[i].getAttribute('data-src')) {
+          vidDefer[i].setAttribute('src', vidDefer[i].getAttribute('data-src'));
+        }
+      }
+    }), 5000)
+
+    setTimeout(attachScripts, 5000)
+
   }, [])
   return (
     <ChakraProvider theme={theme}>

@@ -23,7 +23,7 @@ const Pagination: React.FC<PaginationProps> = ({
 		currentPage,
 		siblingCount
 	});
-	console.log('paginationRange', paginationRange)
+
 	if (currentPage === 0 || totalPageCount === 1) {
 		return null;
 	}
