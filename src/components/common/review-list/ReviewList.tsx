@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import ReviewCard from '@/components/common/review-list/ReviewCard';
@@ -9,10 +9,7 @@ import Routes from '@/utils/routes';
 
 const ReviewSection: React.FC<ReviewSectionProps> = ({ headline, subHeadline, reviewList, showReadMore = true }) => {
 	const [currentList, setCurrentList] = useState([]);
-	useEffect(() => {
-		console.log('currentList', currentList);
 
-	}, [currentList])
 	return (
 		<>
 			<SectionHeadline

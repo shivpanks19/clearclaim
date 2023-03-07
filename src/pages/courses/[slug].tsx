@@ -1,4 +1,4 @@
-import { GetServerSideProps, NextPage } from 'next';
+import { GetStaticProps, GetStaticPaths, NextPage } from 'next';
 
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
@@ -62,7 +62,7 @@ const CourseDetailPage: NextPage<CourseDetailPageProps> = ({ course, courseDetai
 			}
 
 			{/* Course Curriculum */}
-			<CourseCurriculumSection curriculumList={course.curriculumList}/>
+			<CourseCurriculumSection curriculumList={course.curriculumList} />
 
 			{/* Why us */}
 			<WhyUsSection
@@ -108,10 +108,9 @@ type CourseDetailPageProps = {
 	courseList: Course[];
 };
 
-export const getServerSideProps: GetServerSideProps = async ({
+export const getStaticProps: GetStaticProps = async ({
 	locale,
-	params,
-	query
+	params
 }: Record<string, any>) => {
 	const courseDetailPageInfo = await CourseService.getCourseDetailPageInformation(locale);
 	const course = await CourseService.getCourseBySlug(params.slug, locale);
@@ -141,9 +140,17 @@ export const getServerSideProps: GetServerSideProps = async ({
 				id: course.id,
 			})),
 			...(await serverSideTranslations(locale, ['common', 'course-detail-page']))
-		}
+		},
+		revalidate: 60
 	};
 };
 
+export const getStaticPaths: GetStaticPaths = async () => {
+	const courses = await CourseService.getCourseList();
+	const paths = courses.data.map((course) => ({
+		params: { slug: course.attributes.slug },
+	}));
+	return { paths, fallback: false };
+};
 
 export default CourseDetailPage;

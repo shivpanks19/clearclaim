@@ -1,4 +1,4 @@
-import { GetServerSideProps, NextPage } from 'next';
+import { GetStaticProps, GetStaticPaths, NextPage } from 'next';
 import Image from 'next/image';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
@@ -19,8 +19,7 @@ import MiniBlogList from '@/components/blogs/MiniBlogList';
 
 
 const BlogListPage: NextPage<BlogListPageProps> = ({
-	headline,
-	// blog,
+	blog,
 	blogList,
 	categoryList,
 	courseList
@@ -35,11 +34,11 @@ const BlogListPage: NextPage<BlogListPageProps> = ({
 				<div className=' md:gap-8 px-5 mb-9 col-span-3'>
 					{/* Hero */}
 					<BlogDetailHero
-						headline={blogList[0].title}
-						heroImage={blogList[0].thumbnail}
-						contentCategory={blogList[0].contentCategory}
-						readingTime={blogList[0].readingTime}
-						publishedAt={blogList[0].publishedAt}
+						headline={blog.title}
+						heroImage={blog.thumbnail}
+						contentCategory={blog.contentCategory}
+						readingTime={blog.readingTime}
+						publishedAt={blog.publishedAt}
 					/>
 					<TableOfContents headings={[
 						{
@@ -62,7 +61,7 @@ const BlogListPage: NextPage<BlogListPageProps> = ({
 					{/* BlogBody */}
 					<BlogBody
 						headline={'This is the title'}
-						content={blogList[0].content}
+						content={blog.content}
 						categoryList={categoryList}
 					/>
 				</div>
@@ -104,29 +103,31 @@ const BlogListPage: NextPage<BlogListPageProps> = ({
 
 type BlogListPageProps = {
 	headline: string;
-	// blog: Blog;
+	blog: Blog;
 	blogList: Blog[];
 	categoryList: ContentCategory[];
 	courseList: Course[];
 };
 
-export const getServerSideProps: GetServerSideProps = async ({
-	query,
+export const getStaticProps: GetStaticProps = async ({
 	params,
 	locale
 }: Record<string, any>) => {
-	console.log('query', query);
-	console.log('params', params);
 	const blogPageInfo = await BlogService.getBlogsStaticData(locale, '*');
-	const blogList = await BlogService.getBlogs(locale, '*', { start: query?.start, limit: 4, contentCategory: query?.contentCategory });
-	// const blog = await BlogService.getBlogBySlug(params.slug, locale);
+	const blogList = await BlogService.getBlogs(locale, '*', { limit: 4, contentCategory: params?.contentCategory });
+	const blog = await BlogService.getBlogBySlug(params.slug, locale);
+
 	const categoryList = await BlogService.getBlogCategories(locale);
 	const courseList = await CourseService.getCourseList(locale, '*');
 
 	return {
 		props: {
 			...blogPageInfo.data.attributes,
-			// blog,
+			blog: {
+				...blog.data.attributes,
+				contentCategory: blog.data.attributes.content_category.data.attributes,
+				thumbnail: blog.data.attributes.thumbnail?.data.attributes,
+			},
 			blogList: blogList.data.map((blog) => ({
 				...blog.attributes,
 				id: blog.id,
@@ -142,8 +143,17 @@ export const getServerSideProps: GetServerSideProps = async ({
 				id: course.id,
 			})),
 			...(await serverSideTranslations(locale, ['common', 'home']))
-		}
+		},
+		revalidate: 60
 	};
+};
+
+export const getStaticPaths: GetStaticPaths = async () => {
+	const blogList = await BlogService.getBlogs(undefined, 'content_category');
+	const paths = blogList.data.map((blog) => ({
+		params: { contentCategory: blog.attributes.content_category.data.attributes.slug, slug: blog.attributes.slug },
+	}));
+	return { paths, fallback: false };
 };
 
 export default BlogListPage;

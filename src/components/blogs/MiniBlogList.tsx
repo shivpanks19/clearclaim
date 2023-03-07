@@ -18,6 +18,8 @@ const MiniBlogList: React.FC<MiniBlogListProps> = ({ blogList, numberOfBlogs }) 
 							key={blog.id}
 							blogName={blog.title}
 							heroImage={blog.thumbnail}
+							contentCategory={blog.contentCategory}
+							slug={blog.slug}
 							publishedAt={blog.publishedAt}
 						/>
 					)) : (
@@ -26,6 +28,8 @@ const MiniBlogList: React.FC<MiniBlogListProps> = ({ blogList, numberOfBlogs }) 
 								key={blog.id}
 								blogName={blog.title}
 								heroImage={blog.thumbnail}
+								contentCategory={blog.contentCategory}
+								slug={blog.slug}
 								publishedAt={blog.publishedAt}
 							/>
 						))

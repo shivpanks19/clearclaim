@@ -39,7 +39,6 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ isOpen, onClose }) 
 		defaultValues: { modeOfStudy: ModeOfStudy.ONLINE }
 	});
 	const onSubmit: SubmitHandler<Inputs> = async (data) => {
-		console.log('data', data);
 		// @ts-ignore
 		(async () => {
 			await toast.promise(RegistrationService.postRegistrationForm(data), {

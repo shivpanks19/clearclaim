@@ -1,12 +1,10 @@
 import React from "react";
 import Image from 'next/image';
-import { Blog, ContentCategory } from '@/services/blogs/types';
+import { ContentCategory } from '@/services/blogs/types';
 import Rating from "@/components/common/Rating";
-import CategoryFilter from '@/components/blogs/CategoryFilter';
-import PrevNextPost from '@/components/blogs/PrevNextPost';
 import { marked } from 'marked';
 
-const BlogBody: React.FC<BlogBodyProps> = ({ headline, content, categoryList }) => {
+const BlogBody: React.FC<BlogBodyProps> = ({ content }) => {
 	const body = marked.parse(content);
 	return (
 		<div className="container w-96 lg:w-216 mb-12">
