@@ -7,8 +7,8 @@ import { ContentCategory } from '@/services/blogs/types';
 
 const BlogCard: React.FC<BlogCardProps> = ({ blogName, showDescription = true, description, contentCategory, slug, heroImage, publishedAt }) => {
 	return (
-		<div className='flex shadow rounded h-30 mx-auto mb-4 md:mb-10 bg-white flex-col w-112'>
-			<div className="relative flex-none w-112 h-72">
+		<div className='flex shadow rounded h-30 mx-auto mb-4 md:mb-10 bg-white flex-col w-99'>
+			<div className="relative flex-none w-99 h-72">
 				<Image
 					src={heroImage}
 					fill

@@ -16,19 +16,31 @@ module.exports = {
         mdxl: "1440px",
       },
       width: {
+        '5.5': '1.375rem',
+        21: '5.25rem',
         35: '35rem',
         76: '76rem',
+        85: '21.25rem',
         90: '22.5rem',
+        99: '24.75rem',
         108: '27rem',
         112: '28rem',
         120: '30rem',
+        134: '34rem',
+        154: '39rem',
+        216: '54rem',
         256: '64rem'
       },
       height: {
+        '5.5': '1.375rem',
         45: '45rem',
         51: '51rem',
+        85: '21.25rem',
         90: '22.5rem',
         120: '30rem',
+        134: '34rem',
+        154: '39rem',
+        216: '54rem',
         160: '40rem',
       },
       fontSize: {
@@ -75,7 +87,7 @@ module.exports = {
           },
         ]
       },
-      backgroundColor: (theme) => ({
+      backgroundColor: () => ({
         primary: "#0D3D54",
         lightblue: "rgb(239, 248, 253)",
         secondary: "#ffa600",
@@ -141,10 +153,21 @@ module.exports = {
       padding: {
         '115': '460px'
       },
+      margin: {
+        21: '5.25rem',
+      },
       gridTemplateColumns: {
         '26': 'repeat(26, minmax(0, 1fr))',
-      }
-    }
+      },
+      typography: (theme) => ({
+        DEFAULT: {
+          css: {
+            h1: {color: theme('text-primary')},
+            h2: {color: theme('text-tertiary')}
+          }
+        }
+      })
+    },
   },
   plugins: [
     require('@tailwindcss/typography'),

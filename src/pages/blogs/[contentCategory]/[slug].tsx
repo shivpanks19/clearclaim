@@ -1,15 +1,21 @@
 import { GetServerSideProps, NextPage } from 'next';
+import Image from 'next/image';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
-import BlogDetailHero from '@/components/blogs/BlogDetailHero';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import CategoryFilter from '@/components/blogs/CategoryFilter';
-import PrevNextPost from '@/components/blogs/PrevNextPost';
+import SectionHeadline from '@/components/common/SectionHeadline';
 import BlogBody from '@/components/blogs/BlogBody';
+import BlogList from '@/components/blogs/BlogList';
+import MiniBlogCard from '@/components/blogs/MiniBlogCard';
+import BlogDetailHero from '@/components/blogs/BlogDetailHero';
+import CategoryFilter from '@/components/blogs/CategoryFilter';
+import TableOfContents from '@/components/blogs/TableOfContents';
+
 import BlogService from '@/services/blogs';
 import CourseService from '@/services/course';
 import { Course } from '@/services/course/types';
 import { Blog, ContentCategory } from '@/services/blogs/types';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import MiniBlogList from '@/components/blogs/MiniBlogList';
 
 
 const BlogListPage: NextPage<BlogListPageProps> = ({
@@ -25,28 +31,74 @@ const BlogListPage: NextPage<BlogListPageProps> = ({
 			<Navbar
 				courseList={courseList}
 			/>
-
-			{/* Hero */}
-			<BlogDetailHero
-				headline={blogList[0].title}
-			/>
-
-			{/* BlogBody */}
-			<BlogBody
-				headline={'This is the title'}
-				content={blogList[0].content}
-				categoryList={categoryList}
-			/>
+			<div className='xl:w-76 grid lg:grid-cols-4 mx-auto'>
+				<div className=' md:gap-8 px-5 mb-9 col-span-3'>
+					{/* Hero */}
+					<BlogDetailHero
+						headline={blogList[0].title}
+						heroImage={blogList[0].thumbnail}
+						contentCategory={blogList[0].contentCategory}
+						readingTime={blogList[0].readingTime}
+						publishedAt={blogList[0].publishedAt}
+					/>
+					<TableOfContents headings={[
+						{
+							title: 'Introduction',
+							id: 'introduction',
+						},
+						{
+							title: 'Background',
+							id: 'background',
+						},
+						{
+							title: 'Implementation',
+							id: 'implementation',
+						},
+						{
+							title: 'Conclusion',
+							id: 'conclusion',
+						},
+					]} />
+					{/* BlogBody */}
+					<BlogBody
+						headline={'This is the title'}
+						content={blogList[0].content}
+						categoryList={categoryList}
+					/>
+				</div>
+				<div className="col">
+					<div className="promotion relative w-85 h-154 mt-24 mb-20">
+						<Image
+							src='/img/promotion.png'
+							fill
+							sizes='(max-width: 768px) 100vw,
+						(max-width: 1200px) 50vw,
+						33vw'
+							alt='Blog Hero'
+						/>
+					</div>
+					<MiniBlogList
+						blogList={blogList}
+						numberOfBlogs={3}
+					/>
+				</div>
+			</div>
 
 			{/* Categories */}
 			<CategoryFilter categoryList={categoryList} />
 
 			{/* PrevNextPost */}
-			<PrevNextPost blogList={blogList} />
+			<SectionHeadline
+				title='Readers also read'
+				subtitle=''
+				className='mb-11'
+			/>
+
+			<BlogList numberOfBlogs={3} blogList={blogList} />
 
 			{/* Footer */}
 			<Footer />
-		</div>
+		</div >
 	);
 };
 
@@ -59,9 +111,9 @@ type BlogListPageProps = {
 };
 
 export const getServerSideProps: GetServerSideProps = async ({
-	locale,
 	query,
-	params
+	params,
+	locale
 }: Record<string, any>) => {
 	console.log('query', query);
 	console.log('params', params);
