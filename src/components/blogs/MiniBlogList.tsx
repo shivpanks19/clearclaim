@@ -38,7 +38,7 @@ const MiniBlogList: React.FC<MiniBlogListProps> = ({ blogList, numberOfBlogs }) 
 
 type MiniBlogListProps = {
 	blogList: Blog[];
-	numberOfBlogs: number;
+	numberOfBlogs?: number;
 };
 
 export default MiniBlogList;
