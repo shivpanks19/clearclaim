@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { DOTS, usePagination } from '@/hooks/usePagination';
 import { Button } from '@chakra-ui/react';
 import { AiFillCaretLeft, AiFillCaretRight } from 'react-icons/ai';
@@ -8,40 +8,50 @@ const Pagination: React.FC<PaginationProps> = ({
 	pageSize,
 	fullList,
 	setCurrentList,
+	autoScroll,
 	siblingCount,
 	onPageChange,
 }) => {
-	const [currentPage, setCurrentPage] = useState(1);
+	const currentPage = useRef(1);
+
+	const totalPageCount = Math.ceil(fullList.length / pageSize);
 
 	useEffect(() => {
 		setCurrentList(fullList.slice(0, pageSize))
-	}, [])
-	useEffect(() => {
-		console.log('currentPage', currentPage);
+		let interval;
+		if (autoScroll) {
+			interval = setInterval(() => {
+				if (currentPage.current < totalPageCount) {
+					onNext();
+				} else {
+					setCurrentList(fullList.slice(0, pageSize))
+					currentPage.current = 1;
+				}
+			}, autoScroll)
+		}
+		return (() => { clearInterval(interval) })
+	}, []);
 
-	}, [currentPage])
-
-	const totalPageCount = Math.ceil(fullList.length / pageSize);
 	const paginationRange = usePagination({
 		totalPageCount,
-		currentPage,
+		currentPage: currentPage.current as number,
 		siblingCount
 	});
 
-	if (currentPage === 0 || totalPageCount === 1) {
+	if (currentPage.current === 0 || totalPageCount === 1) {
 		return null;
 	}
 
 	const onNext = (): void => {
-		setCurrentList(fullList.slice(pageSize * currentPage, pageSize * (currentPage + 1)))
-		setCurrentPage(currentPage + 1)
-		onPageChange && onPageChange(currentPage + 1);
+		setCurrentList(fullList.slice(pageSize * currentPage.current, pageSize * (currentPage.current + 1)))
+		currentPage.current = currentPage.current + 1
+		onPageChange && onPageChange(currentPage.current + 1);
 	};
 
 	const onPrevious = (): void => {
-		setCurrentList(fullList.slice(pageSize * (currentPage - 2), pageSize * (currentPage - 1)))
-		setCurrentPage(currentPage - 1)
-		onPageChange && onPageChange(currentPage - 1);
+		setCurrentList(fullList.slice(pageSize * (currentPage.current - 2), pageSize * (currentPage.current - 1)))
+		currentPage.current = currentPage.current - 1
+		onPageChange && onPageChange(currentPage.current - 1);
 	};
 
 	return (
@@ -49,7 +59,7 @@ const Pagination: React.FC<PaginationProps> = ({
 			<Button
 				onClick={onPrevious}
 				rounded='full'
-				disabled={currentPage === 1}
+				disabled={currentPage.current === 1}
 			>
 				<AiFillCaretLeft />
 			</Button>
@@ -67,11 +77,11 @@ const Pagination: React.FC<PaginationProps> = ({
 							className='px-3 py-1 bg-transparent'
 							onClick={() => {
 								setCurrentList(fullList.slice(pageSize * (pageNumber - 1), pageSize * pageNumber))
-								setCurrentPage(pageNumber)
+								currentPage.current = pageNumber
 								onPageChange && onPageChange(pageNumber)
 							}}
 						>
-							<p className={`${pageNumber === currentPage ? 'bg-tertiary text-white font-semibold' : ''} px-3 py-1 rounded-full`}>
+							<p className={`${pageNumber === currentPage.current ? 'bg-tertiary text-white font-semibold' : ''} px-3 py-1 rounded-full`}>
 								{pageNumber}
 							</p>
 						</button>
@@ -81,7 +91,7 @@ const Pagination: React.FC<PaginationProps> = ({
 			<Button
 				onClick={onNext}
 				rounded='full'
-				disabled={totalPageCount - currentPage <= 0}
+				disabled={totalPageCount - currentPage.current <= 0}
 			>
 				<AiFillCaretRight />
 			</Button>
@@ -94,6 +104,7 @@ type PaginationProps = {
 	siblingCount?: number;
 	pageSize: number;
 	fullList: any[];
+	autoScroll?: number;
 	setCurrentList: (a) => void;
 	onPageChange?: (pageNumber: number) => void;
 }

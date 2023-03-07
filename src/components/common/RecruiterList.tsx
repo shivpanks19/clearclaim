@@ -5,18 +5,10 @@ import { Recruiter } from '@/services/recruiter/types';
 import Pagination from '@/components/common/Pagination';
 
 const RecruiterSection: React.FC<RecruiterSectionProps> = ({ headline, subHeadline, recruiterList }) => {
-	const [page, setPage] = useState(1);
 	const [currentList, setCurrentList] = useState([]);
 
-	useEffect(() => {
-		// setInterval(() => {
-		// 	setCurrentList(recruiterList.slice(page * 8, (page + 1) * 8));
-		// 	setPage(page + 1);
-		// }, 2000)
-	}, [])
-
 	return (
-		<>
+		<div>
 			<SectionHeadline
 				className='mb-5 md:mb-12 mx-5'
 				title={headline}
@@ -35,13 +27,14 @@ const RecruiterSection: React.FC<RecruiterSectionProps> = ({ headline, subHeadli
 						/>
 					</div>
 				))}
-				<Pagination
-					fullList={recruiterList}
-					pageSize={8}
-					setCurrentList={setCurrentList}
-				/>
 			</div>
-		</>
+			<Pagination
+				fullList={recruiterList}
+				pageSize={8}
+				autoScroll={3000}
+				setCurrentList={setCurrentList}
+			/>
+		</div>
 	)
 };
 
