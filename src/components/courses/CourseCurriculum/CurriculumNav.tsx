@@ -14,7 +14,7 @@ const CurriculumNav: React.FC<CurriculumNavProps> = ({ curriculumList }) => {
 
 				<TabList className='w-full justify-between'>
 					{curriculumList?.length > 0 && curriculumList.map((curriculumPoint, idx) => (
-						<CurriculumTab topTab={true}>
+						<CurriculumTab topTab={idx === 0} bottomTab={curriculumList.length - 1 === idx} key={idx}>
 							<div className="flex items-center gap-6">
 								<p className="index text-3xl font-semibold px-16">{idx + 1}</p>
 								<p className='text-2xl font-semibold'>{curriculumPoint.title}</p>
@@ -25,7 +25,7 @@ const CurriculumNav: React.FC<CurriculumNavProps> = ({ curriculumList }) => {
 
 				<TabPanels>
 					{curriculumList?.length > 0 && curriculumList.map((curriculumPoint, idx) => (
-						<TabPanel padding={0} className="h-full">
+						<TabPanel padding={0} className="h-full" key={idx}>
 							<div className="bg-loader-gray h-full p-11 flex flex-col rounded-r">
 								<div className=" bg-white rounded flex-1 p-11 mb-11 relative">
 									<p className="text-xl font-semibold mb-8">
