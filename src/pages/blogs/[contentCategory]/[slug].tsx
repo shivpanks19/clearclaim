@@ -30,8 +30,8 @@ const BlogListPage: NextPage<BlogListPageProps> = ({
 			<Navbar
 				courseList={courseList}
 			/>
-			<div className='xl:w-76 grid lg:grid-cols-4 mx-auto'>
-				<div className=' md:gap-8 px-5 mb-9 col-span-3'>
+			<div className='xl:w-76 grid grid-cols-1 lg:grid-cols-4 mx-auto px-5 gap-8'>
+				<div className=' md:gap-8 mb-9 col-span-3'>
 					{/* Hero */}
 					<BlogDetailHero
 						headline={blog.title}
@@ -65,12 +65,13 @@ const BlogListPage: NextPage<BlogListPageProps> = ({
 						categoryList={categoryList}
 					/>
 				</div>
+				{/* Right sidebar */}
 				<div className="col">
-					<div className="promotion relative w-85 h-154 mt-24 mb-20">
+					<div className="promotion relative w-80 lg:w-85 h-154 lg:mt-24 mb-10 md:mb-20">
 						<Image
 							src='/img/promotion.png'
 							fill
-							sizes='(max-width: 768px) 100vw,
+							sizes='(max-width: 768px) 95vw,
 						(max-width: 1200px) 50vw,
 						33vw'
 							alt='Blog Hero'
@@ -90,7 +91,7 @@ const BlogListPage: NextPage<BlogListPageProps> = ({
 			<SectionHeadline
 				title='Readers also read'
 				subtitle=''
-				className='mb-11'
+				className='mb-4 md:mb-11'
 			/>
 
 			<BlogList numberOfBlogs={3} blogList={blogList} />

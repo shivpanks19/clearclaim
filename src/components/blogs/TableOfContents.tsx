@@ -18,9 +18,9 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({ headings }) => {
 	};
 
 	return (
-		<nav className="table-of-contents bg-lightblue shadow border border-gray-200 p-4 mb-14">
-			<div className="flex items-center justify-between mb-2 pt-5 px-7">
-				<h2 className="text-primary text-2xl font-semibold mb-3">Table of Contents</h2>
+		<nav className="table-of-contents transition-all bg-lightblue shadow border border-gray-200 p-4 mb-9 lg:mb-14">
+			<div className="flex items-center justify-between mb-2 pt-2 lg:pt-5 px-2 lg:px-7">
+				<h2 className="text-primary text-sm lg:text-2xl font-semibold mb-3">Table of Contents</h2>
 				<button
 					onClick={toggleTableOfContents}
 					className={`${isOpen ? 'rotate-180' : ''
@@ -35,12 +35,12 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({ headings }) => {
 			</div>
 			<ul
 				className={`${isOpen ? 'block' : 'hidden'
-					} mt-2 transition-all duration-500 ease-in-out px-7`}
+					} mt-2 transition-all duration-500 ease-in-out px-2 lg:px-7`}
 			>
 				{headings.map((heading, index) => (
 					<li key={index} className='mb-1'>
 						<a
-							className="text-primary hover:text-title transition-all duration-300 ease-in-out transform hover:scale-110"
+							className="text-primary text-xs lg:text-base transition-all duration-300 ease-in-out transform hover:scale-110"
 							href={`#${heading.id}`}
 						>
 							{heading.title}

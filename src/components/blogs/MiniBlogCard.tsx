@@ -7,17 +7,17 @@ import { ContentCategory } from '@/services/blogs/types';
 
 const MiniBlogCard: React.FC<MiniBlogCardProps> = ({ blogName, heroImage, publishedAt, contentCategory, slug }) => {
 	return (
-		<div className='flex shadow rounded mx-auto mb-4 md:mb-10 bg-white w-99'>
-			<div className="relative flex-none w-40 h-36">
+		<div className='flex shadow rounded mx-auto mb-4 lg:mb-10 bg-white w-80 lg:w-99'>
+			<div className="relative flex-none w-20 h-18 md:w-40 md:h-36">
 				<Image
 					src={heroImage.url}
 					fill
 					alt='Blog thumbnail'
 				/>
 			</div>
-			<div className="flex flex-col text px-5 pt-5 relative ">
+			<div className="flex flex-col text px-5 pt-5 relative">
 				<Link href={Routes.blog(contentCategory, slug)}>
-					<p className="blog-heading font-semibold text-title mb-2">{blogName}</p>
+					<p className="blog-heading font-semibold text-title mb-2">{blogName.split(' ').slice(0, 7).join(' ')}...</p>
 				</Link>
 				<div className="flex justify-between mb-5">
 					<div className="date text-aphonic text-xs">{new Date(publishedAt).toDateString()}</div>

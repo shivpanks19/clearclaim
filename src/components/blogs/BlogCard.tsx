@@ -6,8 +6,8 @@ import { ContentCategory } from '@/services/blogs/types';
 
 const BlogCard: React.FC<BlogCardProps> = ({ blogName, showDescription = true, description, contentCategory, slug, heroImage, publishedAt }) => {
 	return (
-		<div className='flex shadow rounded h-30 mx-auto mb-4 md:mb-10 bg-white flex-col w-99'>
-			<div className="relative flex-none w-99 h-72">
+		<div className='flex shadow rounded h-30 mx-auto mb-4 md:mb-10 bg-white flex-col w-80 md:w-99'>
+			<div className="relative flex-none w-80 md:w-99 h-72">
 				<Image
 					src={heroImage}
 					fill
@@ -15,11 +15,11 @@ const BlogCard: React.FC<BlogCardProps> = ({ blogName, showDescription = true, d
 				/>
 			</div>
 			<div className="flex flex-col text px-5 pt-5 relative h-full">
-				<p className="blog-heading md:text-2xl font-semibold text-title mb-2">{blogName}</p>
+				<p className="blog-heading md:text-2xl font-semibold text-title mb-2">{blogName.split(' ').slice(0, 12).join(' ')}...</p>
 				<div className="blog-description text-desc mb-4 grow">
 					{showDescription && (
 						<p className="blog-desc text-sm md:text-base">
-							{description}
+							{description.split(' ').slice(0, 20).join(' ')}...
 						</p>
 					)}
 				</div>

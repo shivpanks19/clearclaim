@@ -10,7 +10,7 @@ const Rating: React.FC<RatingProps> = ({ className, rating, large }) => {
 					key={r}
 					className={classNames({
 						'relative  ': true,
-						'h-9 w-9': large,
+						'w-5 h-5 md:h-9 md:w-9': large,
 						'w-3 h-3 md:w-5 md:h-5': !large
 					})}
 				>

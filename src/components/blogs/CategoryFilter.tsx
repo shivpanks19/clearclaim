@@ -7,7 +7,7 @@ const CategoryFilter: React.FC<CategoryFilterProps> = ({
 	categoryList
 }) => {
 	return (
-		<div className="container mb-20 mx-auto xl:w-76">
+		<div className="container mb-12 md:mb-20 mx-auto max-w-full overflow-x-scroll xl:w-76 px-5 pb-5">
 			{categoryList?.length > 0 && (
 				<>
 					<p className="font-semibold text-primary mb-3">Categories:</p>
