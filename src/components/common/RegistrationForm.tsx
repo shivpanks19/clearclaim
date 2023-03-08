@@ -1,4 +1,4 @@
-import React, { FormEvent } from "react";
+import React from "react";
 import Image from 'next/image';
 import { toast } from 'react-toastify';
 import RegistrationService from "@/services/registration";

@@ -26,6 +26,9 @@ const Services = {
 	getDrivePageInformation: 'drives-page',
 	getDriveList: 'drives',
 
+	getTapEventPageInformation: 'event-page',
+	getTapEventList: 'events',
+
 	getBlogs: 'blogs',
 	getBlog: 'blogs',
 	getBlogsCount: 'blogs/count',

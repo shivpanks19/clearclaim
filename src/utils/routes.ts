@@ -38,6 +38,12 @@ const records = (): UrlObject => {
 	};
 };
 
+const events = (): UrlObject => {
+	return {
+		pathname: '/events'
+	};
+};
+
 const studentReviews = (): UrlObject => {
 	return {
 		pathname: '/student-reviews'
@@ -57,13 +63,6 @@ const blog = (category: ContentCategory, slug: string): UrlObject => {
 	};
 };
 
-const portfolios = (page?: number): UrlObject => {
-	return {
-		pathname: '/portfolio',
-		query: { page }
-	};
-};
-
 const privacyPolicy = (page?: number): UrlObject => {
 	return {
 		pathname: '/privacy-policy',
@@ -78,10 +77,10 @@ const Routes = {
 	courses,
 	courseDetail,
 	records,
+	events,
 	studentReviews,
 	blogsByCategory,
 	blog,
-	portfolios,
 	privacyPolicy
 };
 

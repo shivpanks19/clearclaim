@@ -96,7 +96,7 @@ const Navbar: React.FC<NavbarProps> = ({ courseList }) => {
 								</div>
 							</div>
 
-							<nav className='hidden lg:flex space-x-16 text-secondary'>
+							<nav className='hidden lg:flex gap-8 text-secondary'>
 								{navItems.map((item, index) => {
 									return (<>
 										{item.subLinks?.length > 0 ? (

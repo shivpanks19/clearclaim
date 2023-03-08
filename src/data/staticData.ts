@@ -19,7 +19,8 @@ export const navItems: Array<NavItem> = [
 	{ id: 4, title: 'Reviews', link: '/student-reviews', target: '_self' },
 	{ id: 5, title: 'Drives', link: '/upcoming-drives', target: '_self' },
 	{ id: 6, title: 'Contact Us', link: '/contact-us', target: '_self' },
-	{ id: 7, title: 'Blogs', link: '/blogs', target: '_self' }
+	{ id: 7, title: 'Blogs', link: '/blogs', target: '_self' },
+	{ id: 8, title: 'Events', link: '/events', target: '_self' }
 ];
 
 // export const comingSoonHandler = (navItem: NavItem): void => {
