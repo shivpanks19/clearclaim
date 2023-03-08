@@ -15,7 +15,7 @@ const SortBy: React.FC<SortByProps> = ({
 					<FormControl className='mb-6 ml-2' variant="floating" id="sortBy" >
 						<Select placeholder='Sort By' className='border border-tertiary'>
 							{categoryList.map((category) => (
-								<option value={category.id}>{category.title}</option>
+								<option key={category.id} value={category.id}>{category.title}</option>
 							))}
 						</Select>
 					</FormControl>

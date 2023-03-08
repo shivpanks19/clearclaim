@@ -32,7 +32,7 @@ const CategoryFilter: React.FC<CategoryFilterProps> = ({
 						<FormControl className='mb-6 ml-2' variant="floating" id="category" >
 							<Select placeholder='Category' className='border border-tertiary'>
 								{categoryList.map((category) => (
-									<option value={category.id}>{category.title}</option>
+									<option key={category.id} value={category.id}>{category.title}</option>
 								))}
 							</Select>
 						</FormControl>
