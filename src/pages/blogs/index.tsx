@@ -1,4 +1,7 @@
 import { GetServerSideProps, NextPage } from 'next';
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
+import Routes from '@/utils/routes';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import BlogListHero from '@/components/blogs/BlogListHero';
@@ -15,9 +18,18 @@ import { Blog, ContentCategory } from '@/services/blogs/types';
 const BlogListPage: NextPage<BlogListPageProps> = ({
 	headline,
 	blogList,
+	featuredBlogList,
 	categoryList,
 	courseList
 }) => {
+	const router = useRouter();
+	const [q, setQ] = useState(null);
+	const [category, setCategory] = useState(null);
+	const featuredBlog = featuredBlogList[0]
+
+	useEffect(() => {
+		router.push(Routes.blogs(undefined, q, category), undefined, { scroll: false })
+	}, [category, q]);
 
 	return (
 		<div>
@@ -28,16 +40,16 @@ const BlogListPage: NextPage<BlogListPageProps> = ({
 			{/* Hero */}
 			<BlogListHero
 				headline={headline}
-				featuredBlog={blogList[0]}
+				featuredBlog={featuredBlog}
 			/>
 
 			{/* SearchBar */}
 			<SearchBar
-				onChange={(e) => { console.log('search, e', e) }}
+				onChange={(e) => setQ(e.target.value)}
 			/>
 
 			{/* Categories */}
-			<CategoryFilter categoryList={categoryList} />
+			<CategoryFilter categoryList={categoryList} onCategorySelect={(cat) => setCategory(cat)} />
 
 			{/* BlogList */}
 			<BlogList
@@ -53,6 +65,7 @@ const BlogListPage: NextPage<BlogListPageProps> = ({
 type BlogListPageProps = {
 	headline: string;
 	blogList: Blog[];
+	featuredBlogList: Blog[];
 	categoryList: ContentCategory[];
 	courseList: Course[];
 };
@@ -62,7 +75,8 @@ export const getServerSideProps: GetServerSideProps = async ({
 	query
 }: Record<string, any>) => {
 	const blogPageInfo = await BlogService.getBlogsStaticData(locale, '*');
-	const blogList = await BlogService.getBlogs(locale, '*', { start: query?.start, limit: 4, contentCategory: query?.contentCategory });
+	const blogList = await BlogService.getBlogs(locale, '*', { start: query?.start, limit: 4, contentCategory: query?.contentCategory, _q: query?._q });
+	const featuredBlogList = await BlogService.getBlogs(locale, '*', { featured_eq: true });
 	const categoryList = await BlogService.getBlogCategories(locale);
 	const courseList = await CourseService.getCourseList(locale, '*');
 
@@ -70,6 +84,12 @@ export const getServerSideProps: GetServerSideProps = async ({
 		props: {
 			...blogPageInfo.data.attributes,
 			blogList: blogList.data.map((blog) => ({
+				...blog.attributes,
+				id: blog.id,
+				thumbnail: blog.attributes.thumbnail?.data.attributes,
+				contentCategory: blog.attributes.content_category?.data.attributes,
+			})),
+			featuredBlogList: featuredBlogList.data.map((blog) => ({
 				...blog.attributes,
 				id: blog.id,
 				thumbnail: blog.attributes.thumbnail?.data.attributes,

@@ -9,7 +9,8 @@ import {
 } from '@chakra-ui/react';
 
 const CategoryFilter: React.FC<CategoryFilterProps> = ({
-	categoryList
+	categoryList,
+	onCategorySelect
 }) => {
 	return (
 		<div className="container mb-4 md:mb-20 mx-auto max-w-full overflow-x-scroll xl:w-76 px-5 pb-5">
@@ -20,9 +21,7 @@ const CategoryFilter: React.FC<CategoryFilterProps> = ({
 						<div className="flex justify-between place-items-center">
 							<div className="categoryList flex gap-3">
 								{categoryList.map((category) => (
-									<Link href={category.slug} key={category.id}>
-										<p className="border border-primary2 rounded px-6 py-3">{category.title}</p>
-									</Link>
+									<p className="border border-primary2 rounded px-6 py-3" onClick={() => onCategorySelect(category.id)}>{category.title}</p>
 								))}
 							</div>
 							<BsArrowRight className="text-tertiary" size={36} />
@@ -45,6 +44,7 @@ const CategoryFilter: React.FC<CategoryFilterProps> = ({
 
 type CategoryFilterProps = {
 	categoryList: ContentCategory[];
+	onCategorySelect: (cat) => void;
 };
 
 export default CategoryFilter;

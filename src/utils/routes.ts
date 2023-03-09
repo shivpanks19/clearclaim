@@ -7,11 +7,11 @@ const contactUs = (): UrlObject => {
 	};
 };
 
-const blogs = (page?: number): UrlObject => {
+const blogs = (page?: number, _q?: string, contentCategoryId?: number): UrlObject => {
 	return {
 		pathname: '/blogs',
-		query: { page }
-	};
+		query: { page, _q, contentCategory: contentCategoryId }
+	}
 };
 
 const aboutUs = (): UrlObject => {
@@ -38,10 +38,11 @@ const records = (): UrlObject => {
 	};
 };
 
-const events = (): UrlObject => {
+const events = (page?: number, _q?: string): UrlObject => {
 	return {
-		pathname: '/events'
-	};
+		pathname: '/events',
+		query: { page, _q }
+	}
 };
 
 const studentReviews = (): UrlObject => {

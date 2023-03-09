@@ -7,7 +7,7 @@ const FeaturedBlogCard: React.FC<FeaturedBlogCardProps> = ({ featuredBlog }) => 
 	return (
 		<div className='flex grow xl:w-256 shadow rounded h-30 mx-auto mb-4 md:mb-10 bg-white flex-col md:flex-row justify-evenly'>
 			<Image
-				src='/img/featured_blog.png'
+				src={featuredBlog.thumbnail.url}
 				className='flex-none'
 				height={371}
 				width={437}

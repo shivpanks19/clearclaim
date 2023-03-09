@@ -9,7 +9,7 @@ const SortBy: React.FC<SortByProps> = ({
 	categoryList
 }) => {
 	return (
-		<div className="container ml-8 w-40">
+		<div className="container ml-8 w-40 h-10">
 			{categoryList?.length > 0 && (
 				<div className="w-40">
 					<FormControl className='mb-6 ml-2' variant="floating" id="sortBy" >

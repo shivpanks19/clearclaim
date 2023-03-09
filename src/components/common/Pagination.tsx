@@ -30,7 +30,7 @@ const Pagination: React.FC<PaginationProps> = ({
 			}, autoScroll)
 		}
 		return (() => { clearInterval(interval) })
-	}, []);
+	}, [fullList]);
 
 	const paginationRange = usePagination({
 		totalPageCount,

@@ -32,7 +32,7 @@ const Stat: React.FC<StatProps> = ({ studentsTrained, workshopsConducted, placem
 	};
 
 	useEffect(() => {
-		if (odometerLoaded) {
+		if (!odometerLoaded) {
 			setStudentsTrainedInternal(1);
 			setWorkshopsConductedInternal(1);
 			setPlacementDrivesInternal(1);
