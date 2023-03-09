@@ -21,7 +21,7 @@ const CategoryFilter: React.FC<CategoryFilterProps> = ({
 						<div className="flex justify-between place-items-center">
 							<div className="categoryList flex gap-3">
 								{categoryList.map((category) => (
-									<p className="border border-primary2 rounded px-6 py-3" onClick={() => onCategorySelect(category.id)}>{category.title}</p>
+									<p className="border border-primary2 rounded px-6 py-3" key={category.id} onClick={() => onCategorySelect(category.id)}>{category.title}</p>
 								))}
 							</div>
 							<BsArrowRight className="text-tertiary" size={36} />

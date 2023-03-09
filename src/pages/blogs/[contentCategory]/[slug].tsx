@@ -1,11 +1,13 @@
 import { GetStaticProps, GetStaticPaths, NextPage } from 'next';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
+import Routes from '@/utils/routes';
+
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import SectionHeadline from '@/components/common/SectionHeadline';
 import BlogBody from '@/components/blogs/BlogBody';
 import BlogList from '@/components/blogs/BlogList';
-import MiniBlogCard from '@/components/blogs/MiniBlogCard';
 import BlogDetailHero from '@/components/blogs/BlogDetailHero';
 import CategoryFilter from '@/components/blogs/CategoryFilter';
 import TableOfContents from '@/components/blogs/TableOfContents';
@@ -24,6 +26,7 @@ const BlogListPage: NextPage<BlogListPageProps> = ({
 	categoryList,
 	courseList
 }) => {
+	const router = useRouter();
 
 	return (
 		<div>
@@ -85,7 +88,7 @@ const BlogListPage: NextPage<BlogListPageProps> = ({
 			</div>
 
 			{/* Categories */}
-			<CategoryFilter categoryList={categoryList} />
+			<CategoryFilter categoryList={categoryList} onCategorySelect={(cat) => router.push(Routes.blogs(undefined, undefined, cat))} />
 
 			{/* PrevNextPost */}
 			<SectionHeadline
@@ -150,7 +153,8 @@ export const getStaticProps: GetStaticProps = async ({
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-	const blogList = await BlogService.getBlogs(undefined, 'content_category');
+	const blogList = await BlogService.getBlogs(undefined, '*');
+	console.log('blogList2, blog', blogList.data[0].attributes);
 	const paths = blogList.data.map((blog) => ({
 		params: { contentCategory: blog.attributes.content_category.data.attributes.slug, slug: blog.attributes.slug },
 	}));
