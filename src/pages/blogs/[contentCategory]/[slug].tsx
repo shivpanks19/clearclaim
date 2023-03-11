@@ -120,7 +120,7 @@ export const getStaticProps: GetStaticProps = async ({
 	const blogPageInfo = await BlogService.getBlogsStaticData(locale, '*');
 	const blogList = await BlogService.getBlogs(locale, '*', { limit: 4, contentCategory: params?.contentCategory });
 	const blog = await BlogService.getBlogBySlug(params.slug, locale);
-
+	console.log('blog single', blog);
 	const categoryList = await BlogService.getBlogCategories(locale);
 	const courseList = await CourseService.getCourseList(locale, '*');
 
@@ -152,12 +152,14 @@ export const getStaticProps: GetStaticProps = async ({
 	};
 };
 
-export const getStaticPaths: GetStaticPaths = async () => {
-	const blogList = await BlogService.getBlogs(undefined, '*');
+export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
+	const blogList = await BlogService.getBlogs(locales[0], '*');
 	console.log('blogList2, blog', blogList.data[0].attributes);
 	const paths = blogList.data.map((blog) => ({
 		params: { contentCategory: blog.attributes.content_category.data.attributes.slug, slug: blog.attributes.slug },
 	}));
+	console.log('pathsx', paths);
+
 	return { paths, fallback: false };
 };
 

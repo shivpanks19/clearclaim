@@ -1,7 +1,8 @@
 import React from "react";
+import Link from "next/link";
 import Image from "next/image";
-import classNames from 'classnames';
 import { Blog } from '@/services/blogs/types';
+import Routes from '@/utils/routes';
 
 const FeaturedBlogCard: React.FC<FeaturedBlogCardProps> = ({ featuredBlog }) => {
 	return (
@@ -24,7 +25,9 @@ const FeaturedBlogCard: React.FC<FeaturedBlogCardProps> = ({ featuredBlog }) => 
 				</div>
 				<div className="flex justify-between mb-6">
 					<div className="date text-desc2">{new Date(featuredBlog.publishedAt).toDateString()}</div>
-					<div className="readMore text-tertiary font-regular">Read more &rarr;</div>
+					<Link href={Routes.blog(featuredBlog.contentCategory, featuredBlog.slug)}>
+						<div className="readMore text-tertiary font-regular">Read more &rarr;</div>
+					</Link>
 				</div>
 			</div>
 		</div>

@@ -39,6 +39,20 @@ const Navbar: React.FC<NavbarProps> = ({ courseList }) => {
 	};
 
 	useEffect(() => {
+		const scrollHandler = () => {
+			console.log('scroll', window.scrollY)
+			if (window.scrollY > 0) {
+				setNavBg('bg-white shadow-navbar')
+			} else {
+				setNavBg('bg-lightblue')
+			}
+		};
+		console.log('addeventlistener')
+		window.addEventListener('scroll', scrollHandler, true);
+		return (window.removeEventListener('scroll', scrollHandler,));
+	}, []);
+
+	useEffect(() => {
 		if (courseList?.length) {
 			const newNavItems = navItems;
 			const courseLink = newNavItems.find((item) => item.link === '/courses');
@@ -51,16 +65,6 @@ const Navbar: React.FC<NavbarProps> = ({ courseList }) => {
 			newNavItems[newNavItems.indexOf(courseLink)] = { ...courseLink, subLinks };
 			setNavItems(JSON.parse(JSON.stringify(newNavItems)));
 		};
-
-		const scrollHandler = () => {
-			if (window.scrollY > 0) {
-				setNavBg('bg-white shadow-navbar')
-			} else {
-				setNavBg('bg-lightblue')
-			}
-		}
-		window.addEventListener('scroll', scrollHandler);
-		return (window.removeEventListener('scroll', scrollHandler));
 	}, [courseList])
 
 	return (
@@ -98,7 +102,7 @@ const Navbar: React.FC<NavbarProps> = ({ courseList }) => {
 
 							<nav className='hidden lg:flex gap-8 text-secondary'>
 								{navItems.map((item, index) => {
-									return (<>
+									return (<div key={item.id}>
 										{item.subLinks?.length > 0 ? (
 											<Popover
 												trigger='hover'
@@ -159,7 +163,7 @@ const Navbar: React.FC<NavbarProps> = ({ courseList }) => {
 												</Text>
 											</Link>
 										)}
-									</>
+									</div>
 									);
 								})}
 							</nav>

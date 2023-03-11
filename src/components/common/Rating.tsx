@@ -5,9 +5,9 @@ import classNames from 'classnames';
 const Rating: React.FC<RatingProps> = ({ className, rating, large }) => {
 	return (
 		<div className={classNames('stars flex gap-1 mr-3', className)}>
-			{rating && Array.apply(null, Array(rating)).map((r) => (
+			{rating && Array.apply(null, Array(rating)).map((_, idx) => (
 				<div
-					key={r}
+					key={idx}
 					className={classNames({
 						'relative  ': true,
 						'w-5 h-5 md:h-9 md:w-9': large,

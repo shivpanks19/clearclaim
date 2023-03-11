@@ -16,16 +16,18 @@ const Logo: React.FC<LogoProps> = ({ className, href, variant, logoSize }) => {
 
 	return (
 		<div className={classNames('cursor-pointer', ...className.split(' '))}>
-			<Link href={href}>
-				<div className={`relative ${logoSize === 'small' && 'w-24 h-8'} ${logoSize === 'large' && 'w-32 h-9'}`}>
-					<Image
-						src={path()}
-						fill
-						alt='logo'
-					/>
-				</div>
-			</Link>
-		</div>
+			<Link href={href} legacyBehavior passHref>
+				<a>
+					<div className={`relative ${logoSize === 'small' && 'w-24 h-8'} ${logoSize === 'large' && 'w-32 h-9'}`}>
+						<Image
+							src={path()}
+							fill
+							alt='logo'
+						/>
+					</div>
+				</a>
+			</Link >
+		</div >
 	);
 };
 

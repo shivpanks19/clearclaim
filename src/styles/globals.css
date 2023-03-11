@@ -10,6 +10,9 @@ body {
   scroll-behavior: smooth !important;
   scroll-padding-top: 15rem !important;
 }
+body {
+  position: relative;
+}
 
 a {
   color: inherit;
