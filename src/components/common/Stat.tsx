@@ -40,10 +40,12 @@ const Stat: React.FC<StatProps> = ({ studentsTrained, workshopsConducted, placem
 	}, [odometerLoaded]);
 
 	useEffect(() => {
-		setStudentsTrainedInternal(studentsTrained);
-		setWorkshopsConductedInternal(workshopsConducted);
-		setPlacementDrivesInternal(placementDrives);
-	}, [studentsTrained, workshopsConducted, placementDrives]);
+		if (odometerLoaded) {
+			setStudentsTrainedInternal(studentsTrained);
+			setWorkshopsConductedInternal(workshopsConducted);
+			setPlacementDrivesInternal(placementDrives);
+		}
+	}, [studentsTrained, workshopsConducted, placementDrives, odometerLoaded]);
 	return (
 		<div className='mdxl:w-76 shadow rounded mx-5 md:mx-auto py-8 md:-mt-20 mb-8 md:mb-20 bg-white flex flex-col justify-center items-center md:flex-row md:justify-evenly'>
 			<div className='flex flex-col justify-center items-center pb-7 mb-7 md:mb-0  border-primary2 border-b md:border-0 md:border-r h-30 md:h-20 w-64 md:w-1/3'>

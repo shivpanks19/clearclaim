@@ -49,9 +49,9 @@ const ReviewSection: React.FC<ReviewSectionProps> = ({ headline, subHeadline, re
 					fullList={reviewList}
 					pageSize={4}
 					setCurrentList={setCurrentList}
+					autoScroll={3000}
 				/>
 			</div>
-
 		</>
 	)
 };

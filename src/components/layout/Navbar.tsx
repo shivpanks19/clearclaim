@@ -47,7 +47,6 @@ const Navbar: React.FC<NavbarProps> = ({ courseList }) => {
 				setNavBg('bg-lightblue')
 			}
 		};
-		console.log('addeventlistener')
 		window.addEventListener('scroll', scrollHandler, true);
 		return (window.removeEventListener('scroll', scrollHandler,));
 	}, []);
@@ -69,9 +68,9 @@ const Navbar: React.FC<NavbarProps> = ({ courseList }) => {
 
 	return (
 		<div className='sticky top-0 left-0 z-30'>
-			<div className='w-screen grid place-items-center bg-lightblue'>
+			<div className={`w-screen grid place-items-center ${navBg}`}>
 				{!isMobileNavbarVisible && (
-					<div className={`py-4 w-full mdxl:w-76 ${navBg} transition-all`}>
+					<div className={`py-4 w-full mdxl:w-76 transition-all`}>
 						<div className='flex justify-between items-center pl-4 pr-6'>
 							{/* Desktop Screen Logo */}
 							<div className='flex-shrink-0'>

@@ -9,7 +9,7 @@ const CurriculumNav: React.FC<CurriculumNavProps> = ({ curriculumList }) => {
 				isFitted
 				variant='unstyled'
 				orientation='vertical'
-				className='border-0 border-b border-tertiary'
+				className='border-0 border-b border-tertiary grid grid-cols-2 w-full'
 			>
 
 				<TabList className='w-full justify-between'>
@@ -25,15 +25,17 @@ const CurriculumNav: React.FC<CurriculumNavProps> = ({ curriculumList }) => {
 
 				<TabPanels>
 					{curriculumList?.length > 0 && curriculumList.map((curriculumPoint, idx) => (
-						<TabPanel padding={0} className="h-full" key={idx}>
+						<TabPanel padding={0} className="h-42" key={idx}>
 							<div className="bg-loader-gray h-full p-11 flex flex-col rounded-r">
-								<div className=" bg-white rounded flex-1 p-11 mb-11 relative">
+								<div className=" bg-white rounded flex-1 p-11 relative">
 									<p className="text-xl font-semibold mb-8">
 										{curriculumPoint.text1}
 									</p>
-									<p className="text-aphonic">
-										{curriculumPoint.text2}
-									</p>
+									{curriculumPoint.text2?.length > 0 && curriculumPoint.text2.map((txt) => (
+										<p className="text-aphonic">
+											{txt}
+										</p>
+									))}
 								</div>
 							</div>
 						</TabPanel>
@@ -51,7 +53,7 @@ type CurriculumNavProps = {
 	curriculumList: ({
 		title: string;
 		text1: string;
-		text2: string;
+		text2: string[];
 	})[];
 };
 

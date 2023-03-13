@@ -3,6 +3,7 @@ import Image from 'next/image';
 import SectionHeadline from '@/components/common/SectionHeadline';
 import { Recruiter } from '@/services/recruiter/types';
 import Pagination from '@/components/common/Pagination';
+import animation from '@/styles/animation.module.scss';
 
 const RecruiterSection: React.FC<RecruiterSectionProps> = ({ headline, subHeadline, recruiterList }) => {
 	const [currentList, setCurrentList] = useState([]);
@@ -14,26 +15,28 @@ const RecruiterSection: React.FC<RecruiterSectionProps> = ({ headline, subHeadli
 				title={headline}
 				subtitle={subHeadline}
 			/>
-			<div className="cards xl:w-76 mb-11 md:mb-20 mx-auto px-5 grid grid-cols-2 xl:grid-cols-4 gap-8 place-items-center md:gap-14">
-				{currentList?.length > 0 && currentList.map((recruiter) => (
-					<div
-						key={recruiter.id}
-						className="relative w-36 md:w-60 h-9 md:h-16 mb-4"
-					>
-						<Image
-							src={recruiter.recruiterImage.url}
-							fill
-							alt={recruiter.recruiterName}
-						/>
-					</div>
-				))}
+			<div className="mb-14 md:mb-20">
+				<div className={`cards mb-4 xl:w-76 mx-auto px-5 grid grid-cols-2 xl:grid-cols-4 gap-8 place-items-center md:gap-14 ${animation.slideLeft}`}>
+					{currentList?.length > 0 && currentList.map((recruiter) => (
+						<div
+							key={recruiter.id}
+							className={`relative w-36 md:w-60 h-9 md:h-16 mb-4  `}
+						>
+							<Image
+								src={recruiter.recruiterImage.url}
+								fill
+								alt={recruiter.recruiterName}
+							/>
+						</div>
+					))}
+				</div>
+				<Pagination
+					fullList={recruiterList}
+					pageSize={8}
+					autoScroll={3000}
+					setCurrentList={setCurrentList}
+				/>
 			</div>
-			<Pagination
-				fullList={recruiterList}
-				pageSize={8}
-				autoScroll={3000}
-				setCurrentList={setCurrentList}
-			/>
 		</div>
 	)
 };

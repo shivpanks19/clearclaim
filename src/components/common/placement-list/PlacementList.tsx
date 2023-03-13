@@ -51,6 +51,7 @@ const PlacementList: React.FC<PlacementListProps> = ({ headline, subHeadline, pl
 					fullList={placementList}
 					pageSize={3}
 					setCurrentList={setCurrentList}
+					autoScroll={3000}
 				/>
 			</div>
 		</>

@@ -40,7 +40,7 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
 						</div>
 					</div>
 				</div>
-				<p className='reviewText text-aphonic text-xs md:text-base'>{reviewText}</p>
+				<p className='reviewText text-aphonic text-xs md:text-sm'>{reviewText}</p>
 			</div>
 		</div>
 	)
