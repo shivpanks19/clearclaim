@@ -28,7 +28,7 @@ const ImageLayer: React.FC<ImageLayerProps> = ({ level, imgList }) => {
 				{imgList && imgList.map((img, imgIdx) => (
 					<div
 						className={
-							`absolute ${miscStyle[`level-${level}`]}
+							`absolute w-36 h-48 rounded-xl shadow overflow-hidden ${miscStyle[`level-${level}`]}
 										${getAbsolutePositioningClass(level + 1, imgIdx)}
 										${animation.upInfinte} ${animation[`speed-${img.speed}`]}`
 						}
@@ -37,8 +37,8 @@ const ImageLayer: React.FC<ImageLayerProps> = ({ level, imgList }) => {
 					>
 						<Image
 							src={img.src}
-							width={143}
-							height={194}
+							fill
+							priority
 							alt='Hero Image'
 						/>
 					</div>

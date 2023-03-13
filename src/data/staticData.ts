@@ -31,72 +31,82 @@ export const navItems: Array<NavItem> = [
 
 export const humanRiverData: Array<ImageSetAnimationDetail> = [
 	{
-		src: '/img/home/heroHuman.png',
+		src: '/img/riverImages/adarsh.jpg',
 		level: 1,
 		speed: 9
 	},
 	{
-		src: '/img/home/heroHuman.png',
+		src: '/img/riverImages/kashmira.jpg',
 		level: 1,
 		speed: 9
 	},
 	{
-		src: '/img/home/heroHuman.png',
+		src: '/img/riverImages/nikitha.jpeg',
 		level: 1,
 		speed: 9
 	},
 	{
-		src: '/img/home/heroHuman.png',
+		src: '/img/riverImages/niva.jpeg',
 		level: 1,
 		speed: 9
 	},
 	{
-		src: '/img/home/heroHuman.png',
+		src: '/img/riverImages/omer.jpg',
 		level: 2,
 		speed: 15
 	},
 	{
-		src: '/img/home/heroHuman.png',
+		src: '/img/riverImages/rahul.jpg',
 		level: 2,
 		speed: 15
 	},
 	{
-		src: '/img/home/heroHuman.png',
+		src: '/img/riverImages/raja.jpeg',
 		level: 2,
 		speed: 15
 	},
 	{
-		src: '/img/home/heroHuman.png',
+		src: '/img/riverImages/saptarishi.jpeg',
 		level: 2,
 		speed: 15
 	},
 	{
-		src: '/img/home/heroHuman.png',
+		src: '/img/riverImages/shameem.jpg',
 		level: 2,
 		speed: 15
 	},
 	{
-		src: '/img/home/heroHuman.png',
+		src: '/img/riverImages/shashank.jpeg',
 		level: 3,
 		speed: 20
 	},
 	{
-		src: '/img/home/heroHuman.png',
+		src: '/img/riverImages/siva.jpg',
 		level: 3,
 		speed: 20
 	},
 	{
-		src: '/img/home/heroHuman.png',
+		src: '/img/riverImages/swapnil.jpg',
 		level: 3,
 		speed: 20
 	},
 	{
-		src: '/img/home/heroHuman.png',
+		src: '/img/riverImages/tejas.png',
 		level: 3,
 		speed: 20
 	},
 	{
-		src: '/img/home/heroHuman.png',
+		src: '/img/riverImages/vankatesh.jpg',
+		level: 3,
+		speed: 20
+	},
+	{
+		src: '/img/riverImages/vinaykumar.jpg',
+		level: 3,
+		speed: 20
+	},
+	{
+		src: '/img/riverImages/yasmeen.jpg',
 		level: 3,
 		speed: 20
 	}
