@@ -75,13 +75,16 @@ export const getServerSideProps: GetServerSideProps = async ({
 	query
 }: Record<string, any>) => {
 	const blogPageInfo = await BlogService.getBlogsStaticData(locale, '*');
-	const featuredBlogList = await BlogService.getBlogs(locale, '*', { featured_eq: true });
 	const categoryList = await BlogService.getBlogCategories(locale);
 	const currentCategory = categoryList.data.map((category) => ({
 		...category.attributes,
 		id: category.id,
 	}))?.filter((cat) => cat.slug === query?.contentCategory)[0]
 	const blogList = await BlogService.getBlogs(locale, '*', { start: query?.start, limit: 4, contentCategoryId: currentCategory?.id, _q: query?._q });
+	let featuredBlogList = await BlogService.getBlogs(locale, '*', { featured_eq: true });
+	if (featuredBlogList.data?.length === 0) {
+		featuredBlogList = blogList
+	}
 	const courseList = await CourseService.getCourseList(locale, '*');
 
 	return {
