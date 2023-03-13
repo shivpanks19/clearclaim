@@ -96,7 +96,7 @@ export const humanRiverData: Array<ImageSetAnimationDetail> = [
 		speed: 20
 	},
 	{
-		src: '/img/riverImages/vankatesh.jpg',
+		src: '/img/riverImages/venkatesh.jpg',
 		level: 3,
 		speed: 20
 	},

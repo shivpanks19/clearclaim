@@ -10,7 +10,7 @@ type GetBlogsParams = {
 	_q: string;
 	content_category_eq: string;
 	featured_eq: boolean;
-	contentCategory: Id;
+	contentCategoryId: Id;
 };
 
 function getBlogsStaticData(locale?: string, populate?: string): Promise<Record<string, any>> {
@@ -26,7 +26,7 @@ function getBlogs(_locale?: string, populate?: string, params?: Partial<GetBlogs
 		_sort: params?.latest ? 'updated_at:desc' : undefined,
 		_q: params?._q,
 		searchFields: ['title', 'description'],
-		contentCategory: params?.contentCategory
+		contentCategory: params?.contentCategoryId
 	});
 }
 
