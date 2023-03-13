@@ -25,7 +25,12 @@ const BlogListPage: NextPage<BlogListPageProps> = ({
 	const router = useRouter();
 	const [q, setQ] = useState(null);
 	const [category, setCategory] = useState(null);
-	const featuredBlog = featuredBlogList[0]
+	let featuredBlog;
+	if (featuredBlogList?.length > 0) {
+		featuredBlog = featuredBlogList[0]
+	} else {
+		featuredBlog = blogList[0]
+	}
 
 	useEffect(() => {
 		router.push(Routes.blogs(undefined, q, category), undefined, { scroll: false })
@@ -82,12 +87,11 @@ export const getServerSideProps: GetServerSideProps = async ({
 	}))?.filter((cat) => cat.slug === query?.contentCategory)[0]
 	const blogList = await BlogService.getBlogs(locale, '*', { start: query?.start, limit: 4, contentCategoryId: currentCategory?.id, _q: query?._q });
 	let featuredBlogList = await BlogService.getBlogs(locale, '*', { featured_eq: true });
-	if (featuredBlogList.data?.length === 0) {
+	const courseList = await CourseService.getCourseList(locale, '*');
+	console.log('featuredBlogList', featuredBlogList);
+	if (featuredBlogList?.data.length === 0) {
 		featuredBlogList = blogList
 	}
-	console.log('featuredBlogList', featuredBlogList);
-	const courseList = await CourseService.getCourseList(locale, '*');
-
 	return {
 		props: {
 			...blogPageInfo.data.attributes,
