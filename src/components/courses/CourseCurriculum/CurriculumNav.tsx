@@ -31,8 +31,8 @@ const CurriculumNav: React.FC<CurriculumNavProps> = ({ curriculumList }) => {
 									<p className="text-xl font-semibold mb-8">
 										{curriculumPoint.text1}
 									</p>
-									{curriculumPoint.text2?.length > 0 && curriculumPoint.text2.map((txt) => (
-										<p className="text-aphonic">
+									{curriculumPoint.text2?.length > 0 && curriculumPoint.text2.map((txt, idx) => (
+										<p className="text-aphonic" key={idx}>
 											{txt}
 										</p>
 									))}

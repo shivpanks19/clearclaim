@@ -39,7 +39,7 @@ export type Course = {
 	curriculumList: ({
 		title: string;
 		text1: string;
-		text2: string;
+		text2: string[];
 	})[];
 	courseFAQ: FAQ[];
 	footerFaq: FAQ[];
