@@ -120,7 +120,6 @@ export const getStaticProps: GetStaticProps = async ({
 	const blogPageInfo = await BlogService.getBlogsStaticData(locale, '*');
 	const blogList = await BlogService.getBlogs(locale, '*', { limit: 4 });
 	const blog = await BlogService.getBlogBySlug(params.slug, locale);
-	console.log('blog single', blog);
 	const categoryList = await BlogService.getBlogCategories(locale);
 	const courseList = await CourseService.getCourseList(locale, '*');
 
