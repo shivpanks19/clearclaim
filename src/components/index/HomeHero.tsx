@@ -9,8 +9,9 @@ import WorkshopButton from '@/components/common/button/WorkshopButton';
 import SocialButtonList from '@/components/common/SocialButtonList';
 
 import { useTranslation } from 'next-i18next';
+import { ImageType } from '@/utils/types';
 
-const HomeHeroSection: React.FC<HomeHeroSectionProps> = ({ headline, subHeadline, studentsTrained, workshopsConducted, placementDrives, nextBatchDate }) => {
+const HomeHeroSection: React.FC<HomeHeroSectionProps> = ({ headline, subHeadline, studentsTrained, workshopsConducted, placementDrives, nextBatchDate, riverImages, riverImagesLv2, riverImagesLv3 }) => {
 	const { t } = useTranslation();
 	return (
 		<div
@@ -79,7 +80,11 @@ const HomeHeroSection: React.FC<HomeHeroSectionProps> = ({ headline, subHeadline
 						className='relative w-full h-96'
 						style={{ alignSelf: 'flex-end' }}
 					>
-						<HumanRiver />
+						<HumanRiver
+							riverImages={riverImages}
+							riverImagesLv2={riverImagesLv2}
+							riverImagesLv3={riverImagesLv3}
+						/>
 					</div>
 					<div className='trust flex flex-col place-items-center pt-7 z-10 bg-lightblue'>
 						<div className='flex gap-2' style={{ alignItems: 'flex-end' }}>
@@ -122,6 +127,9 @@ type HomeHeroSectionProps = {
 	workshopsConducted: number;
 	nextBatchDate: Date;
 	placementDrives: number;
+	riverImages: ImageType[];
+	riverImagesLv2: ImageType[];
+	riverImagesLv3: ImageType[];
 };
 
 export default HomeHeroSection;

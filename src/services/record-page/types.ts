@@ -3,5 +3,5 @@ export type SalaryCardType = {
 	numberOfSalaries: number;
 	low: number;
 	high: number;
-	avg: number;
+	avg: string;
 };

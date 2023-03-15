@@ -5,15 +5,15 @@ import miscStyle from '@/styles/misc-style.module.scss';
 import { ImageSetAnimationDetail } from '@/data/types';
 import { humanRiverData } from '@/data/staticData';
 import groupBy from "@/utils/groupBy";
+import { ImageType } from '@/utils/types';
 
-const HumanRiver: React.FC<HumanRiverProps> = () => {
-	const groupedByLevel: Record<number, Array<ImageSetAnimationDetail>> = groupBy('level')(humanRiverData);
+const HumanRiver: React.FC<HumanRiverProps> = ({ riverImages, riverImagesLv2, riverImagesLv3 }) => {
 	return (
 		<div className='h-full relative overflow-hidden'>
-			{groupedByLevel && Object.entries(groupedByLevel).map(([level, imgList], groupIdx) => (
+			{[riverImages, riverImagesLv2, riverImagesLv3].map((imgList, groupIdx) => (
 				<ImageLayer
 					key={groupIdx}
-					level={parseInt(level)}
+					level={groupIdx + 1}
 					imgList={imgList}
 				/>
 			))}
@@ -25,18 +25,18 @@ const ImageLayer: React.FC<ImageLayerProps> = ({ level, imgList }) => {
 	return (
 		<div className="absolute h-full w-full grid grid-cols-3">
 			<div className='relative flex gap-5 w-96'>
-				{imgList && imgList.map((img, imgIdx) => (
+				{imgList?.length > 0 && imgList.map((img, imgIdx) => (
 					<div
 						className={
 							`absolute w-36 h-48 rounded-xl shadow overflow-hidden ${miscStyle[`level-${level}`]}
 										${getAbsolutePositioningClass(level + 1, imgIdx)}
-										${animation.upInfinte} ${animation[`speed-${img.speed}`]}`
+										${animation.upInfinte} ${animation[`speed-${level}`]}`
 						}
 						style={{ top: 550, animationDelay: `${imgIdx * 2.2}s` }}
 						key={imgIdx}
 					>
 						<Image
-							src={img.src}
+							src={img.url}
 							fill
 							priority
 							alt='Hero Image'
@@ -73,11 +73,14 @@ const getAbsolutePositioningClass = (colNum: number, imgIdx: number): string => 
 }
 
 type HumanRiverProps = {
+	riverImages: ImageType[];
+	riverImagesLv2: ImageType[];
+	riverImagesLv3: ImageType[];
 };
 
 type ImageLayerProps = {
 	level: number;
-	imgList: Array<ImageSetAnimationDetail>;
+	imgList: ImageType[];
 };
 
 export default HumanRiver;

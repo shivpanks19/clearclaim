@@ -1,110 +1,17 @@
 .upInfinte {
-	&.speed-20 {
-		animation: 20s linear infinite slideUp;
-	}
-
-	&.speed-15 {
-		animation: 15s linear infinite slideUp;
-	}
-
-	&.speed-14 {
-		animation: 14s linear infinite slideUp;
-	}
-
-	&.speed-13 {
-		animation: 13s linear infinite slideUp;
-	}
-
-	&.speed-12 {
-		animation: 12s linear infinite slideUp;
-	}
-
-	&.speed-11 {
-		animation: 11s linear infinite slideUp;
-	}
-
-	&.speed-10 {
-		animation: 10s linear infinite slideUp;
-	}
-
-	&.speed-9 {
+	&.speed-1 {
 		animation: 9s linear infinite slideUp;
 	}
 
-	&.speed-8 {
-		animation: 8s linear infinite slideUp;
+	&.speed-2 {
+		animation: 15s linear infinite slideUp;
 	}
 
-	&.speed-7 {
-		animation: 7s linear infinite slideUp;
-	}
-
-	&.speed-5 {
-		animation: 5s linear infinite slideUp;
-	}
-
-	&.speed-4 {
-		animation: 4s linear infinite slideUp;
+	&.speed-3 {
+		animation: 20s linear infinite slideUp;
 	}
 
 	animation: 7s linear infinite slideUp;
-	animation-iteration-count: infinite;
-}
-
-.rightInfinte {
-	&.speed-30 {
-		animation: 30s linear infinite slideRight;
-	}
-
-	&.speed-20 {
-		animation: 20s linear infinite slideRight;
-	}
-
-	&.speed-15 {
-		animation: 15s linear infinite slideRight;
-	}
-
-	&.speed-14 {
-		animation: 14s linear infinite slideRight;
-	}
-
-	&.speed-13 {
-		animation: 13s linear infinite slideRight;
-	}
-
-	&.speed-12 {
-		animation: 12s linear infinite slideRight;
-	}
-
-	&.speed-11 {
-		animation: 11s linear infinite slideRight;
-	}
-
-	&.speed-10 {
-		animation: 10s linear infinite slideRight;
-	}
-
-	&.speed-9 {
-		animation: 9s linear infinite slideRight;
-	}
-
-	&.speed-8 {
-		animation: 8s linear infinite slideRight;
-	}
-
-	&.speed-7 {
-		animation: 7s linear infinite slideRight;
-	}
-
-	&.speed-5 {
-		animation: 5s linear infinite slideRight;
-	}
-
-	&.speed-4 {
-		animation: 4s linear infinite slideRight;
-	}
-
-	animation: 7s linear infinite slideRight;
 	animation-iteration-count: infinite;
 }
 

@@ -1,3 +1,5 @@
+import { ImageType } from '@/utils/types';
+
 export type HomePageInformation = {
 	headline: string,
 	subHeadline: string,
@@ -21,5 +23,8 @@ export type HomePageInformation = {
 	recruiterHeadline: string,
 	recruiterSubHeadline: string,
 	recognitionHeadline: string,
-	recognitionSubHeadline: string
+	recognitionSubHeadline: string,
+	riverImages: ImageType[]
+	riverImagesLv2: ImageType[]
+	riverImagesLv3: ImageType[]
 };
