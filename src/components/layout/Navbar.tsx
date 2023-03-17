@@ -40,7 +40,6 @@ const Navbar: React.FC<NavbarProps> = ({ courseList }) => {
 
 	useEffect(() => {
 		const scrollHandler = () => {
-			console.log('scroll', window.scrollY)
 			if (window.scrollY > 0) {
 				setNavBg('bg-white shadow-navbar')
 			} else {

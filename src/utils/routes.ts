@@ -38,10 +38,10 @@ const records = (): UrlObject => {
 	};
 };
 
-const events = (page?: number, _q?: string): UrlObject => {
+const events = (page?: number, _q?: string, sortingOrder?: string): UrlObject => {
 	return {
 		pathname: '/events',
-		query: { page, _q }
+		query: { page, _q, sortingOrder }
 	}
 };
 

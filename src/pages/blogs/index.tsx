@@ -88,7 +88,6 @@ export const getServerSideProps: GetServerSideProps = async ({
 	const blogList = await BlogService.getBlogs(locale, '*', { start: query?.start, limit: 4, contentCategoryId: currentCategory?.id, _q: query?._q });
 	let featuredBlogList = await BlogService.getBlogs(locale, '*', { featured_eq: true });
 	const courseList = await CourseService.getCourseList(locale, '*');
-	console.log('featuredBlogList', featuredBlogList);
 	if (featuredBlogList?.data.length === 0) {
 		featuredBlogList = blogList
 	}

@@ -147,7 +147,6 @@ export const getStaticProps: GetStaticProps = async ({
 
 export const getStaticPaths: GetStaticPaths = async () => {
 	const courses = await CourseService.getCourseList();
-	console.log('course list', courses);
 	const paths = courses.data.map((course) => ({
 		params: { slug: course.attributes.slug },
 	}));

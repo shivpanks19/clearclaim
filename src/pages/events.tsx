@@ -18,10 +18,11 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 const Events: NextPage<EventsProps> = ({ tapEventPageInfo, eventList, courseList }) => {
 	const router = useRouter();
 	const [q, setQ] = useState(null);
+	const [sortingOrder, setSortingOrder] = useState('DESC');
 
 	useEffect(() => {
-		router.push(Routes.events(undefined, q), undefined, { scroll: false })
-	}, [q]);
+		router.push(Routes.events(undefined, q, sortingOrder), undefined, { scroll: false })
+	}, [q, sortingOrder]);
 
 	return (
 		<div>
@@ -44,11 +45,19 @@ const Events: NextPage<EventsProps> = ({ tapEventPageInfo, eventList, courseList
 				/>
 
 				{/* Categories */}
-				<SortBy categoryList={[{ id: '1', slug: 'asd', title: 'TitleCat' }]} />
+				<SortBy
+					categoryList={[
+						{ id: 'DESC', title: 'Descending: Date Published' },
+						{ id: 'ASC', title: 'Ascending: Date Published' },
+					]}
+					sortingOrder={sortingOrder}
+					setSortingOrder={setSortingOrder}
+				/>
 			</div>
 
 			{/* Events list */}
 			<EventList
+				showReadMore={false}
 				eventList={eventList}
 			/>
 
@@ -69,7 +78,7 @@ export const getServerSideProps: GetServerSideProps = async ({
 	query
 }: Record<string, any>) => {
 	const tapEventPageInfo = await TapService.getTapEventPageInformation(locale, '*');
-	const eventList = await TapService.getTapEventList(locale, '*', { start: query?.start, limit: 4, _q: query?._q });
+	const eventList = await TapService.getTapEventList(locale, '*', { start: query?.start, limit: 4, _q: query?._q }, query.sortingOrder);
 	const courseList = await CourseService.getCourseList(locale, '*');
 
 	return {

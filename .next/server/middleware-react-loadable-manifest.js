@@ -1,1 +1,1 @@
-self.__REACT_LOADABLE_MANIFEST={"..\\components\\common\\Stat.tsx -> react-odometerjs":{id:4453,files:["static/chunks/453.e01c6de5891729d3.js"]}};
+self.__REACT_LOADABLE_MANIFEST={}
