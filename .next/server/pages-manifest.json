@@ -2,5 +2,19 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/events": "pages/events.js"
+  "/api/hello": "pages/api/hello.js",
+  "/about-us": "pages/about-us.js",
+  "/blogs/[contentCategory]/[slug]": "pages/blogs/[contentCategory]/[slug].js",
+  "/courses": "pages/courses.js",
+  "/events": "pages/events.js",
+  "/courses/[slug]": "pages/courses/[slug].js",
+  "/contact-us": "pages/contact-us.js",
+  "/records": "pages/records.js",
+  "/": "pages/index.js",
+  "/upcoming-drives": "pages/upcoming-drives.js",
+  "/blogs": "pages/blogs.js",
+  "/student-reviews": "pages/student-reviews.js",
+  "/en/404": "pages/en/404.html",
+  "/en/500": "pages/en/500.html",
+  "/en/privacy-policy": "pages/en/privacy-policy.html"
 }
