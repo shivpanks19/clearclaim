@@ -1,0 +1,20 @@
+{
+  "/_app": "pages/_app.js",
+  "/_document": "pages/_document.js",
+  "/api/hello": "pages/api/hello.js",
+  "/_error": "pages/_error.js",
+  "/contact-us": "pages/contact-us.js",
+  "/blogs": "pages/blogs.js",
+  "/blogs/[contentCategory]/[slug]": "pages/blogs/[contentCategory]/[slug].js",
+  "/courses/[slug]": "pages/courses/[slug].js",
+  "/events": "pages/events.js",
+  "/": "pages/index.js",
+  "/about-us": "pages/about-us.js",
+  "/records": "pages/records.js",
+  "/student-reviews": "pages/student-reviews.js",
+  "/courses": "pages/courses.js",
+  "/upcoming-drives": "pages/upcoming-drives.js",
+  "/en/404": "pages/en/404.html",
+  "/en/500": "pages/en/500.html",
+  "/en/privacy-policy": "pages/en/privacy-policy.html"
+}
