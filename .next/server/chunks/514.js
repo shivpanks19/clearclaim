@@ -1341,10 +1341,11 @@ function getCourseList(_locale, populate, sort) {
         sort
     });
 }
-function getCourseBySlug(slug, _locale) {
+function getCourseBySlug(slug, _locale, populate) {
     const url = `${_services_serviceUrls__WEBPACK_IMPORTED_MODULE_1__/* ["default"].getCourseList */ .Z.getCourseList}/${slug}`;
     return (0,_services_serverConfig__WEBPACK_IMPORTED_MODULE_0__/* .get */ .U)(url, {
-        _locale
+        _locale,
+        populate
     });
 }
 const CourseListPageService = {

@@ -13,9 +13,9 @@ function getCourseList(_locale?: string, populate?: string, sort?: string): Prom
 	return get(Services.getCourseList, { _locale, populate, sort });
 }
 
-function getCourseBySlug(slug: string, _locale?: string): Promise<Record<string, any>> {
+function getCourseBySlug(slug: string, _locale?: string, populate?: string,): Promise<Record<string, any>> {
 	const url = `${Services.getCourseList}/${slug}`;
-	return get(url, { _locale });
+	return get(url, { _locale, populate });
 }
 
 const CourseListPageService = {

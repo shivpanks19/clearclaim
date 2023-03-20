@@ -52,7 +52,7 @@ const CourseCardDetailSection = ()=>{
                         }),
                         /*#__PURE__*/ jsx_runtime_.jsx("p", {
                             className: "text-primary text-xs md:text-base font-medium",
-                            children: "300+ hours Course content"
+                            children: "150+ hours Course content"
                         })
                     ]
                 }),

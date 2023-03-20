@@ -46,6 +46,7 @@ export type Course = {
 	isFree: boolean;
 	heroImage: Record<string, Array<Record<string, ImageType>>>;
 	heroVideo: string;
+	curriculumPdf: ImageType;
 }
 
 export type FAQ = {

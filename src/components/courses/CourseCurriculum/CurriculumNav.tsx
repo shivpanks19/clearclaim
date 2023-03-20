@@ -1,8 +1,25 @@
 import React from 'react';
+import Link from 'next/link';
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react';
 import CurriculumTab from '@/components/courses/CourseCurriculum/CurriculumTab';
 
-const CurriculumNav: React.FC<CurriculumNavProps> = ({ curriculumList }) => {
+const CurriculumNav: React.FC<CurriculumNavProps> = ({ curriculumList, courseName, curriculumPdfUrl }) => {
+	const handleDownload = () => {
+		fetch(curriculumPdfUrl)
+			.then(response => response.blob())
+			.then(blob => {
+				const url = URL.createObjectURL(blob);
+				const a = document.createElement('a');
+				a.href = url;
+				a.download = `${courseName}-curriculum.pdf`;
+				document.body.appendChild(a);
+				a.click();
+				document.body.removeChild(a);
+				URL.revokeObjectURL(url);
+			})
+			.catch(error => console.error(error));
+	};
+
 	return (
 		<div className='bg-loader-gray w-76 mb-36 mx-auto rounded grid place-items-center'>
 			<Tabs
@@ -42,9 +59,11 @@ const CurriculumNav: React.FC<CurriculumNavProps> = ({ curriculumList }) => {
 					))}
 				</TabPanels >
 			</Tabs >
-			<button className="bg-tertiary text-white py-3.5 px-44 rounded my-9 ">
+			{/* <Link href={curriculumPdfUrl}> */}
+			<button className="bg-tertiary text-white py-3.5 px-44 rounded my-9" onClick={handleDownload}>
 				Download Curriculum
 			</button>
+			{/* </Link> */}
 		</div>
 	)
 };
@@ -55,6 +74,8 @@ type CurriculumNavProps = {
 		text1: string;
 		text2: string[];
 	})[];
+	courseName?: string;
+	curriculumPdfUrl?: string;
 };
 
 export default CurriculumNav;

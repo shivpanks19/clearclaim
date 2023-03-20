@@ -62,7 +62,11 @@ const CourseDetailPage: NextPage<CourseDetailPageProps> = ({ course, courseDetai
 			}
 
 			{/* Course Curriculum */}
-			<CourseCurriculumSection curriculumList={course.curriculumList} />
+			<CourseCurriculumSection
+				courseName={course.courseName}
+				curriculumList={course.curriculumList}
+				curriculumPdfUrl={course.curriculumPdf?.url}
+			/>
 
 			{/* Why us */}
 			<WhyUsSection
@@ -113,7 +117,7 @@ export const getStaticProps: GetStaticProps = async ({
 	params
 }: Record<string, any>) => {
 	const courseDetailPageInfo = await CourseService.getCourseDetailPageInformation(locale);
-	const course = await CourseService.getCourseBySlug(params.slug, locale);
+	const course = await CourseService.getCourseBySlug(params.slug, locale, '*');
 	const placementList = await PlacementService.getPlacementList(locale, '*');
 	const courseList = await CourseService.getCourseList(locale, '*');
 
@@ -124,6 +128,7 @@ export const getStaticProps: GetStaticProps = async ({
 				id: course.data.id,
 				courseSummary: course.data.attributes.courseSummary?.data ?? null,
 				courseFAQ: course.data.attributes.courseFAQ?.data ?? null,
+				curriculumPdf: course.data.attributes.curriculumPdf?.data.attributes ?? null,
 			},
 			placementList: placementList.data.map((placement) => ({
 				...placement.attributes,

@@ -5,8 +5,8 @@
   "devFiles": [],
   "ampDevFiles": [],
   "lowPriorityFiles": [
-    "static/IMP5liaT7R3-R6mT8frjC/_buildManifest.js",
-    "static/IMP5liaT7R3-R6mT8frjC/_ssgManifest.js"
+    "static/SbDF10TObdD3ergEIN7s2/_buildManifest.js",
+    "static/SbDF10TObdD3ergEIN7s2/_ssgManifest.js"
   ],
   "rootMainFiles": [],
   "pages": {
@@ -22,7 +22,7 @@
       "static/chunks/845-4859c0c8064c1ff2.js",
       "static/chunks/522-ec744604cf05b022.js",
       "static/chunks/445-2f49e76f2e485055.js",
-      "static/chunks/224-35c579eae4bfaa8b.js",
+      "static/chunks/224-607fc2281dc2479e.js",
       "static/css/1f117ef159d55260.css",
       "static/chunks/pages/index-c66b93d9377ea1a8.js"
     ],
@@ -98,7 +98,7 @@
       "static/chunks/835-788f620bd66fa9c0.js",
       "static/chunks/522-ec744604cf05b022.js",
       "static/chunks/445-2f49e76f2e485055.js",
-      "static/chunks/224-35c579eae4bfaa8b.js",
+      "static/chunks/224-607fc2281dc2479e.js",
       "static/css/e333e88001f4d048.css",
       "static/chunks/pages/courses-cf1853f5fb316c4f.js"
     ],
@@ -115,7 +115,7 @@
       "static/chunks/522-ec744604cf05b022.js",
       "static/chunks/445-2f49e76f2e485055.js",
       "static/css/6bb07ba472e947d6.css",
-      "static/chunks/pages/courses/[slug]-42eddb1fdf8c4823.js"
+      "static/chunks/pages/courses/[slug]-80d8d1b090fdf542.js"
     ],
     "/events": [
       "static/chunks/webpack-8097d4860ab8e6f3.js",

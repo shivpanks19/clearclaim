@@ -371,13 +371,13 @@ const CourseOverviewSection = ({ aboutCourse  })=>{
                                 className: "relative w-20 h-20 md:w-32 md:h-32",
                                 children: /*#__PURE__*/ jsx_runtime_.jsx((image_default()), {
                                     src: "/img/course_content.png",
-                                    alt: "300+ hours course content",
+                                    alt: "150+ hours course content",
                                     fill: true
                                 })
                             }),
                             /*#__PURE__*/ jsx_runtime_.jsx("div", {
                                 className: "text-tertiary text-sm md:text-2xl font-semibold text-center",
-                                children: "300+ hours Course Content"
+                                children: "150+ hours Course Content"
                             })
                         ]
                     }),
@@ -473,7 +473,19 @@ CurriculumTab.displayName = "Curriculum Tab";
 
 
 
-const CurriculumNav = ({ curriculumList  })=>{
+const CurriculumNav = ({ curriculumList , courseName , curriculumPdfUrl  })=>{
+    const handleDownload = ()=>{
+        fetch(curriculumPdfUrl).then((response)=>response.blob()).then((blob)=>{
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = `${courseName}-curriculum.pdf`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }).catch((error)=>console.error(error));
+    };
     return /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
         className: "bg-loader-gray w-76 mb-36 mx-auto rounded grid place-items-center",
         children: [
@@ -528,7 +540,8 @@ const CurriculumNav = ({ curriculumList  })=>{
                 ]
             }),
             /*#__PURE__*/ jsx_runtime_.jsx("button", {
-                className: "bg-tertiary text-white py-3.5 px-44 rounded my-9 ",
+                className: "bg-tertiary text-white py-3.5 px-44 rounded my-9",
+                onClick: handleDownload,
                 children: "Download Curriculum"
             })
         ]
@@ -542,7 +555,7 @@ const CurriculumNav = ({ curriculumList  })=>{
 
 
 
-const CourseCurriculumSection = ({ curriculumList  })=>{
+const CourseCurriculumSection = ({ curriculumList , courseName , curriculumPdfUrl  })=>{
     return /*#__PURE__*/ jsx_runtime_.jsx(Container/* default */.Z, {
         className: "hidden xl:block",
         children: curriculumList?.length > 0 && /*#__PURE__*/ (0,jsx_runtime_.jsxs)(jsx_runtime_.Fragment, {
@@ -556,7 +569,9 @@ const CourseCurriculumSection = ({ curriculumList  })=>{
                     className: "mb-8"
                 }),
                 /*#__PURE__*/ jsx_runtime_.jsx(CourseCurriculum_CurriculumNav, {
-                    curriculumList: curriculumList
+                    curriculumList: curriculumList,
+                    courseName: courseName,
+                    curriculumPdfUrl: curriculumPdfUrl
                 })
             ]
         })
@@ -1449,7 +1464,9 @@ const CourseDetailPage = ({ course , courseDetailPageInfo , placementList , faqL
                 faqList: course.courseFAQ
             }),
             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_courses_CourseCurriculum_CourseCurriculum__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z, {
-                curriculumList: course.curriculumList
+                courseName: course.courseName,
+                curriculumList: course.curriculumList,
+                curriculumPdfUrl: course.curriculumPdf?.url
             }),
             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_common_why_us_WhyUs__WEBPACK_IMPORTED_MODULE_8__/* ["default"] */ .Z, {
                 headline: courseDetailPageInfo.whyUsHeadline,
@@ -1479,7 +1496,7 @@ const CourseDetailPage = ({ course , courseDetailPageInfo , placementList , faqL
 };
 const getStaticProps = async ({ locale , params  })=>{
     const courseDetailPageInfo = await _services_course__WEBPACK_IMPORTED_MODULE_15__/* ["default"].getCourseDetailPageInformation */ .Z.getCourseDetailPageInformation(locale);
-    const course = await _services_course__WEBPACK_IMPORTED_MODULE_15__/* ["default"].getCourseBySlug */ .Z.getCourseBySlug(params.slug, locale);
+    const course = await _services_course__WEBPACK_IMPORTED_MODULE_15__/* ["default"].getCourseBySlug */ .Z.getCourseBySlug(params.slug, locale, "*");
     const placementList = await _services_placement__WEBPACK_IMPORTED_MODULE_16__/* ["default"].getPlacementList */ .Z.getPlacementList(locale, "*");
     const courseList = await _services_course__WEBPACK_IMPORTED_MODULE_15__/* ["default"].getCourseList */ .Z.getCourseList(locale, "*");
     return {
@@ -1488,7 +1505,8 @@ const getStaticProps = async ({ locale , params  })=>{
                 ...course?.data?.attributes,
                 id: course.data.id,
                 courseSummary: course.data.attributes.courseSummary?.data ?? null,
-                courseFAQ: course.data.attributes.courseFAQ?.data ?? null
+                courseFAQ: course.data.attributes.courseFAQ?.data ?? null,
+                curriculumPdf: course.data.attributes.curriculumPdf?.data.attributes ?? null
             },
             placementList: placementList.data.map((placement)=>({
                     ...placement.attributes,

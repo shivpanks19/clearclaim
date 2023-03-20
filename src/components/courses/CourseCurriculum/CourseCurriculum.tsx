@@ -3,7 +3,7 @@ import Container from '@/components/layout/Container';
 import SectionHeadline from "@/components/common/SectionHeadline";
 import CurriculumNav from "@/components/courses/CourseCurriculum/CurriculumNav";
 
-const CourseCurriculumSection: React.FC<CourseCurriculumSectionProps> = ({ curriculumList }) => {
+const CourseCurriculumSection: React.FC<CourseCurriculumSectionProps> = ({ curriculumList, courseName, curriculumPdfUrl }) => {
 	return (
 		<Container className='hidden xl:block'>
 			{curriculumList?.length > 0 && (
@@ -14,7 +14,7 @@ const CourseCurriculumSection: React.FC<CourseCurriculumSectionProps> = ({ curri
 						subtitle='Dowload the course curriculum'
 						className='mb-8'
 					/>
-					<CurriculumNav curriculumList={curriculumList} />
+					<CurriculumNav curriculumList={curriculumList} courseName={courseName} curriculumPdfUrl={curriculumPdfUrl}/>
 				</>
 			)}
 		</Container>
@@ -27,6 +27,8 @@ type CourseCurriculumSectionProps = {
 		text1: string;
 		text2: string[];
 	})[];
+	courseName?: string;
+	curriculumPdfUrl?: string;
 };
 
 export default CourseCurriculumSection;
