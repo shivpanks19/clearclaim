@@ -14,7 +14,7 @@ const CourseCardDetailSection: React.FC<CourseCardDetailSectionProps> = () => {
 						/>
 					</div>
 					<p className="text-primary text-xs md:text-base font-medium">
-						300+ hours Course content
+						150+ hours Course content
 					</p>
 				</div>
 				<div className="flex flex-row md:flex-col items-center">
