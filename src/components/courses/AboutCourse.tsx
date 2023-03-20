@@ -68,12 +68,12 @@ const CourseOverviewSection: React.FC<CourseOverviewSectionProps> = ({ aboutCour
 					<div className="relative w-20 h-20 md:w-32 md:h-32">
 						<Image
 							src='/img/course_content.png'
-							alt='300+ hours course content'
+							alt='150+ hours course content'
 							fill
 						/>
 					</div>
 					<div className="text-tertiary text-sm md:text-2xl font-semibold text-center">
-						300+ hours Course Content
+						150+ hours Course Content
 					</div>
 				</div>
 				<div className="hidden md:block relative w-20 h-0.5">
