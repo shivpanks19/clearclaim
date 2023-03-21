@@ -2,6 +2,7 @@ import { GetStaticProps, GetStaticPaths, NextPage } from 'next';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import Routes from '@/utils/routes';
+import Head from 'next/head';
 
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
@@ -30,6 +31,14 @@ const BlogListPage: NextPage<BlogListPageProps> = ({
 
 	return (
 		<div>
+			<Head>
+				{blog?.metaTitle && (
+					<title>{blog?.metaTitle}</title>
+				)}
+				{blog?.metaDescription && (
+					<meta name='description' content={blog?.metaDescription} />
+				)}
+			</Head>
 			<Navbar
 				courseList={courseList}
 			/>

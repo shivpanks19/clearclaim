@@ -1,4 +1,5 @@
 import { GetStaticProps, GetStaticPaths, NextPage } from 'next';
+import Head from 'next/head';
 
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
@@ -26,6 +27,14 @@ import { FAQ } from '@/services/course/types';
 const CourseDetailPage: NextPage<CourseDetailPageProps> = ({ course, courseDetailPageInfo, placementList, faqList1, faqList2, placementPagination, courseList }) => {
 	return (
 		<div>
+			<Head>
+				{course?.metaTitle && (
+					<title>{course?.metaTitle}</title>
+				)}
+				{course?.metaDescription && (
+					<meta name='description' content={course?.metaDescription} />
+				)}
+			</Head>
 			<Navbar
 				courseList={courseList}
 			/>

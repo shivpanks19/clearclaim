@@ -1,6 +1,8 @@
 import { GetServerSideProps, NextPage } from 'next';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
+
 import Routes from '@/utils/routes';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
@@ -20,7 +22,9 @@ const BlogListPage: NextPage<BlogListPageProps> = ({
 	blogList,
 	categoryList,
 	featuredBlog,
-	courseList
+	courseList,
+	metaTitle,
+	metaDescription
 }) => {
 	const router = useRouter();
 	const [q, setQ] = useState(null);
@@ -32,6 +36,14 @@ const BlogListPage: NextPage<BlogListPageProps> = ({
 
 	return (
 		<div>
+			<Head>
+				{metaTitle && (
+					<title>{metaTitle}</title>
+				)}
+				{metaDescription && (
+					<meta name='description' content={metaDescription} />
+				)}
+			</Head>
 			<Navbar
 				courseList={courseList}
 			/>
@@ -67,6 +79,8 @@ type BlogListPageProps = {
 	featuredBlog: Blog;
 	categoryList: ContentCategory[];
 	courseList: Course[];
+	metaTitle: string;
+	metaDescription: string;
 };
 
 export const getServerSideProps: GetServerSideProps = async ({
@@ -90,7 +104,6 @@ export const getServerSideProps: GetServerSideProps = async ({
 	} else {
 		featuredBlog['data'] = blogList.data[0]
 	}
-	console.log('fblogs, ', featuredBlog)
 
 	return {
 		props: {

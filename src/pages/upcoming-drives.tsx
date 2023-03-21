@@ -1,4 +1,5 @@
 import { GetStaticProps, NextPage } from 'next';
+import Head from 'next/head';
 
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
@@ -15,10 +16,18 @@ import { Course } from '@/services/course/types';
 import { Drive } from '@/services/upcoming-drives/types';
 import { UpcomingDrivesInformation } from '@/services/upcoming-drives/types';
 
-const UpcomingDrives: NextPage<UpcomingDrivesProps> = ({ drivePageInfo, driveList, drivePagination, courseList }) => {
+const UpcomingDrives: NextPage<UpcomingDrivesProps> = ({ drivePageInfo, driveList, drivePagination, courseList, metaTitle, metaDescription }) => {
 
 	return (
 		<div>
+			<Head>
+				{metaTitle && (
+					<title>{metaTitle}</title>
+				)}
+				{metaDescription && (
+					<meta name='description' content={metaDescription} />
+				)}
+			</Head>
 			<Navbar
 				courseList={courseList}
 			/>
@@ -54,6 +63,8 @@ type UpcomingDrivesProps = {
 	driveList: Drive[];
 	courseList: Course[];
 	drivePagination: Record<string, number>;
+	metaTitle: string;
+	metaDescription: string;
 }
 
 export const getStaticProps: GetStaticProps = async ({

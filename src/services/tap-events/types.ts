@@ -4,6 +4,8 @@ export type TapEventPageInformation = {
 	headline: string;
 	headlineBold: string;
 	subHeadline: string;
+	metaTitle: string,
+	metaDescription: string,
 	driveHeadline: string;
 	driveSubHeadline: string;
 	heroImage: ImageType;

@@ -3,6 +3,8 @@ import { ImageType } from '@/utils/types';
 export type HomePageInformation = {
 	headline: string,
 	subHeadline: string,
+	metaTitle: string,
+	metaDescription: string,
 	studentsTrained: number,
 	workshopsConducted: number,
 	placementDrives: number,

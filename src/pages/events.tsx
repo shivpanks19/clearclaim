@@ -1,6 +1,7 @@
 import { GetServerSideProps, NextPage } from 'next';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
@@ -26,6 +27,14 @@ const Events: NextPage<EventsProps> = ({ tapEventPageInfo, eventList, courseList
 
 	return (
 		<div>
+			<Head>
+				{tapEventPageInfo.metaTitle && (
+					<title>{tapEventPageInfo.metaTitle}</title>
+				)}
+				{tapEventPageInfo.metaDescription && (
+					<meta name='description' content={tapEventPageInfo.metaDescription} />
+				)}
+			</Head>
 			<Navbar
 				courseList={courseList}
 			/>

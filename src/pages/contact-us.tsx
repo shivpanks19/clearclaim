@@ -1,4 +1,5 @@
 import { GetStaticProps, NextPage } from 'next';
+import Head from 'next/head';
 
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
@@ -17,10 +18,20 @@ const ContactUsPage: NextPage<ContactUsPageProps> = ({
 	ytLink,
 	fbLink,
 	igLink,
-	courseList
+	courseList,
+	metaTitle,
+	metaDescription
 }) => {
 	return (
 		<div>
+			<Head>
+				{metaTitle && (
+					<title>{metaTitle}</title>
+				)}
+				{metaDescription && (
+					<meta name='description' content={metaDescription} />
+				)}
+			</Head>
 			<Navbar
 				courseList={courseList}
 			/>
@@ -56,6 +67,8 @@ type ContactUsPageProps = {
 	fbLink: Record<string, string>;
 	igLink: Record<string, string>;
 	courseList: Course[];
+	metaTitle: string;
+	metaDescription: string;
 };
 
 export const getStaticProps: GetStaticProps = async ({

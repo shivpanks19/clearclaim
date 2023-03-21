@@ -1,9 +1,14 @@
 import { NextPage } from 'next';
+import Head from 'next/head';
 import Logo from '@/components/common/Logo';
 
 const PrivacyPolicy: NextPage = () => {
 	return (
 		<main id="main" className="site-main lg:w-76 mx-auto">
+			<Head>
+				<title>Privacy Policy</title>
+				<meta name='description' content='This is Tap Academy&apos;s Privacy Policy' />
+			</Head>
 			<article className="post-3 page type-page status-publish ast-article-single" id="post-3">
 				<header className="entry-header ast-header-without-markup">
 				</header>

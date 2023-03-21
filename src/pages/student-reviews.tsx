@@ -1,4 +1,5 @@
 import { GetServerSideProps, NextPage } from 'next';
+import Head from 'next/head';
 
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
@@ -24,6 +25,8 @@ import { ImageType } from '@/utils/types';
 const StudentReviewPage: NextPage<StudentReviewPageProps> = ({
 	headline,
 	subHeadline,
+	metaTitle,
+	metaDescription,
 	heroImage,
 	placementList,
 	reviewList,
@@ -36,12 +39,19 @@ const StudentReviewPage: NextPage<StudentReviewPageProps> = ({
 	reviewSubHeadline,
 	placementPagination,
 	reviewPagination,
-	recruiterPagination,
 	courseList
 }) => {
 
 	return (
 		<div>
+			<Head>
+				{metaTitle && (
+					<title>{metaTitle}</title>
+				)}
+				{metaDescription && (
+					<meta name='description' content={metaDescription} />
+				)}
+			</Head>
 			<Navbar
 				courseList={courseList}
 			/>
@@ -92,6 +102,8 @@ const StudentReviewPage: NextPage<StudentReviewPageProps> = ({
 type StudentReviewPageProps = {
 	headline: string;
 	subHeadline: string;
+	metaTitle: string;
+	metaDescription: string;
 	heroImage: ImageType;
 	achievementHeadline: string;
 	achievementSubHeadline: string;

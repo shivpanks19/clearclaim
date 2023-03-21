@@ -1,4 +1,5 @@
 import { GetServerSideProps, NextPage } from 'next';
+import Head from 'next/head';
 
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
@@ -19,6 +20,14 @@ import { Review } from '@/services/review/types';
 const courseListPage: NextPage<courseListPageProps> = ({ courseListPageInfo, courseList, reviewList, reviewPagination }) => {
 	return (
 		<div>
+			<Head>
+				{courseListPageInfo.metaTitle && (
+					<title>{courseListPageInfo.metaTitle}</title>
+				)}
+				{courseListPageInfo.metaDescription && (
+					<meta name='description' content={courseListPageInfo.metaDescription} />
+				)}
+			</Head>
 			<Navbar
 				courseList={courseList}
 			/>

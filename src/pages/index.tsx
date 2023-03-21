@@ -1,4 +1,5 @@
 import { GetStaticProps, NextPage } from 'next';
+import Head from 'next/head';
 
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
@@ -31,6 +32,14 @@ import { Recruiter } from '@/services/recruiter/types';
 const Home: NextPage<HomePageProps> = ({ homeInfo, courseList, placementList, reviewList, recruiterList, reviewPagination, placementPagination }) => {
 	return (
 		<div>
+			<Head>
+				{homeInfo.metaTitle && (
+					<title>{homeInfo.metaTitle}</title>
+				)}
+				{homeInfo.metaDescription && (
+					<meta name='description' content={homeInfo.metaDescription} />
+				)}
+			</Head>
 			<Navbar
 				courseList={courseList}
 			/>

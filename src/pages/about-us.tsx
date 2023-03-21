@@ -1,4 +1,5 @@
 import { GetStaticProps, NextPage } from 'next';
+import Head from 'next/head';
 
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
@@ -8,7 +9,6 @@ import AboutVision from '@/components/about-us/AboutVision';
 import FounderWord from '@/components/about-us/FounderWord';
 import Team from '@/components/about-us/Team';
 import RecognitionSection from '@/components/index/Recognition';
-import NewsSection from '@/components/common/NewsSection';
 
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
@@ -23,6 +23,14 @@ const Home: NextPage<AboutPageProps> = ({ aboutInfo, courseList }) => {
 
 	return (
 		<div>
+			<Head>
+				{aboutInfo.metaTitle && (
+					<title>{aboutInfo.metaTitle}</title>
+				)}
+				{aboutInfo.metaDescription && (
+					<meta name='description' content={aboutInfo.metaDescription} />
+				)}
+			</Head>
 			<Navbar
 				courseList={courseList}
 			/>
@@ -88,7 +96,6 @@ export const getStaticProps: GetStaticProps = async ({
 }: Record<string, any>) => {
 	const aboutInfo = await AboutUsService.getAboutUsInformation(locale, '*');
 	const courseList = await CourseService.getCourseList(locale, '*');
-	console.log('aboutInfo.data.attributes.teamPics', aboutInfo.data.attributes.teamPics?.data.map((img) => ({ id: img.id, ...img.attributes }))[0].formats.small);
 
 	return {
 		props: {

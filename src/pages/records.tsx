@@ -1,11 +1,11 @@
 import { GetStaticProps, NextPage } from 'next';
+import Head from 'next/head';
 
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import RecruiterSection from '@/components/common/RecruiterList';
 import RecordHeroSection from '@/components/records/RecordHero';
 import SalarySection from '@/components/records/SalarySection';
-import NewsSection from '@/components/common/NewsSection';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 import RecordPageService from '@/services/record-page';
@@ -21,22 +21,29 @@ import { SalaryCardType } from '@/services/record-page/types';
 const RecordPage: NextPage<RecordPageProps> = ({
 	headline,
 	subHeadline,
+	metaTitle,
+	metaDescription,
 	heroImage,
 	recruiterHeadline,
 	recruiterSubHeadline,
 	salaryHeadline,
 	salarySubHeadline,
-	newsHeadline,
-	newsSubHeadline,
 	recruiterList,
 	salaryCardList,
 	courseList
 }) => {
 	return (
 		<div>
+			<Head>
+				{metaTitle && (
+					<title>{metaTitle}</title>
+				)}
+				{metaDescription && (
+					<meta name='description' content={metaDescription} />
+				)}
+			</Head>
 			<Navbar
 				courseList={courseList}
-
 			/>
 
 			{/* Record Hero */}
@@ -75,6 +82,8 @@ const RecordPage: NextPage<RecordPageProps> = ({
 type RecordPageProps = {
 	headline: string;
 	subHeadline: string;
+	metaTitle: string;
+	metaDescription: string;
 	heroImage: ImageType;
 	recruiterHeadline: string,
 	recruiterSubHeadline: string,

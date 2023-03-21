@@ -12,6 +12,8 @@ export type Blog = {
 	slug: string;
 	author: string;
 	description: string;
+	metaTitle: string,
+	metaDescription: string,
 	thumbnail: ImageType;
 	contentCategory: ContentCategory;
 	content: string;

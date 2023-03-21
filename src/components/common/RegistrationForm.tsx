@@ -1,5 +1,6 @@
 import React from "react";
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 import { toast } from 'react-toastify';
 import RegistrationService from "@/services/registration";
 import SectionHeadline from "@/components/common/SectionHeadline";
@@ -38,15 +39,25 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ isOpen, onClose }) 
 	const { register, handleSubmit, setValue, reset } = useForm<Inputs>({
 		defaultValues: { modeOfStudy: ModeOfStudy.ONLINE }
 	});
+
+	const router = useRouter();
+
 	const onSubmit: SubmitHandler<Inputs> = async (data) => {
 		// @ts-ignore
 		(async () => {
-			await toast.promise(RegistrationService.postRegistrationForm(data), {
-				success: 'Thank you for registration!',
-				error: 'Something went wrong! Please try again!'
-			});
-			reset();
-			onClose();
+			RegistrationService.postRegistrationForm(data)
+				.then(() => {
+					toast.success('Thank you for registration!');
+					router.query.REGISTRATION_SUCCESS = 'true';
+					router.push(router);
+				})
+				.catch(() => {
+					toast.error('Something went wrong! Please try again, or contact us.')
+				})
+				.finally(() => {
+					reset();
+					onClose();
+				})
 		})();
 	};
 

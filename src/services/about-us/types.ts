@@ -3,6 +3,8 @@ import { ImageType } from "@/utils/types";
 export type AboutPageInformation = {
 	headline: string,
 	subHeadline: string,
+	metaTitle: string,
+	metaDescription: string,
 	newsHeadline: string,
 	newsSubHeadline: string,
 	heroImage: ImageType,

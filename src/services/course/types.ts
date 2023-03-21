@@ -3,6 +3,8 @@ import { Id, ImageType } from "@/utils/types";
 export type CourseListPageInformation = {
 	headline1: string,
 	headline2: string,
+	metaTitle: string,
+	metaDescription: string,
 	subHeadline: string,
 	courseHeadline: string,
 	courseSubHeadline: string,
@@ -31,6 +33,8 @@ export type Course = {
 	id: Id;
 	courseName: string;
 	description: string;
+	metaTitle: string,
+	metaDescription: string,
 	price: number;
 	numberOfStudents: number;
 	contentHours: number;
