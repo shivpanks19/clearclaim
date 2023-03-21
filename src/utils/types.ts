@@ -4,6 +4,7 @@ export type ImageType = {
 	id: string
 	name: string
 	alternativeText: string
+	formats: Record<string, any>
 	caption: string
 	width: number
 	height: number

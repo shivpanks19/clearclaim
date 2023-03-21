@@ -47,6 +47,7 @@ const Home: NextPage<AboutPageProps> = ({ aboutInfo, courseList }) => {
 			<Team
 				headline={aboutInfo.teamHeadline}
 				subHeadline={aboutInfo.teamSubHeadline}
+				teamPics={aboutInfo.teamPics}
 			/>
 
 			{/* Special */}
@@ -87,6 +88,7 @@ export const getStaticProps: GetStaticProps = async ({
 }: Record<string, any>) => {
 	const aboutInfo = await AboutUsService.getAboutUsInformation(locale, '*');
 	const courseList = await CourseService.getCourseList(locale, '*');
+	console.log('aboutInfo.data.attributes.teamPics',aboutInfo.data.attributes.teamPics?.data.map((img)=>({id:img.id, ...img.attributes}))[0].formats.small);
 
 	return {
 		props: {
@@ -94,7 +96,8 @@ export const getStaticProps: GetStaticProps = async ({
 				...aboutInfo?.data?.attributes,
 				heroImage: aboutInfo.data.attributes.heroImage?.data.attributes,
 				lifeAtTapImage: aboutInfo.data.attributes.lifeAtTapImage?.data.attributes,
-				founderImage: aboutInfo.data.attributes.founderImage?.data.attributes
+				founderImage: aboutInfo.data.attributes.founderImage?.data.attributes,
+				teamPics: aboutInfo.data.attributes.teamPics?.data.map((img)=>({id:img.id, ...img.attributes}))
 			},
 			courseList: courseList.data.map((course) => ({
 				...course.attributes,

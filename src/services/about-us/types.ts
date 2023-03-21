@@ -9,6 +9,7 @@ export type AboutPageInformation = {
 	lifeAtTapHeadline: string,
 	lifeAtTapSubHeadline: string,
 	lifeAtTapImage: ImageType,
+	teamPics: ImageType[],
 	founderWordHeadline: string,
 	founderWordSubHeadline: string,
 	founderImage: ImageType,
