@@ -4,7 +4,7 @@ import Title from '@/components/common/Title';
 import SectionHeadline from '@/components/common/SectionHeadline';
 import CourseUsp from "@/components/courses/[slug]/CourseUsp";
 
-const CourseOverviewSection: React.FC<CourseOverviewSectionProps> = ({ aboutCourse }) => {
+const CourseOverviewSection: React.FC<CourseOverviewSectionProps> = ({ aboutCourse, contentHours }) => {
 	return (
 		<div className="mt-12 mb-12 md:mb-24">
 			<a id='course-overview' />
@@ -73,7 +73,7 @@ const CourseOverviewSection: React.FC<CourseOverviewSectionProps> = ({ aboutCour
 						/>
 					</div>
 					<div className="text-tertiary text-sm md:text-2xl font-semibold text-center">
-						150+ hours Course Content
+						{contentHours}+ hours Course Content
 					</div>
 				</div>
 				<div className="hidden md:block relative w-20 h-0.5">
@@ -103,6 +103,7 @@ const CourseOverviewSection: React.FC<CourseOverviewSectionProps> = ({ aboutCour
 
 type CourseOverviewSectionProps = {
 	aboutCourse: string;
+	contentHours: number;
 };
 
 export default CourseOverviewSection;

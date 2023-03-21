@@ -45,7 +45,7 @@ const CourseDetailPage: NextPage<CourseDetailPageProps> = ({ course, courseDetai
 			<CourseInfoNav />
 
 			{/* Course Overview */}
-			<AboutCourse aboutCourse={course.aboutCourse} />
+			<AboutCourse aboutCourse={course.aboutCourse} contentHours={course.contentHours}/>
 
 			{/* What will you learn? */}
 			{course.courseSummary && <CourseSummary summaryList={course.courseSummary} />}

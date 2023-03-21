@@ -33,6 +33,7 @@ export type Course = {
 	description: string;
 	price: number;
 	numberOfStudents: number;
+	contentHours: number;
 	slug: string;
 	aboutCourse: string;
 	courseSummary: string[];

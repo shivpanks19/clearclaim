@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 
-const CourseCardDetailSection: React.FC<CourseCardDetailSectionProps> = () => {
+const CourseCardDetailSection: React.FC<CourseCardDetailSectionProps> = ({ contentHours }) => {
 	return (
 		<div className="course-details mb-5">
 			<div className="grid grid-cols-2 md:grid-cols-4 place-items-center gap-2 md:gap-5 ml-5">
@@ -14,7 +14,7 @@ const CourseCardDetailSection: React.FC<CourseCardDetailSectionProps> = () => {
 						/>
 					</div>
 					<p className="text-primary text-xs md:text-base font-medium">
-						150+ hours Course content
+						{contentHours}+ hours Course content
 					</p>
 				</div>
 				<div className="flex flex-row md:flex-col items-center">
@@ -58,6 +58,8 @@ const CourseCardDetailSection: React.FC<CourseCardDetailSectionProps> = () => {
 	);
 };
 
-type CourseCardDetailSectionProps = {};
+type CourseCardDetailSectionProps = {
+	contentHours: number;
+};
 
 export default CourseCardDetailSection;

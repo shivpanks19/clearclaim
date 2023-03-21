@@ -6,7 +6,7 @@ import Rating from "@/components/common/Rating";
 import CourseAttr from "@/components/common/course-list/CourseAttr";
 import CourseCardDetailSection from "@/components/common/course-list/CourseCardDetailSection";
 
-const CourseCard: React.FC<CourseCardProps> = ({ courseName, description, numberOfStudents, slug, heroImage, isFree, showDetailSection }) => {
+const CourseCard: React.FC<CourseCardProps> = ({ courseName, description, numberOfStudents, contentHours, slug, heroImage, isFree, showDetailSection }) => {
 	return (
 		<div className='flex grow xl:w-76 shadow rounded h-30 mx-auto mb-4 md:mb-10 bg-white flex-col justify-evenly'>
 			<div className={
@@ -61,7 +61,9 @@ const CourseCard: React.FC<CourseCardProps> = ({ courseName, description, number
 				</div>
 			</div>
 			{showDetailSection && (
-				<CourseCardDetailSection />
+				<CourseCardDetailSection
+					contentHours={contentHours}
+				/>
 			)}
 			<div className="px-5 pb-5">
 				<Link
@@ -79,6 +81,7 @@ type CourseCardProps = {
 	courseName: string;
 	description: string;
 	numberOfStudents: number;
+	contentHours: number;
 	slug: string;
 	heroImage: string;
 	isFree?: boolean;

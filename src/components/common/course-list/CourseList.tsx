@@ -17,6 +17,7 @@ const OfferingSection: React.FC<OfferingSectionProps> = ({ showDetailSection, he
 					courseName={course.courseName}
 					description={course.description}
 					numberOfStudents={course.numberOfStudents}
+					contentHours={course.contentHours}
 					slug={course.slug}
 					heroImage={course.heroImage.data[0].attributes.url}
 					isFree={course.isFree}
