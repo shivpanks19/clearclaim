@@ -1,17 +1,19 @@
 import React from "react";
-import Link from 'next/link';
+import {useRouter} from 'next/router';
 import { ContentCategory } from '@/services/blogs/types';
 import { BsArrowRight } from 'react-icons/bs';
 import {
 	FormControl,
-	FormLabel,
 	Select
 } from '@chakra-ui/react';
+import classNames from "classnames";
 
 const CategoryFilter: React.FC<CategoryFilterProps> = ({
 	categoryList,
 	onCategorySelect
 }) => {
+	const router = useRouter();
+	console.log('qq',router.query.contentCategory);
 	return (
 		<div className="container mb-4 md:mb-20 mx-auto max-w-full xl:w-76 px-5 pb-5">
 			{categoryList?.length > 0 && (
@@ -21,17 +23,24 @@ const CategoryFilter: React.FC<CategoryFilterProps> = ({
 						<div className="flex justify-between place-items-center">
 							<div className="categoryList flex gap-3">
 								{categoryList.map((category) => (
-									<p className="border border-primary2 rounded px-6 py-3" key={category.id} onClick={() => onCategorySelect(category.slug)}>{category.title}</p>
+									<p className={classNames({
+										'border border-primary2 rounded px-6 py-3 cursor-pointer': true,
+										'font-bold border-2': router.query.contentCategory === category.slug
+									})}
+									key={category.id}
+									onClick={() => onCategorySelect(category.slug)}
+									>
+										{category.title}</p>
 								))}
 							</div>
 							<BsArrowRight className="text-tertiary" size={36} />
 						</div>
 					</div>
 					<div className="md:hidden w-6/12">
-						<FormControl className='mb-6 ml-2' variant="floating" id="category" >
-							<Select placeholder='Category' className='border border-tertiary'>
+						<FormControl className='mb-6 mt-2' variant="floating" id="category" >
+							<Select placeholder='Category' className='border border-tertiary' onChange={(e)=>onCategorySelect(e.target.value)}>
 								{categoryList.map((category) => (
-									<option key={category.id} value={category.id}>{category.title}</option>
+									<option key={category.id} value={category.slug}>{category.title}</option>
 								))}
 							</Select>
 						</FormControl>
