@@ -27,4 +27,5 @@ export type HomePageInformation = {
 	riverImages: ImageType[]
 	riverImagesLv2: ImageType[]
 	riverImagesLv3: ImageType[]
+	corporateProgramPics: ImageType[]
 };

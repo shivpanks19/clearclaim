@@ -27,7 +27,6 @@ import { Placement } from '@/services/placement/types';
 import { HomePageInformation } from '@/services/home/types';
 import { Review } from '@/services/review/types';
 import { Recruiter } from '@/services/recruiter/types';
-import { ImageType } from '@/utils/types';
 
 const Home: NextPage<HomePageProps> = ({ homeInfo, courseList, placementList, reviewList, recruiterList, reviewPagination, placementPagination }) => {
 	return (
@@ -69,7 +68,7 @@ const Home: NextPage<HomePageProps> = ({ homeInfo, courseList, placementList, re
 			/>
 
 			{/* Corporate Program */}
-			<CorporateProgramSection />
+			<CorporateProgramSection corporateProgramPics={homeInfo.corporateProgramPics} />
 
 			{/* Achievements */}
 			{placementList?.length > 0 && (
@@ -151,7 +150,8 @@ export const getStaticProps: GetStaticProps = async ({
 				...homeInfo?.data?.attributes,
 				riverImages: homeInfo.data.attributes.riverImages?.data.map((img) => ({ id: img.id, ...img.attributes })),
 				riverImagesLv2: homeInfo.data.attributes.riverImagesLv2?.data.map((img) => ({ id: img.id, ...img.attributes })),
-				riverImagesLv3: homeInfo.data.attributes.riverImagesLv3?.data.map((img) => ({ id: img.id, ...img.attributes }))
+				riverImagesLv3: homeInfo.data.attributes.riverImagesLv3?.data.map((img) => ({ id: img.id, ...img.attributes })),
+				corporateProgramPics: homeInfo.data.attributes.corporateProgramPics?.data.map((img) => ({ id: img.id, ...img.attributes }))
 			},
 			courseList: courseList.data.map((course) => ({
 				...course.attributes,
