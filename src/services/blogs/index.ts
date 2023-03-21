@@ -35,9 +35,9 @@ function getBlogById(id: Id, _locale?: string): Promise<Blog> {
 	return get(url, { _locale });
 }
 
-function getBlogBySlug(slug: string, _locale?: string): Promise<any> {
+function getBlogBySlug(slug: string, _locale?: string, populate?: string): Promise<any> {
 	const url = `${Services.getBlog}/${slug}`;
-	return get(url, { _locale });
+	return get(url, { _locale, populate });
 }
 
 function getBlogsCount(contentCategory?: Id): Promise<number> {

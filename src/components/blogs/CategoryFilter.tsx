@@ -13,7 +13,7 @@ const CategoryFilter: React.FC<CategoryFilterProps> = ({
 	onCategorySelect
 }) => {
 	return (
-		<div className="container mb-4 md:mb-20 mx-auto max-w-full overflow-x-scroll xl:w-76 px-5 pb-5">
+		<div className="container mb-4 md:mb-20 mx-auto max-w-full xl:w-76 px-5 pb-5">
 			{categoryList?.length > 0 && (
 				<>
 					<div className='hidden md:block'>

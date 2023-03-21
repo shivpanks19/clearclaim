@@ -18,19 +18,13 @@ import { Blog, ContentCategory } from '@/services/blogs/types';
 const BlogListPage: NextPage<BlogListPageProps> = ({
 	headline,
 	blogList,
-	featuredBlogList,
 	categoryList,
+	featuredBlog,
 	courseList
 }) => {
 	const router = useRouter();
 	const [q, setQ] = useState(null);
 	const [category, setCategory] = useState(null);
-	let featuredBlog;
-	if (featuredBlogList?.length > 0) {
-		featuredBlog = featuredBlogList[0]
-	} else {
-		featuredBlog = blogList[0]
-	}
 
 	useEffect(() => {
 		router.push(Routes.blogs(undefined, q, category), undefined, { scroll: false })
@@ -70,7 +64,7 @@ const BlogListPage: NextPage<BlogListPageProps> = ({
 type BlogListPageProps = {
 	headline: string;
 	blogList: Blog[];
-	featuredBlogList: Blog[];
+	featuredBlog: Blog;
 	categoryList: ContentCategory[];
 	courseList: Course[];
 };
@@ -81,26 +75,32 @@ export const getServerSideProps: GetServerSideProps = async ({
 }: Record<string, any>) => {
 	const blogPageInfo = await BlogService.getBlogsStaticData(locale, '*');
 	const categoryList = await BlogService.getBlogCategories(locale);
+	const courseList = await CourseService.getCourseList(locale, '*');
+
 	const currentCategory = categoryList.data.map((category) => ({
 		...category.attributes,
 		id: category.id,
 	}))?.filter((cat) => cat.slug === query?.contentCategory)[0]
 	const blogList = await BlogService.getBlogs(locale, '*', { start: query?.start, limit: 4, contentCategoryId: currentCategory?.id, _q: query?._q });
-	let featuredBlogList = await BlogService.getBlogs(locale, '*', { featured_eq: true });
-	const courseList = await CourseService.getCourseList(locale, '*');
-	if (featuredBlogList?.data.length === 0) {
-		featuredBlogList = blogList
+
+	let featuredBlog = { data: null };
+	//Check if any blog is featured
+	if (blogPageInfo.data.attributes.featuredBlog.data) {
+		featuredBlog = await BlogService.getBlogBySlug(blogPageInfo.data.attributes.featuredBlog.data?.attributes.slug, locale, '*');
+	} else {
+		featuredBlog['data'] = blogList.data[0]
 	}
+	console.log('fblogs, ', featuredBlog)
+
 	return {
 		props: {
 			...blogPageInfo.data.attributes,
+			featuredBlog: {
+				...featuredBlog.data.attributes,
+				contentCategory: featuredBlog.data.attributes.content_category.data.attributes,
+				thumbnail: featuredBlog.data.attributes.thumbnail?.data.attributes,
+			},
 			blogList: blogList.data.map((blog) => ({
-				...blog.attributes,
-				id: blog.id,
-				thumbnail: blog.attributes.thumbnail?.data.attributes,
-				contentCategory: blog.attributes.content_category?.data.attributes,
-			})),
-			featuredBlogList: featuredBlogList.data.map((blog) => ({
 				...blog.attributes,
 				id: blog.id,
 				thumbnail: blog.attributes.thumbnail?.data.attributes,
