@@ -28,7 +28,7 @@ const AboutUsHero: React.FC<AboutUsHeroProps> = ({
 				<div className="textSection flex flex-col lg:flex-row items-center gap-5 md:gap-12 w-full md:py-16 md:pl-40 md:pr-8 pt-64 pb-8 h-74 md:h-auto xs:pt-56 px-5 md:px-0 bg-tertiary rounded">
 					<div className="textSection">
 						<p className="text-lg md:text-2xl font-semibold text-white mb-4 text-center md:text-left">Founder&apos;s name</p>
-						<p className="text-sm lg:text-xl text-white text-center md:text-left">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo voluptatibus reprehenderit necessitatibus iusto in recusandae, quam nihil at culpa eaque dolore mollitia, inventore corporis quo natus accusantium maiores ipsum praesentium saepe, quas dolorem ipsa sed. Eius rem, dolorem vero reprehenderit earum provident nisi modi corporis tempora odio enim exercitationem officiis!</p>
+						<p className="text-sm lg:text-xl text-white text-center md:text-left">"Every student has the potential to make a difference, but the current state of    education in India often fails to equip them with the industry-relevant skills and knowledge they need to succeed. As a teacher, I understand the needs of the students and recognize the importance of making technical education more interactive, engaging, and fun. Through TapAcademy, we aim to provide accessible and innovative education to students from all corners of globe and empower them to reach their full potential. I truly believe in this quote by APJ Abdul Kalam that, The purpose of education is to make good human beings with skill and expertise…  Enlightened human beings can be created by teachers only." - Rohit Ravinder</p>
 					</div>
 
 				</div>

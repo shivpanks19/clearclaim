@@ -24,7 +24,8 @@ const LifeAtTap: React.FC<LifeAtTapProps> = ({
 					alt='Life at Tap Academy'
 				/>
 				<p className='text-sm lg:text-xl'>
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque optio totam nisi laboriosam, tenetur, quidem itaque eius quisquam quis facilis reprehenderit beatae sint. Provident quae molestias omnis ipsum consequatur magnam natus dolor officiis quam excepturi architecto corporis, ab id dicta tenetur reiciendis voluptatum magni. Accusamus, numquam eos magni nisi culpa fugit sed veritatis nesciunt at odio, beatae impedit, laborum doloribus voluptatibus incidunt alias provident! Eius dolorem eum omnis ipsam quaerat officia sint, id dolorum, recusandae est necessitatibus, illum doloribus facere. Aliquam, adipisci ex porro dolores itaque officiis voluptate neque dignissimos, explicabo vitae consequatur enim quasi, a veniam eaque quaerat consectetur?
+					Welcome to Tap Academy, where we believe that education should be accessible, practical, and lead to rewarding careers. At Tap Academy, we prioritise creating a supportive and inclusive community for our students. We believe that learning should be fun and engaging. And when it comes to our employees we believe that our employees are our greatest asset, and we are committed to creating a positive and supportive work environment. We understand that happy and engaged employees are essential to our success, and we take pride in fostering a culture that values work-life balance, teamwork, and personal growth.
+					Join the Tap Academy family today for a rewarding career tomorrow.
 				</p>
 			</div>
 		</div>

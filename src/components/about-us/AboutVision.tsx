@@ -15,7 +15,7 @@ const AboutVision: React.FC<AboutVisionProps> = () => {
 				</div>
 				<p className="text-lg lg:text-3xl font-semibold text-white mb-3 lg:mb-10">Vision</p>
 				<p className='lg:text-xl text-white text-center'>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, eveniet ex veniam consequuntur rem nisi praesentium veritatis distinctio possimus asperiores cum corporis consequatur consectetur minus.
+					To be a leading EdTech company that transforms lives by providing accessible and innovative technical education, enabling students to reach their full potential, drive progress in the digital economy, and gain employment opportunities through our network of corporate clients.
 				</p>
 			</div>
 			<div className="vision bg-tertiary grid place-items-center pt-7 px-5 pb-6 lg:pt-10 lg:px-10 lg:pb-16 shadow">
@@ -29,7 +29,7 @@ const AboutVision: React.FC<AboutVisionProps> = () => {
 				</div>
 				<p className="text-lg lg:text-3xl font-semibold text-white mb-3 lg:mb-10">Mission</p>
 				<p className='lg:text-xl text-white text-center'>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, eveniet ex veniam consequuntur rem nisi praesentium veritatis distinctio possimus asperiores cum corporis consequatur consectetur minus.
+					Our mission is to bridge the gap between academia and the IT industry through cutting-edge technical education. We strive to provide Augmented Reality based high-quality training that equips students with the skills, knowledge, and confidence to succeed in their careers. Through our commitment to excellence and innovation, we aim to be at the forefront of shaping the future of technical education and unlocking opportunities for all.
 				</p>
 			</div>
 		</div>
