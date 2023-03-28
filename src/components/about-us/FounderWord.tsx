@@ -16,7 +16,7 @@ const AboutUsHero: React.FC<AboutUsHeroProps> = ({
 				className='mb-5 lg:mb-16'
 			/>
 			<div className="relative flex flex-col lg:flex-row xl:w-76 mb-12 md:mb-28 mx-5 md:mx-auto mt-48 md:mt-0 md:pl-64 items-center">
-				<div className="absolute md:left-0 -top-32 md:-top-6 border-11 border-white rounded-full w-90 h-90">
+				<div className="absolute md:-left-16 -top-32 md:top-4 border-11 border-white bg-white rounded-full overflow-hidden w-108 h-108">
 					<Image
 						src={founderImage.url}
 						className='coding_bootcamp '
