@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react';
 import CurriculumTab from '@/components/courses/CourseCurriculum/CurriculumTab';
+import classNames from 'classnames';
 
 const CurriculumNav: React.FC<CurriculumNavProps> = ({ curriculumList, courseName, curriculumPdfUrl }) => {
+
+	const [tabIndex, setTabIndex] = useState(0)
+
+	const handleTabsChange = (index) => {
+		console.log('ti = ', tabIndex)
+		setTabIndex(index)
+	}
 	const handleDownload = () => {
 		fetch(curriculumPdfUrl)
 			.then(response => response.blob())
@@ -21,26 +29,48 @@ const CurriculumNav: React.FC<CurriculumNavProps> = ({ curriculumList, courseNam
 	};
 
 	return (
-		<div className='bg-loader-gray w-76 mb-36 mx-auto rounded grid place-items-center'>
+		<div className='bg-loader-gray xl:w-76 mb-36 mx-auto rounded grid place-items-center'>
 			<Tabs
 				isFitted
 				variant='unstyled'
 				orientation='vertical'
 				className='border-0 border-b border-tertiary grid grid-cols-2 w-full'
+				index={tabIndex}
+				onChange={handleTabsChange}
 			>
 
 				<TabList className='w-full justify-between'>
 					{curriculumList?.length > 0 && curriculumList.map((curriculumPoint, idx) => (
-						<CurriculumTab topTab={idx === 0} bottomTab={curriculumList.length - 1 === idx} key={idx}>
-							<div className="flex items-center gap-6">
-								<p className="index text-3xl font-semibold px-16">{idx + 1}</p>
-								<p className='text-2xl font-semibold'>{curriculumPoint.title}</p>
+						<>
+							<CurriculumTab topTab={idx === 0} bottomTab={curriculumList.length - 1 === idx} key={idx}>
+								<div className="flex items-center gap-6">
+									<p className="index text-sm lg:text-3xl font-semibold px-4 lg:px-16">{idx + 1}</p>
+									<p className='text-sm lg:text-2xl font-semibold'>{curriculumPoint.title}</p>
+								</div>
+							</CurriculumTab>
+							<div className={classNames({
+								"bg-loader-gray flex flex-col rounded-r xl:hidden transition-all duration-400 overflow-hidden h-0": true,
+								"visible p-3 h-96": idx === tabIndex
+							})}>
+								<div className=" bg-white rounded flex-1 p-3 relative">
+									<p className="text-sm lg:text-xl font-semibold mb-3">
+										{curriculumPoint.text1}
+									</p>
+									<ul className='list-disc ml-4'>
+										{curriculumPoint.text2?.length > 0 && curriculumPoint.text2.map((txt, idx) => (
+											<li className="text-xs lg:text-base text-aphonic" key={idx}>
+												{txt}
+											</li>
+										))}
+									</ul>
+								</div>
 							</div>
-						</CurriculumTab>
+						</>
+
 					))}
 				</TabList>
 
-				<TabPanels>
+				<TabPanels className='hidden xl:block'>
 					{curriculumList?.length > 0 && curriculumList.map((curriculumPoint, idx) => (
 						<TabPanel padding={0} className="h-42" key={idx}>
 							<div className="bg-loader-gray h-full p-11 flex flex-col rounded-r">
@@ -48,22 +78,22 @@ const CurriculumNav: React.FC<CurriculumNavProps> = ({ curriculumList, courseNam
 									<p className="text-xl font-semibold mb-8">
 										{curriculumPoint.text1}
 									</p>
-									{curriculumPoint.text2?.length > 0 && curriculumPoint.text2.map((txt, idx) => (
-										<p className="text-aphonic" key={idx}>
-											{txt}
-										</p>
-									))}
+									<ul style={{ listStyle: 'disc' }}>
+										{curriculumPoint.text2?.length > 0 && curriculumPoint.text2.map((txt, idx) => (
+											<li className="text-aphonic" key={idx}>
+												{txt}
+											</li>
+										))}
+									</ul>
 								</div>
 							</div>
 						</TabPanel>
 					))}
 				</TabPanels >
 			</Tabs >
-			{/* <Link href={curriculumPdfUrl}> */}
-			<button className="bg-tertiary text-white py-3.5 px-44 rounded my-9" onClick={handleDownload}>
+			<button className="bg-tertiary text-white py-3.5 px-8 xl:px-44 rounded my-4 xl:my-9" onClick={handleDownload}>
 				Download Curriculum
 			</button>
-			{/* </Link> */}
 		</div>
 	)
 };

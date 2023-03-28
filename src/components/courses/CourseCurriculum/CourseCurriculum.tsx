@@ -5,7 +5,7 @@ import CurriculumNav from "@/components/courses/CourseCurriculum/CurriculumNav";
 
 const CourseCurriculumSection: React.FC<CourseCurriculumSectionProps> = ({ curriculumList, courseName, curriculumPdfUrl }) => {
 	return (
-		<Container className='hidden xl:block'>
+		<Container className=''>
 			{curriculumList?.length > 0 && (
 				<>
 					<a id='course-curriculum' />
