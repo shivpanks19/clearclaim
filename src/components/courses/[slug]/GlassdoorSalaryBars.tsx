@@ -21,7 +21,7 @@ const GlassdoorSalaryBars: React.FC<GlassdoorSalaryBarsProps> = () => {
 				</div>
 				<div className="flex flex-col items-center">
 					<p className="lowerlimit text-xs text-primary"></p>
-					<p className="lowerlimit text-xs text-primary">Median: ₹7L</p>
+					<p className="lowerlimit text-xs text-primary">Median: ₹6L</p>
 				</div>
 				<div className="flex flex-col items-center">
 					<p className="upperlimit text-xs text-primary">₹15L</p>

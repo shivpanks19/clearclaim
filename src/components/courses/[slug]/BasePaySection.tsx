@@ -11,7 +11,7 @@ const BasePaySection: React.FC<BasePaySectionProps> = () => {
 				<div className="header w-10/12 mx-auto rounded-3xl shadow-gdSalaryBox absolute -top-14 -mt-20 left-0 right-0 bg-white p-10 mb-18 flex flex-col lg:flex-row">
 					<div className="mr-20">
 						<p className="text-sm lg:text-base font-semibold">Average Base Pay</p>
-						<p className="text-lg lg:text-3xl font-bold">₹ 6,50,000 <span className="text-aphonic">/yr</span></p>
+						<p className="text-lg lg:text-3xl font-bold">₹ 6,09,118 <span className="text-aphonic">/yr</span></p>
 						<p className='text-sm lg:text-base mb-4 lg:mb-10'>Same as national average</p>
 						<p className='text-sm lg:text-base mb-5 text-aphonic'>Not including cash compensation</p>
 						<Button
@@ -31,12 +31,12 @@ const BasePaySection: React.FC<BasePaySectionProps> = () => {
 				<div className="mx-10 mb-9 grid lg:grid-cols-3 gap-7">
 					<SalaryBar
 						percentage='w-7/12'
-						text='Rs.23.7 LPA'
+						text='Rs.15 LPA'
 						label='Maximum'
 					/>
 					<SalaryBar
 						percentage='w-9/12'
-						text='Rs.10.7 LPA'
+						text='Rs.6 LPA'
 						label='Average'
 					/>
 					<SalaryBar

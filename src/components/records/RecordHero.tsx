@@ -14,7 +14,8 @@ const RecordHeroSection: React.FC<RecordHeroSectionProps> = ({
 				background:
 					'url(/img/home/homeHeroBg.png) no-repeat top left',
 				backgroundSize: '100% 100%',
-				backgroundPosition: 'top left'
+				backgroundPosition: 'top left',
+				marginBottom: '3rem'
 			}}
 		>
 			<div className='grid md:gap-8 xl:w-76 px-5 md:mx-auto mb-9 md:mb-32 items-center md:grid-cols-2'>
