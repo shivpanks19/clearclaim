@@ -31,6 +31,7 @@ type CurriculumTabProps = {
 	children: ReactElement;
 	topTab?: boolean;
 	bottomTab?: boolean;
+	onClick: ()=>void;
 };
 
 CurriculumTab.displayName = 'Curriculum Tab';

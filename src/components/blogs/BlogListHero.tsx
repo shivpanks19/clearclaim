@@ -1,6 +1,5 @@
 import React from "react";
 import FeaturedBlogCard from '@/components/blogs/FeaturedBlogCard';
-import SocialButtonList from '@/components/common/SocialButtonList';
 import { Blog } from '@/services/blogs/types';
 
 const BlogListHero: React.FC<BlogListHeroProps> = ({ headline, featuredBlog }) => {
@@ -19,7 +18,6 @@ const BlogListHero: React.FC<BlogListHeroProps> = ({ headline, featuredBlog }) =
 				</h1>
 				<FeaturedBlogCard featuredBlog={featuredBlog} />
 			</div>
-			<SocialButtonList />
 		</div>
 	)
 };

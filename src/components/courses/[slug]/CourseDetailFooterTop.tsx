@@ -6,7 +6,7 @@ const CourseDetailFooterTop: React.FC<CourseDetailFooterTopProps> = () => {
 			<span className='text-4xl'>
 				&#x1F449;
 			</span>
-			&nbsp; Have queries? Call us at +91 9412345678 &nbsp;
+			&nbsp; Have queries? Call us at +91 8069878321 &nbsp;
 			<span className='text-4xl'>
 				&#x1F448;
 			</span>

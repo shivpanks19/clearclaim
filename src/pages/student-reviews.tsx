@@ -3,12 +3,13 @@ import Head from 'next/head';
 
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
-import ReviewSection from '@/components/common/review-list/ReviewList';
 import RecruiterSection from '@/components/common/RecruiterList';
+import SocialButtonList from '@/components/common/SocialButtonList';
+import ReviewSection from '@/components/common/review-list/ReviewList';
 import ReviewHeroSection from '@/components/student-reviews/ReviewHero';
-import CodingBootcampSection from '@/components/common/banner/CodingBootcampBanner';
 import PlacementList from '@/components/common/placement-list/PlacementList';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import CodingBootcampSection from '@/components/common/banner/CodingBootcampBanner';
 
 import StudentReviewPageService from '@/services/student-reviews-page';
 import PlacementService from '@/services/placement';
@@ -43,7 +44,7 @@ const StudentReviewPage: NextPage<StudentReviewPageProps> = ({
 }) => {
 
 	return (
-		<div>
+		<div className='relative'>
 			<Head>
 				{metaTitle && (
 					<title>{metaTitle}</title>
@@ -52,6 +53,7 @@ const StudentReviewPage: NextPage<StudentReviewPageProps> = ({
 					<meta name='description' content={metaDescription} />
 				)}
 			</Head>
+			<SocialButtonList />
 			<Navbar
 				courseList={courseList}
 			/>

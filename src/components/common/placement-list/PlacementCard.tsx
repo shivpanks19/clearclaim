@@ -12,8 +12,8 @@ const PlacementCard: React.FC<PlacementCardProps> = ({
 	studentImage
 }) => {
 	return (
-		<div className="card rounded shadow w-full md:w-96 flex flex-col items-center py-7 md:py-8">
-			<div className="rounded-full overflow-hidden h-16 w-16 lg:w-28 lg:h-28 grid place-items-center mb-4 border">
+		<div className="card rounded shadow w-full md:w-96 flex flex-col items-center py-7 md:py-8 h-136">
+			<div className="rounded-full overflow-hidden h-16 w-16 lg:w-28 lg:h-28 mb-4 border flex-none">
 				<Image
 					src={studentImage?.url}
 					width={114}
@@ -24,13 +24,16 @@ const PlacementCard: React.FC<PlacementCardProps> = ({
 			<p className='studentName mb-4 md:text-2xl text-primary font-semibold'>{studentName}</p>
 			<p className='courseName text-tertiary text-sm md:text-base font-medium'>{collegeCourseName}</p>
 			<p className='collegeName text-desc text-xs md:text-base mb-5 md:mb-10'>{collegeName}</p>
-			<div className='mb-6 md:mb-10 grow'>
-				<Image
-					src={companyImage?.url}
-					width={152}
-					height={39}
-					alt='Priya'
-				/>
+			<div className="grow">
+
+				<div className='mb-6 md:mb-10 flex-none'>
+					<Image
+						src={companyImage?.url}
+						width={152}
+						height={39}
+						alt={companyImage.caption}
+					/>
+				</div>
 			</div>
 			<p className='designation text-primary text-sm md:text-base font-semibold'>{designation}</p>
 			<p className='ctc md:text-2xl text-tertiary font-bold'>{ctc} LPA</p>

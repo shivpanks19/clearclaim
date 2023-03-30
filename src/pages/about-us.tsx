@@ -9,6 +9,7 @@ import AboutVision from '@/components/about-us/AboutVision';
 import FounderWord from '@/components/about-us/FounderWord';
 import Team from '@/components/about-us/Team';
 import RecognitionSection from '@/components/index/Recognition';
+import SocialButtonList from '@/components/common/SocialButtonList';
 
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
@@ -22,7 +23,7 @@ import { ImageType } from '@/utils/types';
 const Home: NextPage<AboutPageProps> = ({ aboutInfo, courseList }) => {
 
 	return (
-		<div>
+		<div className='relative'>
 			<Head>
 				{aboutInfo.metaTitle && (
 					<title>{aboutInfo.metaTitle}</title>
@@ -31,6 +32,7 @@ const Home: NextPage<AboutPageProps> = ({ aboutInfo, courseList }) => {
 					<meta name='description' content={aboutInfo.metaDescription} />
 				)}
 			</Head>
+			<SocialButtonList />
 			<Navbar
 				courseList={courseList}
 			/>

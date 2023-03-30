@@ -33,7 +33,7 @@ const BlogDetailHero: React.FC<BlogDetailHeroProps> = ({ headline, heroImage, co
 						</div>
 					</div>
 				</div>
-				<div className="relative w-72 h-52 sm:w-96 sm:h-80 lg:w-216 lg:h-134 mb-10 lg:mb-21 mx-auto">
+				<div className="relative w-72 h-52 sm:w-96 sm:h-80 lg:w-216 lg:h-136 mb-10 lg:mb-21 mx-auto">
 					<Image
 						src={heroImage.url}
 						fill

@@ -1,15 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import ReviewCard from '@/components/common/review-list/ReviewCard';
 import SectionHeadline from '@/components/common/SectionHeadline';
 import { Review } from '@/services/review/types';
-import Pagination from '@/components/common/Pagination';
 import Routes from '@/utils/routes';
+import { Splide, SplideSlide } from '@splidejs/react-splide';
 
 const ReviewSection: React.FC<ReviewSectionProps> = ({ headline, subHeadline, reviewList, showReadMore = true }) => {
-	const [currentList, setCurrentList] = useState([]);
-
 	return (
 		<>
 			<SectionHeadline
@@ -31,26 +29,24 @@ const ReviewSection: React.FC<ReviewSectionProps> = ({ headline, subHeadline, re
 						/>
 					</div>
 				)}
-				<div className="cardContainer w-42 md:grid-cols-2 gap-9 mx-5 grid">
-					{currentList?.length > 0 && currentList.map((review) => (
-						<ReviewCard
-							key={review.id}
-							studentName={review.studentName}
-							designation={review.designation}
-							companyName={review.companyName}
-							ctc={review.ctc}
-							reviewText={review.reviewText}
-							rating={review.rating}
-							studentImage={review.studentImage}
-						/>
-					))}
+				<div className="cardContainer w-full md:mx-0 mb-4">
+					<Splide options={{ perPage: 2, autoplay: true, rewind: true, gap: 100, padding: 50 }} aria-label="Team Members">
+						{reviewList?.length > 0 && reviewList.map((review) => (
+							<SplideSlide key={review.id}>
+								<ReviewCard
+									key={review.id}
+									studentName={review.studentName}
+									designation={review.designation}
+									companyName={review.companyName}
+									ctc={review.ctc}
+									reviewText={review.reviewText}
+									rating={review.rating}
+									studentImage={review.studentImage}
+								/>
+							</SplideSlide>
+						))}
+					</Splide>
 				</div>
-				<Pagination
-					fullList={reviewList}
-					pageSize={4}
-					setCurrentList={setCurrentList}
-					autoScroll={3000}
-				/>
 			</div>
 		</>
 	)

@@ -14,6 +14,7 @@ import AboutCourse from "@/components/courses/AboutCourse";
 import CourseSummary from "@/components/courses/CourseSummary";
 import FooterFaqList from "@/components/courses/[slug]/FooterFaqList";
 import BasePaySection from "@/components/courses/[slug]/BasePaySection";
+import SocialButtonList from '@/components/common/SocialButtonList';
 
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { CourseDetailPageInformation } from '@/services/course/types';
@@ -26,7 +27,7 @@ import { FAQ } from '@/services/course/types';
 
 const CourseDetailPage: NextPage<CourseDetailPageProps> = ({ course, courseDetailPageInfo, placementList, faqList1, faqList2, placementPagination, courseList }) => {
 	return (
-		<div>
+		<div className='relative'>
 			<Head>
 				{course?.metaTitle && (
 					<title>{course?.metaTitle}</title>
@@ -35,6 +36,7 @@ const CourseDetailPage: NextPage<CourseDetailPageProps> = ({ course, courseDetai
 					<meta name='description' content={course?.metaDescription} />
 				)}
 			</Head>
+			<SocialButtonList />
 			<Navbar
 				courseList={courseList}
 			/>

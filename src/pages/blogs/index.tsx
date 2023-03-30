@@ -7,6 +7,7 @@ import Routes from '@/utils/routes';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import BlogListHero from '@/components/blogs/BlogListHero';
+import SocialButtonList from '@/components/common/SocialButtonList';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import BlogList from '@/components/blogs/BlogList';
 import SearchBar from '@/components/common/SearchBar';
@@ -35,7 +36,7 @@ const BlogListPage: NextPage<BlogListPageProps> = ({
 	}, [category, q]);
 
 	return (
-		<div>
+		<div className='relative'>
 			<Head>
 				{metaTitle && (
 					<title>{metaTitle}</title>
@@ -44,6 +45,7 @@ const BlogListPage: NextPage<BlogListPageProps> = ({
 					<meta name='description' content={metaDescription} />
 				)}
 			</Head>
+			<SocialButtonList />
 			<Navbar
 				courseList={courseList}
 			/>

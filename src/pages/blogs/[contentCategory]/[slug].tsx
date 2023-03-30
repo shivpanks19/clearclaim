@@ -12,6 +12,7 @@ import BlogList from '@/components/blogs/BlogList';
 import BlogDetailHero from '@/components/blogs/BlogDetailHero';
 import CategoryFilter from '@/components/blogs/CategoryFilter';
 import TableOfContents from '@/components/blogs/TableOfContents';
+import SocialButtonList from '@/components/common/SocialButtonList';
 
 import BlogService from '@/services/blogs';
 import CourseService from '@/services/course';
@@ -30,7 +31,7 @@ const BlogListPage: NextPage<BlogListPageProps> = ({
 	const router = useRouter();
 
 	return (
-		<div>
+		<div className='relative'>
 			<Head>
 				{blog?.metaTitle && (
 					<title>{blog?.metaTitle}</title>
@@ -39,6 +40,7 @@ const BlogListPage: NextPage<BlogListPageProps> = ({
 					<meta name='description' content={blog?.metaDescription} />
 				)}
 			</Head>
+			<SocialButtonList />
 			<Navbar
 				courseList={courseList}
 			/>

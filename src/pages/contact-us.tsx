@@ -3,6 +3,7 @@ import Head from 'next/head';
 
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
+import SocialButtonList from '@/components/common/SocialButtonList';
 import ContactHeroSection from '@/components/contact-us/ContactHero';
 import ContactOptionSection from '@/components/contact-us/ContactOption';
 import ContactFindUsSection from '@/components/contact-us/ContactFindUs';
@@ -23,7 +24,7 @@ const ContactUsPage: NextPage<ContactUsPageProps> = ({
 	metaDescription
 }) => {
 	return (
-		<div>
+		<div className='relative'>
 			<Head>
 				{metaTitle && (
 					<title>{metaTitle}</title>
@@ -32,6 +33,7 @@ const ContactUsPage: NextPage<ContactUsPageProps> = ({
 					<meta name='description' content={metaDescription} />
 				)}
 			</Head>
+			<SocialButtonList />
 			<Navbar
 				courseList={courseList}
 			/>

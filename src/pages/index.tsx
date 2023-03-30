@@ -3,17 +3,18 @@ import Head from 'next/head';
 
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
+import DemoVideo from '@/components/index/DemoVideo';
+import SpecialSection from '@/components/index/Special';
 import HomeHeroSection from '@/components/index/HomeHero';
 import WhyUsSection from '@/components/common/why-us/WhyUs';
-import ReviewSection from '@/components/common/review-list/ReviewList';
-import SpecialSection from '@/components/index/Special';
-import OfferingSection from '@/components/common/course-list/CourseList';
-import RecruiterSection from '@/components/common/RecruiterList';
 import RecognitionSection from '@/components/index/Recognition';
+import RecruiterSection from '@/components/common/RecruiterList';
+import SocialButtonList from '@/components/common/SocialButtonList';
+import ReviewSection from '@/components/common/review-list/ReviewList';
+import OfferingSection from '@/components/common/course-list/CourseList';
 import PlacementList from '@/components/common/placement-list/PlacementList';
 import CodingBootcampSection from '@/components/common/banner/CodingBootcampBanner';
 import CorporateProgramSection from '@/components/index/CorporateProgram/CorporateProgram';
-import DemoVideo from '@/components/index/DemoVideo';
 
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
@@ -31,7 +32,7 @@ import { Recruiter } from '@/services/recruiter/types';
 
 const Home: NextPage<HomePageProps> = ({ homeInfo, courseList, placementList, reviewList, recruiterList, reviewPagination, placementPagination }) => {
 	return (
-		<div>
+		<div className='relative'>
 			<Head>
 				{homeInfo.metaTitle && (
 					<title>{homeInfo.metaTitle}</title>
@@ -40,6 +41,7 @@ const Home: NextPage<HomePageProps> = ({ homeInfo, courseList, placementList, re
 					<meta name='description' content={homeInfo.metaDescription} />
 				)}
 			</Head>
+			<SocialButtonList />
 			<Navbar
 				courseList={courseList}
 			/>

@@ -13,7 +13,7 @@ const CorporateProgramSection: React.FC<CorporateProgramSectionProps> = ({ corpo
 				subtitle='Your journey towards your dream job'
 			/>
 			<div className="w-80 md:w-[550px] lg:w-[750px] xl:w-76 h-24 h-48 md:h-80 xl:h-[623px] mx-auto">
-				<Splide options={{ rewind: true }} aria-label="React Splide Example">
+				<Splide options={{ rewind: true }} aria-label="Corporate Program">
 					{corporateProgramPics?.length > 0 && corporateProgramPics.map((pic) => (
 						<SplideSlide key={pic.id}>
 							<div className="h-48 md:h-80 lg:h-96 xl:h-[623px] w-76">

@@ -3,9 +3,10 @@ import Head from 'next/head';
 
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
-import RecruiterSection from '@/components/common/RecruiterList';
-import RecordHeroSection from '@/components/records/RecordHero';
 import SalarySection from '@/components/records/SalarySection';
+import RecordHeroSection from '@/components/records/RecordHero';
+import RecruiterSection from '@/components/common/RecruiterList';
+import SocialButtonList from '@/components/common/SocialButtonList';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 import RecordPageService from '@/services/record-page';
@@ -33,7 +34,7 @@ const RecordPage: NextPage<RecordPageProps> = ({
 	courseList
 }) => {
 	return (
-		<div>
+		<div className='relative'>
 			<Head>
 				{metaTitle && (
 					<title>{metaTitle}</title>
@@ -42,6 +43,7 @@ const RecordPage: NextPage<RecordPageProps> = ({
 					<meta name='description' content={metaDescription} />
 				)}
 			</Head>
+			<SocialButtonList />
 			<Navbar
 				courseList={courseList}
 			/>

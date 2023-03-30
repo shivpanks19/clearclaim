@@ -9,7 +9,6 @@ import WorkshopButton from '@/components/common/button/WorkshopButton';
 import RegisterButton from '@/components/common/button/RegisterButton';
 import StatSection from '@/components/common/Stat';
 import HeroBg from "@/components/common/HeroBg";
-import SocialButtonList from '@/components/common/SocialButtonList';
 
 const CourseHeroSection: React.FC<CourseHeroSectionProps> = ({
 	headline,
@@ -37,10 +36,10 @@ const CourseHeroSection: React.FC<CourseHeroSectionProps> = ({
 						<p className='text-aphonic text-lg md:text-2xl mb-4 md:mb-10'>
 							{subHeadline}
 						</p>
-						<div className="course-rating flex place-items-center mb-6 md:mb-14">
+						{/* <div className="course-rating flex place-items-center mb-6 md:mb-14">
 							<Rating rating={4} />
 							<p className="student-number text-desc font-normal"> {numberOfStudents} students</p>
-						</div>
+						</div> */}
 						<div className="hidden md:flex md:flex-row md:gap-14 md:mb-20 pr-8">
 							<WorkshopButton />
 							<RegisterButton />
@@ -87,7 +86,6 @@ const CourseHeroSection: React.FC<CourseHeroSectionProps> = ({
 					placementDrives={placementDrives}
 				/>
 			</HeroBg>
-			<SocialButtonList />
 		</>
 	)
 };

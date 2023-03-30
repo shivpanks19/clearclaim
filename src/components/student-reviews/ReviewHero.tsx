@@ -1,7 +1,6 @@
 import React from "react";
 import Image from "next/image";
 import { ImageType } from "@/utils/types";
-import SocialButtonList from '@/components/common/SocialButtonList';
 
 const ReviewHeroSection: React.FC<ReviewHeroSectionProps> = ({
 	headline,
@@ -37,7 +36,6 @@ const ReviewHeroSection: React.FC<ReviewHeroSectionProps> = ({
 					)}
 				</div>
 			</div>
-			<SocialButtonList />
 		</div>
 	)
 };

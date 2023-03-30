@@ -1,7 +1,6 @@
 import React from "react";
 import Image from "next/image";
 import { ImageType } from "@/utils/types";
-import SocialButtonList from '@/components/common/SocialButtonList';
 
 const AboutUsHero: React.FC<AboutUsHeroProps> = ({
 	headline,
@@ -37,7 +36,6 @@ const AboutUsHero: React.FC<AboutUsHeroProps> = ({
 					)}
 				</div>
 			</div>
-			<SocialButtonList />
 		</div>
 	)
 };

@@ -47,7 +47,7 @@ const BasePaySection: React.FC<BasePaySectionProps> = () => {
 				</div>
 				<p className="text-center text-primary font-bold mb-9">
 					View source:&nbsp;
-					<Link target='_blank' href='https://www.glassdoor.co.in/Salaries/pune-full-stack-developer-salary-SRCH_IL.0,4_IM1072_KO5,25.htm#:~:text=The%20average%20salary%20for%20Full,7%2C500%20%2D%20%E2%82%B94%2C04%2C016.'>
+					<Link target='_blank' href='https://www.glassdoor.co.in/Salaries/bangalore-full-stack-web-developer-salary-SRCH_IL.0,9_IM1091_KO10,34.htm#:~:text=The%20average%20salary%20for%20Full,26%2C371%20%2D%20%E2%82%B92%2C69%2C256.'>
 						<span className="font-normal text-tertiary italic underline ">
 							Glassdoor
 						</span>

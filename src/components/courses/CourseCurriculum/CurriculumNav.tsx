@@ -7,11 +7,17 @@ import classNames from 'classnames';
 const CurriculumNav: React.FC<CurriculumNavProps> = ({ curriculumList, courseName, curriculumPdfUrl }) => {
 
 	const [tabIndex, setTabIndex] = useState(0)
+	const [showPanel, setShowPanel] = useState(true)
 
-	const handleTabsChange = (index) => {
-		console.log('ti = ', tabIndex)
-		setTabIndex(index)
-	}
+	const handleTabClick = (idx) => {
+		if(idx===tabIndex && showPanel){
+			setShowPanel(false)
+		}else{
+			setShowPanel(true)
+		}
+		setTabIndex(idx)
+	};
+
 	const handleDownload = () => {
 		fetch(curriculumPdfUrl)
 			.then(response => response.blob())
@@ -29,28 +35,27 @@ const CurriculumNav: React.FC<CurriculumNavProps> = ({ curriculumList, courseNam
 	};
 
 	return (
-		<div className='bg-loader-gray xl:w-76 mb-36 mx-auto rounded grid place-items-center'>
+		<div className='xl:w-76 mb-36 mx-auto rounded grid place-items-center'>
 			<Tabs
 				isFitted
 				variant='unstyled'
 				orientation='vertical'
-				className='border-0 border-b border-tertiary grid grid-cols-2 w-full'
+				className=' grid grid-cols-2 w-full'
 				index={tabIndex}
-				onChange={handleTabsChange}
 			>
 
 				<TabList className='w-full justify-between'>
 					{curriculumList?.length > 0 && curriculumList.map((curriculumPoint, idx) => (
 						<>
-							<CurriculumTab topTab={idx === 0} bottomTab={curriculumList.length - 1 === idx} key={idx}>
+							<CurriculumTab topTab={idx === 0} bottomTab={curriculumList.length - 1 === idx} key={idx} onClick={()=>handleTabClick(idx)}>
 								<div className="flex items-center gap-6">
 									<p className="index text-sm lg:text-3xl font-semibold px-4 lg:px-16">{idx + 1}</p>
 									<p className='text-sm lg:text-2xl font-semibold'>{curriculumPoint.title}</p>
 								</div>
 							</CurriculumTab>
 							<div className={classNames({
-								"bg-loader-gray flex flex-col rounded-r xl:hidden transition-all duration-400 overflow-hidden h-0": true,
-								"visible p-3 h-96": idx === tabIndex
+								"flex flex-col rounded-r xl:hidden transition-all duration-400 overflow-hidden h-0": true,
+								"visible p-3 h-96": idx === tabIndex && showPanel
 							})}>
 								<div className=" bg-white rounded flex-1 p-3 relative">
 									<p className="text-sm lg:text-xl font-semibold mb-3">
@@ -70,10 +75,10 @@ const CurriculumNav: React.FC<CurriculumNavProps> = ({ curriculumList, courseNam
 					))}
 				</TabList>
 
-				<TabPanels className='hidden xl:block'>
+				<TabPanels className='hidden xl:block shadow'>
 					{curriculumList?.length > 0 && curriculumList.map((curriculumPoint, idx) => (
 						<TabPanel padding={0} className="h-42" key={idx}>
-							<div className="bg-loader-gray h-full p-11 flex flex-col rounded-r">
+							<div className="h-full p-11 flex flex-col rounded-r">
 								<div className=" bg-white rounded flex-1 p-11 relative">
 									<p className="text-xl font-semibold mb-8">
 										{curriculumPoint.text1}

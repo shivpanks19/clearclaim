@@ -4,12 +4,10 @@ import Link from 'next/link';
 import PlacementCard from '@/components/common/placement-list/PlacementCard';
 import SectionHeadline from '@/components/common/SectionHeadline';
 import { Placement } from '@/services/placement/types';
-import Pagination from '@/components/common/Pagination';
 import Routes from '@/utils/routes';
+import { Splide, SplideSlide } from '@splidejs/react-splide';
 
 const PlacementList: React.FC<PlacementListProps> = ({ headline, subHeadline, placementList, showReadMore = true }) => {
-	const [currentList, setCurrentList] = useState([]);
-
 	return (
 		<>
 			<a id='success-stories' />
@@ -33,26 +31,26 @@ const PlacementList: React.FC<PlacementListProps> = ({ headline, subHeadline, pl
 					</div>
 				)}
 
-				<div className="cardContainer w-42 lg:grid-cols-2 xl:grid-cols-3 gap-14 grid mx-5 md:mx-0 mb-4">
-					{currentList?.length > 0 && currentList.map((placement) => (
-						<PlacementCard
-							key={placement.id}
-							studentName={placement.studentName}
-							collegeCourseName={placement.collegeCourseName}
-							collegeName={placement.collegeName}
-							designation={placement.designation}
-							ctc={placement.ctc}
-							companyImage={placement.companyImage}
-							studentImage={placement.studentImage}
-						/>
-					))}
+				<div className="cardContainer w-full md:mx-0 mb-4">
+					<Splide options={{ perPage: 3, autoplay: true, rewind: true }} aria-label="Team Members">
+						{placementList?.length > 0 && placementList.map((placement) => (
+							<SplideSlide key={placement.id}>
+								<div className="mb-10">
+									<PlacementCard
+										key={placement.id}
+										studentName={placement.studentName}
+										collegeCourseName={placement.collegeCourseName}
+										collegeName={placement.collegeName}
+										designation={placement.designation}
+										ctc={placement.ctc}
+										companyImage={placement.companyImage}
+										studentImage={placement.studentImage}
+									/>
+								</div>
+							</SplideSlide>
+						))}
+					</Splide>
 				</div>
-				<Pagination
-					fullList={placementList}
-					pageSize={3}
-					setCurrentList={setCurrentList}
-					autoScroll={3000}
-				/>
 			</div>
 		</>
 	)

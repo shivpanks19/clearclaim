@@ -4,9 +4,10 @@ import Head from 'next/head';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import WhyUsSection from '@/components/common/why-us/WhyUs';
+import SocialButtonList from '@/components/common/SocialButtonList';
 import ReviewSection from '@/components/common/review-list/ReviewList';
-import OfferingSection from '@/components/common/course-list/CourseList';
 import CourseHeroSection from '@/components/courses/CourseHeroSection';
+import OfferingSection from '@/components/common/course-list/CourseList';
 import CodingBootcampSection from '@/components/common/banner/CodingBootcampBanner';
 
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
@@ -19,7 +20,7 @@ import { Review } from '@/services/review/types';
 
 const courseListPage: NextPage<courseListPageProps> = ({ courseListPageInfo, courseList, reviewList, reviewPagination }) => {
 	return (
-		<div>
+		<div className='relative'>
 			<Head>
 				{courseListPageInfo.metaTitle && (
 					<title>{courseListPageInfo.metaTitle}</title>
@@ -28,6 +29,7 @@ const courseListPage: NextPage<courseListPageProps> = ({ courseListPageInfo, cou
 					<meta name='description' content={courseListPageInfo.metaDescription} />
 				)}
 			</Head>
+			<SocialButtonList />
 			<Navbar
 				courseList={courseList}
 			/>

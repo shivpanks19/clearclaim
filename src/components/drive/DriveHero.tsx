@@ -1,7 +1,6 @@
 import React from "react";
 import Image from "next/image";
 import PlacementDriveStat from '@/components/drive/PlacementDriveStat';
-import SocialButtonList from '@/components/common/SocialButtonList';
 import { ImageType } from "@/utils/types";
 
 const DrivesHero: React.FC<DrivesHeroProps> = ({ headline, subHeadline, heroImage, conductedDrives, upcomingDrives }) => {
@@ -42,7 +41,6 @@ const DrivesHero: React.FC<DrivesHeroProps> = ({ headline, subHeadline, heroImag
 				conductedDrives={conductedDrives}
 				upcomingDrives={upcomingDrives}
 			/>
-			<SocialButtonList />
 		</div>
 	)
 };

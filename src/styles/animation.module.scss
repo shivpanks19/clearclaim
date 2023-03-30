@@ -1,14 +1,14 @@
 .upInfinte {
 	&.speed-1 {
-		animation: 22s linear infinite slideUp;
+		animation: 44s linear infinite slideUp;
 	}
 	
 	&.speed-2 {
-		animation: 24s linear infinite slideUp;
+		animation: 48s linear infinite slideUp;
 	}
 
 	&.speed-3 {
-		animation: 30s linear infinite slideUp;
+		animation: 52s linear infinite slideUp;
 	}
 
 	animation: 7s linear infinite slideUp;
@@ -19,7 +19,7 @@
 	0% {}
 
 	100% {
-		top: -1320px;
+		top: -2640px;
 	}
 }
 

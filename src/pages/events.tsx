@@ -8,6 +8,7 @@ import Footer from '@/components/layout/Footer';
 import SearchBar from '@/components/common/SearchBar';
 import EventList from '@/components/tap-events/EventList';
 import TapEventHero from '@/components/tap-events/TapEventHero';
+import SocialButtonList from '@/components/common/SocialButtonList';
 import SortBy from '@/components/tap-events/SortBy';
 import Routes from '@/utils/routes';
 import CourseService from '@/services/course';
@@ -26,7 +27,7 @@ const Events: NextPage<EventsProps> = ({ tapEventPageInfo, eventList, courseList
 	}, [q, sortingOrder]);
 
 	return (
-		<div>
+		<div className='relative'>
 			<Head>
 				{tapEventPageInfo.metaTitle && (
 					<title>{tapEventPageInfo.metaTitle}</title>
@@ -35,6 +36,7 @@ const Events: NextPage<EventsProps> = ({ tapEventPageInfo, eventList, courseList
 					<meta name='description' content={tapEventPageInfo.metaDescription} />
 				)}
 			</Head>
+			<SocialButtonList />
 			<Navbar
 				courseList={courseList}
 			/>

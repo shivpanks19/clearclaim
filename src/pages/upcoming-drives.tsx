@@ -6,6 +6,7 @@ import Footer from '@/components/layout/Footer';
 import DriveHero from '@/components/drive/DriveHero';
 import DriveList from '@/components/drive/DriveList';
 import DriveBanner from '@/components/drive/DriveBanner';
+import SocialButtonList from '@/components/common/SocialButtonList';
 
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
@@ -19,7 +20,7 @@ import { UpcomingDrivesInformation } from '@/services/upcoming-drives/types';
 const UpcomingDrives: NextPage<UpcomingDrivesProps> = ({ drivePageInfo, driveList, drivePagination, courseList, metaTitle, metaDescription }) => {
 
 	return (
-		<div>
+		<div className='relative'>
 			<Head>
 				{metaTitle && (
 					<title>{metaTitle}</title>
@@ -28,6 +29,7 @@ const UpcomingDrives: NextPage<UpcomingDrivesProps> = ({ drivePageInfo, driveLis
 					<meta name='description' content={metaDescription} />
 				)}
 			</Head>
+			<SocialButtonList />
 			<Navbar
 				courseList={courseList}
 			/>
