@@ -15,7 +15,7 @@ const DemoVideo: React.FC<DemoVideoProps> = ({ url, headline, subHeadline }) => 
 				<iframe
 					className='m-5 rounded-3xl sm:w-35 md:w-full h-48 md:h-160'
 					data-src={url ?? 'https://www.youtube.com/embed/2E73SftV0co'}
-					title="YouTube video player"
+					title="Video player"
 					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 					allowFullScreen>
 				</iframe>
