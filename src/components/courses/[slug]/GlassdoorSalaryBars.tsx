@@ -1,6 +1,6 @@
 import React from 'react';
 
-const GlassdoorSalaryBars: React.FC<GlassdoorSalaryBarsProps> = () => {
+const GlassdoorSalaryBars: React.FC<GlassdoorSalaryBarsProps> = ({ glassdoorSalaryData }) => {
 	return (
 		<div className="w-full">
 			<div className='w-full flex my-3 md:my-8 justify-between items-baseline gap-1'>
@@ -17,14 +17,14 @@ const GlassdoorSalaryBars: React.FC<GlassdoorSalaryBarsProps> = () => {
 			</div>
 			<div className="limits flex justify-between">
 				<div className="flex flex-col items-center">
-					<p className="lowerlimit text-xs text-primary">₹3L</p>
+					<p className="lowerlimit text-xs text-primary">₹{parseFloat(glassdoorSalaryData.minimumSalary).toFixed(2)}L</p>
 				</div>
 				<div className="flex flex-col items-center">
 					<p className="lowerlimit text-xs text-primary"></p>
-					<p className="lowerlimit text-xs text-primary">Median: ₹6L</p>
+					<p className="lowerlimit text-xs text-primary">Median: ₹{parseFloat(glassdoorSalaryData.averageSalary).toFixed(2)}L</p>
 				</div>
 				<div className="flex flex-col items-center">
-					<p className="upperlimit text-xs text-primary">₹15L</p>
+					<p className="upperlimit text-xs text-primary">₹{parseFloat(glassdoorSalaryData.maximumSalary).toFixed(2)}L</p>
 				</div>
 			</div>
 		</div>
@@ -32,6 +32,8 @@ const GlassdoorSalaryBars: React.FC<GlassdoorSalaryBarsProps> = () => {
 	)
 };
 
-type GlassdoorSalaryBarsProps = {};
+type GlassdoorSalaryBarsProps = {
+	glassdoorSalaryData?: Record<string, string>;
+};
 
 export default GlassdoorSalaryBars;

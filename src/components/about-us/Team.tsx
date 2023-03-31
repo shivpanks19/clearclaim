@@ -13,7 +13,15 @@ const Team: React.FC<TeamProps> = ({ headline, subHeadline, teamPics }) => {
 				className='mb-5 lg:mb-16'
 			/>
 			<div className="xl:w-76 mx-auto mb-6">
-				<Splide options={{ perPage:3, autoplay: true, rewind: true }} aria-label="Team Members">
+				<Splide options={{
+					perPage: 3,
+					breakpoints: {
+						1200: { perPage: 2 },
+						400: { perPage: 1 }
+					},
+					autoplay: true,
+					rewind: true
+				}} aria-label="Team Members">
 					{teamPics?.length > 0 && teamPics.map((pic) => (
 						<>
 							<SplideSlide key={pic.id}>

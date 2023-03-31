@@ -30,7 +30,16 @@ const ReviewSection: React.FC<ReviewSectionProps> = ({ headline, subHeadline, re
 					</div>
 				)}
 				<div className="cardContainer w-full md:mx-0 mb-4">
-					<Splide options={{ perPage: 2, autoplay: true, rewind: true, gap: 100, padding: 50 }} aria-label="Team Members">
+					<Splide options={{
+						perPage: 2,
+						breakpoints: {
+							1000: { perPage: 1 },
+						},
+						autoplay: true,
+						rewind: true,
+						gap: 100,
+						padding: 50
+					}} aria-label="Team Members">
 						{reviewList?.length > 0 && reviewList.map((review) => (
 							<SplideSlide key={review.id}>
 								<ReviewCard

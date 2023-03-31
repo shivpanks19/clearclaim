@@ -52,6 +52,7 @@ export type Course = {
 	heroImage: Record<string, Array<Record<string, ImageType>>>;
 	heroVideo: string;
 	curriculumPdf: ImageType;
+	glassdoorSalaryData: Record<string, string>;
 }
 
 export type FAQ = {

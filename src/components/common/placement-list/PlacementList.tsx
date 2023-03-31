@@ -32,7 +32,15 @@ const PlacementList: React.FC<PlacementListProps> = ({ headline, subHeadline, pl
 				)}
 
 				<div className="cardContainer w-full md:mx-0 mb-4">
-					<Splide options={{ perPage: 3, autoplay: true, rewind: true }} aria-label="Team Members">
+					<Splide options={{
+					perPage: 3,
+					breakpoints: {
+						1200: { perPage: 2 },
+						800: { perPage: 1 }
+					},
+					autoplay: true,
+					rewind: true
+				}} aria-label="Team Members">
 						{placementList?.length > 0 && placementList.map((placement) => (
 							<SplideSlide key={placement.id}>
 								<div className="mb-10">
