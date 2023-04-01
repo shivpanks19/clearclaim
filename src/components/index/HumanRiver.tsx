@@ -38,7 +38,7 @@ const ImageLayer: React.FC<ImageLayerProps> = ({ level, imgList }) => {
 						<Image
 							src={img.url}
 							fill
-							priority
+							priority={level===1}
 							alt='Hero Image'
 						/>
 					</div>
