@@ -9,9 +9,13 @@ const nextConfig = {
   // Ref for i18n config https://nextjs.org/docs/advanced-features/i18n-routing
   i18n: {
     ...i18n,
+    locales: ['en'],
+    // This is the default locale you want to be used when visiting
+    // a non-locale prefixed path e.g. `/hello`
+    defaultLocale: 'en',
     domains: [
       {
-        domain: 'hexanovate.in',
+        domain: 'thetapacademy.com',
         defaultLocale: 'en'
       }
     ]
@@ -23,4 +27,8 @@ const nextConfig = {
   },
 }
 
-module.exports = nextConfig
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+})
+
+module.exports = withBundleAnalyzer(nextConfig)
