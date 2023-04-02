@@ -89,7 +89,7 @@ export default function App({ Component, pageProps }: AppProps) {
           vidDefer[i].setAttribute('src', vidDefer[i].getAttribute('data-src'));
         }
       }
-    }), 7000)
+    }), 10000)
 
     setTimeout(attachScripts, 7000)
   }, [])
