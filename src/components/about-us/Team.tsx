@@ -40,14 +40,7 @@ const Team: React.FC<TeamProps> = ({ headline, subHeadline, teamPics }) => {
 						</>
 					))}
 				</Splide>
-
 			</div>
-			{/* <Pagination
-				fullList={teamPics}
-				pageSize={4}
-				autoScroll={3000}
-				setCurrentList={setCurrentList}
-			/> */}
 		</div>
 	);
 };

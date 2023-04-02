@@ -1,7 +1,6 @@
 import React from "react";
 import Image from "next/image";
 import PlacementDriveStat from '@/components/drive/PlacementDriveStat';
-import SocialButtonList from '@/components/common/SocialButtonList';
 import { ImageType } from "@/utils/types";
 
 const TapEventHero: React.FC<TapEventHeroProps> = ({ headline, headlineBold, subHeadline, heroImage }) => {
@@ -13,7 +12,7 @@ const TapEventHero: React.FC<TapEventHeroProps> = ({ headline, headlineBold, sub
 				backgroundSize: '100% 100%',
 				backgroundPosition: 'top left'
 			}}
-			className='pt-8'
+			className='pt-8 mb-10'
 		>
 			<div className='grid gap-2 mdxl:w-76 grid-cols-1 lg:grid-cols-2 mx-auto mb-12 md:mb-32'>
 				<div className='flex flex-col md:pt-20 px-5 mb-7'>
@@ -38,8 +37,6 @@ const TapEventHero: React.FC<TapEventHeroProps> = ({ headline, headlineBold, sub
 					)}
 				</div>
 			</div>
-
-			<SocialButtonList />
 		</div>
 	)
 };

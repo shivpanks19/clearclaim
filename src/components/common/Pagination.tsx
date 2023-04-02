@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from 'react';
 import { DOTS, usePagination } from '@/hooks/usePagination';
-import { Button } from '@chakra-ui/react';
 import { AiFillCaretLeft, AiFillCaretRight } from 'react-icons/ai';
 
 const Pagination: React.FC<PaginationProps> = ({
@@ -56,13 +55,12 @@ const Pagination: React.FC<PaginationProps> = ({
 
 	return (
 		<section className={`flex items-center justify-center space-x-2 sm:space-x-10 ${className ?? ''}`}>
-			<Button
+			<button
 				onClick={onPrevious}
-				rounded='full'
 				disabled={currentPage.current === 1}
 			>
 				<AiFillCaretLeft />
-			</Button>
+			</button>
 			<div className='flex space-x-1 sm:space-x-4'>
 				{paginationRange.map((pageNumber, index) => {
 					// If the pageItem is a DOT, render the DOTS unicode character
@@ -88,13 +86,12 @@ const Pagination: React.FC<PaginationProps> = ({
 					);
 				})}
 			</div>
-			<Button
+			<button
 				onClick={onNext}
-				rounded='full'
 				disabled={totalPageCount - currentPage.current <= 0}
 			>
 				<AiFillCaretRight />
-			</Button>
+			</button>
 		</section>
 	);
 };

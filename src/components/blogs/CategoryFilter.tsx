@@ -2,10 +2,6 @@ import React from "react";
 import {useRouter} from 'next/router';
 import { ContentCategory } from '@/services/blogs/types';
 import { BsArrowRight } from 'react-icons/bs';
-import {
-	FormControl,
-	Select
-} from '@chakra-ui/react';
 import classNames from "classnames";
 
 const CategoryFilter: React.FC<CategoryFilterProps> = ({
@@ -37,13 +33,13 @@ const CategoryFilter: React.FC<CategoryFilterProps> = ({
 						</div>
 					</div>
 					<div className="md:hidden w-6/12">
-						<FormControl className='mb-6 mt-2' variant="floating" id="category" >
-							<Select placeholder='Category' className='border border-tertiary' onChange={(e)=>onCategorySelect(e.target.value)}>
+						<div className='mb-6 mt-2' id="category" >
+							<select placeholder='Category' className='border border-tertiary p-3 rounded' onChange={(e)=>onCategorySelect(e.target.value)}>
 								{categoryList.map((category) => (
 									<option key={category.id} value={category.slug}>{category.title}</option>
 								))}
-							</Select>
-						</FormControl>
+							</select>
+						</div>
 					</div>
 				</>
 			)}
