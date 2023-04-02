@@ -91,7 +91,7 @@ export default function App({ Component, pageProps }: AppProps) {
       }
     }), 10000)
 
-    setTimeout(attachScripts, 7000)
+    setTimeout(attachScripts, 10000)
   }, [])
 
   return (
