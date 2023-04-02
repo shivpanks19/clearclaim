@@ -8,7 +8,6 @@ import {
 	Modal,
 	Stack,
 	ModalOverlay,
-	ModalContent,
 	Radio,
 	RadioGroup,
 	ModalHeader,
@@ -19,6 +18,7 @@ import {
 	Input,
 	Select
 } from '@chakra-ui/react';
+import { AiOutlineClose } from 'react-icons/ai';
 import { useForm, SubmitHandler } from "react-hook-form";
 
 type Inputs = {
@@ -63,13 +63,12 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ isOpen, onClose }) 
 
 
 	return (
-		<>
-			<Modal isOpen={isOpen} onClose={onClose} size='xl'>
-				<ModalOverlay />
-				<ModalContent rounded={'3xl'} >
-					<ModalHeader></ModalHeader>
-					<ModalCloseButton />
-					<ModalBody paddingX={0} paddingY={8}>
+		<>{isOpen && (
+			<div className='fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full md:w-120 z-30 mx-auto bg-white rounded-3xl shadow py-4 '>
+				<div />
+				<div className='rounded-3xl relative' >
+					<button className='absolute right-8 top-8 z-40' onClick={() => { console.log('closing'); onClose() }}><AiOutlineClose size={24} /></button>
+					<div >
 						<div className="relative overflow-hidden xs:pr-44 pb-100 md:pb-0 py-3 px-8">
 							<SectionHeadline
 								title='Register Yourself'
@@ -132,9 +131,11 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ isOpen, onClose }) 
 								/>
 							</div>
 						</div>
-					</ModalBody>
-				</ModalContent>
-			</Modal>
+					</div>
+				</div>
+			</div>
+		)}
+
 		</>
 	)
 };
