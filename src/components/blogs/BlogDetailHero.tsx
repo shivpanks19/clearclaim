@@ -1,7 +1,6 @@
 import React from "react";
 import Image from "next/image";
 import FeaturedBlogCard from '@/components/blogs/FeaturedBlogCard';
-import SocialButtonList from '@/components/common/SocialButtonList';
 import { Blog, ContentCategory } from '@/services/blogs/types';
 import { ImageType } from "@/utils/types";
 
@@ -44,7 +43,6 @@ const BlogDetailHero: React.FC<BlogDetailHeroProps> = ({ headline, heroImage, co
 					/>
 				</div>
 			</div>
-			<SocialButtonList />
 		</>
 	)
 };

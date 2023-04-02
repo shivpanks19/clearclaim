@@ -1,7 +1,6 @@
 import React from "react";
 import Image from "next/image";
 import { ImageType } from "@/utils/types";
-import SocialButtonList from '@/components/common/SocialButtonList';
 
 const RecordHeroSection: React.FC<RecordHeroSectionProps> = ({
 	headline,
@@ -38,7 +37,6 @@ const RecordHeroSection: React.FC<RecordHeroSectionProps> = ({
 					)}
 				</div>
 			</div>
-			<SocialButtonList />
 		</div>
 	)
 };
