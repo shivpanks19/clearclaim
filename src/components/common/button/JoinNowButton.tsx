@@ -3,7 +3,7 @@ import Text from '@/elements/Text';
 import Button from '@/elements/Button';
 import { useTranslation } from 'next-i18next';
 import classNames from 'classnames';
-import { useDisclosure } from '@chakra-ui/react';
+import useDisclosure from '@/hooks/useDisclosure';
 import RegistrationForm from '@/components/common/RegistrationForm';
 
 const JoinNowButton: React.FC<JoinNowButtonProps> = ({ className }) => {
@@ -12,25 +12,29 @@ const JoinNowButton: React.FC<JoinNowButtonProps> = ({ className }) => {
 	const { isOpen, onOpen, onClose } = useDisclosure()
 
 	return (
-		<Button
-			buttonStyleClass='outlineButton'
-			variant='bg-transparent'
-			rounded='rounded-sm'
-			className={classNames('px-5 py-3 grow', ...classNameList)}
-			onClick={onOpen}
-		>
-			<Text
-				variant='text-secondary'
-				fontSize='text-lg'
-				fontWeight='font-medium'
+		<>
+			<Button
+				buttonStyleClass='outlineButton'
+				variant='bg-transparent'
+				rounded='rounded-sm'
+				className={classNames('px-5 py-3 grow', ...classNameList)}
+				onClick={onOpen}
 			>
-				{t('Join Now for FREE')}
-			</Text>
+				<Text
+					variant='text-secondary'
+					fontSize='text-lg'
+					fontWeight='font-medium'
+				>
+					{t('Join Now for FREE')}
+				</Text>
+
+			</Button>
 			<RegistrationForm
 				isOpen={isOpen}
 				onClose={onClose}
 			/>
-		</Button>
+		</>
+
 	)
 };
 

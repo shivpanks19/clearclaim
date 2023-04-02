@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import { useDisclosure } from '@chakra-ui/react';
+import useDisclosure from '@/hooks/useDisclosure';
 import RegistrationForm from '@/components/common/RegistrationForm';
 
 
