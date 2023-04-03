@@ -4,24 +4,10 @@ import { useRouter } from 'next/router';
 import { toast } from 'react-toastify';
 import RegistrationService from "@/services/registration";
 import SectionHeadline from "@/components/common/SectionHeadline";
-import {
-	Modal,
-	Stack,
-	ModalOverlay,
-	Radio,
-	RadioGroup,
-	ModalHeader,
-	ModalBody,
-	ModalCloseButton,
-	FormControl,
-	FormLabel,
-	Input,
-	Select
-} from '@chakra-ui/react';
 import { AiOutlineClose } from 'react-icons/ai';
 import { useForm, SubmitHandler } from "react-hook-form";
 
-type Inputs = {
+type Input = {
 	fullname: string,
 	email: string,
 	phone: string,
@@ -35,14 +21,14 @@ enum ModeOfStudy {
 };
 
 const RegistrationForm: React.FC<RegistrationFormProps> = ({ isOpen, onClose }) => {
-	const [modeOfStudy, setModeOfStudy] = React.useState<ModeOfStudy>(ModeOfStudy.ONLINE);
-	const { register, handleSubmit, setValue, reset } = useForm<Inputs>({
+	const { register, handleSubmit, setValue, reset } = useForm <Input> ({
 		defaultValues: { modeOfStudy: ModeOfStudy.ONLINE }
 	});
 
 	const router = useRouter();
 
-	const onSubmit: SubmitHandler<Inputs> = async (data) => {
+	const onSubmit: SubmitHandler<Input> = async (data) => {
+		console.log('data,', data);
 		// @ts-ignore
 		(async () => {
 			RegistrationService.postRegistrationForm(data)
@@ -76,20 +62,20 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ isOpen, onClose }) 
 								className='mb-6'
 							/>
 							<form className='flex flex-col gap-3' action="" id='registration-form' method='POST' onSubmit={handleSubmit(onSubmit)}>
-								<FormControl className='mb-6' variant="floating" id="fullname" isRequired >
-									<Input className='h-24' placeholder=" " {...register("fullname")} />
-									<FormLabel>Name</FormLabel>
-								</FormControl>
-								<FormControl className='mb-6' variant="floating" id="email" isRequired >
-									<Input className='h-24' placeholder=" " type='email' {...register("email")} />
-									<FormLabel>Email Id:</FormLabel>
-								</FormControl>
-								<FormControl className='mb-6' variant="floating" id="phone" isRequired >
-									<Input className='h-24' placeholder=" " {...register("phone")} />
-									<FormLabel>Phone</FormLabel>
-								</FormControl>
-								<FormControl className='mb-6' variant="floating" id="graduationYear" isRequired >
-									<Select placeholder='Select Graduation Year' {...register("graduationYear")}>
+								<div className='mb-6' id="fullname">
+									<input required className='h-24' placeholder=" " {...register("fullname")} />
+									<p>Name</p>
+								</div>
+								<div className='mb-6' id="email">
+									<input required className='h-24' placeholder=" " type='email' {...register("email")} />
+									<p>Email Id:</p>
+								</div>
+								<div className='mb-6' id="phone">
+									<input required className='h-24' placeholder=" " {...register("phone")} />
+									<p>Phone</p>
+								</div>
+								<div className='mb-6' id="graduationYear">
+									<select placeholder='Select Graduation Year' {...register("graduationYear")}>
 										<option value='2016'>2016</option>
 										<option value='2017'>2017</option>
 										<option value='2018'>2018</option>
@@ -101,26 +87,22 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ isOpen, onClose }) 
 										<option value='2024'>2024</option>
 										<option value='2025'>2025</option>
 										<option value='2026'>2026</option>
-									</Select>
-									<FormLabel>Graduation</FormLabel>
-								</FormControl>
+									</select>
+									<p>Graduation</p>
+								</div>
 
-								<RadioGroup
-									className='mb-6'
-									onChange={(val) => {
-										setModeOfStudy(val as ModeOfStudy);
-										setValue('modeOfStudy', val as ModeOfStudy);
-
-									}}
-									value={modeOfStudy}
-								>
-									<p className="text-aphonic">Preferred mode of learning?</p>
-									<Stack direction='row'>
-										<Radio value='Online'>Online</Radio>
-										<Radio value='Offline'>Offline</Radio>
-									</Stack>
-								</RadioGroup>
-								<input type="submit" value="Take me in!" className='w-full bg-tertiary text-white font-medium px-5 py-3 rounded col-span-2' />
+								<p className="text-aphonic">Preferred mode of learning?</p>
+								<div className="flex">
+									<input type="radio" name='modeOfStudy' id='online' value='Online' onChange={(e) => {
+										setValue('modeOfStudy', e.target.value as ModeOfStudy);
+									}} />
+									<label htmlFor="online">Online</label>
+									<input type="radio" name='modeOfStudy' id='offline' value='Offline' onChange={(e) => {
+										setValue('modeOfStudy', e.target.value as ModeOfStudy);
+									}} />
+									<label htmlFor="offline">Offline</label>
+								</div>
+								<input required type="submit" value="Take me in!" className='w-full bg-tertiary text-white font-medium px-5 py-3 rounded col-span-2' />
 							</form>
 							<div className="absolute right-16 -bottom-10 md:-right-16 md:-bottom-16 w-44 md:w-64">
 								<Image
@@ -131,9 +113,9 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ isOpen, onClose }) 
 								/>
 							</div>
 						</div>
-					</div>
-				</div>
-			</div>
+					</div >
+				</div >
+			</div >
 		)}
 
 		</>

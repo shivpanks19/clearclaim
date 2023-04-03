@@ -32,6 +32,17 @@ a {
 .imgContainer{
   position:relative;
 }
+
+.answer {
+  transition: height 0.3s ease-in-out;
+  height: 0;
+  overflow: hidden;
+}
+
+.answer--active {
+  height: 250px;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;

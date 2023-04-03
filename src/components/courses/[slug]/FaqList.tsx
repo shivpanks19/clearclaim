@@ -1,59 +1,47 @@
-import React from 'react';
-import {
-	Accordion,
-	AccordionItem,
-	AccordionButton,
-	AccordionPanel,
-	Box
-} from '@chakra-ui/react';
-import { AiOutlinePlus } from 'react-icons/ai';
-import { AiOutlineMinus } from 'react-icons/ai';
+import React, { useState } from 'react';
+import { FaPlus, FaMinus } from 'react-icons/fa';
 import { FAQ } from '@/services/course/types';
 
 const FaqList: React.FC<FaqListProps> = ({ headline, faqList }) => {
+	const [activeFaqIndex, setActiveFaqIndex] = useState(-1);
+
+	const toggleFaq = (index: number) => {
+		if (activeFaqIndex === index) {
+			setActiveFaqIndex(-1);
+		} else {
+			setActiveFaqIndex(index);
+		}
+	};
+
 	return (
 		<div className="shadow rounded-sm mx-5 md:mx-0">
-			<Accordion allowToggle className='pt-8 md:pt-11 mb-8 md:mb-0'>
+			<div className="pt-8 md:pt-11 mb-8 md:mb-0">
 				<p className="p text-xl md:text-2xl text-tertiary font-semibold text-center mb-8">
 					{headline}
 				</p>
-				{faqList.map((faq) => (
-					<AccordionItem key={faq.id}>
-						{({ isExpanded }) => (
-							<>
-								<h2>
-									<AccordionButton
-										flex={1}
-										justifyContent='space-between'
-									>
-										<Box
-											as="span"
-											className='ml-4 my-2'
-											textAlign='left'
-										>
-											<p className="text-primary font-semibold md:text-xl">
-												{faq.question}
-											</p>
-										</Box>
-										<div className="flex-none">
-											{isExpanded ? (
-												<AiOutlineMinus fontSize='20px' />
-											) : (
-												<AiOutlinePlus fontSize='20px' />
-											)}
-										</div>
-									</AccordionButton>
-								</h2>
-								<AccordionPanel >
-									<p className="text-aphonic pt-4 pb-3 pl-5">
-										{faq.answer}
-									</p>
-								</AccordionPanel>
-							</>
-						)}
-					</AccordionItem>
+				{faqList.map((faq, index) => (
+					<div key={faq.id} className="mb-4">
+						<button
+							className="w-full flex justify-between items-center bg-white rounded-md py-2 px-8 text-sm font-medium text-left focus:outline-none"
+							onClick={() => toggleFaq(index)}
+						>
+							<span className="text-primary font-semibold md:text-xl mr-4">
+								{faq.question}
+							</span>
+							<span className="flex-none">
+								{activeFaqIndex === index ? (
+									<FaMinus className="text-tertiary" size={24} />
+								) : (
+									<FaPlus className="text-tertiary" size={24} />
+								)}
+							</span>
+						</button>
+						<div className={`answer ${activeFaqIndex === index ? 'answer--active' : 'h-0'}`}>
+							<p className="text-aphonic pt-4 pb-3 pl-5">{faq.answer}</p>
+						</div>
+					</div>
 				))}
-			</Accordion>
+			</div>
 		</div>
 	);
 };

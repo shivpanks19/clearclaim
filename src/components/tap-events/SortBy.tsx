@@ -1,8 +1,4 @@
 import React from "react";
-import {
-	FormControl,
-	Select
-} from '@chakra-ui/react';
 
 const SortBy: React.FC<SortByProps> = ({
 	categoryList,
@@ -13,13 +9,13 @@ const SortBy: React.FC<SortByProps> = ({
 		<div className="container ml-2 md:ml-8 w-64 h-10">
 			{categoryList?.length > 0 && (
 				<div className="w-40">
-					<FormControl className='mb-6 ml-2' variant="floating" id="sortBy" >
-						<Select placeholder='Sort By' className='border border-tertiary' value={sortingOrder} onChange={(e)=>{setSortingOrder(e.target.value)}}>
+					<div className='mb-6 ml-2' id="sortBy" >
+						<select placeholder='Sort By' className='border border-tertiary' value={sortingOrder} onChange={(e)=>{setSortingOrder(e.target.value)}}>
 							{categoryList.map((category) => (
 								<option key={category.id} value={category.id}>{category.title}</option>
 							))}
-						</Select>
-					</FormControl>
+						</select>
+					</div>
 				</div>
 			)}
 		</div >

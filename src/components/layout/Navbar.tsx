@@ -1,15 +1,9 @@
 import Logo from '@/components/common/Logo';
 import MobileViewNavbar from '@/components/layout/MobileViewNavbar';
 import JoinNowButton from '@/components/common/button/JoinNowButton';
-import { NavItem, navItems as _navItems } from '@/data/staticData'
+import { navItems as _navItems } from '@/data/staticData'
 import Text from '@/elements/Text';
 import { useRouter } from 'next/router';
-import {
-	Popover,
-	PopoverTrigger,
-	PopoverContent,
-	PopoverBody
-} from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
@@ -28,6 +22,7 @@ const Navbar: React.FC<NavbarProps> = ({ courseList }) => {
 	const [isMobileNavbarVisible, setIsMobileNavbarVisible] = useState(false);
 	const [navBg, setNavBg] = useState('bg-lightblue');
 	const [navItems, setNavItems] = useState(_navItems);
+	const [showPopover, setShowPopover] = useState(false);
 	const { asPath } = useRouter();
 
 	const toggleNavbar = () => {
@@ -37,6 +32,15 @@ const Navbar: React.FC<NavbarProps> = ({ courseList }) => {
 			setIsMobileNavbarVisible(true);
 		}
 	};
+
+	const handleMouseEnter = () => {
+		setShowPopover(true);
+	}
+
+	const handleMouseLeave = () => {
+		setShowPopover(false);
+	}
+
 
 	useEffect(() => {
 		const scrollHandler = () => {
@@ -102,11 +106,14 @@ const Navbar: React.FC<NavbarProps> = ({ courseList }) => {
 								{navItems.map((item, index) => {
 									return (<div key={item.id}>
 										{item.subLinks?.length > 0 ? (
-											<Popover
-												trigger='hover'
+											<div
 												key={index}
+												className='relative'
 											>
-												<PopoverTrigger>
+												<div
+													onMouseEnter={handleMouseEnter}
+													onMouseLeave={handleMouseLeave}
+												>
 													<Link
 														key={index}
 														href={item.link}
@@ -123,29 +130,35 @@ const Navbar: React.FC<NavbarProps> = ({ courseList }) => {
 															<span><GoTriangleDown /></span>
 														</div>
 													</Link>
-												</PopoverTrigger>
-												<PopoverContent>
-													<PopoverBody padding={0}>
-														{item.subLinks.map((item, index) => (
-															<p className='py-3 hover:bg-lightblue font-semibold text-lg px-2' key={item.id}>
-																<Link
-																	key={index}
-																	href={item.link}
-																	target={item.target}
-																>
-																	<Text
-																		className={`font-semibold relative px-3 text-secondary grid ${item.className && item.className} ${item.link === asPath && 'text-tertiary'}`}
-																		cursor='cursor-pointer'
+												</div>
+												{showPopover && (
+													<div
+														className='pt-10 absolute left-0 top-3'
+														onMouseEnter={handleMouseEnter}
+														onMouseLeave={handleMouseLeave}
+													>
+														<div className='w-72 bg-white rounded'>
+															{item.subLinks.map((item, index) => (
+																<p className='py-3 font-semibold text-lg px-2' key={item.id}>
+																	<Link
+																		key={index}
+																		href={item.link}
+																		target={item.target}
 																	>
-																		{item.title}
-																		<span className={`${item.link === asPath && 'w-10 h-1 mx-auto rounded bg-tertiary'}`}></span>
-																	</Text>
-																</Link>
-															</p>
-														))}
-													</PopoverBody>
-												</PopoverContent>
-											</Popover>
+																		<Text
+																			className={`font-semibold relative px-3 text-secondary grid ${item.className && item.className} ${item.link === asPath && 'text-tertiary'}`}
+																			cursor='cursor-pointer'
+																		>
+																			{item.title}
+																			<span className={`${item.link === asPath && 'w-10 h-1 mx-auto rounded bg-tertiary'}`}></span>
+																		</Text>
+																	</Link>
+																</p>
+															))}
+														</div>
+													</div>
+												)}
+											</div>
 										) : (
 											<Link
 												key={index}
