@@ -3,6 +3,7 @@ import Image from 'next/image';
 import SectionHeadline from '@/components/common/SectionHeadline';
 import { Recruiter } from '@/services/recruiter/types';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
+import { Grid } from '@splidejs/splide-extension-grid';
 
 const RecruiterSection: React.FC<RecruiterSectionProps> = ({ headline, subHeadline, recruiterList }) => {
 	return (
@@ -14,17 +15,24 @@ const RecruiterSection: React.FC<RecruiterSectionProps> = ({ headline, subHeadli
 			/>
 			<div className="mb-14 md:mb-20">
 				<div className="cardContainer xl:w-76 mx-auto mb-4">
-					<Splide options={{
-					perPage: 4,
-					breakpoints: {
-						1200: { perPage: 2 },
-						400: { perPage: 1 }
-					},
-					autoplay: true,
-					rewind: true,
-					gap: 100,
-					padding: 50
-				}} aria-label="Team Members">
+					<Splide
+						extensions={{ Grid }}
+						options={{
+							perPage: 4,
+							breakpoints: {
+								1200: {
+									perPage: 1,
+									grid: {
+										rows: 2,
+										cols: 2,
+									},
+								},
+							},
+							autoplay: true,
+							rewind: true,
+							gap: 100,
+							arrows: false
+						}} aria-label="Team Members">
 						{recruiterList?.length > 0 && recruiterList.map((recruiter) => (
 							<SplideSlide key={recruiter.id}>
 								<div

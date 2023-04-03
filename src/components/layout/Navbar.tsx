@@ -137,7 +137,7 @@ const Navbar: React.FC<NavbarProps> = ({ courseList }) => {
 														onMouseEnter={handleMouseEnter}
 														onMouseLeave={handleMouseLeave}
 													>
-														<div className='w-72 bg-white rounded'>
+														<div className='w-72 bg-white rounded shadow'>
 															{item.subLinks.map((item, index) => (
 																<p className='py-3 font-semibold text-lg px-2' key={item.id}>
 																	<Link
