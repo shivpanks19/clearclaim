@@ -29,6 +29,7 @@ import { Review } from '@/services/review/types';
 import { Recruiter } from '@/services/recruiter/types';
 
 const Home: NextPage<HomePageProps> = ({ homeInfo, courseList, placementList, reviewList, recruiterList, reviewPagination, placementPagination }) => {
+	console.log('ps', placementList[0]);
 
 	return (
 		<div className='relative'>
@@ -151,7 +152,7 @@ export const getStaticProps: GetStaticProps = async ({
 	const placementList = await PlacementService.getPlacementList(locale, '*');
 	const reviewList = await ReviewService.getReviewList(locale, '*');
 	const recruiterList = await RecruiterService.getRecruiterList(locale, '*');
-
+	
 	return {
 		props: {
 			homeInfo: {
@@ -163,13 +164,13 @@ export const getStaticProps: GetStaticProps = async ({
 			},
 			courseList: courseList.data.map((course) => ({
 				...course.attributes,
-				heroImage: { id: course.attributes.heroImage.data.id, url: course.attributes.heroImage?.data.attributes.url  },
+				heroImage: { id: course.attributes.heroImage.data.id, url: course.attributes.heroImage?.data.attributes.url },
 				id: course.id,
 			})),
 			placementList: placementList.data.map((placement) => ({
 				...placement.attributes,
 				id: placement.id,
-				companyImage: { id: placement.attributes.companyImage?.data.id, url: placement.attributes.companyImage?.data.attributes.url },
+				companyImage: { id: placement.attributes.companyImage?.data.id, url: placement.attributes.companyImage?.data.attributes.url,},
 				studentImage: { id: placement.attributes.studentImage?.data.id, url: placement.attributes.studentImage?.data.attributes.url },
 			})),
 			reviewList: reviewList.data.map((review) => ({

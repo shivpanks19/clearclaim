@@ -11,7 +11,7 @@ function WhyUsNav() {
       image: '/img/job-openings.png',
       content: (
         <div className="flex-1 m-1 relative">
-          <Image src='/img/job_description.png' fill alt='Information on Job Openings' />
+          <Image src='/img/job_description.png' fill style={{ objectFit: "contain" }} alt='Information on Job Openings' />
         </div>
       )
     },
@@ -20,7 +20,7 @@ function WhyUsNav() {
       image: '/img/project-collaboration.png',
       content: (
         <div className="flex-1 m-1 relative">
-          <Image src='/img/mock_interviews.webp' fill alt='Mock interviews' />
+          <Image src='/img/mock_interviews.webp' fill style={{ objectFit: "contain" }} alt='Mock interviews' />
         </div>
       )
     },
@@ -29,7 +29,7 @@ function WhyUsNav() {
       image: '/img/interview-experiences.png',
       content: (
         <div className="flex-1 m-1 relative">
-          <Image src='/img/competitive_coding.png' fill alt='Competitive coding' />
+          <Image src='/img/competitive_coding.png' fill style={{ objectFit: "contain" }} alt='Competitive coding' />
         </div>
       )
     },
@@ -38,7 +38,7 @@ function WhyUsNav() {
       image: '/img/competitive-coding.png',
       content: (
         <div className="flex-1 m-1 relative">
-          <Image src='/img/major_announcements.png' fill alt='Major Announcements' />
+          <Image src='/img/major_announcements.png' fill style={{ objectFit: "contain" }} alt='Major Announcements' />
         </div>
       )
     },
@@ -47,7 +47,7 @@ function WhyUsNav() {
       image: '/img/major-announcements.png',
       content: (
         <div className="flex-1 m-1 relative">
-          <Image src='/img/lms.png' fill alt='24/7 LMS Access' />
+          <Image src='/img/lms.png' fill style={{ objectFit: "contain" }} alt='24/7 LMS Access' />
         </div>
       )
     }

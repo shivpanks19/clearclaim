@@ -21,8 +21,8 @@ const PlacementCard: React.FC<PlacementCardProps> = ({
 					alt={studentName}
 				/>
 			</div>
-			<p className='studentName mb-4 md:text-2xl text-primary font-semibold'>{studentName}</p>
-			<p className='courseName text-tertiary text-sm md:text-base font-medium'>{collegeCourseName}</p>
+			<p className='studentName mb-4 md:text-2xl text-primary font-semibold text-center'>{studentName}</p>
+			<p className='courseName text-tertiary text-sm md:text-base font-medium text-center'>{collegeCourseName}</p>
 			<p className='collegeName text-desc text-xs md:text-base mb-5 md:mb-10 text-center'>{collegeName}</p>
 			<div className="grow">
 
@@ -35,7 +35,7 @@ const PlacementCard: React.FC<PlacementCardProps> = ({
 					/>
 				</div>
 			</div>
-			<p className='designation text-primary text-sm md:text-base font-semibold'>{designation}</p>
+			<p className='designation text-primary text-sm md:text-base font-semibold text-center'>{designation}</p>
 			<p className='ctc md:text-2xl text-tertiary font-bold'>{ctc} LPA</p>
 		</div>
 	)
