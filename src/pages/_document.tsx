@@ -15,10 +15,6 @@ export default class MyDocument extends Document {
 					<script id='gtm'></script>
 					<script id='ga'></script>
 					<script id='fb'></script>
-					<link rel="preconnect" href="https://fonts.googleapis.com" />
-					<link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin='true' />
-					<script async src="http://unpkg.com/lite-vimeo-embed"></script>
-					<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 				</Head>
 				<body>
 					<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N7SB2Z3"

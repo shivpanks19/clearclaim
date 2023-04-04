@@ -11,12 +11,7 @@ const DemoVideo: React.FC<DemoVideoProps> = ({ url, headline, subHeadline }) => 
 			/>
 			<div className="video-container relative xl:w-76 mx-auto px-5 mb-12 flex justify-center">
 				<div className='w-full rounded-3xl overflow-hidden'>
-					{/* <iframe data-src={url ?? 'https://player.vimeo.com/video/813124028?h=bf8271f639&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479'} allow="autoplay; fullscreen; picture-in-picture" allowFullScreen style={{position:'absolute',top:0,left:0,width:'100%',height:'100%'}} title="4k SOCIAL MEDIA"></iframe> */}
-					{/* @ts-ignore */}
-					<lite-vimeo videoid="357274789" style={{backgroundImage: "url('https://i.vimeocdn.com/video/810965406.webp?mw=1600&mh=900&q=70')"}}>
-						<div className="ltv-playbtn"></div>
-						{/* @ts-ignore */}
-					</lite-vimeo>
+					<iframe data-src={url ?? 'https://player.vimeo.com/video/813124028?h=bf8271f639&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479'} allow="autoplay; fullscreen; picture-in-picture" allowFullScreen style={{position:'absolute',top:0,left:0,width:'100%',height:'100%'}} title="4k SOCIAL MEDIA"></iframe>
 				</div>
 			</div>
 		</>

@@ -1,7 +1,13 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app';
 import React, { useEffect } from 'react';
+import type { AppProps } from 'next/app';
+import { Poppins } from 'next/font/google';
 import '@splidejs/react-splide/css';
+import '../styles/globals.css'
+
+const poppins = Poppins({
+  weight: ['400', '500', '600', '700', '800'],
+  subsets: ['latin'],
+})
 
 export default function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
@@ -52,14 +58,14 @@ export default function App({ Component, pageProps }: AppProps) {
           vidDefer[i].setAttribute('src', vidDefer[i].getAttribute('data-src'));
         }
       }
-    }), 2500)
+    }), 20000)
 
     setTimeout(attachScripts, 20000)
   }, [])
 
   return (
-    <>
+    <main className={poppins.className}>
       <Component {...pageProps} />
-    </>
+    </main>
   );
 };
