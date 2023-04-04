@@ -54,7 +54,7 @@ function WhyUsNav() {
   ];
 
   return (
-    <div className='w-76 h-136 mb-36 mx-auto bg-corporate-light rounded-2xl flex'>
+    <div className='w-76 h-136 mb-36 mx-auto bg-corporate-light rounded-2xl flex shadow'>
       <div className='flex flex-col w-6/12 justify-between'>
         {tabs.map((tab, index) => (
           <button

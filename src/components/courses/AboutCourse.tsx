@@ -19,7 +19,7 @@ const CourseOverviewSection: React.FC<CourseOverviewSectionProps> = ({ aboutCour
 						text='About Course'
 						className='mb-1 md:mb-8 text-sm md:text-lg'
 					/>
-					<p className="text-aphonic mr-12 text-sm md:text-base">
+					<p className="text-aphonic xl:mr-12 text-sm md:text-base">
 						{aboutCourse}
 					</p>
 				</div>

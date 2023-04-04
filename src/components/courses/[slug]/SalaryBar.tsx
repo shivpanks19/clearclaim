@@ -9,7 +9,7 @@ const Loader: React.FC<LoaderProps> = ({ percentage, text, label }) => {
 					{label}
 				</p>
 			)}
-			<div className='bg-loader-gray relative rounded-lg w-full border'>
+			<div className='bg-loader-gray relative rounded-lg w-full'>
 				<div className={classNames(`bg-tertiary abosolute rounded-lg p-1.5 pl-7 left-0 `, `${percentage}`)}>
 					{text && (
 						<p className="text-white font-medium">

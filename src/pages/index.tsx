@@ -155,6 +155,7 @@ export const getStaticProps: GetStaticProps = async ({
 	const placementList = await PlacementService.getPlacementList(locale, '*');
 	const reviewList = await ReviewService.getReviewList(locale, '*');
 	const recruiterList = await RecruiterService.getRecruiterList(locale, '*');
+	console.log('plc', placementList.data[0].companyImage)
 	return {
 		props: {
 			homeInfo: {

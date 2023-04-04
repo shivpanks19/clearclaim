@@ -11,7 +11,11 @@ const BasePaySection: React.FC<BasePaySectionProps> = ({ glassdoorSalaryData }) 
 				<div className="header w-10/12 mx-auto rounded-3xl shadow-gdSalaryBox absolute -top-14 -mt-20 left-0 right-0 bg-white p-10 mb-18 flex flex-col lg:flex-row">
 					<div className="mr-20">
 						<p className="text-sm lg:text-base font-semibold">Average Base Pay</p>
-						<p className="text-lg lg:text-3xl font-bold">₹ {Math.ceil(parseFloat(glassdoorSalaryData.averageSalary) * 100000)} <span className="text-aphonic">/yr</span></p>
+						<p className="text-lg lg:text-3xl font-bold">{Math.ceil(parseFloat(glassdoorSalaryData.averageSalary) * 100000).toLocaleString('en-IN', {
+							maximumFractionDigits: 2,
+							style: 'currency',
+							currency: 'INR'
+						})} <span className="text-aphonic">/yr</span></p>
 						<p className='text-sm lg:text-base mb-4 lg:mb-10'>Same as national average</p>
 						<p className='text-sm lg:text-base mb-5 text-aphonic'>Not including cash compensation</p>
 						<Button
