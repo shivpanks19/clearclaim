@@ -79,11 +79,11 @@ const HomeHeroSection: React.FC<HomeHeroSectionProps> = ({ headline, subHeadline
 						className='relative w-full h-96'
 						style={{ alignSelf: 'flex-end' }}
 					>
-						<HumanRiver
+						{/* <HumanRiver
 							riverImages={riverImages}
 							riverImagesLv2={riverImagesLv2}
 							riverImagesLv3={riverImagesLv3}
-						/>
+						/> */}
 					</div>
 					<div className='trust flex flex-col place-items-center pt-7 z-10 bg-lightblue'>
 						<div className='flex gap-2' style={{ alignItems: 'flex-end' }}>
