@@ -31,7 +31,7 @@ const PlacementCard: React.FC<PlacementCardProps> = ({
 						src={companyImage?.url}
 						width={152}
 						height={39}
-						alt={companyImage.caption}
+						alt={companyImage.alternativeText}
 					/>
 				</div>
 			</div>

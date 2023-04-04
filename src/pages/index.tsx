@@ -29,8 +29,6 @@ import { Review } from '@/services/review/types';
 import { Recruiter } from '@/services/recruiter/types';
 
 const Home: NextPage<HomePageProps> = ({ homeInfo, courseList, placementList, reviewList, recruiterList, reviewPagination, placementPagination }) => {
-	console.log('ps', placementList[0]);
-
 	return (
 		<div className='relative'>
 			<Head>
@@ -170,7 +168,7 @@ export const getStaticProps: GetStaticProps = async ({
 			placementList: placementList.data.map((placement) => ({
 				...placement.attributes,
 				id: placement.id,
-				companyImage: { id: placement.attributes.companyImage?.data.id, url: placement.attributes.companyImage?.data.attributes.url,},
+				companyImage: { id: placement.attributes.companyImage?.data.id, url: placement.attributes.companyImage?.data.attributes.url, alt: placement.attributes.companyImage?.data.attributes.alternativeText },
 				studentImage: { id: placement.attributes.studentImage?.data.id, url: placement.attributes.studentImage?.data.attributes.url },
 			})),
 			reviewList: reviewList.data.map((review) => ({
