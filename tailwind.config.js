@@ -124,7 +124,7 @@ module.exports = {
         desc: "rgba(63, 63, 63, 0.80)",
         desc2: "rgba(63, 63, 63, 0.83)",
         secondary: "rgba(13, 61, 84, 0.89)",
-        tertiary: "#0D87D4",
+        tertiary: "#0c69a3",
         muted: "#919191",
         aphonic: "rgba(63, 63, 63, 0.80)",
         gray: '#d1d1d1',
@@ -137,7 +137,7 @@ module.exports = {
         DEFAULT: '#OD3D5426',
         primary2: "#0D3D54E3",
         yellow: '#f5c844',
-        tertiary: "#0D87D4",
+        tertiary: "#0c69a3",
         white: "#fff"
       }),
       borderWidth: {
