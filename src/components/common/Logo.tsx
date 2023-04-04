@@ -21,6 +21,7 @@ const Logo: React.FC<LogoProps> = ({ className, href, variant, logoSize }) => {
 					<Image
 						src={path()}
 						fill
+						style={{objectFit: 'contain'}}
 						alt='logo'
 					/>
 				</Link >
