@@ -10,7 +10,7 @@ import { Splide, SplideSlide } from '@splidejs/react-splide';
 const PlacementList: React.FC<PlacementListProps> = ({ headline, subHeadline, placementList, showReadMore = true }) => {
 	return (
 		<>
-			<a id='success-stories' />
+			<a id='success-stories' href='#'/>
 			<SectionHeadline
 				title={headline}
 				subtitle={subHeadline}
