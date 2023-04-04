@@ -22,14 +22,6 @@ const HumanRiver: React.FC<HumanRiverProps> = ({ riverImages, riverImagesLv2, ri
 };
 
 const ImageLayer: React.FC<ImageLayerProps> = ({ level, imgList }) => {
-	// useEffect(() => {
-	// 	const riverImages = document.querySelectorAll('.riverImage');
-	// 	riverImages.forEach((img) => img.classList.add(animation['fast-speed']))
-
-	// 	setTimeout(() => {
-	// 		riverImages.forEach((img) => img.classList.remove(animation['fast-speed']))
-	// 	}, 1000)
-	// }, [])
 	return (
 		<div className="absolute h-full w-full grid grid-cols-3">
 			<div className='relative flex gap-5 w-96'>

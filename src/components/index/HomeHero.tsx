@@ -109,11 +109,11 @@ const HomeHeroSection: React.FC<HomeHeroSectionProps> = ({ headline, subHeadline
 				</div>
 			</div>
 			{/* Stats */}
-			{/* <StatSection
+			<StatSection
 				studentsTrained={studentsTrained}
 				workshopsConducted={workshopsConducted}
 				placementDrives={placementDrives}
-			/> */}
+			/>
 		</div>
 	)
 };

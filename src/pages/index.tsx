@@ -59,11 +59,11 @@ const Home: NextPage<HomePageProps> = ({ homeInfo, courseList, placementList, re
 				riverImagesLv3={homeInfo.riverImagesLv3}
 			/>
 			{/* How we teach */}
-			{/* <DemoVideo
+			<DemoVideo
 				headline={homeInfo.demoVideoHeadline}
 				subHeadline={homeInfo.demoVideoSubHeadline}
 				url={homeInfo.videoURL}
-			/> */}
+			/>
 
 			{/* Offerings */}
 			<OfferingSection
