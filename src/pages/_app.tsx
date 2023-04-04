@@ -47,14 +47,14 @@ export default function App({ Component, pageProps }: AppProps) {
       document.head.appendChild(gtm2Script);
     };
 
-    setTimeout((function () {
-      var vidDefer = document.getElementsByTagName('iframe');
-      for (var i = 0; i < vidDefer.length; i++) {
-        if (vidDefer[i].getAttribute('data-src')) {
-          vidDefer[i].setAttribute('src', vidDefer[i].getAttribute('data-src'));
-        }
-      }
-    }), 2000)
+    // setTimeout((function () {
+    //   var vidDefer = document.getElementsByTagName('iframe');
+    //   for (var i = 0; i < vidDefer.length; i++) {
+    //     if (vidDefer[i].getAttribute('data-src')) {
+    //       vidDefer[i].setAttribute('src', vidDefer[i].getAttribute('data-src'));
+    //     }
+    //   }
+    // }), 2000)
 
     setTimeout(attachScripts, 20000)
   }, [])

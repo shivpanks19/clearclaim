@@ -16,13 +16,13 @@ const CourseCard: React.FC<CourseCardProps> = ({ courseName, description, number
 				})
 			}
 			>
-				<div className="flex flex-col md:flex-row items-center px-5 pt-5">
-					<div className="relative h-40 w-full md:w-64 md:mr-7 mb-3 md:mb-0 flex-none ">
+				<div className="flex flex-col md:flex-row justify-center items-center px-5 pt-5">
+					<div className="relative w-full md:w-96 md:mr-7 mb-3 md:mb-0">
 						<Image
 							src={heroImage}
-							// height={219}
-							// width={256}
-							fill
+							height={219}
+							width={256}
+							style={{objectFit: "contain", margin: '0 auto'}}
 							sizes='(min-width: 768px) 300px,
 						256px'
 							alt='Course thumbnail'

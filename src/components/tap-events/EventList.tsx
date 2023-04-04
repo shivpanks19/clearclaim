@@ -15,7 +15,7 @@ const EventList: React.FC<EventListProps> = ({ eventList, showReadMore = true })
 				{showReadMore && (
 					<div className='read_more absolute right-5 top-0 flex gap-3 align-middle'>
 						<Link href={Routes.studentReviews()}>
-							<p className="text-tertiary">Read more</p>
+							<p className="text-tertiary">See more events</p>
 						</Link>
 						<Image
 							src='/img/arrow_right_blue.png'

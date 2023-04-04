@@ -19,7 +19,7 @@ const ReviewSection: React.FC<ReviewSectionProps> = ({ headline, subHeadline, re
 				{showReadMore && (
 					<div className='read_more absolute right-5 top-0 flex gap-3 align-middle'>
 						<Link href={Routes.studentReviews()}>
-							<p className="text-xs md:text-base text-tertiary">Read more</p>
+							<p className="text-xs md:text-base text-tertiary">Read more reviews</p>
 						</Link>
 						<Image
 							src='/img/arrow_right_blue.png'

@@ -28,6 +28,7 @@ const courseListPage: NextPage<courseListPageProps> = ({ courseListPageInfo, cou
 				{courseListPageInfo.metaDescription && (
 					<meta name='description' content={courseListPageInfo.metaDescription} />
 				)}
+				<script src="https://player.vimeo.com/api/player.js"></script>
 			</Head>
 			<SocialButtonList />
 			<Navbar

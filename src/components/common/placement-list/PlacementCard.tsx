@@ -13,7 +13,7 @@ const PlacementCard: React.FC<PlacementCardProps> = ({
 }) => {
 	return (
 		<div className="card rounded shadow w-full md:w-96 flex flex-col items-center py-7 md:py-8 h-96 md:h-136">
-			<div className="rounded-full overflow-hidden h-16 w-16 lg:w-28 lg:h-28 mb-4 border flex-none">
+			<div className="rounded-full overflow-hidden h-16 w-16 lg:w-28 lg:h-28 mb-4 flex-none">
 				<Image
 					src={studentImage?.url}
 					width={114}

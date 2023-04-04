@@ -18,7 +18,7 @@ const HomeHeroSection: React.FC<HomeHeroSectionProps> = ({ headline, subHeadline
 				backgroundSize: '100% 100%',
 				backgroundPosition: 'top left'
 			}}
-			className='pt-8 pb-4 mb-12'
+			className='pt-8 pb-4 mb-20'
 		>
 			<div className='grid gap-2 mdxl:w-76 grid-cols-1 lg:grid-cols-2 mx-auto mb-8 md:mb-20'>
 				<div className='flex flex-col md:pt-20 px-5 mb-7'>
