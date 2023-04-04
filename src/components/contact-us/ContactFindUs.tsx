@@ -24,7 +24,7 @@ const ContactFindUsSection: React.FC<ContactFindUsSectionProps> = ({
 							/>
 						</div>
 						{ytLink?.text && (
-							<Link href={ytLink?.link}>
+							<Link href={ytLink?.link} target='_blank'>
 								<p className="addressText text-sm md:text-lg text-primary">
 									{ytLink.text}
 								</p>
@@ -40,7 +40,7 @@ const ContactFindUsSection: React.FC<ContactFindUsSectionProps> = ({
 							/>
 						</div>
 						{fbLink?.text && (
-							<Link href={fbLink?.link}>
+							<Link href={fbLink?.link} target='_blank'>
 								<p className="addressText text-sm md:text-lg text-primary">
 									{fbLink.text}
 								</p>
@@ -56,7 +56,7 @@ const ContactFindUsSection: React.FC<ContactFindUsSectionProps> = ({
 							/>
 						</div>
 						{igLink?.text && (
-							<Link href={igLink?.link}>
+							<Link href={igLink?.link} target='_blank'>
 								<p className="addressText text-sm md:text-lg text-primary">
 									{igLink.text}
 								</p>

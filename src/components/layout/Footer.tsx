@@ -32,7 +32,7 @@ const Footer: React.FC<FooterProps> = ({ showFooterTop }) => {
 								</Link>
 							</div>
 							<div className="flex-none w-7 h-7 md:w-9 md:h-9 relative">
-								<Link href='https://instagram.com/tapacademy.online?igshid=NTdlMDg3MTY=' target='_blank'>
+								<Link href='https://www.instagram.com/tapacademy_online/' target='_blank'>
 									<Image
 										src='/img/ig_white.png'
 										fill

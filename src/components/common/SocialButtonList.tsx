@@ -15,7 +15,7 @@ const SocialButtonList: React.FC<SocialButtonListProps> = () => {
 					/>
 				</div>
 			</Link>
-			<Link href='https://instagram.com/tapacademy.online?igshid=NTdlMDg3MTY=' target='_blank'>
+			<Link href='https://www.instagram.com/tapacademy_online/' target='_blank'>
 				<div className="bg-none hover:bg-blue-100 transition-all text-white font-bold p-2 rounded-full relative group">
 					<Image
 						src='/img/social_instagram.png'
