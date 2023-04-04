@@ -1,4 +1,4 @@
-import { GetServerSideProps, NextPage } from 'next';
+import { GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
 
 import Navbar from '@/components/layout/Navbar';
@@ -122,10 +122,7 @@ type StudentReviewPageProps = {
 	courseList: Course[];
 };
 
-export const getServerSideProps: GetServerSideProps = async ({
-	locale,
-	query
-}: Record<string, any>) => {
+export const getStaticProps: GetStaticProps = async ({locale}: Record<string, any>) => {
 	const studentReviewPageInfo = await StudentReviewPageService.getStudentReviewPageInformation(locale, '*');
 	const placementList = await PlacementService.getPlacementList(locale, '*');
 	const reviewList = await ReviewService.getReviewList(locale, '*');
@@ -160,7 +157,8 @@ export const getServerSideProps: GetServerSideProps = async ({
 				id: course.id,
 			})),
 			...(await serverSideTranslations(locale, ['common', 'home']))
-		}
+		},
+		revalidate: 60
 	};
 };
 

@@ -1,4 +1,4 @@
-import { GetServerSideProps, NextPage } from 'next';
+import { GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
 
 import Navbar from '@/components/layout/Navbar';
@@ -81,7 +81,7 @@ type courseListPageProps = {
 	reviewPagination: Record<string, number>;
 }
 
-export const getServerSideProps: GetServerSideProps = async ({
+export const getStaticProps: GetStaticProps = async ({
 	locale,
 	query
 }: Record<string, any>) => {
@@ -103,7 +103,8 @@ export const getServerSideProps: GetServerSideProps = async ({
 			reviewPagination: reviewList.meta.pagination,
 			courseListPageInfo: courseListPageInfo?.data?.attributes,
 			...(await serverSideTranslations(locale, ['common', 'course-list-page']))
-		}
+		},
+		revalidate: 60
 	};
 };
 
