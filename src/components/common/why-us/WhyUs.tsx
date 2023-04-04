@@ -5,7 +5,7 @@ import WhyUsNav from '@/components/common/why-us/WhyUsNav';
 const WhyUsSection: React.FC<WhyUsSectionProps> = ({ headline, subHeadline }) => {
 	return (
 		<div className='hidden xl:block'>
-			<a id='why-tap-academy'  href='#' />
+			<a id='why-tap-academy'  href='#why-tap' />
 			<SectionHeadline
 				className='mb-12'
 				title={headline}
