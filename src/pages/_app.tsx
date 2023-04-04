@@ -12,6 +12,9 @@ export default function App({ Component, pageProps }: AppProps) {
       const gtmScript = document.getElementById('gtm');
       const gaScript = document.getElementById('ga');
       const fbScript = document.getElementById('fb');
+      const gtm2Script = document.createElement('script');
+      gtm2Script.src = 'https://www.googletagmanager.com/gtag/js?id=G-BVKQYJ6KFL';
+      gtm2Script.async = true;
 
       gtmScript.innerHTML = `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -41,6 +44,7 @@ export default function App({ Component, pageProps }: AppProps) {
       document.head.appendChild(gtmScript);
       document.head.appendChild(gaScript);
       document.head.appendChild(fbScript);
+      document.head.appendChild(gtm2Script);
     };
 
     setTimeout((function () {

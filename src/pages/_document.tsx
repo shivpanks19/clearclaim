@@ -12,8 +12,6 @@ export default class MyDocument extends Document {
 				<Head>
 					<link rel="apple-touch-icon" href="/apple-touch-icon.png"></link>
 					<meta name="theme-color" content="#fff" />
-					<script async src="https://www.googletagmanager.com/gtag/js?id=G-BVKQYJ6KFL"></script>
-					<script async src="https://player.vimeo.com/api/player.js"></script>
 					<script id='gtm'></script>
 					<script id='ga'></script>
 					<script id='fb'></script>
