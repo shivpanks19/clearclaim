@@ -1,13 +1,11 @@
 import React from "react";
 import Text from '@/elements/Text';
 import Button from '@/elements/Button';
-import { useTranslation } from 'next-i18next';
 import classNames from 'classnames';
 import useDisclosure from '@/hooks/useDisclosure';
 import RegistrationForm from '@/components/common/RegistrationForm';
 
 const JoinNowButton: React.FC<JoinNowButtonProps> = ({ className }) => {
-	const { t } = useTranslation();
 	const classNameList = className ? className.split(' ') : [];
 	const { isOpen, onOpen, onClose } = useDisclosure()
 
@@ -25,7 +23,7 @@ const JoinNowButton: React.FC<JoinNowButtonProps> = ({ className }) => {
 					fontSize='text-lg'
 					fontWeight='font-medium'
 				>
-					{t('Join Now for FREE')}
+					Join Now for FREE
 				</Text>
 
 			</Button>

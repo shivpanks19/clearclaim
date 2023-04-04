@@ -1,11 +1,8 @@
 import React from "react";
 import Image from "next/image";
 import Col from '@/components/layout/Col';
-import { useTranslation } from 'next-i18next';
 
 const CourseUsp: React.FC<CourseUspProps> = () => {
-	const { t } = useTranslation();
-
 	return (
 		<Col className='md:mt-16'>
 			<div className="flex flex-col gap-5 md:gap-8">

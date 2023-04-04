@@ -16,7 +16,7 @@ import FooterFaqList from "@/components/courses/[slug]/FooterFaqList";
 import BasePaySection from "@/components/courses/[slug]/BasePaySection";
 import SocialButtonList from '@/components/common/SocialButtonList';
 
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+
 import { CourseDetailPageInformation } from '@/services/course/types';
 import CourseService from '@/services/course';
 import PlacementService from '@/services/placement';
@@ -156,7 +156,6 @@ export const getStaticProps: GetStaticProps = async ({
 				...course.attributes,
 				id: course.id,
 			})),
-			...(await serverSideTranslations(locale, ['common', 'course-detail-page']))
 		},
 		revalidate: 60
 	};

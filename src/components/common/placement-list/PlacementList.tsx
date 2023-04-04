@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import PlacementCard from '@/components/common/placement-list/PlacementCard';
@@ -33,14 +33,14 @@ const PlacementList: React.FC<PlacementListProps> = ({ headline, subHeadline, pl
 
 				<div className="cardContainer w-full md:mx-0 mb-4">
 					<Splide options={{
-					perPage: 3,
-					breakpoints: {
-						1200: { perPage: 2 },
-						800: { perPage: 1 }
-					},
-					autoplay: true,
-					rewind: true
-				}} aria-label="Team Members">
+						perPage: 3,
+						breakpoints: {
+							1200: { perPage: 2 },
+							800: { perPage: 1 }
+						},
+						autoplay: true,
+						rewind: true
+					}} aria-label="Team Members">
 						{placementList?.length > 0 && placementList.map((placement) => (
 							<SplideSlide key={placement.id}>
 								<div className="mb-10">

@@ -1,4 +1,3 @@
-// import { toast } from 'react-hot-toast';
 import { ImageSetAnimationDetail } from '@/data/types';
 import { Id } from '@/utils/types';
 
@@ -22,12 +21,6 @@ export const navItems: Array<NavItem> = [
 	{ id: 7, title: 'Blogs', link: '/blogs', target: '_self' },
 	{ id: 8, title: 'Events', link: '/events', target: '_self' }
 ];
-
-// export const comingSoonHandler = (navItem: NavItem): void => {
-// 	if (!navItem.link || navItem.link === '#') {
-// 		toast.success('Coming Soon...', { duration: 2000 });
-// 	}
-// };
 
 export const humanRiverData: Array<ImageSetAnimationDetail> = [
 	{

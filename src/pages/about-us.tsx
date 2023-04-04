@@ -11,7 +11,6 @@ import Team from '@/components/about-us/Team';
 import RecognitionSection from '@/components/index/Recognition';
 import SocialButtonList from '@/components/common/SocialButtonList';
 
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 import AboutUsService from '@/services/about-us';
 import CourseService from '@/services/course';
@@ -112,7 +111,6 @@ export const getStaticProps: GetStaticProps = async ({
 				...course.attributes,
 				id: course.id,
 			})),
-			...(await serverSideTranslations(locale, ['common', 'home']))
 		},
 		revalidate: 60
 	};

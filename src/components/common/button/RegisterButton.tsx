@@ -1,12 +1,10 @@
 import React from "react";
 import Button from '@/elements/Button';
-import { useTranslation } from 'next-i18next';
 import classNames from 'classnames';
 import useDisclosure from '@/hooks/useDisclosure';
 import RegistrationForm from '@/components/common/RegistrationForm';
 
 const RegisterButton: React.FC<RegisterButtonProps> = ({ className }) => {
-	const { t } = useTranslation();
 	const classNameList = className ? className.split(' ') : [];
 	const { isOpen, onOpen, onClose } = useDisclosure()
 
@@ -19,7 +17,7 @@ const RegisterButton: React.FC<RegisterButtonProps> = ({ className }) => {
 				onClick={onOpen}
 			>
 				<p className="text-white text-sm lg:text-lg font-medium">
-					{t('Register Now')}
+					Register Now
 				</p>
 			</Button>
 			<RegistrationForm

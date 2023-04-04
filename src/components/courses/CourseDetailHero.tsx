@@ -1,10 +1,7 @@
 import React from "react";
 import Image from "next/image";
-import Text from '@/elements/Text';
 
-import { useTranslation } from 'next-i18next';
 import CourseAttr from "@/components/common/course-list/CourseAttr";
-import Rating from "@/components/common/Rating";
 import WorkshopButton from '@/components/common/button/WorkshopButton';
 import RegisterButton from '@/components/common/button/RegisterButton';
 import StatSection from '@/components/common/Stat';
@@ -20,8 +17,6 @@ const CourseHeroSection: React.FC<CourseHeroSectionProps> = ({
 	workshopsConducted,
 	placementDrives
 }) => {
-	const { t } = useTranslation();
-
 	return (
 		<>
 			<HeroBg>

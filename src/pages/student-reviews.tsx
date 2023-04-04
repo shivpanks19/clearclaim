@@ -8,7 +8,6 @@ import SocialButtonList from '@/components/common/SocialButtonList';
 import ReviewSection from '@/components/common/review-list/ReviewList';
 import ReviewHeroSection from '@/components/student-reviews/ReviewHero';
 import PlacementList from '@/components/common/placement-list/PlacementList';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import CodingBootcampSection from '@/components/common/banner/CodingBootcampBanner';
 
 import StudentReviewPageService from '@/services/student-reviews-page';
@@ -156,7 +155,6 @@ export const getStaticProps: GetStaticProps = async ({locale}: Record<string, an
 				...course.attributes,
 				id: course.id,
 			})),
-			...(await serverSideTranslations(locale, ['common', 'home']))
 		},
 		revalidate: 60
 	};

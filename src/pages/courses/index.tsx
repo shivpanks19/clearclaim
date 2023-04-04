@@ -10,7 +10,7 @@ import CourseHeroSection from '@/components/courses/CourseHeroSection';
 import OfferingSection from '@/components/common/course-list/CourseList';
 import CodingBootcampSection from '@/components/common/banner/CodingBootcampBanner';
 
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+
 import { CourseListPageInformation } from '@/services/course/types';
 import CourseService from '@/services/course';
 import ReviewService from '@/services/review';
@@ -102,7 +102,6 @@ export const getStaticProps: GetStaticProps = async ({
 			})),
 			reviewPagination: reviewList.meta.pagination,
 			courseListPageInfo: courseListPageInfo?.data?.attributes,
-			...(await serverSideTranslations(locale, ['common', 'course-list-page']))
 		},
 		revalidate: 60
 	};

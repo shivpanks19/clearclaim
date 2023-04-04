@@ -7,7 +7,6 @@ import SalarySection from '@/components/records/SalarySection';
 import RecordHeroSection from '@/components/records/RecordHero';
 import RecruiterSection from '@/components/common/RecruiterList';
 import SocialButtonList from '@/components/common/SocialButtonList';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 import RecordPageService from '@/services/record-page';
 import RecruiterService from '@/services/recruiter';
@@ -119,7 +118,6 @@ export const getStaticProps: GetStaticProps = async ({
 				...course.attributes,
 				id: course.id,
 			})),
-			...(await serverSideTranslations(locale, ['common', 'home']))
 		},
 		revalidate: 60
 	};

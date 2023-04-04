@@ -3,8 +3,6 @@ import MobileViewNavbar from '@/components/layout/MobileViewNavbar';
 import JoinNowButton from '@/components/common/button/JoinNowButton';
 import { navItems as _navItems } from '@/data/staticData'
 import Text from '@/elements/Text';
-import { useRouter } from 'next/router';
-import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
@@ -18,12 +16,11 @@ import { GoTriangleDown } from 'react-icons/go';
  * To change break-point - change all `lg:` prefixed classes to `md:` prefixed here and in MobileViewNavbar component
  */
 const Navbar: React.FC<NavbarProps> = ({ courseList }) => {
-	const { t } = useTranslation();
 	const [isMobileNavbarVisible, setIsMobileNavbarVisible] = useState(false);
 	const [navBg, setNavBg] = useState('bg-lightblue');
 	const [navItems, setNavItems] = useState(_navItems);
 	const [showPopover, setShowPopover] = useState(false);
-	const { asPath } = useRouter();
+	const [activePath, setActivePath] = useState('');
 
 	const toggleNavbar = () => {
 		if (isMobileNavbarVisible) {
@@ -41,6 +38,10 @@ const Navbar: React.FC<NavbarProps> = ({ courseList }) => {
 		setShowPopover(false);
 	}
 
+	useEffect(() => {
+		if (window)
+			setActivePath(window.location.pathname)
+	}, [])
 
 	useEffect(() => {
 		const scrollHandler = () => {
@@ -88,7 +89,7 @@ const Navbar: React.FC<NavbarProps> = ({ courseList }) => {
 									onClick={toggleNavbar}
 								>
 									<span className='sr-only'>
-										{t('openMenu')}
+										Open Menu
 									</span>
 									<Image
 										src='/img/ham.png'
@@ -119,11 +120,11 @@ const Navbar: React.FC<NavbarProps> = ({ courseList }) => {
 													>
 														<div className="flex gap-1 place-items-center text-left">
 															<Text
-																className={`font-medium relative text-secondary grid ${item.className && item.className} ${item.link === asPath && 'text-tertiary'}`}
+																className={`font-medium relative text-secondary grid ${item.className && item.className} ${item.link === activePath && 'text-tertiary'}`}
 																cursor='cursor-pointer'
 															>
 																{item.title}
-																<span className={`${item.link === asPath && 'w-10 h-1 mx-auto rounded bg-tertiary'}`}></span>
+																<span className={`${item.link === activePath && 'w-10 h-1 mx-auto rounded bg-tertiary'}`}></span>
 															</Text>
 															<span><GoTriangleDown /></span>
 														</div>
@@ -144,11 +145,11 @@ const Navbar: React.FC<NavbarProps> = ({ courseList }) => {
 																		target={item.target}
 																	>
 																		<Text
-																			className={`font-semibold relative px-3 text-secondary grid ${item.className && item.className} ${item.link === asPath && 'text-tertiary'}`}
+																			className={`font-semibold relative px-3 text-secondary grid ${item.className && item.className} ${item.link === activePath && 'text-tertiary'}`}
 																			cursor='cursor-pointer'
 																		>
 																			{item.title}
-																			<span className={`${item.link === asPath && 'w-10 h-1 mx-auto rounded bg-tertiary'}`}></span>
+																			<span className={`${item.link === activePath && 'w-10 h-1 mx-auto rounded bg-tertiary'}`}></span>
 																		</Text>
 																	</Link>
 																</p>
@@ -164,11 +165,11 @@ const Navbar: React.FC<NavbarProps> = ({ courseList }) => {
 												target={item.target}
 											>
 												<Text
-													className={`font-medium relative text-secondary grid place-items-center ${item.className && item.className} ${item.link === asPath && 'text-tertiary'}`}
+													className={`font-medium relative text-secondary grid place-items-center ${item.className && item.className} ${item.link === activePath && 'text-tertiary'}`}
 													cursor='cursor-pointer'
 												>
 													{item.title}
-													<span className={`${item.link === asPath && 'w-10 h-1 mx-auto rounded bg-tertiary'}`}></span>
+													<span className={`${item.link === activePath && 'w-10 h-1 mx-auto rounded bg-tertiary'}`}></span>
 												</Text>
 											</Link>
 										)}

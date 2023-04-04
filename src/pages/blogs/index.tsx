@@ -8,7 +8,7 @@ import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import BlogListHero from '@/components/blogs/BlogListHero';
 import SocialButtonList from '@/components/common/SocialButtonList';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+
 import BlogList from '@/components/blogs/BlogList';
 import SearchBar from '@/components/common/SearchBar';
 import CategoryFilter from '@/components/blogs/CategoryFilter';
@@ -129,7 +129,7 @@ export const getServerSideProps: GetServerSideProps = async ({
 				...course.attributes,
 				id: course.id,
 			})),
-			...(await serverSideTranslations(locale, ['common', 'home']))
+			
 		}
 	};
 };

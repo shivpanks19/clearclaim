@@ -7,11 +7,9 @@ import StatSection from '@/components/common/Stat';
 import HumanRiver from '@/components/index/HumanRiver';
 import WorkshopButton from '@/components/common/button/WorkshopButton';
 
-import { useTranslation } from 'next-i18next';
 import { ImageType } from '@/utils/types';
 
 const HomeHeroSection: React.FC<HomeHeroSectionProps> = ({ headline, subHeadline, studentsTrained, workshopsConducted, placementDrives, nextBatchDate, riverImages, riverImagesLv2, riverImagesLv3 }) => {
-	const { t } = useTranslation();
 	return (
 		<div
 			style={{
@@ -57,7 +55,7 @@ const HomeHeroSection: React.FC<HomeHeroSectionProps> = ({ headline, subHeadline
 								fontSize='text-lg'
 								fontWeight='font-medium'
 							>
-								{t('Watch a demo video')}
+								Watch a demo video
 							</Text>
 						</Button>
 					</div>

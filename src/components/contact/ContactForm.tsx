@@ -1,8 +1,23 @@
-import React, { FormEvent } from "react";
-import { toast } from 'react-toastify';
+import React, { useState, useEffect, FormEvent } from "react";
+import { useRouter } from 'next/router';
 import EnquiryService from "@/services/enquiry";
 
 const ContactForm: React.FC<ContactFormProps> = () => {
+	const router = useRouter();
+	const [message, setMessage] = useState('');
+
+	useEffect(() => {
+		return (() => {
+			setMessage('')
+		})
+	}, [])
+
+	const resetMessage = () => {
+		setTimeout(() => {
+			setMessage('')
+		}, 3000)
+	};
+
 	const submitHandler = async (event: FormEvent<HTMLFormElement>): Promise<void> => {
 		event.preventDefault();
 		event.stopPropagation();
@@ -15,10 +30,19 @@ const ContactForm: React.FC<ContactFormProps> = () => {
 			data[key] = value;
 		};
 
-		await toast.promise(EnquiryService.postContactUsForm(data), {
-			success: 'Thank you for reaching out! We will get back to you soon!',
-			error: 'Something went wrong! Please try again!'
-		});
+		EnquiryService.postContactUsForm(data)
+			.then(() => {
+				setMessage('Thank you for reaching out! We will get back to you soon!');
+				router.query.CONTACT_SUCCESS = 'true';
+				router.push(router);
+			})
+			.catch(() => {
+				setMessage('Something went wrong! Please try again, or contact us.');
+			})
+			.finally(()=>{
+				resetMessage();
+				contactForm.reset();
+			})
 	};
 
 	return (
@@ -39,7 +63,7 @@ const ContactForm: React.FC<ContactFormProps> = () => {
 				<label htmlFor="message" className='text-primary md:text-xl font-semibold'>Message:</label>
 				<textarea name="message" id="message" className="fullname px-2 h-22 text-2xl rounded border" cols={30} rows={5}></textarea>
 			</div>
-			<input type="submit" value="Send us a message" className='w-full bg-tertiary text-white font-medium px-20 py-3 rounded col-span-2' />
+			<input type="submit" value={message?.length > 0 ? message : 'Send us a message'} className='w-full bg-tertiary text-white font-medium px-20 py-3 rounded col-span-2 cursor-pointer' />
 		</form>
 	)
 };

@@ -8,7 +8,7 @@ import DriveList from '@/components/drive/DriveList';
 import DriveBanner from '@/components/drive/DriveBanner';
 import SocialButtonList from '@/components/common/SocialButtonList';
 
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+
 
 import DriveService from '@/services/upcoming-drives';
 import CourseService from '@/services/course';
@@ -92,7 +92,7 @@ export const getStaticProps: GetStaticProps = async ({
 				driveImage: drive.attributes.driveImage?.data.attributes,
 			})),
 			drivePagination: driveList.meta.pagination,
-			...(await serverSideTranslations(locale, ['common', 'home']))
+			
 		},
 		revalidate: 60
 	};

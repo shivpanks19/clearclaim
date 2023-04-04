@@ -10,7 +10,6 @@ import ContactFindUsSection from '@/components/contact-us/ContactFindUs';
 import ContactUsService from '@/services/contact-us';
 import CourseService from '@/services/course';
 import { Course } from '@/services/course/types';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 const ContactUsPage: NextPage<ContactUsPageProps> = ({
 	address,
@@ -86,7 +85,6 @@ export const getStaticProps: GetStaticProps = async ({
 				...course.attributes,
 				id: course.id,
 			})),
-			...(await serverSideTranslations(locale, ['common', 'home']))
 		},
 		revalidate: 60
 	};

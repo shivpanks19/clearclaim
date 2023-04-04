@@ -15,7 +15,6 @@ import CourseService from '@/services/course';
 import TapService from '@/services/tap-events';
 import { Course } from '@/services/course/types';
 import { TapEventPageInformation, TapEvent } from '@/services/tap-events/types';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 const Events: NextPage<EventsProps> = ({ tapEventPageInfo, eventList, courseList }) => {
 	const router = useRouter();
@@ -107,7 +106,6 @@ export const getServerSideProps: GetServerSideProps = async ({
 				id: event.id,
 				eventImage: event.attributes.eventImage?.data.attributes,
 			})),
-			...(await serverSideTranslations(locale, ['common', 'home']))
 		}
 	};
 };

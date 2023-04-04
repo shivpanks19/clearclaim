@@ -1,6 +1,5 @@
 import { GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
-import { useEffect } from 'react';
 
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
@@ -17,8 +16,6 @@ import PlacementList from '@/components/common/placement-list/PlacementList';
 import CodingBootcampSection from '@/components/common/banner/CodingBootcampBanner';
 import CorporateProgramSection from '@/components/index/CorporateProgram/CorporateProgram';
 
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-
 import HomeService from '@/services/home';
 import CourseService from '@/services/course';
 import PlacementService from '@/services/placement';
@@ -32,9 +29,7 @@ import { Review } from '@/services/review/types';
 import { Recruiter } from '@/services/recruiter/types';
 
 const Home: NextPage<HomePageProps> = ({ homeInfo, courseList, placementList, reviewList, recruiterList, reviewPagination, placementPagination }) => {
-	useEffect(() => {
-		console.log(homeInfo, courseList, placementList, reviewList, recruiterList, reviewPagination, placementPagination)
-	}, [])
+
 	return (
 		<div className='relative'>
 			<Head>
@@ -187,7 +182,6 @@ export const getStaticProps: GetStaticProps = async ({
 				id: recruiter.id,
 				recruiterImage: { id: recruiter.attributes.recruiterImage?.data.id, url: recruiter.attributes.recruiterImage?.data.attributes.url }
 			})),
-			...(await serverSideTranslations(locale, ['common', 'home']))
 		},
 		revalidate: 60
 	};
