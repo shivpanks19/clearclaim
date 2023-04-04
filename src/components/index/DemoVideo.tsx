@@ -9,11 +9,8 @@ const DemoVideo: React.FC<DemoVideoProps> = ({ url, headline, subHeadline }) => 
 				subtitle={subHeadline}
 				className='mb-4'
 			/>
-			{/* <video src="">
-			<source src='https://www.youtube.com/watch?v=2E73SftV0co'/>
-		</video> */}
 			<div className="video-container relative xl:w-76 mx-auto px-5 mb-12 flex justify-center">
-				<div className='w-full rounded-3xl overflow-hidden' style={{ padding: '56.25% 0 0 0', position: 'relative' }}><iframe src={url ?? 'https://player.vimeo.com/video/813124028?h=bf8271f639&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479'} allow="autoplay; fullscreen; picture-in-picture" allowFullScreen style={{position:'absolute',top:0,left:0,width:'100%',height:'100%'}} title="4k SOCIAL MEDIA"></iframe></div>
+				<div className='w-full rounded-3xl overflow-hidden' style={{ padding: '56.25% 0 0 0', position: 'relative' }}><iframe data-src={url ?? 'https://player.vimeo.com/video/813124028?h=bf8271f639&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479'} allow="autoplay; fullscreen; picture-in-picture" allowFullScreen style={{position:'absolute',top:0,left:0,width:'100%',height:'100%'}} title="4k SOCIAL MEDIA"></iframe></div>
 			</div>
 		</>
 	)
