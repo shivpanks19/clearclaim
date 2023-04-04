@@ -15,7 +15,7 @@ const RegisterButton: React.FC<RegisterButtonProps> = ({ className }) => {
 			<Button
 				variant='bg-tertiary'
 				rounded='rounded-sm'
-				className={classNames('px-5 py-3 w-full', ...classNameList)}
+				className={classNames('border-0 px-5 py-3 w-full', ...classNameList)}
 				onClick={onOpen}
 			>
 				<p className="text-white text-sm lg:text-lg font-medium">
