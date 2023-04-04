@@ -77,9 +77,7 @@ const Navbar: React.FC<NavbarProps> = ({ courseList }) => {
 						<div className='flex justify-between items-center pl-4 pr-6'>
 							{/* Desktop Screen Logo */}
 							<div className='flex-shrink-0'>
-								<Link href={'/'}>
-									<Logo logoSize='small' />
-								</Link>
+								<Logo logoSize='small' href={'/'} />
 							</div>
 
 							{/* Hamburger Icon */}
