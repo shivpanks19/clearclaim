@@ -17,7 +17,7 @@ const Logo: React.FC<LogoProps> = ({ className, href, variant, logoSize }) => {
 	return (
 		<div className={classNames('cursor-pointer', ...className.split(' '))}>
 			<div className={`relative ${logoSize === 'small' && 'w-24 h-8'} ${logoSize === 'large' && 'w-32 h-9'}`}>
-				<Link href={href} legacyBehavior passHref>
+				<Link href={href}>
 					<Image
 						src={path()}
 						fill

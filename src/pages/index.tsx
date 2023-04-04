@@ -42,9 +42,9 @@ const Home: NextPage<HomePageProps> = ({ homeInfo, courseList, placementList, re
 				)}
 			</Head>
 			<SocialButtonList />
-			<Navbar
+			{/* <Navbar
 				courseList={courseList}
-			/>
+			/> */}
 
 			{/* Hero */}
 			<HomeHeroSection
