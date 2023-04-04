@@ -47,7 +47,7 @@ const Home: NextPage<HomePageProps> = ({ homeInfo, courseList, placementList, re
 			/> */}
 
 			{/* Hero */}
-			<HomeHeroSection
+			{/* <HomeHeroSection
 				headline={homeInfo.headline}
 				subHeadline={homeInfo.subHeadline}
 				studentsTrained={homeInfo.studentsTrained}
@@ -57,7 +57,7 @@ const Home: NextPage<HomePageProps> = ({ homeInfo, courseList, placementList, re
 				riverImages={homeInfo.riverImages}
 				riverImagesLv2={homeInfo.riverImagesLv2}
 				riverImagesLv3={homeInfo.riverImagesLv3}
-			/>
+			/> */}
 			{/* How we teach */}
 			{/* <DemoVideo
 				headline={homeInfo.demoVideoHeadline}
