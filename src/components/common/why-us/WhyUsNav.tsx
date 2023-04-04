@@ -60,8 +60,8 @@ function WhyUsNav() {
           <button
             key={index}
             className={classNames({
-              'bg-white w-full grow p-5 cursor-pointer': true,
-              'border-0 border-r-8 border-yellow text-white bg-why-us-selected': selectedTab === index,
+              'border-0 bg-white w-full grow p-5 cursor-pointer': true,
+              'border-r-8 border-yellow text-white bg-why-us-selected': selectedTab === index,
               'rounded-tl-2xl': index === 0,
               'rounded-bl-2xl': index === tabs.length - 1,
             })}
