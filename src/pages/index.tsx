@@ -41,10 +41,10 @@ const Home: NextPage<HomePageProps> = ({ homeInfo, courseList, placementList, re
 					<meta name='description' content={homeInfo.metaDescription} />
 				)}
 			</Head>
-			{/* <SocialButtonList /> */}
-			{/* <Navbar
+			<SocialButtonList />
+			<Navbar
 				courseList={courseList}
-			/> */}
+			/>
 
 			{/* Hero */}
 			{/* <HomeHeroSection
@@ -59,80 +59,77 @@ const Home: NextPage<HomePageProps> = ({ homeInfo, courseList, placementList, re
 				riverImagesLv3={homeInfo.riverImagesLv3}
 			/> */}
 			{/* How we teach */}
-			{/* <DemoVideo
+			<DemoVideo
 				headline={homeInfo.demoVideoHeadline}
 				subHeadline={homeInfo.demoVideoSubHeadline}
 				url={homeInfo.videoURL}
-			/> */}
+			/>
 
 			{/* Offerings */}
-			{/* <OfferingSection
+			<OfferingSection
 				headline={homeInfo.courseHeadline}
 				subHeadline={homeInfo.courseSubHeadline}
 				courseList={courseList}
-			/> */}
+			/>
 
 			{/* Special */}
-			{/* <SpecialSection
+			<SpecialSection
 				headline={homeInfo.specialSectionHeadline}
 				subHeadline={homeInfo.specialSectionSubHeadline}
-			/> */}
+			/>
 
 			{/* Corporate Program */}
-			{/* <CorporateProgramSection corporateProgramPics={homeInfo.corporateProgramPics} /> */}
+			<CorporateProgramSection corporateProgramPics={homeInfo.corporateProgramPics} />
 
 			{/* Achievements */}
-			{/* {placementList?.length > 0 && (
+			{placementList?.length > 0 && (
 				<PlacementList
 					headline={homeInfo.achievementHeadline}
 					subHeadline={homeInfo.achievementSubHeadline}
 					placementList={placementList}
 					placementPagination={placementPagination}
 				/>
-			)} */}
+			)}
 
 			{/* Student Reviews */}
-			{/* <ReviewSection
+			<ReviewSection
 				headline={homeInfo.reviewHeadline}
 				subHeadline={homeInfo.reviewSubHeadline}
 				reviewList={reviewList}
 				reviewPagination={reviewPagination}
-			/> */}
+			/>
 
 			{/* Coding Bootcamp */}
-			{/* <CodingBootcampSection
+			<CodingBootcampSection
 				imgSrc='/img/coding_bootcamp_1.png'
-			/> */}
+			/>
 
 			{/* Why us */}
-			{/* <WhyUsSection
+			<WhyUsSection
 				headline={homeInfo.whyUsHeadline}
 				subHeadline={homeInfo.whyUsSubHeadline}
-			/> */}
+			/>
 
 			{/* Recruiters */}
-			{/* {recruiterList?.length > 0 && <RecruiterSection
+			{recruiterList?.length > 0 && <RecruiterSection
 				headline={homeInfo.recruiterHeadline}
 				subHeadline={homeInfo.recruiterSubHeadline}
 				recruiterList={recruiterList}
-			/>} */}
+			/>}
 
 			{/* Recognition */}
-			{/* <RecognitionSection
+			<RecognitionSection
 				headline={homeInfo.recognitionHeadline}
 				subHeadline={homeInfo.recognitionSubHeadline}
-			/> */}
-
-			{/* Testimonials */}
-			{/* <TestimonialCard /> */}
+			/>
 
 			{/* Coding Bootcamp */}
-			{/* <CodingBootcampSection
+			<CodingBootcampSection
 				imgSrc='/img/coding_bootcamp_2.png'
-			/> */}
+			/>
 
 			{/* Footer */}
-			{/* <Footer /> */}
+			<Footer />
 		</div>
 	);
 }
@@ -155,7 +152,7 @@ export const getStaticProps: GetStaticProps = async ({
 	const placementList = await PlacementService.getPlacementList(locale, '*');
 	const reviewList = await ReviewService.getReviewList(locale, '*');
 	const recruiterList = await RecruiterService.getRecruiterList(locale, '*');
-	console.log('plc', placementList.data[0].companyImage)
+
 	return {
 		props: {
 			homeInfo: {
