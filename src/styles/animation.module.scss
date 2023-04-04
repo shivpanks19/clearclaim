@@ -21,6 +21,7 @@
 
 @keyframes slideUpLv1 {
 	0% {
+		transform: translateY(550px);
 	}
 
 	100% {
@@ -28,14 +29,18 @@
 	}
 }
 @keyframes slideUpLv2 {
-	0% {}
+	0% {
+		transform: translateY(550px);
+	}
 
 	100% {
-		transform: translateY(-840px);
+		transform: translateY(-1840px);
 	}
 }
 @keyframes slideUpLv3 {
-	0% {}
+	0% {
+		transform: translateY(550px);
+	}
 
 	100% {
 		transform: translateY(-540px);
