@@ -47,7 +47,7 @@ const Home: NextPage<HomePageProps> = ({ homeInfo, courseList, placementList, re
 			/>
 
 			{/* Hero */}
-			{/* <HomeHeroSection
+			<HomeHeroSection
 				headline={homeInfo.headline}
 				subHeadline={homeInfo.subHeadline}
 				studentsTrained={homeInfo.studentsTrained}
@@ -57,13 +57,13 @@ const Home: NextPage<HomePageProps> = ({ homeInfo, courseList, placementList, re
 				riverImages={homeInfo.riverImages}
 				riverImagesLv2={homeInfo.riverImagesLv2}
 				riverImagesLv3={homeInfo.riverImagesLv3}
-			/> */}
+			/>
 			{/* How we teach */}
-			{/* <DemoVideo
+			<DemoVideo
 				headline={homeInfo.demoVideoHeadline}
 				subHeadline={homeInfo.demoVideoSubHeadline}
 				url={homeInfo.videoURL}
-			/> */}
+			/>
 
 			{/* Offerings */}
 			<OfferingSection
@@ -152,7 +152,7 @@ export const getStaticProps: GetStaticProps = async ({
 	const placementList = await PlacementService.getPlacementList(locale, '*');
 	const reviewList = await ReviewService.getReviewList(locale, '*');
 	const recruiterList = await RecruiterService.getRecruiterList(locale, '*');
-
+	console.log('plc', placementList.data[0].companyImage)
 	return {
 		props: {
 			homeInfo: {

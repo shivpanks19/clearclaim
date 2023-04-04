@@ -20,9 +20,9 @@ const HomeHeroSection: React.FC<HomeHeroSectionProps> = ({ headline, subHeadline
 				backgroundSize: '100% 100%',
 				backgroundPosition: 'top left'
 			}}
-			className='pt-8'
+			className='pt-8 pb-4 mb-12'
 		>
-			<div className='grid gap-2 mdxl:w-76 grid-cols-1 lg:grid-cols-2 mx-auto mb-12 md:mb-32'>
+			<div className='grid gap-2 mdxl:w-76 grid-cols-1 lg:grid-cols-2 mx-auto mb-8 md:mb-20'>
 				<div className='flex flex-col md:pt-20 px-5 mb-7'>
 					<h1 className='text-3xl md:text-hero font-semibold text-primary mb-3 md:mb-5'>
 						{headline}
@@ -79,11 +79,11 @@ const HomeHeroSection: React.FC<HomeHeroSectionProps> = ({ headline, subHeadline
 						className='relative w-full h-96'
 						style={{ alignSelf: 'flex-end' }}
 					>
-						{/* <HumanRiver
+						<HumanRiver
 							riverImages={riverImages}
 							riverImagesLv2={riverImagesLv2}
 							riverImagesLv3={riverImagesLv3}
-						/> */}
+						/>
 					</div>
 					<div className='trust flex flex-col place-items-center pt-7 z-10 bg-lightblue'>
 						<div className='flex gap-2' style={{ alignItems: 'flex-end' }}>

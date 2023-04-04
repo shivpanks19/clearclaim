@@ -1,45 +1,43 @@
 .upInfinte {
 	&.speed-1 {
-		animation: 44s linear infinite slideUp;
+		animation: 44s linear infinite slideUpLv1;
 	}
 	
 	&.speed-2 {
-		animation: 48s linear infinite slideUp;
+		animation: 56s linear infinite slideUpLv2;
 	}
 
 	&.speed-3 {
-		animation: 52s linear infinite slideUp;
+		animation: 67s linear infinite slideUpLv3;
 	}
 
-	animation: 7s linear infinite slideUp;
+	&.fast-speed {
+		animation: 5s linear infinite slideUpLv3;
+	}
+
+	animation: 7s linear infinite slideUpLv1;
 	animation-iteration-count: infinite;
 }
 
-@keyframes slideUp {
+@keyframes slideUpLv1 {
 	0% {}
 
 	100% {
 		top: -2640px;
 	}
 }
-
-@keyframes slideRight {
-	0% {
-		right: 100%;
-	}
+@keyframes slideUpLv2 {
+	0% {}
 
 	100% {
-		right: -100%;
+		top: -840px;
 	}
 }
-
-@keyframes slideLeft {
-	0% {
-		left: 100%;
-	}
+@keyframes slideUpLv3 {
+	0% {}
 
 	100% {
-		left: -100%;
+		top: -540px;
 	}
 }
 
