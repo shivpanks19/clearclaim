@@ -34,7 +34,7 @@ const MobileViewNavbar: React.FC<MobileViewNavbarProps> = ({ navbarItems, activa
 									<span className='flex-none'>
 										{navItem.title}
 									</span>
-									<div className={`absolute -bottom-2 bg-tertiary rounded ${router.asPath === navItem.link && ' w-10/12 h-2'}`}></div>
+									<span className={`absolute -bottom-2 bg-tertiary rounded ${router.asPath === navItem.link && ' w-10/12 h-2'}`}></span>
 								</p>
 							</Link>
 						))}
