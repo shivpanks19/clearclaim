@@ -109,7 +109,7 @@ module.exports = {
         corporate: '#387ef7',
         red: '#e21032',
         whyus: '#57aeff',
-        'why-us-selected': '#0F8CFF',
+        'why-us-selected': '#0e73b3',
         'loader-gray': '#ECEBEB',
         'gd-salary-bar-gray': 'rgb(196, 199, 204)',
         'gd-salary-bar-blue': 'rgb(12, 64, 133)',

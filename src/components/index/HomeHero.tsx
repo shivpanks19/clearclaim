@@ -12,14 +12,15 @@ import { ImageType } from '@/utils/types';
 const HomeHeroSection: React.FC<HomeHeroSectionProps> = ({ headline, subHeadline, studentsTrained, workshopsConducted, placementDrives, nextBatchDate, riverImages, riverImagesLv2, riverImagesLv3 }) => {
 	return (
 		<div
-			style={{
-				background:
-					'url(/img/home/homeHeroBg.png) no-repeat top left',
-				backgroundSize: '100% 100%',
-				backgroundPosition: 'top left'
-			}}
-			className='pt-8 pb-4 mb-20'
+			className='pt-8 pb-4 mb-20 relative'
 		>
+			<Image
+				src='/img/home/homeHeroBg.png'
+				style={{ zIndex: -1 }}
+				priority
+				alt='background'
+				fill
+			/>
 			<div className='grid gap-2 mdxl:w-76 grid-cols-1 lg:grid-cols-2 mx-auto mb-8 md:mb-20'>
 				<div className='flex flex-col md:pt-20 px-5 mb-7'>
 					<h1 className='text-3xl md:text-hero font-semibold text-primary mb-3 md:mb-5'>
