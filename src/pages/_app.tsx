@@ -56,12 +56,12 @@ export default function App({ Component, pageProps }: AppProps) {
       }
     }), 5000)
 
-    setTimeout(attachScripts, 10000)
+    setTimeout(attachScripts, 15000)
   }, [])
 
   return (
     <>
-      <link href="https://player.vimeo.com/api/player.js" rel="preload" as="script" />
+      {/* <link href="https://player.vimeo.com/api/player.js" rel="preload" as="script" /> */}
       <link rel="preload" as="style" onLoad={() => { this.onLoad = null; this.rel = 'stylesheet' }} href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;&display=swap" />
       <Component {...pageProps} />
       <ToastContainer />
