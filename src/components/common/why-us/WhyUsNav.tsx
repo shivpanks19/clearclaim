@@ -10,7 +10,8 @@ function WhyUsNav() {
       label: 'Information on Job Openings',
       image: '/img/job-openings.png',
       content: (
-        <div style={{ height: '100%', width: '100%', position: 'relative', paddingTop: 'calc(9/ 16 * 100%)', background: 'url("/img/job_description.png")', backgroundSize: '100% 100%' }}>
+        <div className="flex-1 m-1 relative">
+          <Image src='/img/job_description.png' fill alt='Information on Job Openings' />
         </div>
       )
     },
@@ -18,7 +19,8 @@ function WhyUsNav() {
       label: 'Mock interviews',
       image: '/img/project-collaboration.png',
       content: (
-        <div style={{ height: '100%', width: '100%', position: 'relative', paddingTop: 'calc(9/ 16 * 100%)', background: 'url("/img/mock_interviews.webp")', backgroundSize: '100% 100%' }}>
+        <div className="flex-1 m-1 relative">
+          <Image src='/img/mock_interviews.webp' fill alt='Mock interviews' />
         </div>
       )
     },
@@ -26,7 +28,8 @@ function WhyUsNav() {
       label: 'Competitive coding',
       image: '/img/interview-experiences.png',
       content: (
-        <div style={{ height: '100%', width: '100%', position: 'relative', paddingTop: 'calc(9/ 16 * 100%)', background: 'url("/img/competitive_coding.png")', backgroundSize: '100% 100%' }}>
+        <div className="flex-1 m-1 relative">
+          <Image src='/img/competitive_coding.png' fill alt='Competitive coding' />
         </div>
       )
     },
@@ -34,7 +37,8 @@ function WhyUsNav() {
       label: 'Major Announcements',
       image: '/img/competitive-coding.png',
       content: (
-        <div style={{ height: '100%', width: '100%', position: 'relative', paddingTop: 'calc(9/ 16 * 100%)', background: 'url("/img/major_announcements.png")', backgroundSize: '100% 100%' }}>
+        <div className="flex-1 m-1 relative">
+          <Image src='/img/major_announcements.png' fill alt='Major Announcements' />
         </div>
       )
     },
@@ -42,7 +46,8 @@ function WhyUsNav() {
       label: '24/7 LMS Access',
       image: '/img/major-announcements.png',
       content: (
-        <div style={{ height: '100%', width: '100%', position: 'relative', paddingTop: 'calc(9/ 16 * 100%)', background: 'url("/img/lms.png")', backgroundSize: '100% 100%' }}>
+        <div className="flex-1 m-1 relative">
+          <Image src='/img/lms.png' fill alt='24/7 LMS Access' />
         </div>
       )
     }

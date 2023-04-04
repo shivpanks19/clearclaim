@@ -16,8 +16,12 @@ const CorporateProgramSection: React.FC<CorporateProgramSectionProps> = ({ corpo
 				<Splide options={{ rewind: true }} aria-label="Corporate Program">
 					{corporateProgramPics?.length > 0 && corporateProgramPics.map((pic) => (
 						<SplideSlide key={pic.id}>
-							<div style={{ position:'relative', paddingTop: 'calc(311/ 613 * 100%)', background: `url(${pic.url})`, backgroundSize: '100% 100%' }}>
-							</div>
+								<Image
+									src={pic.url}
+									alt="Dream job journey 1"
+									height={623}
+									width={1229}
+								/>
 						</SplideSlide>
 					))}
 				</Splide>
