@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import classNames from 'classnames';
-import Rating from "@/components/common/Rating";
+// import Rating from "@/components/common/Rating";
 import CourseAttr from "@/components/common/course-list/CourseAttr";
 import CourseCardDetailSection from "@/components/common/course-list/CourseCardDetailSection";
 
@@ -55,7 +55,7 @@ const CourseCard: React.FC<CourseCardProps> = ({ courseName, description, number
 							href={`/courses/${slug}`}
 							className='hidden md:block w-full md:w-auto'
 						>
-							<button className='join-btn bg-tertiary text-white px-5 md:px-10 py-3 md:py-5 rounded w-full md:w-40'>Join Now</button>
+							<button className='join-btn border-0 bg-tertiary text-white px-5 md:px-10 py-3 md:py-5 rounded w-full md:w-40'>Join Now</button>
 						</Link>
 					</div>
 				</div>
@@ -70,7 +70,7 @@ const CourseCard: React.FC<CourseCardProps> = ({ courseName, description, number
 					href={`/courses/${slug}`}
 					className='md:hidden w-full md:w-auto'
 				>
-					<button className='join-btn bg-tertiary text-white px-5 md:px-10 py-3 md:py-5 rounded w-full md:w-40'>Join Now</button>
+					<button className='join-btn border-0 bg-tertiary text-white px-5 md:px-10 py-3 md:py-5 rounded w-full md:w-40'>Join Now</button>
 				</Link>
 			</div>
 		</div>
