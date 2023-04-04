@@ -113,7 +113,7 @@ export const getStaticProps: GetStaticProps = async ({
 			recruiterList: recruiterList.data.map((recruiter) => ({
 				...recruiter.attributes,
 				id: recruiter.id,
-				recruiterImage: recruiter.attributes.recruiterImage?.data[0].attributes,
+				recruiterImage: recruiter.attributes.recruiterImage?.data.attributes,
 			})),
 			courseList: courseList.data.map((course) => ({
 				...course.attributes,

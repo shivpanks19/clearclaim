@@ -45,7 +45,7 @@ const CourseDetailPage: NextPage<CourseDetailPageProps> = ({ course, courseDetai
 				headline={course.courseName}
 				subHeadline={course.description}
 				heroVideo={course.heroVideo}
-				heroImage={course.heroImage?.data[0].attributes.url}
+				heroImage={course.heroImage?.url}
 				numberOfStudents={course.numberOfStudents}
 				studentsTrained={courseDetailPageInfo.studentsTrained}
 				workshopsConducted={courseDetailPageInfo.workshopsConducted}
@@ -137,6 +137,7 @@ export const getStaticProps: GetStaticProps = async ({
 			course: {
 				...course?.data?.attributes,
 				id: course.data.id,
+				heroImage: { id: course.data.attributes.heroImage.data.id, url: course.data.attributes.heroImage?.data.attributes.url  },
 				courseSummary: course.data.attributes.courseSummary?.data ?? null,
 				courseFAQ: course.data.attributes.courseFAQ?.data ?? null,
 				curriculumPdf: course.data.attributes.curriculumPdf?.data.attributes ?? null,

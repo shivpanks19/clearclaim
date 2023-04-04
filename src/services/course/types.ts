@@ -49,7 +49,7 @@ export type Course = {
 	courseFAQ: FAQ[];
 	footerFaq: FAQ[];
 	isFree: boolean;
-	heroImage: Record<string, Array<Record<string, ImageType>>>;
+	heroImage: ImageType;
 	heroVideo: string;
 	curriculumPdf: ImageType;
 	glassdoorSalaryData: Record<string, string>;

@@ -149,7 +149,7 @@ export const getStaticProps: GetStaticProps = async ({locale}: Record<string, an
 			recruiterList: recruiterList.data.map((recruiter) => ({
 				...recruiter.attributes,
 				id: recruiter.id,
-				recruiterImage: recruiter.attributes.recruiterImage?.data[0].attributes,
+				recruiterImage: recruiter.attributes.recruiterImage?.data.attributes,
 			})),
 			recruiterPagination: recruiterList.meta.pagination,
 			courseList: courseList.data.map((course) => ({

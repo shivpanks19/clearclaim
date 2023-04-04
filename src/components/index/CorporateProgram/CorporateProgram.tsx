@@ -18,7 +18,7 @@ const CorporateProgramSection: React.FC<CorporateProgramSectionProps> = ({ corpo
 						<SplideSlide key={pic.id}>
 							<div className="h-48 md:h-80 lg:h-96 xl:h-[623px] w-76">
 								<Image
-									src={pic.formats.large.url}
+									src={pic.url}
 									alt="Dream job journey 1"
 									fill
 									sizes="100vw"

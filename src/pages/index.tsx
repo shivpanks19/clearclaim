@@ -1,5 +1,6 @@
 import { GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
+import { useEffect } from 'react';
 
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
@@ -31,6 +32,9 @@ import { Review } from '@/services/review/types';
 import { Recruiter } from '@/services/recruiter/types';
 
 const Home: NextPage<HomePageProps> = ({ homeInfo, courseList, placementList, reviewList, recruiterList, reviewPagination, placementPagination }) => {
+	useEffect(() => {
+		console.log(homeInfo, courseList, placementList, reviewList, recruiterList, reviewPagination, placementPagination)
+	}, [])
 	return (
 		<div className='relative'>
 			<Head>
@@ -152,35 +156,36 @@ export const getStaticProps: GetStaticProps = async ({
 	const placementList = await PlacementService.getPlacementList(locale, '*');
 	const reviewList = await ReviewService.getReviewList(locale, '*');
 	const recruiterList = await RecruiterService.getRecruiterList(locale, '*');
-	console.log('plc', placementList.data[0].companyImage)
+
 	return {
 		props: {
 			homeInfo: {
 				...homeInfo?.data?.attributes,
-				riverImages: homeInfo.data.attributes.riverImages?.data.map((img) => ({ id: img.id, ...img.attributes })),
-				riverImagesLv2: homeInfo.data.attributes.riverImagesLv2?.data.map((img) => ({ id: img.id, ...img.attributes })),
-				riverImagesLv3: homeInfo.data.attributes.riverImagesLv3?.data.map((img) => ({ id: img.id, ...img.attributes })),
-				corporateProgramPics: homeInfo.data.attributes.corporateProgramPics?.data.map((img) => ({ id: img.id, ...img.attributes }))
+				riverImages: homeInfo.data.attributes.riverImages?.data.map((img) => ({ id: img.id, url: img.attributes.url })),
+				riverImagesLv2: homeInfo.data.attributes.riverImagesLv2?.data.map((img) => ({ id: img.id, url: img.attributes.url })),
+				riverImagesLv3: homeInfo.data.attributes.riverImagesLv3?.data.map((img) => ({ id: img.id, url: img.attributes.url })),
+				corporateProgramPics: homeInfo.data.attributes.corporateProgramPics?.data.map((img) => ({ id: img.id, url: img.attributes.url }))
 			},
 			courseList: courseList.data.map((course) => ({
 				...course.attributes,
+				heroImage: { id: course.attributes.heroImage.data.id, url: course.attributes.heroImage?.data.attributes.url  },
 				id: course.id,
 			})),
 			placementList: placementList.data.map((placement) => ({
 				...placement.attributes,
 				id: placement.id,
-				companyImage: placement.attributes.companyImage?.data.attributes,
-				studentImage: placement.attributes.studentImage?.data.attributes,
+				companyImage: { id: placement.attributes.companyImage?.data.id, url: placement.attributes.companyImage?.data.attributes.url },
+				studentImage: { id: placement.attributes.studentImage?.data.id, url: placement.attributes.studentImage?.data.attributes.url },
 			})),
 			reviewList: reviewList.data.map((review) => ({
 				...review.attributes,
 				id: review.id,
-				studentImage: review.attributes.studentImage?.data.attributes,
+				studentImage: { id: review.attributes.studentImage?.data.id, url: review.attributes.studentImage?.data.attributes.url }
 			})),
 			recruiterList: recruiterList.data.map((recruiter) => ({
 				...recruiter.attributes,
 				id: recruiter.id,
-				recruiterImage: recruiter.attributes.recruiterImage?.data[0].attributes,
+				recruiterImage: { id: recruiter.attributes.recruiterImage?.data.id, url: recruiter.attributes.recruiterImage?.data.attributes.url }
 			})),
 			...(await serverSideTranslations(locale, ['common', 'home']))
 		},
