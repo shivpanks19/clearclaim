@@ -13,7 +13,7 @@ const HomeHeroSection: React.FC<HomeHeroSectionProps> = ({ headline, subHeadline
 	return (
 		<div
 			style={{
-				backgroundImage:
+				background:
 					'url(/img/home/homeHeroBg.png) no-repeat top left',
 				backgroundSize: '100% 100%',
 				backgroundPosition: 'top left',

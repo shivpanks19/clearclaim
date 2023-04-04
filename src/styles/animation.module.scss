@@ -20,24 +20,25 @@
 }
 
 @keyframes slideUpLv1 {
-	0% {}
+	0% {
+	}
 
 	100% {
-		top: -2640px;
+		transform: translateY(-2640px);
 	}
 }
 @keyframes slideUpLv2 {
 	0% {}
 
 	100% {
-		top: -840px;
+		transform: translateY(-840px);
 	}
 }
 @keyframes slideUpLv3 {
 	0% {}
 
 	100% {
-		top: -540px;
+		transform: translateY(-540px);
 	}
 }
 
