@@ -32,7 +32,7 @@ const ImageLayer: React.FC<ImageLayerProps> = ({ level, imgList }) => {
 										${getAbsolutePositioningClass(level + 1, imgIdx)}
 										${animation.upInfinte} ${animation[`speed-${level}`]}`
 						}
-						style={{ top: 550, animationDelay: `-${imgIdx * 2.2}s` }}
+						style={{ top: 550, animationDelay: `-${imgIdx * 2.2 * level}s` }}
 						key={imgIdx}
 					>
 						<Image
