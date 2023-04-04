@@ -61,6 +61,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <>
+      <script async src="https://player.vimeo.com/api/player.js"></script>
       <Component {...pageProps} />
       {/* <ToastContainer /> */}
     </>
