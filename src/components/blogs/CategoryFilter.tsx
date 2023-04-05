@@ -1,17 +1,15 @@
 import React from "react";
-import {useRouter} from 'next/router';
 import { ContentCategory } from '@/services/blogs/types';
 import { BsArrowRight } from 'react-icons/bs';
 import classNames from "classnames";
 
 const CategoryFilter: React.FC<CategoryFilterProps> = ({
 	categoryList,
+	currentCategory,
 	onCategorySelect
 }) => {
-	const router = useRouter();
-	console.log('qq',router.query.contentCategory);
 	return (
-		<div className="container mb-4 md:mb-20 mx-auto max-w-full xl:w-76 px-5 pb-5">
+		<div className="container mb-4 md:mb-20 mx-auto max-w-full xl:w-76 overflow-scroll px-5 pb-5">
 			{categoryList?.length > 0 && (
 				<>
 					<div className='hidden md:block'>
@@ -21,10 +19,10 @@ const CategoryFilter: React.FC<CategoryFilterProps> = ({
 								{categoryList.map((category) => (
 									<p className={classNames({
 										'border border-primary2 rounded px-6 py-3 cursor-pointer': true,
-										'font-bold border-2': router.query.contentCategory === category.slug
+										'font-bold border-2': currentCategory === category.id
 									})}
-									key={category.id}
-									onClick={() => onCategorySelect(category.slug)}
+										key={category.id}
+										onClick={() => onCategorySelect(category.id)}
 									>
 										{category.title}</p>
 								))}
@@ -34,9 +32,11 @@ const CategoryFilter: React.FC<CategoryFilterProps> = ({
 					</div>
 					<div className="md:hidden w-6/12">
 						<div className='mb-6 mt-2' id="category" >
-							<select placeholder='Category' className='border border-tertiary p-3 rounded' onChange={(e)=>onCategorySelect(e.target.value)}>
+							{/* @ts-ignore */}
+							<select placeholder='Category' className='border border-tertiary p-3 rounded' onClick={(e) => onCategorySelect(e.target.value)}>
+								<option key='None' value=''>Filter by Category</option>
 								{categoryList.map((category) => (
-									<option key={category.id} value={category.slug}>{category.title}</option>
+									<option key={category.id} value={category.id} >{category.title}</option>
 								))}
 							</select>
 						</div>
@@ -49,6 +49,7 @@ const CategoryFilter: React.FC<CategoryFilterProps> = ({
 
 type CategoryFilterProps = {
 	categoryList: ContentCategory[];
+	currentCategory: number;
 	onCategorySelect: (cat) => void;
 };
 

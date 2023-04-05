@@ -70,6 +70,7 @@ const StudentReviewPage: NextPage<StudentReviewPageProps> = ({
 				subHeadline={achievementSubHeadline}
 				placementList={placementList}
 				showReadMore={false}
+				largeGrid={true}
 				placementPagination={placementPagination}
 			/>
 
@@ -79,6 +80,7 @@ const StudentReviewPage: NextPage<StudentReviewPageProps> = ({
 				subHeadline={reviewSubHeadline}
 				reviewList={reviewList}
 				showReadMore={false}
+				largeGrid={true}
 				reviewPagination={reviewPagination}
 			/>
 

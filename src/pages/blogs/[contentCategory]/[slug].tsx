@@ -1,7 +1,6 @@
 import { GetStaticProps, GetStaticPaths, NextPage } from 'next';
 import Image from 'next/image';
-import { useRouter } from 'next/router';
-import Routes from '@/utils/routes';
+import { useState, useEffect } from 'react';
 import Head from 'next/head';
 
 import Navbar from '@/components/layout/Navbar';
@@ -28,7 +27,21 @@ const BlogListPage: NextPage<BlogListPageProps> = ({
 	categoryList,
 	courseList
 }) => {
-	const router = useRouter();
+	const [category, setCategory] = useState<number>(null);
+	const [_blogList, setBlogList] = useState<Blog[]>([]);
+
+	useEffect(() => {
+		(async () => {
+			const blogList = await BlogService.getBlogs('', '*', { start: 0, limit: 4, contentCategoryId: category, _q: '' });
+			const parsedBlogList: Blog[] = blogList.data.map((blog) => ({
+				...blog.attributes,
+				id: blog.id,
+				thumbnail: { url: blog.attributes.thumbnail?.data.attributes.url },
+				contentCategory: blog.attributes.content_category?.data.attributes,
+			}));
+			setBlogList(parsedBlogList);
+		})()
+	}, [category]);
 
 	return (
 		<div className='relative'>
@@ -99,7 +112,7 @@ const BlogListPage: NextPage<BlogListPageProps> = ({
 			</div>
 
 			{/* Categories */}
-			<CategoryFilter categoryList={categoryList} onCategorySelect={(cat) => router.push(Routes.blogs(undefined, undefined, cat))} />
+			<CategoryFilter currentCategory={category} categoryList={categoryList} onCategorySelect={(cat) => setCategory(cat)} />
 
 			{/* PrevNextPost */}
 			<SectionHeadline
@@ -108,7 +121,7 @@ const BlogListPage: NextPage<BlogListPageProps> = ({
 				className='mb-4 md:mb-11'
 			/>
 
-			<BlogList numberOfBlogs={3} blogList={blogList} />
+			<BlogList numberOfBlogs={3} blogList={_blogList} />
 
 			{/* Footer */}
 			<Footer />
@@ -156,7 +169,7 @@ export const getStaticProps: GetStaticProps = async ({
 				...course.attributes,
 				id: course.id,
 			})),
-			
+
 		},
 		revalidate: 60
 	};

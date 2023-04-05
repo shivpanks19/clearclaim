@@ -24,7 +24,7 @@ const RecruiterSection: React.FC<RecruiterSectionProps> = ({ headline, subHeadli
 									perPage: 1,
 									grid: {
 										rows: 2,
-										cols: 2,
+										cols: 2
 									},
 								},
 							},

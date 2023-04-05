@@ -1,9 +1,7 @@
-import { GetServerSideProps, NextPage } from 'next';
+import { GetStaticProps, NextPage } from 'next';
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
 import Head from 'next/head';
 
-import Routes from '@/utils/routes';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import BlogListHero from '@/components/blogs/BlogListHero';
@@ -20,20 +18,33 @@ import { Blog, ContentCategory } from '@/services/blogs/types';
 
 const BlogListPage: NextPage<BlogListPageProps> = ({
 	headline,
-	blogList,
 	categoryList,
 	featuredBlog,
 	courseList,
 	metaTitle,
 	metaDescription
 }) => {
-	const router = useRouter();
 	const [q, setQ] = useState(null);
-	const [category, setCategory] = useState(null);
+	const [category, setCategory] = useState<number>(null);
+	const [_blogList, setBlogList] = useState<Blog[]>([]);
+	const [_featuredBlog, setFeaturedBlog] = useState<Blog>(featuredBlog);
+
 
 	useEffect(() => {
-		router.push(Routes.blogs(undefined, q, category), undefined, { scroll: false })
-	}, [category, q]);
+		(async () => {
+			const blogList = await BlogService.getBlogs('', '*', { start: 0, limit: 4, contentCategoryId: category, _q: q });
+			if (!_featuredBlog) {
+				setFeaturedBlog(blogList[0])
+			}
+			const parsedBlogList: Blog[] = blogList.data.map((blog) => ({
+				...blog.attributes,
+				id: blog.id,
+				thumbnail: { url: blog.attributes.thumbnail?.data.attributes.url },
+				contentCategory: blog.attributes.content_category?.data.attributes,
+			}));
+			setBlogList(parsedBlogList);
+		})()
+	}, [q, category]);
 
 	return (
 		<div className='relative'>
@@ -62,11 +73,11 @@ const BlogListPage: NextPage<BlogListPageProps> = ({
 			/>
 
 			{/* Categories */}
-			<CategoryFilter categoryList={categoryList} onCategorySelect={(cat) => setCategory(cat)} />
+			<CategoryFilter categoryList={categoryList} currentCategory={category} onCategorySelect={(cat) => setCategory(cat)} />
 
 			{/* BlogList */}
 			<BlogList
-				blogList={blogList}
+				blogList={_blogList}
 			/>
 
 			{/* Footer */}
@@ -78,33 +89,22 @@ const BlogListPage: NextPage<BlogListPageProps> = ({
 type BlogListPageProps = {
 	headline: string;
 	blogList: Blog[];
-	featuredBlog: Blog;
+	featuredBlog: Blog | null;
 	categoryList: ContentCategory[];
 	courseList: Course[];
 	metaTitle: string;
 	metaDescription: string;
 };
 
-export const getServerSideProps: GetServerSideProps = async ({
-	locale,
-	query
-}: Record<string, any>) => {
+export const getStaticProps: GetStaticProps = async ({ locale }: Record<string, any>) => {
 	const blogPageInfo = await BlogService.getBlogsStaticData(locale, '*');
 	const categoryList = await BlogService.getBlogCategories(locale);
 	const courseList = await CourseService.getCourseList(locale, '*');
 
-	const currentCategory = categoryList.data.map((category) => ({
-		...category.attributes,
-		id: category.id,
-	}))?.filter((cat) => cat.slug === query?.contentCategory)[0]
-	const blogList = await BlogService.getBlogs(locale, '*', { start: query?.start, limit: 4, contentCategoryId: currentCategory?.id, _q: query?._q });
-
-	let featuredBlog = { data: null };
+	let featuredBlog = null;
 	//Check if any blog is featured
 	if (blogPageInfo.data.attributes.featuredBlog.data) {
 		featuredBlog = await BlogService.getBlogBySlug(blogPageInfo.data.attributes.featuredBlog.data?.attributes.slug, locale, '*');
-	} else {
-		featuredBlog['data'] = blogList.data[0]
 	}
 
 	return {
@@ -113,14 +113,8 @@ export const getServerSideProps: GetServerSideProps = async ({
 			featuredBlog: {
 				...featuredBlog.data.attributes,
 				contentCategory: featuredBlog.data.attributes.content_category.data.attributes,
-				thumbnail: featuredBlog.data.attributes.thumbnail?.data.attributes,
+				thumbnail: { url: featuredBlog.data.attributes.thumbnail?.data.attributes.url },
 			},
-			blogList: blogList.data.map((blog) => ({
-				...blog.attributes,
-				id: blog.id,
-				thumbnail: blog.attributes.thumbnail?.data.attributes,
-				contentCategory: blog.attributes.content_category?.data.attributes,
-			})),
 			categoryList: categoryList.data.map((category) => ({
 				...category.attributes,
 				id: category.id,
@@ -129,7 +123,7 @@ export const getServerSideProps: GetServerSideProps = async ({
 				...course.attributes,
 				id: course.id,
 			})),
-			
+
 		}
 	};
 };

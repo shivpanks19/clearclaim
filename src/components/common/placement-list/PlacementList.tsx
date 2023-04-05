@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import PlacementCard from '@/components/common/placement-list/PlacementCard';
@@ -6,11 +6,57 @@ import SectionHeadline from '@/components/common/SectionHeadline';
 import { Placement } from '@/services/placement/types';
 import Routes from '@/utils/routes';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
+import { Grid } from '@splidejs/splide-extension-grid';
 
-const PlacementList: React.FC<PlacementListProps> = ({ headline, subHeadline, placementList, showReadMore = true }) => {
+const PlacementList: React.FC<PlacementListProps> = ({ headline, subHeadline, placementList, showReadMore = true, largeGrid = false }) => {
+	const [options, setOptions] = useState<Record<string, any>>(null);
+
+	useEffect(() => {
+		if (largeGrid) {
+			setOptions({
+				perPage: 3,
+				breakpoints: {
+					3500: {
+						perPage: 1,
+						grid: {
+							rows: 3,
+							cols: 3
+						},
+					},
+					1300: {
+						perPage: 1,
+						grid: {
+							rows: 2,
+							cols: 2
+						},
+					},
+					800: {
+						perPage: 1,
+						grid: {
+							rows: 1,
+							cols: 1
+						},
+					},
+				},
+				autoplay: true,
+				rewind: true,
+			})
+		} else {
+			setOptions({
+				perPage: 3,
+				breakpoints: {
+					1200: { perPage: 2 },
+					800: { perPage: 1 }
+				},
+				autoplay: true,
+				rewind: true
+			})
+		}
+	}, [largeGrid])
+
 	return (
 		<>
-			<a id='success-stories' href='#this-is-a-success-story'/>
+			<a id='success-stories' href='#this-is-a-success-story' />
 			<SectionHeadline
 				title={headline}
 				subtitle={subHeadline}
@@ -32,32 +78,28 @@ const PlacementList: React.FC<PlacementListProps> = ({ headline, subHeadline, pl
 				)}
 
 				<div className="cardContainer w-full md:mx-0 mb-4">
-					<Splide options={{
-						perPage: 3,
-						breakpoints: {
-							1200: { perPage: 2 },
-							800: { perPage: 1 }
-						},
-						autoplay: true,
-						rewind: true
-					}} aria-label="Team Members">
-						{placementList?.length > 0 && placementList.map((placement) => (
-							<SplideSlide key={placement.id}>
-								<div className="mb-10">
-									<PlacementCard
-										key={placement.id}
-										studentName={placement.studentName}
-										collegeCourseName={placement.collegeCourseName}
-										collegeName={placement.collegeName}
-										designation={placement.designation}
-										ctc={placement.ctc}
-										companyImage={placement.companyImage}
-										studentImage={placement.studentImage}
-									/>
-								</div>
-							</SplideSlide>
-						))}
-					</Splide>
+					{options && (
+						<Splide
+							extensions={{ Grid }}
+							options={options} aria-label="Team Members">
+							{placementList?.length > 0 && placementList.map((placement) => (
+								<SplideSlide key={placement.id}>
+									<div className="mb-10 mx-auto">
+										<PlacementCard
+											key={placement.id}
+											studentName={placement.studentName}
+											collegeCourseName={placement.collegeCourseName}
+											collegeName={placement.collegeName}
+											designation={placement.designation}
+											ctc={placement.ctc}
+											companyImage={placement.companyImage}
+											studentImage={placement.studentImage}
+										/>
+									</div>
+								</SplideSlide>
+							))}
+						</Splide>
+					)}
 				</div>
 			</div>
 		</>
@@ -69,6 +111,7 @@ type PlacementListProps = {
 	subHeadline: string;
 	placementList: Placement[];
 	showReadMore?: boolean;
+	largeGrid?: boolean;
 	placementPagination: Record<string, number>;
 };
 

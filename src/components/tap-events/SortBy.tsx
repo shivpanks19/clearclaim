@@ -1,5 +1,7 @@
 import React from "react";
 
+type SortingOrder = 'ASC' | 'DESC';
+
 const SortBy: React.FC<SortByProps> = ({
 	categoryList,
 	sortingOrder,
@@ -10,7 +12,7 @@ const SortBy: React.FC<SortByProps> = ({
 			{categoryList?.length > 0 && (
 				<div className="w-40">
 					<div className='mb-6 ml-2' id="sortBy" >
-						<select placeholder='Sort By' className='border border-tertiary' value={sortingOrder} onChange={(e)=>{setSortingOrder(e.target.value)}}>
+						<select placeholder='Sort By' className='border border-tertiary' value={sortingOrder} onChange={(e) => { setSortingOrder(e.target.value as SortingOrder) }}>
 							{categoryList.map((category) => (
 								<option key={category.id} value={category.id}>{category.title}</option>
 							))}
@@ -28,7 +30,7 @@ type SortByProps = {
 		title: string;
 	}[];
 	sortingOrder: string;
-	setSortingOrder: (order: string)=>void
+	setSortingOrder: (order: 'ASC' | 'DESC') => void
 };
 
 export default SortBy;
