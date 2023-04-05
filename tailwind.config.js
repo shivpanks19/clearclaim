@@ -134,7 +134,7 @@ module.exports = {
         'price-yellow': '#FAD200'
       }),
       borderColor: () => ({
-        DEFAULT: '#OD3D5426',
+        DEFAULT: 'rgba(13, 61, 84, 0.15)',
         primary2: "#0D3D54E3",
         yellow: '#f5c844',
         tertiary: "#0c69a3",

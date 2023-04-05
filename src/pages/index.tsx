@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
 
@@ -28,7 +29,34 @@ import { HomePageInformation } from '@/services/home/types';
 import { Review } from '@/services/review/types';
 import { Recruiter } from '@/services/recruiter/types';
 
-const Home: NextPage<HomePageProps> = ({ homeInfo, courseList, placementList, reviewList, recruiterList, reviewPagination, placementPagination }) => {
+const Home: NextPage<HomePageProps> = ({ homeInfo, courseList, reviewPagination, placementPagination }) => {
+	const [placementList, setPlacementList] = useState([]);
+	const [reviewList, setReviewList] = useState([]);
+	const [recruiterList, setRecruiterList] = useState([]);
+
+	useEffect(() => {
+		(async () => {
+			const placementList = await PlacementService.getPlacementList('', '*');
+			const reviewList = await ReviewService.getReviewList('', '*');
+			const recruiterList = await RecruiterService.getRecruiterList('', '*');
+			setPlacementList(placementList.data.map((placement) => ({
+				...placement.attributes,
+				id: placement.id,
+				companyImage: { id: placement.attributes.companyImage?.data.id, url: placement.attributes.companyImage?.data.attributes.url, alt: placement.attributes.companyImage?.data.attributes.alternativeText },
+				studentImage: { id: placement.attributes.studentImage?.data.id, url: placement.attributes.studentImage?.data.attributes.url },
+			})))
+			setReviewList(reviewList.data.map((review) => ({
+				...review.attributes,
+				id: review.id,
+				studentImage: { id: review.attributes.studentImage?.data.id, url: review.attributes.studentImage?.data.attributes.url }
+			})))
+			setRecruiterList(recruiterList.data.map((recruiter) => ({
+				...recruiter.attributes,
+				id: recruiter.id,
+				recruiterImage: { id: recruiter.attributes.recruiterImage?.data.id, url: recruiter.attributes.recruiterImage?.data.attributes.url }
+			})))
+		})()
+	}, [])
 	return (
 		<div className='relative'>
 			<Head>
@@ -135,11 +163,8 @@ const Home: NextPage<HomePageProps> = ({ homeInfo, courseList, placementList, re
 type HomePageProps = {
 	homeInfo: HomePageInformation;
 	courseList: Course[];
-	placementList: Placement[];
 	placementPagination: Record<string, number>;
-	reviewList: Review[];
 	reviewPagination: Record<string, number>;
-	recruiterList: Recruiter[];
 }
 
 export const getStaticProps: GetStaticProps = async ({
@@ -147,10 +172,7 @@ export const getStaticProps: GetStaticProps = async ({
 }: Record<string, any>) => {
 	const homeInfo = await HomeService.getHomePageInformation(locale, '*');
 	const courseList = await CourseService.getCourseList(locale, '*', 'courseIdx');
-	const placementList = await PlacementService.getPlacementList(locale, '*');
-	const reviewList = await ReviewService.getReviewList(locale, '*');
-	const recruiterList = await RecruiterService.getRecruiterList(locale, '*');
-	
+
 	return {
 		props: {
 			homeInfo: {
@@ -161,25 +183,15 @@ export const getStaticProps: GetStaticProps = async ({
 				corporateProgramPics: homeInfo.data.attributes.corporateProgramPics?.data.map((img) => ({ id: img.id, url: img.attributes.url }))
 			},
 			courseList: courseList.data.map((course) => ({
-				...course.attributes,
+				courseName: course.attributes.courseName,
+				description: course.attributes.description,
+				numberOfStudents: course.attributes.numberOfStudents,
+				contentHours: course.attributes.contentHours,
+				slug: course.attributes.slug,
+				isFree: course.attributes.isFree,
+				showDetailSection: false, 
 				heroImage: { id: course.attributes.heroImage.data.id, url: course.attributes.heroImage?.data.attributes.url },
 				id: course.id,
-			})),
-			placementList: placementList.data.map((placement) => ({
-				...placement.attributes,
-				id: placement.id,
-				companyImage: { id: placement.attributes.companyImage?.data.id, url: placement.attributes.companyImage?.data.attributes.url, alt: placement.attributes.companyImage?.data.attributes.alternativeText },
-				studentImage: { id: placement.attributes.studentImage?.data.id, url: placement.attributes.studentImage?.data.attributes.url },
-			})),
-			reviewList: reviewList.data.map((review) => ({
-				...review.attributes,
-				id: review.id,
-				studentImage: { id: review.attributes.studentImage?.data.id, url: review.attributes.studentImage?.data.attributes.url }
-			})),
-			recruiterList: recruiterList.data.map((recruiter) => ({
-				...recruiter.attributes,
-				id: recruiter.id,
-				recruiterImage: { id: recruiter.attributes.recruiterImage?.data.id, url: recruiter.attributes.recruiterImage?.data.attributes.url }
 			})),
 		},
 		revalidate: 60

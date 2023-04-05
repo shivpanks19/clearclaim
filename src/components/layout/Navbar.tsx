@@ -145,6 +145,7 @@ const Navbar: React.FC<NavbarProps> = ({ courseList }) => {
 																		target={item.target}
 																	>
 																		<Text
+																			span={true}
 																			className={`font-semibold relative px-3 text-secondary grid ${item.className && item.className} ${item.link === activePath && 'text-tertiary'}`}
 																			cursor='cursor-pointer'
 																		>

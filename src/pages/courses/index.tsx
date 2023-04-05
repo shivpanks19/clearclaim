@@ -82,8 +82,7 @@ type courseListPageProps = {
 }
 
 export const getStaticProps: GetStaticProps = async ({
-	locale,
-	query
+	locale
 }: Record<string, any>) => {
 	const courseListPageInfo = await CourseService.getCourseListPageInformation(locale);
 	const courseList = await CourseService.getCourseList(locale, '*', 'courseIdx');
@@ -93,6 +92,7 @@ export const getStaticProps: GetStaticProps = async ({
 		props: {
 			courseList: courseList.data.map((course) => ({
 				...course.attributes,
+				heroImage: { id: course.attributes.heroImage.data.id, url: course.attributes.heroImage?.data.attributes.url },
 				id: course.id
 			})),
 			reviewList: reviewList.data.map((review) => ({
