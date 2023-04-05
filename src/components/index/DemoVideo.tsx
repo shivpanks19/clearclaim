@@ -14,7 +14,7 @@ const DemoVideo: React.FC<DemoVideoProps> = ({ url, headline, subHeadline }) => 
 				<div className='w-full rounded-3xl overflow-hidden' style={{ position: 'relative' }}>
 					{/* @ts-ignore */}
 					<lite-vimeo videoid="357274789" style={{ backgroundImage: "url('https://i.vimeocdn.com/video/810965406.webp?mw=1600&mh=900&q=70')" }}>
-						<div className="ltv-playbtn"></div>
+						<div className="ltv-playbtn" aria-label='video-play-button'></div>
 						{/* @ts-ignore */}
 					</lite-vimeo>
 				</div>
