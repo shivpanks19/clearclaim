@@ -15,6 +15,7 @@ export default class MyDocument extends Document {
 					<script id='gtm'></script>
 					<script id='ga'></script>
 					<script id='fb'></script>
+					<script async type="module" src="https://cdn.jsdelivr.net/npm/@slightlyoff/lite-vimeo@0.1.1/lite-vimeo.js"></script>
 				</Head>
 				<body>
 					<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N7SB2Z3"

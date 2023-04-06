@@ -117,6 +117,7 @@ const Navbar: React.FC<NavbarProps> = ({ courseList }) => {
 														key={index}
 														href={item.link}
 														target={item.target}
+														prefetch={false}
 													>
 														<div className="flex gap-1 place-items-center text-left">
 															<Text
@@ -143,6 +144,7 @@ const Navbar: React.FC<NavbarProps> = ({ courseList }) => {
 																		key={index}
 																		href={item.link}
 																		target={item.target}
+																		prefetch={false}
 																	>
 																		<Text
 																			span={true}
@@ -164,6 +166,7 @@ const Navbar: React.FC<NavbarProps> = ({ courseList }) => {
 												key={index}
 												href={item.link}
 												target={item.target}
+												prefetch={false}
 											>
 												<Text
 													className={`font-medium relative text-secondary grid place-items-center ${item.className && item.className} ${item.link === activePath && 'text-tertiary'}`}

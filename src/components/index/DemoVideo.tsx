@@ -1,6 +1,5 @@
 import React from "react";
 import SectionHeadline from '@/components/common/SectionHeadline';
-import '@slightlyoff/lite-vimeo';
 
 const DemoVideo: React.FC<DemoVideoProps> = ({ url, headline, subHeadline }) => {
 	return (

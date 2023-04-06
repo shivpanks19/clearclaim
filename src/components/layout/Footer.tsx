@@ -77,17 +77,17 @@ const Footer: React.FC<FooterProps> = ({ showFooterTop }) => {
 							<p className="text-sm md:text-xl font-semibold text-white">
 								Tap Academy
 							</p>
-							<Link href={Routes.blogs().pathname}>
+							<Link href={Routes.blogs().pathname} prefetch={false}>
 								<p className="text-xs md:text-base text-gray2">
 									Blogs
 								</p>
 							</Link>
-							<Link href={Routes.aboutUs().pathname}>
+							<Link href={Routes.aboutUs().pathname} prefetch={false}>
 								<p className="text-xs md:text-base text-gray2">
 									About us
 								</p>
 							</Link>
-							<Link href={Routes.contactUs().pathname}>
+							<Link href={Routes.contactUs().pathname} prefetch={false}>
 								<p className="text-xs md:text-base text-gray2">
 									Contact us
 								</p>
@@ -97,25 +97,25 @@ const Footer: React.FC<FooterProps> = ({ showFooterTop }) => {
 							<p className="text-sm md:text-xl font-semibold text-white">
 								Links
 							</p>
-							<Link href={Routes.courses().pathname}>
+							<Link href={Routes.courses().pathname} prefetch={false}>
 								<p className="text-xs md:text-base text-gray2">
 									Courses
 								</p>
 							</Link>
 
-							<Link href={Routes.records().pathname}>
+							<Link href={Routes.records().pathname} prefetch={false}>
 								<p className="text-xs md:text-base text-gray2">
 									Records
 								</p>
 							</Link>
 
-							<Link href={Routes.studentReviews().pathname}>
+							<Link href={Routes.studentReviews().pathname} prefetch={false}>
 								<p className="text-xs md:text-base text-gray2">
 									Student Reviews
 								</p>
 							</Link>
 
-							<Link href={Routes.privacyPolicy().pathname}>
+							<Link href={Routes.privacyPolicy().pathname} prefetch={false}>
 								<p className="text-xs md:text-base text-gray2">
 									Privacy Policy
 								</p>
