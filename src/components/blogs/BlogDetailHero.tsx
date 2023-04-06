@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import FeaturedBlogCard from '@/components/blogs/FeaturedBlogCard';
-import { Blog, ContentCategory } from '@/services/blogs/types';
+import Link from "next/link";
+import { ContentCategory } from '@/services/blogs/types';
 import { ImageType } from "@/utils/types";
 
 const BlogDetailHero: React.FC<BlogDetailHeroProps> = ({ headline, heroImage, contentCategory, readingTime, publishedAt }) => {
+	const [url, setUrl] = useState('');
+	useEffect(() => {
+		if (window)
+			setUrl(window.location.href)
+	}, [])
 	return (
 		<>
 			<div>
@@ -22,13 +27,32 @@ const BlogDetailHero: React.FC<BlogDetailHeroProps> = ({ headline, heroImage, co
 					<div className="share flex gap-1.5 lg:gap-4 place-items-center mr-3">
 						<p className="font-medium text-title text-xxs lg:text-base hidden lg:block">Share with: </p>
 						<div className="relative w-5 h-5 lg:w-9 lg:h-9">
-							<Image src='/img/share_fb.svg' width={36} height={36} alt='Share on Faccebook' />
+							<Link
+								href={`https://www.facebook.com/sharer.php?u=${url}`}
+								target='_blank'
+							>
+
+								<Image src='/img/share_fb.svg' width={36} height={36} alt='Share on Facebook' />
+							</Link>
+						</div>
+						<div className="relative w-5 h-5 lg:w-9 lg:h-9 bg-[#0D87D4] rounded-full grid place-items-center">
+							<Link
+								href={`https://twitter.com/intent/tweet
+								?url=${url}
+								&text=${headline}
+								&hashtags=${contentCategory.title}`}
+								target='_blank'
+							>
+								<Image src='/img/twitter_white.svg' width={25} height={25} alt='Share on Twitter' style={{objectFit: 'contain'}}/>
+							</Link>
 						</div>
 						<div className="relative w-5 h-5 lg:w-9 lg:h-9">
-							<Image src='/img/share_ig.svg' width={36} height={36} alt='Share on Instagram' />
-						</div>
-						<div className="relative w-5 h-5 lg:w-9 lg:h-9">
-							<Image src='/img/share_linkedin.svg' width={36} height={36} alt='Share on Linkedin' />
+							<Link
+								href={`https://www.linkedin.com/sharing/share-offsite/?url=${url}`}
+								target='_blank'
+							>
+								<Image src='/img/share_linkedin.svg' width={36} height={36} alt='Share on Linkedin' />
+							</Link>
 						</div>
 					</div>
 				</div>
