@@ -15,7 +15,6 @@ export default class MyDocument extends Document {
 					<script id='gtm'></script>
 					<script id='ga'></script>
 					<script id='fb'></script>
-					<script async src="http://unpkg.com/lite-vimeo-embed"></script>
 				</Head>
 				<body>
 					<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N7SB2Z3"
