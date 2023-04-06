@@ -5,7 +5,7 @@ import ReviewCard from '@/components/common/review-list/ReviewCard';
 import SectionHeadline from '@/components/common/SectionHeadline';
 import { Review } from '@/services/review/types';
 import Routes from '@/utils/routes';
-import { Splide, SplideSlide } from '@splidejs/react-splide';
+import { Splide, SplideSlide, SplideTrack } from '@splidejs/react-splide';
 import { Grid } from '@splidejs/splide-extension-grid';
 
 const ReviewSection: React.FC<ReviewSectionProps> = ({ headline, subHeadline, reviewList, showReadMore = true, largeGrid = false }) => {
@@ -79,23 +79,29 @@ const ReviewSection: React.FC<ReviewSectionProps> = ({ headline, subHeadline, re
 				<div className="cardContainer w-full md:mx-0 mb-4">
 					{options && (
 						<Splide
+							hasTrack={false}
 							extensions={{ Grid }}
 							options={options}
 							aria-label="Team Members">
-							{reviewList?.length > 0 && reviewList.map((review) => (
-								<SplideSlide key={review.id}>
-									<ReviewCard
-										key={review.id}
-										studentName={review.studentName}
-										designation={review.designation}
-										companyName={review.companyName}
-										ctc={review.ctc}
-										reviewText={review.reviewText}
-										rating={review.rating}
-										studentImage={review.studentImage}
-									/>
-								</SplideSlide>
-							))}
+							<div className="custom-wrapper relative place-items-center">
+								<SplideTrack>
+									{reviewList?.length > 0 && reviewList.map((review) => (
+										<SplideSlide key={review.id}>
+											<ReviewCard
+												key={review.id}
+												studentName={review.studentName}
+												designation={review.designation}
+												companyName={review.companyName}
+												ctc={review.ctc}
+												reviewText={review.reviewText}
+												rating={review.rating}
+												studentImage={review.studentImage}
+											/>
+										</SplideSlide>
+									))}
+								</SplideTrack>
+								<div className="splide__arrows absolute bottom-0 left-1/2 transform -translate-x-1/2 w-48 mx-auto" />
+							</div>
 						</Splide>
 					)}
 				</div>

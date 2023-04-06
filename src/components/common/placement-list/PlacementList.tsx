@@ -5,7 +5,7 @@ import PlacementCard from '@/components/common/placement-list/PlacementCard';
 import SectionHeadline from '@/components/common/SectionHeadline';
 import { Placement } from '@/services/placement/types';
 import Routes from '@/utils/routes';
-import { Splide, SplideSlide } from '@splidejs/react-splide';
+import { Splide, SplideSlide, SplideTrack } from '@splidejs/react-splide';
 import { Grid } from '@splidejs/splide-extension-grid';
 
 const PlacementList: React.FC<PlacementListProps> = ({ headline, subHeadline, placementList, showReadMore = true, largeGrid = false }) => {
@@ -80,24 +80,30 @@ const PlacementList: React.FC<PlacementListProps> = ({ headline, subHeadline, pl
 				<div className="cardContainer w-full md:mx-0 mb-4">
 					{options && (
 						<Splide
+							hasTrack={false}
 							extensions={{ Grid }}
 							options={options} aria-label="Team Members">
-							{placementList?.length > 0 && placementList.map((placement) => (
-								<SplideSlide key={placement.id}>
-									<div className="mb-10 mx-auto">
-										<PlacementCard
-											key={placement.id}
-											studentName={placement.studentName}
-											collegeCourseName={placement.collegeCourseName}
-											collegeName={placement.collegeName}
-											designation={placement.designation}
-											ctc={placement.ctc}
-											companyImage={placement.companyImage}
-											studentImage={placement.studentImage}
-										/>
-									</div>
-								</SplideSlide>
-							))}
+							<div className="custom-wrapper relative place-items-center">
+								<SplideTrack>
+									{placementList?.length > 0 && placementList.map((placement) => (
+										<SplideSlide key={placement.id}>
+											<div className="mb-10 mx-auto">
+												<PlacementCard
+													key={placement.id}
+													studentName={placement.studentName}
+													collegeCourseName={placement.collegeCourseName}
+													collegeName={placement.collegeName}
+													designation={placement.designation}
+													ctc={placement.ctc}
+													companyImage={placement.companyImage}
+													studentImage={placement.studentImage}
+												/>
+											</div>
+										</SplideSlide>
+									))}
+								</SplideTrack>
+								<div className="splide__arrows absolute bottom-0 left-1/2 transform -translate-x-1/2 w-48 mx-auto" />
+							</div>
 						</Splide>
 					)}
 				</div>

@@ -103,7 +103,7 @@ export const getStaticProps: GetStaticProps = async ({
 }: Record<string, any>) => {
 	const recordPageInfo = await RecordPageService.getRecordPageInformation(locale, '*');
 	const recruiterList = await RecruiterService.getRecruiterList(locale, '*');
-	const courseList = await CourseService.getCourseList(locale, '*');
+	const courseList = await CourseService.getCourseList(locale, '*', 'courseIdx');
 
 	return {
 		props: {

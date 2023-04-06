@@ -145,7 +145,7 @@ export const getStaticProps: GetStaticProps = async ({
 	const blogList = await BlogService.getBlogs(locale, '*', { limit: 4 });
 	const blog = await BlogService.getBlogBySlug(params.slug, locale);
 	const categoryList = await BlogService.getBlogCategories(locale);
-	const courseList = await CourseService.getCourseList(locale, '*');
+	const courseList = await CourseService.getCourseList(locale, '*', 'courseIdx');
 
 	return {
 		props: {

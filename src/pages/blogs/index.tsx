@@ -99,7 +99,7 @@ type BlogListPageProps = {
 export const getStaticProps: GetStaticProps = async ({ locale }: Record<string, any>) => {
 	const blogPageInfo = await BlogService.getBlogsStaticData(locale, '*');
 	const categoryList = await BlogService.getBlogCategories(locale);
-	const courseList = await CourseService.getCourseList(locale, '*');
+	const courseList = await CourseService.getCourseList(locale, '*', 'courseIdx');
 
 	let featuredBlog = null;
 	//Check if any blog is featured

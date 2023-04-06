@@ -96,7 +96,7 @@ export const getStaticProps: GetStaticProps = async ({
 	locale
 }: Record<string, any>) => {
 	const aboutInfo = await AboutUsService.getAboutUsInformation(locale, '*');
-	const courseList = await CourseService.getCourseList(locale, '*');
+	const courseList = await CourseService.getCourseList(locale, '*', 'courseIdx');
 
 	return {
 		props: {

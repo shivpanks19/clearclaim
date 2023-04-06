@@ -130,7 +130,7 @@ export const getStaticProps: GetStaticProps = async ({
 	const courseDetailPageInfo = await CourseService.getCourseDetailPageInformation(locale);
 	const course = await CourseService.getCourseBySlug(params.slug, locale, '*');
 	const placementList = await PlacementService.getPlacementList(locale, '*');
-	const courseList = await CourseService.getCourseList(locale, '*');
+	const courseList = await CourseService.getCourseList(locale, '*', 'courseIdx');
 
 	return {
 		props: {

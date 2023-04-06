@@ -74,7 +74,7 @@ export const getStaticProps: GetStaticProps = async ({
 }: Record<string, any>) => {
 	const drivePageInfo = await DriveService.getDrivePageInformation(locale, '*');
 	const driveList = await DriveService.getDriveList(locale, '*');
-	const courseList = await CourseService.getCourseList(locale, '*');
+	const courseList = await CourseService.getCourseList(locale, '*', 'courseIdx');
 
 	return {
 		props: {

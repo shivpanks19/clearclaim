@@ -18,16 +18,19 @@ function getBlogsStaticData(locale?: string, populate?: string): Promise<Record<
 }
 
 function getBlogs(_locale?: string, populate?: string, params?: Partial<GetBlogsParams>): Promise<Record<string, any>> {
-	return get(Services.getBlogs, {
+	const contentCategory = params?.contentCategoryId
+	const queryParams = {
 		_locale,
 		populate,
 		_start: params?.start,
 		_limit: params?.limit,
-		_sort: params?.latest ? 'updated_at:desc' : undefined,
-		_q: params?._q,
+		_sort: 'updated_at:desc',
+		_q: params?._q ?? '',
 		searchFields: ['title', 'description'],
-		contentCategory: params?.contentCategoryId
-	});
+	}
+	if (contentCategory)
+		queryParams['contentCategory'] = contentCategory
+	return get(Services.getBlogs, queryParams);
 }
 
 function getBlogById(id: Id, _locale?: string): Promise<Blog> {

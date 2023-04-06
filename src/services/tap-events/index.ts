@@ -20,8 +20,8 @@ function getTapEventList(_locale?: string, populate?: string, params?: Partial<G
 		populate,
 		_start: params?.start,
 		_limit: params?.limit,
-		_sort: params?.latest ? 'updated_at:desc' : undefined,
-		_q: params?._q,
+		_sort: 'updated_at:desc' ,
+		_q: params?._q ?? '',
 		searchFields: ['eventName', 'eventDescription'],
 		sort: [sortingOrder === 'ASC' ? 'eventName': 'eventName:desc']
 	});

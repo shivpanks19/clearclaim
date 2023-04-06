@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
+import dynamic from 'next/dynamic';
 
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
@@ -9,11 +10,17 @@ import SpecialSection from '@/components/index/Special';
 import HomeHeroSection from '@/components/index/HomeHero';
 import WhyUsSection from '@/components/common/why-us/WhyUs';
 import RecognitionSection from '@/components/index/Recognition';
-import RecruiterSection from '@/components/common/RecruiterList';
 import SocialButtonList from '@/components/common/SocialButtonList';
-import ReviewSection from '@/components/common/review-list/ReviewList';
 import OfferingSection from '@/components/common/course-list/CourseList';
-import PlacementList from '@/components/common/placement-list/PlacementList';
+const PlacementList = dynamic(() => import('@/components/common/placement-list/PlacementList'), {
+	loading: () => <p>Loading...</p>,
+})
+const ReviewList = dynamic(() => import('@/components/common/review-list/ReviewList'), {
+	loading: () => <p>Loading...</p>,
+})
+const RecruiterList = dynamic(() => import('@/components/common/RecruiterList'), {
+	loading: () => <p>Loading...</p>,
+})
 import CodingBootcampSection from '@/components/common/banner/CodingBootcampBanner';
 import CorporateProgramSection from '@/components/index/CorporateProgram/CorporateProgram';
 
@@ -24,10 +31,7 @@ import ReviewService from '@/services/review';
 import RecruiterService from '@/services/recruiter';
 
 import { Course } from '@/services/course/types';
-import { Placement } from '@/services/placement/types';
 import { HomePageInformation } from '@/services/home/types';
-import { Review } from '@/services/review/types';
-import { Recruiter } from '@/services/recruiter/types';
 
 const Home: NextPage<HomePageProps> = ({ homeInfo, courseList, reviewPagination, placementPagination }) => {
 	const [placementList, setPlacementList] = useState([]);
@@ -118,7 +122,7 @@ const Home: NextPage<HomePageProps> = ({ homeInfo, courseList, reviewPagination,
 			)}
 
 			{/* Student Reviews */}
-			<ReviewSection
+			<ReviewList
 				headline={homeInfo.reviewHeadline}
 				subHeadline={homeInfo.reviewSubHeadline}
 				reviewList={reviewList}
@@ -137,7 +141,7 @@ const Home: NextPage<HomePageProps> = ({ homeInfo, courseList, reviewPagination,
 			/>
 
 			{/* Recruiters */}
-			{recruiterList?.length > 0 && <RecruiterSection
+			{recruiterList?.length > 0 && <RecruiterList
 				headline={homeInfo.recruiterHeadline}
 				subHeadline={homeInfo.recruiterSubHeadline}
 				recruiterList={recruiterList}
@@ -189,7 +193,7 @@ export const getStaticProps: GetStaticProps = async ({
 				contentHours: course.attributes.contentHours,
 				slug: course.attributes.slug,
 				isFree: course.attributes.isFree,
-				showDetailSection: false, 
+				showDetailSection: false,
 				heroImage: { id: course.attributes.heroImage.data.id, url: course.attributes.heroImage?.data.attributes.url },
 				id: course.id,
 			})),

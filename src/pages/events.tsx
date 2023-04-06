@@ -94,7 +94,7 @@ export const getStaticProps: GetStaticProps = async ({
 }: Record<string, any>) => {
 	const tapEventPageInfo = await TapService.getTapEventPageInformation(locale, '*');
 	const eventList = await TapService.getTapEventList(locale, '*', { start: 0, limit: 4, _q: '' }, 'ASC');
-	const courseList = await CourseService.getCourseList(locale, '*');
+	const courseList = await CourseService.getCourseList(locale, '*', 'courseIdx');
 
 	return {
 		props: {
