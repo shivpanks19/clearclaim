@@ -13,13 +13,14 @@ const HomeHeroSection: React.FC<HomeHeroSectionProps> = ({ headline, subHeadline
 	return (
 		<div
 			style={{
-				background:
-					'url(/img/home/homeHeroBg.png) no-repeat top left',
-				backgroundSize: '100% 100%',
-				backgroundPosition: 'top left',
+				// background:
+				// 	'url(/img/home/homeHeroBg.png) no-repeat top left',
+				// backgroundSize: '100% 100%',
+				// backgroundPosition: 'top left',
 			}}
-			className='pt-8 pb-4 mb-20'
+			className='relative pt-8 pb-4 mb-20'
 		>
+			<Image src='/img/home/homeHeroBg.png' fill alt='background image' priority style={{zIndex: -1}}/>
 			<div className='grid gap-2 mdxl:w-76 grid-cols-1 lg:grid-cols-2 mx-auto mb-8 md:mb-20'>
 				<div className='flex flex-col md:pt-20 px-5 mb-7'>
 					<h1 className='text-3xl md:text-hero font-semibold text-primary mb-3 md:mb-5'>
