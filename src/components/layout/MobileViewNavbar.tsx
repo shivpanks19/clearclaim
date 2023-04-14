@@ -5,7 +5,6 @@ import Image from 'next/image';
 import { NavItem } from '@/data/staticData';
 import { GrClose } from 'react-icons/gr';
 import Logo from '@/components/common/Logo';
-import JoinNowButton from '@/components/common/button/JoinNowButton';
 
 const MobileViewNavbar: React.FC<MobileViewNavbarProps> = ({ navbarItems, activate, toggleNav }) => {
 	const router = useRouter();
@@ -38,9 +37,6 @@ const MobileViewNavbar: React.FC<MobileViewNavbarProps> = ({ navbarItems, activa
 								</p>
 							</Link>
 						))}
-					</div>
-					<div className="absolute px-4 bottom-16 w-full flex place-items-center">
-						<JoinNowButton />
 					</div>
 				</div>
 			)}

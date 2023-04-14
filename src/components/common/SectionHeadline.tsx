@@ -1,37 +1,30 @@
 import React from "react";
 import Image from "next/image";
 
-const SectionHeadline: React.FC<SectionHeadlineProps> = ({ title, subtitle, className = '' }) => {
+const SectionHeadline: React.FC<SectionHeadlineProps> = ({ title, className = '', white = false }) => {
 	return (
 		<div className={className}>
-			<div className="flex items-center justify-center gap-6 mb-1 md:mb-3">
-				<Image
-					src='/img/home/line.png'
-					height={6}
-					width={49}
-					alt='Line'
-				/>
-				<p className='text-tertiary text-xs md:text-xl text-center'>
+			<div className="flex flex-col items-center justify-center">
+				<p className={` text-2xl font-bold lg:text-4xl text-center mb-1 lg:mb-2 ${white ? 'text-white' : 'text-primary'}`}>
 					{title}
 				</p>
-				<Image
-					src='/img/home/line.png'
-					height={6}
-					width={49}
-					alt='Line'
-				/>
+				<div className="relative w-16 lg:w-24 h-1 lg:h-2">
+					<Image
+						src='/img/home/line.png'
+						fill
+						style={{ objectFit: 'contain' }}
+						alt='Line'
+					/>
+				</div>
 			</div>
-			<p className='text-primary md:text-3xl font-semibold flex justify-center text-center'>
-				{subtitle}
-			</p>
 		</div>
 	)
 };
 
 type SectionHeadlineProps = {
 	title: string;
-	subtitle: string;
 	className?: string;
+	white?: boolean;
 };
 
 export default SectionHeadline;

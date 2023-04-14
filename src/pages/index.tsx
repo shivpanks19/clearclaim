@@ -1,161 +1,61 @@
-import { useState, useEffect } from 'react';
-import { GetStaticProps, NextPage } from 'next';
-import Head from 'next/head';
-import dynamic from 'next/dynamic';
+import { NextPage } from 'next';
+// import Head from 'next/head';
 
+import Stat from '@/components/common/Stat';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
+import HomeHero from '@/components/index/HomeHero';
 import DemoVideo from '@/components/index/DemoVideo';
-import SpecialSection from '@/components/index/Special';
-import HomeHeroSection from '@/components/index/HomeHero';
-import WhyUsSection from '@/components/common/why-us/WhyUs';
-import RecognitionSection from '@/components/index/Recognition';
-import SocialButtonList from '@/components/common/SocialButtonList';
-import OfferingSection from '@/components/common/course-list/CourseList';
-const PlacementList = dynamic(() => import('@/components/common/placement-list/PlacementList'), {
-	loading: () => <p>Loading...</p>,
-})
-const ReviewList = dynamic(() => import('@/components/common/review-list/ReviewList'), {
-	loading: () => <p>Loading...</p>,
-})
-const RecruiterList = dynamic(() => import('@/components/common/RecruiterList'), {
-	loading: () => <p>Loading...</p>,
-})
-import CodingBootcampSection from '@/components/common/banner/CodingBootcampBanner';
-import CorporateProgramSection from '@/components/index/CorporateProgram/CorporateProgram';
+import Offerings from '@/components/index/Offerings';
+import WhyTaxPlus from '@/components/index/WhyTaxPlus';
+import FooterFaqList from '@/components/index/FooterFaqList';
+import BusinessProcess from '@/components/index/BusinessProcess';
+import ReviewList from '@/components/index/review-list/ReviewList';
+import { reviewList, faqList } from '@/data/staticData';
 
-import HomeService from '@/services/home';
-import CourseService from '@/services/course';
-import PlacementService from '@/services/placement';
-import ReviewService from '@/services/review';
-import RecruiterService from '@/services/recruiter';
+const Home: NextPage<HomePageProps> = () => {
 
-import { Course } from '@/services/course/types';
-import { HomePageInformation } from '@/services/home/types';
-
-const Home: NextPage<HomePageProps> = ({ homeInfo, courseList, reviewPagination, placementPagination }) => {
-	const [placementList, setPlacementList] = useState([]);
-	const [reviewList, setReviewList] = useState([]);
-	const [recruiterList, setRecruiterList] = useState([]);
-
-	useEffect(() => {
-		(async () => {
-			const placementList = await PlacementService.getPlacementList('', '*');
-			const reviewList = await ReviewService.getReviewList('', '*');
-			const recruiterList = await RecruiterService.getRecruiterList('', '*');
-			setPlacementList(placementList.data.map((placement) => ({
-				...placement.attributes,
-				id: placement.id,
-				companyImage: { id: placement.attributes.companyImage?.data.id, url: placement.attributes.companyImage?.data.attributes.url, alt: placement.attributes.companyImage?.data.attributes.alternativeText },
-				studentImage: { id: placement.attributes.studentImage?.data.id, url: placement.attributes.studentImage?.data.attributes.url },
-			})))
-			setReviewList(reviewList.data.map((review) => ({
-				...review.attributes,
-				id: review.id,
-				studentImage: { id: review.attributes.studentImage?.data.id, url: review.attributes.studentImage?.data.attributes.url }
-			})))
-			setRecruiterList(recruiterList.data.map((recruiter) => ({
-				...recruiter.attributes,
-				id: recruiter.id,
-				recruiterImage: { id: recruiter.attributes.recruiterImage?.data.id, url: recruiter.attributes.recruiterImage?.data.attributes.url }
-			})))
-		})()
-	}, [])
 	return (
 		<div className='relative'>
-			<Head>
-				{homeInfo.metaTitle && (
+			{/* <Head>
 					<title>{homeInfo.metaTitle}</title>
-				)}
-				{homeInfo.metaDescription && (
 					<meta name='description' content={homeInfo.metaDescription} />
-				)}
-			</Head>
-			<SocialButtonList />
+			</Head> */}
 			<Navbar
-				courseList={courseList}
 			/>
 
 			{/* Hero */}
-			<HomeHeroSection
-				headline={homeInfo.headline}
-				subHeadline={homeInfo.subHeadline}
-				studentsTrained={homeInfo.studentsTrained}
-				workshopsConducted={homeInfo.workshopsConducted}
-				placementDrives={homeInfo.placementDrives}
-				nextBatchDate={homeInfo.nextBatchDate}
-				riverImages={homeInfo.riverImages}
-				riverImagesLv2={homeInfo.riverImagesLv2}
-				riverImagesLv3={homeInfo.riverImagesLv3}
-			/>
-			{/* How we teach */}
-			<DemoVideo
-				headline={homeInfo.demoVideoHeadline}
-				subHeadline={homeInfo.demoVideoSubHeadline}
-				url={homeInfo.videoURL}
+			<HomeHero
+				headline='Save up to 50% on your Taxes'
+				subHeadline='Make provision of a hassle-free claim processing and assure that each penny you invested reaches your family in a safe, secured and hassle-free way when you are not around.'
 			/>
 
+			{/* Why Tax + */}
+			<WhyTaxPlus />
+
+			{/* Business Process */}
+			<BusinessProcess />
+
+			{/* Demo video */}
+			<DemoVideo headline='Clear Claim is the best choice' />
+
+			{/* Stat */}
+			<Stat
+				amountRecovered={12600000}
+				customers={100}
+				experts={50}
+			/>
+
+			{/* Review */}
+			<ReviewList reviewList={reviewList} />
+			
 			{/* Offerings */}
-			<OfferingSection
-				headline={homeInfo.courseHeadline}
-				subHeadline={homeInfo.courseSubHeadline}
-				courseList={courseList}
-			/>
+			<Offerings />
 
-			{/* Special */}
-			<SpecialSection
-				headline={homeInfo.specialSectionHeadline}
-				subHeadline={homeInfo.specialSectionSubHeadline}
-			/>
-
-			{/* Corporate Program */}
-			<CorporateProgramSection corporateProgramPics={homeInfo.corporateProgramPics} />
-
-			{/* Achievements */}
-			{placementList?.length > 0 && (
-				<PlacementList
-					headline={homeInfo.achievementHeadline}
-					subHeadline={homeInfo.achievementSubHeadline}
-					placementList={placementList}
-					placementPagination={placementPagination}
-				/>
-			)}
-
-			{/* Student Reviews */}
-			<ReviewList
-				headline={homeInfo.reviewHeadline}
-				subHeadline={homeInfo.reviewSubHeadline}
-				reviewList={reviewList}
-				reviewPagination={reviewPagination}
-			/>
-
-			{/* Coding Bootcamp */}
-			<CodingBootcampSection
-				imgSrc='/img/coding_bootcamp_1.png'
-			/>
-
-			{/* Why us */}
-			<WhyUsSection
-				headline={homeInfo.whyUsHeadline}
-				subHeadline={homeInfo.whyUsSubHeadline}
-			/>
-
-			{/* Recruiters */}
-			{recruiterList?.length > 0 && <RecruiterList
-				headline={homeInfo.recruiterHeadline}
-				subHeadline={homeInfo.recruiterSubHeadline}
-				recruiterList={recruiterList}
-			/>}
-
-			{/* Recognition */}
-			<RecognitionSection
-				headline={homeInfo.recognitionHeadline}
-				subHeadline={homeInfo.recognitionSubHeadline}
-			/>
-
-			{/* Coding Bootcamp */}
-			<CodingBootcampSection
-				imgSrc='/img/coding_bootcamp_2.png'
+			{/* Footer Faq */}
+			<FooterFaqList
+				headline='People also ask'
+				faqList={faqList}
 			/>
 
 			{/* Footer */}
@@ -165,41 +65,6 @@ const Home: NextPage<HomePageProps> = ({ homeInfo, courseList, reviewPagination,
 }
 
 type HomePageProps = {
-	homeInfo: HomePageInformation;
-	courseList: Course[];
-	placementPagination: Record<string, number>;
-	reviewPagination: Record<string, number>;
 }
-
-export const getStaticProps: GetStaticProps = async ({
-	locale
-}: Record<string, any>) => {
-	const homeInfo = await HomeService.getHomePageInformation(locale, '*');
-	const courseList = await CourseService.getCourseList(locale, '*', 'courseIdx');
-
-	return {
-		props: {
-			homeInfo: {
-				...homeInfo?.data?.attributes,
-				riverImages: homeInfo.data.attributes.riverImages?.data.map((img) => ({ id: img.id, url: img.attributes.url })),
-				riverImagesLv2: homeInfo.data.attributes.riverImagesLv2?.data.map((img) => ({ id: img.id, url: img.attributes.url })),
-				riverImagesLv3: homeInfo.data.attributes.riverImagesLv3?.data.map((img) => ({ id: img.id, url: img.attributes.url })),
-				corporateProgramPics: homeInfo.data.attributes.corporateProgramPics?.data.map((img) => ({ id: img.id, url: img.attributes.url }))
-			},
-			courseList: courseList.data.map((course) => ({
-				courseName: course.attributes.courseName,
-				description: course.attributes.description,
-				numberOfStudents: course.attributes.numberOfStudents,
-				contentHours: course.attributes.contentHours,
-				slug: course.attributes.slug,
-				isFree: course.attributes.isFree,
-				showDetailSection: false,
-				heroImage: { id: course.attributes.heroImage.data.id, url: course.attributes.heroImage?.data.attributes.url },
-				id: course.id,
-			})),
-		},
-		revalidate: 60
-	};
-};
 
 export default Home;

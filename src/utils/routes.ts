@@ -1,4 +1,3 @@
-import { Blog, ContentCategory } from '@/services/blogs/types';
 import { UrlObject } from 'url';
 
 const contactUs = (): UrlObject => {
@@ -51,19 +50,6 @@ const studentReviews = (): UrlObject => {
 	};
 };
 
-const blogsByCategory = (category: ContentCategory, page?: number): UrlObject => {
-	return {
-		pathname: `/blogs/${category.slug}`,
-		...(page && { query: { page } })
-	};
-};
-
-const blog = (category: ContentCategory, slug: string): UrlObject => {
-	return {
-		pathname: `/blogs/${category.slug}/${slug}`
-	};
-};
-
 const privacyPolicy = (page?: number): UrlObject => {
 	return {
 		pathname: '/privacy-policy',
@@ -80,8 +66,6 @@ const Routes = {
 	records,
 	events,
 	studentReviews,
-	blogsByCategory,
-	blog,
 	privacyPolicy
 };
 

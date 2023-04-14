@@ -1,29 +1,34 @@
 import React from "react";
+import Image from "next/image";
 import SectionHeadline from '@/components/common/SectionHeadline';
 
-const DemoVideo: React.FC<DemoVideoProps> = ({ url, headline, subHeadline }) => {
+const DemoVideo: React.FC<DemoVideoProps> = ({ vimeoVideoId, headline, }) => {
 	return (
-		<>
+		<div className='relative w-full bg-secondary lg:pb-32'>
 			<SectionHeadline
 				title={headline}
-				subtitle={subHeadline}
-				className='mb-4'
+				className='py-9 lg:mb-12 relative z-20'
 			/>
-			<div className="video-container relative xl:w-76 mx-auto px-5 mb-12 flex justify-center">
-				{/* <iframe data-src={url ?? 'https://player.vimeo.com/video/813124028?h=bf8271f639&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479'} allow="autoplay; fullscreen; picture-in-picture" allowFullScreen style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }} title="4k SOCIAL MEDIA"></iframe> */}
-				<div className='w-full rounded-3xl overflow-hidden'>
+			<div className="video-container relative mx-auto px-5 pb-12 flex justify-center">
+				<div className='w-80 h-48 md:h-96 md:w-144 md:h-80 xl:w-216 xl:h-114 rounded-3xl overflow-hidden z-20'>
 					{/* @ts-ignore */}
-					<lite-vimeo videoid="813124028"></lite-vimeo>
+					<lite-vimeo videoid={vimeoVideoId ?? '806024932'} style={{height: '100%'}}></lite-vimeo>
 				</div>
 			</div>
-		</>
+			<Image
+				src='/img/home/video_bg_artifact.png'
+				width={800}
+				height={535}
+				alt='Video Bg Artifact'
+				className="absolute top-16 xl:-top-24 right-0 w-1/2 mb-4 z-10"
+			/>
+		</div>
 	)
 };
 
 type DemoVideoProps = {
-	url: string;
 	headline: string;
-	subHeadline: string;
+	vimeoVideoId?: string;
 };
 
 export default DemoVideo;

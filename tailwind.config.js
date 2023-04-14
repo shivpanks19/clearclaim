@@ -19,16 +19,21 @@ module.exports = {
         '5.5': '1.375rem',
         21: '5.25rem',
         35: '35rem',
+        46: '11.56rem',
+        67: '16.68rem',
+        72: '18rem',
         76: '76rem',
         85: '21.25rem',
         90: '22.5rem',
         99: '24.75rem',
+        104: '26rem',
         108: '27rem',
         112: '28rem',
         120: '30rem',
         136: '34rem',
         144: '36rem',
         154: '39rem',
+        157: '39.25rem',
         216: '54rem',
         256: '64rem'
       },
@@ -36,15 +41,24 @@ module.exports = {
         '5.5': '1.375rem',
         42: '42rem',
         45: '45rem',
+        46: '11.56rem',
+        48: '12rem',
         51: '51rem',
+        67: '16.68rem',
+        72: '18rem',
         85: '21.25rem',
         90: '22.5rem',
+        98: '24.5rem',
+        112: '28rem',
+        114: '29rem',
         120: '30rem',
         136: '34rem',
         144: '36rem',
         154: '39rem',
-        216: '54rem',
+        157: '39.25rem',
         160: '40rem',
+        216: '54rem',
+        256: '64rem',
       },
       fontSize: {
         "xxs": [
@@ -91,15 +105,11 @@ module.exports = {
         ]
       },
       backgroundColor: () => ({
-        primary: "#0D3D54",
+        primary: "#1C253F",
         lightblue: "rgb(239, 248, 253)",
-        secondary: "#ffa600",
-        tertiary: "#0e73b3",
-        tertiary2: "#70C4F9",
-        tertiary3: "#BDE6FF",
-        tertiaryFade1: "rgba(13, 135, 212, 0.41);",
-        tertiaryFade2: "rgba(13, 135, 212, 0.15);",
-        tertiaryLight: "#D0EDFF",
+        darkblue:'rgba(25, 33, 58, 1)',
+        secondary: "#F6F8FD",
+        tertiary: "#00BE5D",
         danger: "#e3342f",
         diminished: "rgba(30, 70, 132, 0.08)",
         "white": '#fff',
@@ -113,10 +123,10 @@ module.exports = {
         'loader-gray': '#ECEBEB',
         'gd-salary-bar-gray': 'rgb(196, 199, 204)',
         'gd-salary-bar-blue': 'rgb(12, 64, 133)',
-        'footer-bg': '#0C3447'
+        'footer-bg': '#161D34'
       }),
       textColor: () => ({
-        primary: "#0D3D54",
+        primary: "rgba(41, 43, 51, 1)",
         primary2: "#0D3D54E3",
         primary3: "#0D3D54C9",
         primary4: "#3f3f3fa1",
@@ -124,7 +134,7 @@ module.exports = {
         desc: "rgba(63, 63, 63, 0.80)",
         desc2: "rgba(63, 63, 63, 0.83)",
         secondary: "rgba(13, 61, 84, 0.89)",
-        tertiary: "#0c69a3",
+        tertiary: "#00BE5D",
         muted: "#919191",
         aphonic: "rgba(63, 63, 63, 0.80)",
         gray: '#d1d1d1',
@@ -137,7 +147,7 @@ module.exports = {
         DEFAULT: 'rgba(13, 61, 84, 0.15)',
         primary2: "#0D3D54E3",
         yellow: '#f5c844',
-        tertiary: "#0c69a3",
+        tertiary: "#00BE5D",
         white: "#fff"
       }),
       borderWidth: {
@@ -147,11 +157,13 @@ module.exports = {
         DEFAULT: "0px 0px 6px 1px rgba(13, 61, 84, 0.07);",
         'navbar': '0px 4px 4px 0px rgba(13, 135, 212, 0.18)',
         'courseDetailNav': '0px 4px 4px 0px rgba(13, 135, 212, 0.18)',
-        'gdSalaryBox': '0px 0px 4px rgba(0, 0, 0, 0.25)'
+        'reviewCard': '0px 0px 10px rgba(0, 0, 0, 0.29);'
       },
       spacing: {
         '13': '52px',
         '100': '400px',
+        41: '10.25rem',
+        74: '18.5rem'
       },
       padding: {
         '115': '460px',
@@ -166,8 +178,8 @@ module.exports = {
       typography: (theme) => ({
         DEFAULT: {
           css: {
-            h1: {color: theme('text-primary')},
-            h2: {color: theme('text-tertiary')}
+            h1: { color: theme('text-primary') },
+            h2: { color: theme('text-tertiary') }
           }
         }
       })

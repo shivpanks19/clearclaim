@@ -1,6 +1,6 @@
 const Images = {
-	logoLight: '/img/logo.png',
-	logoDark: '/img/logo_dark.png',
+	logoLight: '/img/logo.svg',
+	logoDark: '/img/logo_dark.svg',
 
 	rhndBackground: '/img/rhnd-bg.svg',
 	landingHero: '/img/landing-hero.svg',

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 import dynamic from "next/dynamic";
 
 import "odometer/themes/odometer-theme-default.css";
@@ -21,11 +22,11 @@ const Odometer = dynamic(
 	}
 );
 
-const Stat: React.FC<StatProps> = ({ studentsTrained, workshopsConducted, placementDrives }) => {
+const Stat: React.FC<StatProps> = ({ amountRecovered, customers, experts }) => {
 	const [odometerLoaded, setOdometerLoaded] = useState(loaded);
-	const [studentsTrainedInternal, setStudentsTrainedInternal] = useState(1);
-	const [workshopsConductedInternal, setWorkshopsConductedInternal] = useState(1);
-	const [placementDrivesInternal, setPlacementDrivesInternal] = useState(1);
+	const [amountRecoveredInternal, setAmountRecoveredInternal] = useState(1);
+	const [customersInternal, setCustomersInternal] = useState(1);
+	const [expertsInternal, setExpertsInternal] = useState(1);
 
 	loadedCallback = () => {
 		setOdometerLoaded(true);
@@ -33,51 +34,76 @@ const Stat: React.FC<StatProps> = ({ studentsTrained, workshopsConducted, placem
 
 	useEffect(() => {
 		if (!odometerLoaded) {
-			setStudentsTrainedInternal(1);
-			setWorkshopsConductedInternal(1);
-			setPlacementDrivesInternal(1);
+			setAmountRecoveredInternal(1);
+			setCustomersInternal(1);
+			setExpertsInternal(1);
 		}
 	}, [odometerLoaded]);
 
 	useEffect(() => {
 		if (odometerLoaded) {
-			setStudentsTrainedInternal(studentsTrained);
-			setWorkshopsConductedInternal(workshopsConducted);
-			setPlacementDrivesInternal(placementDrives);
+			setAmountRecoveredInternal(amountRecovered);
+			setCustomersInternal(customers);
+			setExpertsInternal(experts);
 		}
-	}, [studentsTrained, workshopsConducted, placementDrives, odometerLoaded]);
+	}, [amountRecovered, customers, experts, odometerLoaded]);
 	return (
-		<div className='mdxl:w-76 shadow rounded mx-5 md:mx-auto py-8 md:-my-12 bg-white flex flex-col justify-center items-center md:flex-row md:justify-evenly'>
-			<div className='flex flex-col justify-center items-center pb-7 mb-7 md:mb-0  border-primary2 border-b md:border-0 md:border-r h-30 md:h-20 w-64 md:w-1/3'>
-				<div className='text-5xl text-primary font-semibold relative'>
-					<Odometer value={studentsTrainedInternal} format="(,ddd)" theme="default" />
-					<span className="relative z-10 mb-4" style={{ letterSpacing: 0 }}> +</span>
+		<div className='bg-secondary'>
+			<div className="lg:w-216 mx-auto flex items-baseline justify-evenly lg:pb-32">
+				<div className='flex flex-col justify-center items-center pb-7 mb-7 md:mb-0  md:w-1/3'>
+					<div className="relative w-10 h-10 lg:w-28 lg:h-28">
+						<Image
+							src='/img/home/money.png'
+							fill
+							alt='Money Recovered'
+							className="mb-4"
+						/>
+					</div>
+					<div className='text-lg lg:text-5xl text-primary font-bold relative text-tertiary'>
+						<Odometer value={amountRecoveredInternal} format="(,ddd)" theme="default" />
+						<span className="relative z-10 mb-4" style={{ letterSpacing: 0 }}></span>
+					</div>
+					<div className='text-xxs lg:text-lg text-primary font-semibold z-10'>Total Amount Recovered</div>
 				</div>
-				<div className='text-xl text-primary3 font-normal z-10'>Students Trained</div>
-			</div>
-			<div className='flex flex-col justify-center items-center h-30 md:h-20 w-64 md:w-1/3 pb-7 mb-7 md:mb-0 border-primary2 border-b md:border-0 md:border-r'>
-				<div className='text-5xl text-primary font-semibold relative'>
-					<Odometer value={workshopsConductedInternal} format="(,ddd)" theme="default" />
-					<span className="relative z-10 mb-4" style={{ letterSpacing: 0 }}> +</span>
+				<div className='flex flex-col justify-center items-center   md:w-1/3 pb-7 mb-7 md:mb-0 '>
+					<div className="relative w-10 h-10 lg:w-28 lg:h-28">
+						<Image
+							src='/img/home/customers.png'
+							fill
+							alt='Customers'
+							className="mb-4"
+						/>
+					</div>
+					<div className='text-lg lg:text-5xl text-primary font-bold relative text-tertiary'>
+						<Odometer value={customersInternal} format="(,ddd)" theme="default" />
+						<span className="relative z-10 mb-4" style={{ letterSpacing: 0 }}> +</span>
+					</div>
+					<div className='text-xxs lg:text-lg text-primary font-semibold z-10'>Happy Customers</div>
 				</div>
-				<div className='text-xl text-primary3 font-normal z-10'>Workshops Conducted</div>
-			</div>
-			<div className='flex flex-col justify-center items-center h-30 md:h-20 w-64 md:w-1/3'>
-				<div className='text-5xl text-primary font-semibold relative'>
-					<Odometer value={placementDrivesInternal} format="(,ddd)" theme="default" />
-					<span className="relative z-10 mb-4" style={{ letterSpacing: 0 }}> +</span>
+				<div className='flex flex-col justify-center items-center   md:w-1/3'>
+					<div className="relative w-10 h-10 lg:w-28 lg:h-28">
+						<Image
+							src='/img/home/experts.png'
+							fill
+							alt='Experts'
+							className="mb-4"
+						/>
+					</div>
+					<div className='text-lg lg:text-5xl text-primary font-bold relative text-tertiary'>
+						<Odometer value={expertsInternal} format="(,ddd)" theme="default" />
+						<span className="relative z-10 mb-4" style={{ letterSpacing: 0 }}> +</span>
+					</div>
+					<div className='text-xxs lg:text-lg text-primary font-semibold z-10'>Experts</div>
 				</div>
-				<div className='text-xl text-primary3 font-normal z-10'>Placement Drives</div>
 			</div>
-
 		</div>
 	)
 };
 
 type StatProps = {
-	studentsTrained: number;
-	workshopsConducted: number;
-	placementDrives: number;
+	amountRecovered: number;
+	customers: number;
+	experts: number;
 };
 
 export default Stat;

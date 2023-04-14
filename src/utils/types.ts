@@ -20,3 +20,15 @@ export type VideoType = {
 	height: number
 	url: string
 }
+
+export type BusinessPoint = {
+	title: string;
+	description: string;
+	imgSrc: string;
+}
+
+export type FAQ = {
+	id: string | number;
+	question: string;
+	answer: string;
+}
