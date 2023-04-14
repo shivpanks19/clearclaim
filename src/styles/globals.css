@@ -92,13 +92,3 @@ a {
 ::-webkit-scrollbar-thumb:hover {
   background: #c7c7c7;
 }
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
-}
