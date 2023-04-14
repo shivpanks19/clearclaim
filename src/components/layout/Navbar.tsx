@@ -84,7 +84,7 @@ const Navbar: React.FC<NavbarProps> = () => {
 							</div> */}
 							<div className="flex flex-col md:flex-row justify-end lg:gap-4">
 								<button className="bg-white font-medium border rounded-full py-2.5 px-4 mb-1 flex items-center gap-2"> <div className='flex-none'><Image src='/img/home/call1.png' width={16} height={16} alt='Book call' /> </div>Book FREE Consultation Call</button>
-								<button className="bg-primary text-white font-medium rounded-full py-2.5 px-5 flex justify-center items-center gap-2"><div className='flex-none'><Image src='/img/pen.png' width={16} height={16} alt='Book call' /> </div>Get Experts Help</button>
+								<button className="bg-primary text-white font-medium rounded-full py-2.5 px-5 flex justify-center items-center gap-2"><div className='flex-none'><Image src='/img/home/pen.png' width={16} height={16} alt='Book call' /> </div>Get Experts Help</button>
 							</div>
 
 							{/* <div className='hidden lg:flex items-center justify-end'>

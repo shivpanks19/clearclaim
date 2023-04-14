@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const HomeHeroSection: React.FC<HomeHeroSectionProps> = ({ headline, subHeadline }) => {
 	return (
-		<div className='relative pt-8 pb-4'>
+		<div className='relative pt-14 pb-4'>
 			<Image src='/img/home/homeHeroBg.png' fill alt='background image' priority style={{ zIndex: -1 }} />
 			<div className='grid gap-2 mdxl:w-76 grid-cols-1 lg:grid-cols-2 mx-auto mb-10 md:mb-20'>
 				<div className='flex flex-col lg:pt-41 px-5 mb-7 text-center lg:text-left'>

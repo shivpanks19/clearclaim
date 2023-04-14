@@ -5,8 +5,8 @@ import { BusinessPoint } from "@/utils/types";
 const Timeline: React.FC<TimelineProps> = ({ businessPoints }) => {
 	const [activeIdx, setActiveIdx] = useState(0);
 
-	const TIMELINE_DOT = '/img/home/timeline_dot.png'
-	const ACTIVE_TIMELINE_DOT = '/img/home/active_timeline_dot.png'
+	const TIMELINE_DOT = '/img/home/timeline_dot.svg'
+	const ACTIVE_TIMELINE_DOT = '/img/home/active_timeline_dot.svg'
 
 	const isActive = (idx, activeIdx) => idx === activeIdx;
 
@@ -33,7 +33,7 @@ const Timeline: React.FC<TimelineProps> = ({ businessPoints }) => {
 							alt='Timeline Point'
 							className="absolute mx-auto left-0 right-0 xl:top-20 xl:right-8 h-11 w-11 xl:w-16 xl:h-16"
 						/>
-						<div className={`text h-46 flex flex-col absolute -top-8 w-36 xl:w-64 xl:text-center xl:top-0 xl:left-0 xl:right-0 ${idx % 2 === 0 ? 'right-14 xl:top-36' : 'left-14 xl:-top-28'}`}>
+						<div className={`text h-46 flex flex-col absolute -top-8 w-36 xl:w-64 xl:text-center xl:top-0 xl:left-0 xl:right-0 ${idx % 2 === 0 ? 'text-right right-14 xl:top-36' : 'left-14 xl:-top-28'}`}>
 							<p className="font-bold xl:text-2xl">
 								{businessPoint.title}
 							</p>
