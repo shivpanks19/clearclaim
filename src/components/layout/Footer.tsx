@@ -116,7 +116,7 @@ const Footer: React.FC<FooterProps> = ({ }) => {
 									GET OUR APP
 								</p>
 								<div className="relative w-40 h-12 md:w-52 md:h-14 mb-6">
-									<Link href='https://bit.ly/TAwebsiteapp' target='_blank'>
+									<Link href='' target='_blank'>
 										<Image
 											src='/img/android_app.png'
 											fill
@@ -133,7 +133,7 @@ const Footer: React.FC<FooterProps> = ({ }) => {
 								<div className="flex gap-4 md:gap-6 mb-5 md:mb-11 place-items-center">
 
 									<div className='flex-none w-7 h-7 md:w-9 md:h-9 relative'>
-										<Link href='https://www.facebook.com/thetapacademy' target='_blank'>
+										<Link href='https://www.facebook.com/' target='_blank'>
 											<Image
 												src='/img/fb_white.png'
 												fill
@@ -142,7 +142,7 @@ const Footer: React.FC<FooterProps> = ({ }) => {
 										</Link>
 									</div>
 									<div className="flex-none w-7 h-7 md:w-9 md:h-9 relative">
-										<Link href='https://www.instagram.com/tapacademy_online/' target='_blank'>
+										<Link href='https://www.instagram.com/' target='_blank'>
 											<Image
 												src='/img/ig_white.png'
 												fill
@@ -150,7 +150,7 @@ const Footer: React.FC<FooterProps> = ({ }) => {
 											/>
 										</Link>
 									</div>
-									<Link href='https://in.linkedin.com/company/thetapacademy' target='_blank'>
+									<Link href='https://in.linkedin.com/' target='_blank'>
 										<div className="flex-none w-7 h-7 md:w-9 md:h-9 relative">
 											<Image
 												src='/img/linkedin_white.png'
@@ -160,7 +160,7 @@ const Footer: React.FC<FooterProps> = ({ }) => {
 										</div>
 									</Link>
 									<div className="flex-none w-6 h-4 md:w-9 md:h-6 relative">
-										<Link href='https://www.youtube.com/channel/UCvT21bzLRHrnAc-F1SRqRSw' target='_blank'>
+										<Link href='https://www.youtube.com/' target='_blank'>
 											<Image
 												src='/img/yt_white.png'
 												fill

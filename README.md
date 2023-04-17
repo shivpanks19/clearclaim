@@ -1,1 +1,1 @@
-# Tap Academy
+# Clear claim
