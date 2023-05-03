@@ -27,7 +27,7 @@ const Home: NextPage<HomePageProps> = () => {
 			{/* Hero */}
 			<HomeHero
 				headline='Save up to 50% on your Taxes'
-				subHeadline='Make provision of a hassle-free claim processing and assure that each penny you invested reaches your family in a safe, secured and hassle-free way when you are not around.'
+				subHeadline='Plan your taxes early to minimise the tax liability and maximise the savings with the assistance of our expert and qualified Tax Consultants.  '
 			/>
 
 			{/* Why Tax + */}

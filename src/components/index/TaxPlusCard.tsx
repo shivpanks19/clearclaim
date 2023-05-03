@@ -12,15 +12,14 @@ const TaxPlusCard: React.FC = () => {
 					</span>
 					<span className="text-xl lg:text-2xl font-light">15 mins call</span>
 				</p>
-				<div className="text-sm font-medium text-desc mb-4 text-center">Track and protect your investments</div>
+				<div className="text-sm font-medium text-desc mb-4 text-center">FREE consultation call</div>
 			</div>
 			<ul className="px-10 py-4 flex flex-col gap-4" style={{ listStyleImage: "url('/img/home/blue_tick.png')" }}>
-				<li>Investment tracking and summary snapshot</li>
-				<li>Timely nominee update reminders</li>
-				<li>Timely regulatory and news updates for your personal finance</li>
-				<li>Webinars on health, wealth and legal compliance topics</li>
-				<li>Investment intimation to your family after death</li>
-				<li>Guaranteed gift vouchers</li>
+				<li>Understanding your tax-problems</li>
+				<li>Understanding current taxation</li>
+				<li>Discussing possible opportunities </li>
+				<li>Informed decision about Tax+</li>
+				
 			</ul>
 			<button className="mx-auto w-64 text-white font-semibold rounded-full bg-gray-700 flex items-center py-4 px-16 absolute bottom-8 mx-auto left-0 right-0">
 				<Image
