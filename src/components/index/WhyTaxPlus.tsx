@@ -36,7 +36,7 @@ const WhyTaxPlus: React.FC<WhyTaxPlusProps> = ({ }) => {
 					</div>
 					<div className="text text-center lg:text-right px-7 lg:order-1">
 						<p className="font-bold mb-2.5 lg:text-2xl">New vs Old Regime</p>
-						<p className="text-sm lg:text-base">Suraksha+ guarantees a transparent and trustworthy claim settlement and ensures that your family does not have to rush and suffer during the challenging time. hat your family does not have to rush and suffer during the challenging time.</p>
+						<p className="text-sm lg:text-base">Confused which regime to select for maximum tax benefits? Don’t worry, income tax consultants in Tax+ assists you select the best regime as per your income and investments. </p>
 					</div>
 				</div>
 				<div className="painpoint flex flex-col lg:grid lg:grid-cols-2 lg:gap-20  justify-center items-center">
@@ -52,7 +52,7 @@ const WhyTaxPlus: React.FC<WhyTaxPlusProps> = ({ }) => {
 					</div>
 					<div className="text text-center lg:text-left px-7">
 						<p className="font-bold mb-2.5 lg:text-2xl">Financial Complexity</p>
-						<p className="text-sm lg:text-base">Suraksha+ guarantees a transparent and trustworthy claim settlement and ensures that your family does not have to rush and suffer during the challenging time. hat your family does not have to rush and suffer during the challenging time.</p>
+						<p className="text-sm lg:text-base">Multiple income sources & gigantic financial transactions? Don’t complicate your taxes. Make informed decisions with our expert's assistance. </p>
 					</div>
 				</div>
 			</div>

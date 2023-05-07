@@ -7,22 +7,22 @@ const BusinessProcess: React.FC<BusinessProcessProps> = ({ }) => {
 	const businessPoints: BusinessPoint[] = [
 		{
 			title: 'Share Details',
-			description: 'Share your salary details, income sources, and investment details with us.',
+			description: 'Share your salary details, income sources, and investment details with us',
 			imgSrc: ''
 		},
 		{
 			title: 'Tax Consultation & Planning',
-			description: 'Our experts analyse your details, understand your current taxation considering   both regimes.',
+			description: 'Our experts analyse your details, understand your current taxation considering both regimes, identify scope of tax saving and tax planning recommendations to plan your taxes.',
 			imgSrc: ''
 		},
 		{
 			title: 'Personalised Report',
-			description: 'Get a personalised Tax+ report consisting of beneficial tax-regime & potential tax-saving options along with customised recommendations.',
+			description: 'Get a  personalised Tax+ report consisting of beneficial tax-regime & potential tax-saving options along with customised recommendations',
 			imgSrc: ''
 		},
 		{
 			title: '1:1 Call with Tax+ Consultants',
-			description: 'Connect with our expert tax consultants to understand your tax plan and clear your doubts.',
+			description: 'Connect with our expert tax consultants to understand your tax plan and clear your doubts',
 			imgSrc: ''
 		},
 	]

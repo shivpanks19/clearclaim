@@ -37,11 +37,11 @@ const Home: NextPage<HomePageProps> = () => {
 			<BusinessProcess />
 
 			{/* Demo video */}
-			<DemoVideo headline='Clear Claim is the best choice' />
+			{/* <DemoVideo headline='Clear Claim is the best choice' /> */}
 
 			{/* Stat */}
 			<Stat
-				amountRecovered={12600000}
+				amountRecovered={30000000}
 				customers={100}
 				experts={50}
 			/>
