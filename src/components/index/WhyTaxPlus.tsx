@@ -52,7 +52,7 @@ const WhyTaxPlus: React.FC<WhyTaxPlusProps> = ({ }) => {
 					</div>
 					<div className="text text-center lg:text-left px-7">
 						<p className="font-bold mb-2.5 lg:text-2xl">Financial Complexity</p>
-						<p className="text-sm lg:text-base">Multiple income sources & gigantic financial transactions? Don’t complicate your taxes. Make informed decisions with our expert's assistance. </p>
+						<p className="text-sm lg:text-base">Multiple income sources & gigantic financial transactions? Dont complicate your taxes. Make informed decisions with our experts assistance. </p>
 					</div>
 				</div>
 			</div>
