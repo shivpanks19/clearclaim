@@ -11,7 +11,7 @@ const WhyTaxPlus: React.FC<WhyTaxPlusProps> = ({ }) => {
 					<div className="flex justify-end">
 						<div className="relative w-46 h-46 md:w-72 md:h-72 flex-none">
 							<Image
-								src='/img/home/pain_point.png'
+								src='/img/home/group_img.png'
 								fill
 								alt='Pain Point'
 								className="mb-4"
@@ -27,7 +27,7 @@ const WhyTaxPlus: React.FC<WhyTaxPlusProps> = ({ }) => {
 					<div className="flex justify-start lg:order-2">
 						<div className="relative w-46 h-46 md:w-72 md:h-72 flex-none">
 							<Image
-								src='/img/home/pain_point.png'
+								src='/img/home/old_vs_new.png'
 								fill
 								alt='Pain Point'
 								className="mb-4"
